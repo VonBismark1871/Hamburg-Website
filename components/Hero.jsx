@@ -17,7 +17,7 @@ export default function Hero() {
             transition={{ duration: 0.4 }}
             className="inline-flex rounded-full bg-indigo-50 px-4 py-1 text-sm font-medium text-accent"
           >
-            Freelance Web Developer · Hamburg
+            Freiberuflicher Webentwickler · Hamburg
           </motion.p>
           <motion.h1
             initial="hidden"
@@ -26,7 +26,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl font-extrabold tracking-tight text-slateBlue sm:text-5xl"
           >
-            Modern websites for Hamburg businesses
+            Moderne Webseiten für Hamburger Unternehmen
           </motion.h1>
           <motion.p
             initial="hidden"
@@ -35,7 +35,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-xl text-lg text-slate-600"
           >
-            Fast, mobile-first websites that help local businesses attract more customers.
+            Schnelle, mobil optimierte Webseiten, die lokalen Unternehmen helfen, mehr Kundschaft zu gewinnen.
           </motion.p>
           <motion.div
             initial="hidden"
@@ -48,13 +48,13 @@ export default function Hero() {
               href="#contact"
               className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500"
             >
-              Get a free demo website
+              Kostenlose Demo-Webseite anfordern
             </a>
             <a
               href="#portfolio"
               className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
             >
-              View examples
+              Beispiele ansehen
             </a>
           </motion.div>
         </div>
@@ -65,14 +65,14 @@ export default function Hero() {
           className="card bg-gradient-to-br from-white to-slate-50"
         >
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Results-focused web design</h2>
+            <h2 className="text-xl font-semibold">Webdesign mit Fokus auf Ergebnisse</h2>
             <p className="text-slate-600">
-              I build clear, conversion-friendly websites tailored to restaurants, shops, and local service providers.
+              Ich erstelle klare, conversion-starke Webseiten für Restaurants, Geschäfte und lokale Dienstleister.
             </p>
             <ul className="space-y-3 text-sm text-slate-600">
-              <li>✓ Fast loading pages</li>
-              <li>✓ Responsive across all devices</li>
-              <li>✓ Built for local visibility</li>
+              <li>✓ Schnelle Ladezeiten</li>
+              <li>✓ Responsiv auf allen Geräten</li>
+              <li>✓ Für lokale Sichtbarkeit optimiert</li>
             </ul>
           </div>
         </motion.div>
