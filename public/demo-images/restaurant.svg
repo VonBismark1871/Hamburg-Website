@@ -1,0 +1,9 @@
+<svg width="700" height="450" viewBox="0 0 700 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="700" height="450" fill="#F8FAFC"/>
+  <rect x="60" y="60" width="580" height="330" rx="20" fill="white" stroke="#E2E8F0"/>
+  <rect x="90" y="100" width="520" height="60" rx="10" fill="#EEF2FF"/>
+  <rect x="90" y="190" width="250" height="160" rx="10" fill="#E2E8F0"/>
+  <rect x="360" y="190" width="250" height="70" rx="10" fill="#E2E8F0"/>
+  <rect x="360" y="280" width="250" height="70" rx="10" fill="#E2E8F0"/>
+  <text x="105" y="138" fill="#4F46E5" font-size="28" font-family="Arial">Restaurant Demo</text>
+</svg>
