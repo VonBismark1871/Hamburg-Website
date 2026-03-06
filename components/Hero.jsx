@@ -16,8 +16,8 @@ const floatAnimation = {
   }
 };
 
-const AUTO_ADVANCE_MS = 4800;
-const MANUAL_PAUSE_MS = 6500;
+const AUTO_ADVANCE_MS = 4500;
+const MANUAL_PAUSE_MS = 4500;
 
 const websitePreviews = [
   {
@@ -72,7 +72,7 @@ const websitePreviews = [
 
 function RestaurantPreview({ site, isActive, isFirst }) {
   return (
-    <article className="w-full shrink-0 space-y-4 bg-gradient-to-b from-white via-slate-50/50 to-slate-100/40 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
+    <article className="flex h-full w-full shrink-0 flex-col space-y-4 bg-gradient-to-b from-white via-slate-50/50 to-slate-100/40 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
       <div className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-xs text-slate-600 shadow-sm shadow-slate-200/60 sm:text-sm">
         <span className="font-semibold text-slate-700">{site.logo}</span>
         <div className="flex items-center gap-3 text-slate-500">
@@ -117,7 +117,7 @@ function RestaurantPreview({ site, isActive, isFirst }) {
 
 function BarbershopPreview({ site, isFirst }) {
   return (
-    <article className="w-full shrink-0 space-y-4 bg-gradient-to-b from-white via-slate-50/40 to-slate-100/40 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
+    <article className="flex h-full w-full shrink-0 flex-col space-y-4 bg-gradient-to-b from-white via-slate-50/40 to-slate-100/40 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
       <div className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-xs text-slate-600 shadow-sm shadow-slate-200/60 sm:text-sm">
         <span className="font-semibold text-slate-700">{site.logo}</span>
         <div className="flex items-center gap-2.5 text-slate-500">
@@ -165,7 +165,7 @@ function BarbershopPreview({ site, isFirst }) {
 
 function AutoServicePreview({ site, isFirst }) {
   return (
-    <article className="w-full shrink-0 space-y-4 bg-gradient-to-b from-white via-slate-50/45 to-slate-100/45 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
+    <article className="flex h-full w-full shrink-0 flex-col space-y-4 bg-gradient-to-b from-white via-slate-50/45 to-slate-100/45 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
       <div className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-xs text-slate-600 shadow-sm shadow-slate-200/60 sm:text-sm">
         <span className="font-semibold text-slate-700">{site.logo}</span>
         <div className="flex items-center gap-3 text-slate-500">
@@ -226,22 +226,39 @@ function SitePreview({ site, isActive, isFirst }) {
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [manualPauseUntil, setManualPauseUntil] = useState(0);
+  const [resumeAutoplayAt, setResumeAutoplayAt] = useState(0);
 
   useEffect(() => {
-    const now = Date.now();
-    const delay = manualPauseUntil > now ? manualPauseUntil - now : AUTO_ADVANCE_MS;
+    let intervalId;
+    let resumeTimeoutId;
 
-    const timer = window.setTimeout(() => {
-      setActiveIndex((prev) => (prev + 1) % websitePreviews.length);
-    }, delay);
+    const startAutoplay = () => {
+      intervalId = window.setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % websitePreviews.length);
+      }, AUTO_ADVANCE_MS);
+    };
 
-    return () => window.clearTimeout(timer);
-  }, [activeIndex, manualPauseUntil]);
+    const remainingPause = Math.max(0, resumeAutoplayAt - Date.now());
+
+    if (remainingPause > 0) {
+      resumeTimeoutId = window.setTimeout(startAutoplay, remainingPause);
+    } else {
+      startAutoplay();
+    }
+
+    return () => {
+      if (intervalId) {
+        window.clearInterval(intervalId);
+      }
+      if (resumeTimeoutId) {
+        window.clearTimeout(resumeTimeoutId);
+      }
+    };
+  }, [resumeAutoplayAt]);
 
   const handleIndicatorClick = (index) => {
     setActiveIndex(index);
-    setManualPauseUntil(Date.now() + MANUAL_PAUSE_MS);
+    setResumeAutoplayAt(Date.now() + MANUAL_PAUSE_MS);
   };
 
   return (
@@ -335,9 +352,9 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden">
+            <div className="relative h-[30rem] overflow-hidden sm:h-[32rem] lg:h-[34rem]">
               <motion.div
-                className="flex"
+                className="flex h-full"
                 animate={{ x: `-${activeIndex * 100}%` }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
@@ -347,7 +364,7 @@ export default function Hero() {
               </motion.div>
 
               <div className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center">
-                <div className="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/20 px-2.5 py-1.5 shadow-sm backdrop-blur">
+                <div className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-slate-300/90 bg-white/90 px-3 py-2 shadow-md shadow-slate-300/40 backdrop-blur">
                   {websitePreviews.map((site, index) => {
                     const isActive = index === activeIndex;
 
@@ -357,11 +374,12 @@ export default function Hero() {
                         type="button"
                         aria-label={`Zu ${site.logo} wechseln`}
                         aria-current={isActive ? 'true' : 'false'}
+                        aria-pressed={isActive}
                         onClick={() => handleIndicatorClick(index)}
-                        className={`h-2.5 rounded-full border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 ${
+                        className={`h-3.5 rounded-full border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 ${
                           isActive
-                            ? 'w-6 border-white/70 bg-white/80'
-                            : 'w-2.5 border-white/50 bg-white/40 hover:bg-white/60'
+                            ? 'w-8 border-indigo-300 bg-indigo-500 shadow-sm shadow-indigo-300/60'
+                            : 'w-3.5 border-slate-300 bg-slate-300/90 hover:border-slate-400 hover:bg-slate-400/80'
                         }`}
                       />
                     );
