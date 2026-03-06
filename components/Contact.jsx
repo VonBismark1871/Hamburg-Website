@@ -15,7 +15,8 @@ export default function Contact() {
           name="contact"
           method="POST"
           data-netlify="true"
-          netlify-honeypot="bot-field"
+          data-netlify-honeypot="bot-field"
+          action="/thank-you"
           className="mt-8 grid gap-4"
         >
           <input type="hidden" name="form-name" value="contact" />
@@ -30,7 +31,11 @@ export default function Contact() {
           </label>
           <label className="grid gap-2">
             <span className="font-medium">Unternehmensname</span>
-            <input name="business-name" required className="rounded-xl border border-slate-300 px-4 py-3" />
+            <input name="business" className="rounded-xl border border-slate-300 px-4 py-3" />
+          </label>
+          <label className="grid gap-2">
+            <span className="font-medium">E-Mail</span>
+            <input name="email" type="email" required className="rounded-xl border border-slate-300 px-4 py-3" />
           </label>
           <label className="grid gap-2">
             <span className="font-medium">Webseite (optional)</span>
