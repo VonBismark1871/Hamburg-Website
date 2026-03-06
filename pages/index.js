@@ -12,10 +12,10 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>Freelance Web Developer Hamburg</title>
+        <title>Freiberuflicher Webentwickler Hamburg</title>
         <meta
           name="description"
-          content="Modern websites for Hamburg businesses. Fast, mobile-first and optimized to attract local customers."
+          content="Moderne Webseiten für Hamburger Unternehmen. Schnell, mobil optimiert und darauf ausgelegt, lokale Kundschaft zu gewinnen."
         />
       </Head>
       <main>

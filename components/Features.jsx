@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const features = [
-  { icon: '⚡', title: 'Fast loading websites', text: 'Optimized pages for speed and smooth browsing.' },
-  { icon: '📱', title: 'Mobile-first design', text: 'Layouts that look great on phones, tablets and desktop.' },
-  { icon: '🔎', title: 'SEO optimized', text: 'Structured content to improve local discoverability.' },
-  { icon: '🎨', title: 'Modern UI design', text: 'Clean visuals that build trust and engagement.' }
+  { icon: '⚡', title: 'Schnell ladende Websites', text: 'Für Geschwindigkeit und flüssiges Surfen optimierte Seiten.' },
+  { icon: '📱', title: 'Mobile-First-Design', text: 'Layouts, die auf Smartphone, Tablet und Desktop überzeugen.' },
+  { icon: '🔎', title: 'SEO-optimiert', text: 'Strukturierte Inhalte für bessere lokale Auffindbarkeit.' },
+  { icon: '🎨', title: 'Modernes Oberflächen-Design', text: 'Klares Design, das Vertrauen und Interaktion stärkt.' }
 ];
 
 export default function Features() {
@@ -17,7 +17,7 @@ export default function Features() {
         transition={{ duration: 0.45 }}
         className="mb-10 text-3xl font-bold"
       >
-        What you get
+        Das bekommst du
       </motion.h2>
       <div className="grid gap-6 sm:grid-cols-2">
         {features.map((feature, i) => (

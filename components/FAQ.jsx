@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const faqs = [
-  'How long does it take to build a website?',
-  'Do I need hosting?',
-  'Can you redesign my existing website?',
-  'Is the demo really free?'
+  'Wie lange dauert die Erstellung einer Website?',
+  'Brauche ich eigenes Hosting?',
+  'Kannst du meine bestehende Website neu gestalten?',
+  'Ist die Demo wirklich kostenlos?'
 ];
 
 export default function FAQ() {
@@ -17,7 +17,7 @@ export default function FAQ() {
         transition={{ duration: 0.45 }}
         className="mb-10 text-3xl font-bold"
       >
-        Frequently asked questions
+        Häufig gestellte Fragen
       </motion.h2>
       <div className="space-y-4">
         {faqs.map((q, i) => (
@@ -33,7 +33,7 @@ export default function FAQ() {
               {q}
             </summary>
             <p className="mt-3 text-slate-600">
-              Placeholder answer text that can be tailored to your exact service offering.
+              Platzhalter-Antworttext, der individuell auf dein Angebot angepasst werden kann.
             </p>
           </motion.details>
         ))}

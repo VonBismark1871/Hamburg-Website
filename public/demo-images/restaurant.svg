@@ -5,5 +5,5 @@
   <rect x="90" y="190" width="250" height="160" rx="10" fill="#E2E8F0"/>
   <rect x="360" y="190" width="250" height="70" rx="10" fill="#E2E8F0"/>
   <rect x="360" y="280" width="250" height="70" rx="10" fill="#E2E8F0"/>
-  <text x="105" y="138" fill="#4F46E5" font-size="28" font-family="Arial">Restaurant Demo</text>
+  <text x="105" y="138" fill="#4F46E5" font-size="28" font-family="Arial">Restaurant-Demo</text>
 </svg>

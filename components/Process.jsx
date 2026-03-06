@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const steps = [
-  'Send your business information',
-  'I create a free demo website',
-  'You review and request changes',
-  'Website goes live'
+  'Du sendest deine Unternehmensinformationen',
+  'Ich erstelle eine kostenlose Demo-Website',
+  'Du prüfst alles und gibst Änderungswünsche an',
+  'Die Website geht live'
 ];
 
 export default function Process() {
@@ -17,7 +17,7 @@ export default function Process() {
         transition={{ duration: 0.45 }}
         className="mb-10 text-3xl font-bold"
       >
-        Simple process
+        Einfacher Ablauf
       </motion.h2>
       <div className="grid gap-4 md:grid-cols-2">
         {steps.map((step, index) => (

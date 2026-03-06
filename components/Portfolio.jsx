@@ -2,9 +2,9 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const demos = [
-  { title: 'Restaurant website demo', image: '/demo-images/restaurant.svg' },
-  { title: 'Barbershop website demo', image: '/demo-images/barbershop.svg' },
-  { title: 'Local service website demo', image: '/demo-images/local-service.svg' }
+  { title: 'Demo-Webseite Restaurant', image: '/demo-images/restaurant.svg' },
+  { title: 'Demo-Webseite Barbershop', image: '/demo-images/barbershop.svg' },
+  { title: 'Demo-Webseite Lokaler Service', image: '/demo-images/local-service.svg' }
 ];
 
 export default function Portfolio() {
@@ -17,7 +17,7 @@ export default function Portfolio() {
         transition={{ duration: 0.45 }}
         className="mb-10 text-3xl font-bold"
       >
-        Demo examples
+        Demo-Beispiele
       </motion.h2>
       <div className="grid gap-6 md:grid-cols-3">
         {demos.map((demo, i) => (
@@ -33,7 +33,7 @@ export default function Portfolio() {
             <div className="p-6">
               <h3 className="mb-4 text-xl font-semibold">{demo.title}</h3>
               <button className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold transition hover:border-accent hover:text-accent">
-                View demo
+                Demo ansehen
               </button>
             </div>
           </motion.article>

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 
 const plans = [
-  { name: 'Demo website', price: 'Free', description: 'Preview concept to see your future site.' },
-  { name: 'Starter website', price: 'from 500€', description: 'Perfect for small local businesses.' },
-  { name: 'Business website', price: 'from 900€', description: 'Advanced pages and strategy for growth.' }
+  { name: 'Demo-Webseite', price: 'Kostenlos', description: 'Vorschau-Konzept, damit du deine künftige Webseite sehen kannst.' },
+  { name: 'Starter-Webseite', price: 'ab 500 €', description: 'Perfekt für kleine lokale Unternehmen.' },
+  { name: 'Business-Webseite', price: 'ab 900 €', description: 'Erweiterte Seiten und Strategie für Wachstum.' }
 ];
 
 export default function Pricing() {
@@ -16,7 +16,7 @@ export default function Pricing() {
         transition={{ duration: 0.45 }}
         className="mb-10 text-3xl font-bold"
       >
-        Transparent pricing
+        Transparente Preise
       </motion.h2>
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan, i) => (
