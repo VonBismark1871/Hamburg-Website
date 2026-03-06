@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const fadeUp = {
@@ -16,46 +16,63 @@ const floatAnimation = {
   }
 };
 
+const AUTO_ADVANCE_MS = 4800;
+const MANUAL_PAUSE_MS = 6500;
+
 const websitePreviews = [
   {
-    type: 'Restaurant',
+    id: 'restaurant',
     browserLabel: 'www.restaurant-hamburg.de',
-    title: 'Modernes Restaurant in Hamburg',
     logo: 'Restaurant Hamburg',
     menu: ['Menü', 'Reservierung', 'Kontakt'],
-    text: 'Frische Küche und stilvolles Ambiente.',
+    title: 'Modernes Restaurant in Hamburg',
+    text: 'Frische Küche, stilvolles Ambiente und einfache Reservierung.',
     cta: 'Tisch reservieren',
     image:
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+    cards: [
+      { title: 'Frische Zutaten', text: 'Regional ausgewählt und täglich vorbereitet.' },
+      { title: 'Stilvolles Ambiente', text: 'Modernes Interieur für entspannte Abende.' },
+      { title: 'Online Reservierung', text: 'In wenigen Klicks den perfekten Tisch sichern.' }
+    ]
   },
   {
-    type: 'Barbershop',
+    id: 'barbershop',
     browserLabel: 'www.barbershop-hamburg.de',
-    title: 'Moderner Barbershop in Hamburg',
     logo: 'Barbershop Hamburg',
     menu: ['Start', 'Leistungen', 'Termin', 'Kontakt'],
-    text: 'Professionelle Haarschnitte und Bartpflege.',
+    title: 'Moderner Barbershop in Hamburg',
+    text: 'Professionelle Haarschnitte, Bartpflege und entspannte Atmosphäre.',
     cta: 'Termin buchen',
     image:
-      'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80',
+    cards: [
+      { title: 'Stilvolle Schnitte', text: 'Präzise Looks für Alltag und Business.' },
+      { title: 'Bartpflege', text: 'Konturen, Rasur und Pflege aus einer Hand.' },
+      { title: 'Flexible Termine', text: 'Online buchbar, auch kurzfristig verfügbar.' }
+    ]
   },
   {
-    type: 'Auto Service',
-    browserLabel: 'www.auto-service-hamburg.de',
-    title: 'Ihre Autowerkstatt in Hamburg',
+    id: 'autoservice',
+    browserLabel: 'www.autoservice-hamburg.de',
     logo: 'Auto Service Hamburg',
-    menu: ['Start', 'Services', 'Werkstatt', 'Kontakt'],
-    text: 'Schneller und zuverlässiger Autoservice.',
+    menu: ['Leistungen', 'Werkstatt', 'Kontakt'],
+    title: 'Ihre Autowerkstatt in Hamburg',
+    text: 'Schneller Service, faire Preise und zuverlässige Reparaturen.',
     cta: 'Termin vereinbaren',
     image:
-      'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80',
+    cards: [
+      { title: 'Inspektion & Service', text: 'Gründliche Checks nach Herstellervorgaben.' },
+      { title: 'Schnelle Reparaturen', text: 'Kurze Standzeiten dank effizienter Abläufe.' },
+      { title: 'Faire Preise', text: 'Transparente Angebote ohne versteckte Kosten.' }
+    ]
   }
 ];
 
-function SitePreview({ site, isFirst }) {
+function RestaurantPreview({ site, isActive, isFirst }) {
   return (
     <article className="w-full shrink-0 space-y-4 bg-gradient-to-b from-white via-slate-50/50 to-slate-100/40 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
-      <p className="text-xs font-medium uppercase tracking-[0.14em] text-slate-400">{site.type} Website</p>
       <div className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-xs text-slate-600 shadow-sm shadow-slate-200/60 sm:text-sm">
         <span className="font-semibold text-slate-700">{site.logo}</span>
         <div className="flex items-center gap-3 text-slate-500">
@@ -69,7 +86,7 @@ function SitePreview({ site, isFirst }) {
         <div className="space-y-3">
           <p className="text-lg font-semibold leading-tight text-slate-800">{site.title}</p>
           <p className="text-sm text-slate-500">{site.text}</p>
-          <div className="inline-flex cursor-default rounded-lg border border-indigo-100 bg-indigo-100/70 px-4 py-2 text-xs font-medium text-indigo-500">
+          <div className="inline-flex rounded-lg border border-indigo-100 bg-indigo-100/70 px-4 py-2 text-xs font-medium text-indigo-500">
             {site.cta}
           </div>
         </div>
@@ -86,22 +103,146 @@ function SitePreview({ site, isFirst }) {
       </div>
 
       <div className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm shadow-slate-200/50">
-          <p className="text-sm font-medium text-slate-700">Modernes Design</p>
+        {site.cards.map((card) => (
+          <div key={card.title} className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm shadow-slate-200/50">
+            <p className="text-sm font-medium text-slate-700">{card.title}</p>
+            <p className="mt-1 text-xs text-slate-500">{card.text}</p>
+          </div>
+        ))}
+      </div>
+      <p className="sr-only" aria-live="polite">{isActive ? `Aktive Vorschau: ${site.title}` : undefined}</p>
+    </article>
+  );
+}
+
+function BarbershopPreview({ site, isFirst }) {
+  return (
+    <article className="w-full shrink-0 space-y-4 bg-gradient-to-b from-white via-slate-50/40 to-slate-100/40 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
+      <div className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-xs text-slate-600 shadow-sm shadow-slate-200/60 sm:text-sm">
+        <span className="font-semibold text-slate-700">{site.logo}</span>
+        <div className="flex items-center gap-2.5 text-slate-500">
+          {site.menu.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm shadow-slate-200/50">
-          <p className="text-sm font-medium text-slate-700">Mobile optimiert</p>
+      </div>
+
+      <div className="grid gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/60 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
+        <div className="space-y-2">
+          <p className="max-w-[18ch] text-base font-semibold leading-tight text-slate-800 sm:text-lg">{site.title}</p>
+          <p className="text-sm text-slate-500">{site.text}</p>
+          <div className="inline-flex rounded-lg border border-indigo-100 bg-indigo-100/70 px-4 py-2 text-xs font-medium text-indigo-500">
+            {site.cta}
+          </div>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm shadow-slate-200/50">
-          <p className="text-sm font-medium text-slate-700">Lokale Sichtbarkeit</p>
+        <div className="relative aspect-[5/3] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm shadow-slate-200/50">
+          <Image
+            src={site.image}
+            alt={site.title}
+            fill
+            className="object-cover"
+            loading={isFirst ? 'eager' : 'lazy'}
+            sizes="(max-width: 768px) 100vw, 40vw"
+          />
         </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm shadow-slate-200/50 sm:col-span-2">
+          <p className="text-sm font-medium text-slate-700">{site.cards[0].title}</p>
+          <p className="mt-1 text-xs text-slate-500">{site.cards[0].text}</p>
+        </div>
+        {site.cards.slice(1).map((card) => (
+          <div key={card.title} className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm shadow-slate-200/50">
+            <p className="text-sm font-medium text-slate-700">{card.title}</p>
+            <p className="mt-1 text-xs text-slate-500">{card.text}</p>
+          </div>
+        ))}
       </div>
     </article>
   );
 }
 
+function AutoServicePreview({ site, isFirst }) {
+  return (
+    <article className="w-full shrink-0 space-y-4 bg-gradient-to-b from-white via-slate-50/45 to-slate-100/45 p-5 shadow-inner shadow-slate-200/70 sm:p-6">
+      <div className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-xs text-slate-600 shadow-sm shadow-slate-200/60 sm:text-sm">
+        <span className="font-semibold text-slate-700">{site.logo}</span>
+        <div className="flex items-center gap-3 text-slate-500">
+          {site.menu.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/60">
+        <div className="grid gap-4 sm:grid-cols-[1.25fr_0.75fr] sm:items-end">
+          <div className="space-y-3">
+            <p className="text-lg font-semibold leading-tight text-slate-800">{site.title}</p>
+            <p className="max-w-[40ch] text-sm text-slate-500">{site.text}</p>
+            <div className="inline-flex rounded-lg border border-indigo-100 bg-indigo-100/70 px-4 py-2 text-xs font-medium text-indigo-500">
+              {site.cta}
+            </div>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-right text-xs text-slate-500">
+            Mo–Fr 08:00–18:00
+          </div>
+        </div>
+        <div className="relative aspect-[21/8] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm shadow-slate-200/50">
+          <Image
+            src={site.image}
+            alt={site.title}
+            fill
+            className="object-cover"
+            loading={isFirst ? 'eager' : 'lazy'}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-[1.15fr_1fr_0.85fr]">
+        {site.cards.map((card) => (
+          <div key={card.title} className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm shadow-slate-200/50">
+            <p className="text-sm font-medium text-slate-700">{card.title}</p>
+            <p className="mt-1 text-xs text-slate-500">{card.text}</p>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function SitePreview({ site, isActive, isFirst }) {
+  if (site.id === 'barbershop') {
+    return <BarbershopPreview site={site} isFirst={isFirst} />;
+  }
+
+  if (site.id === 'autoservice') {
+    return <AutoServicePreview site={site} isFirst={isFirst} />;
+  }
+
+  return <RestaurantPreview site={site} isActive={isActive} isFirst={isFirst} />;
+}
+
 export default function Hero() {
-  const [isHoveringPreview, setIsHoveringPreview] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [manualPauseUntil, setManualPauseUntil] = useState(0);
+
+  useEffect(() => {
+    const now = Date.now();
+    const delay = manualPauseUntil > now ? manualPauseUntil - now : AUTO_ADVANCE_MS;
+
+    const timer = window.setTimeout(() => {
+      setActiveIndex((prev) => (prev + 1) % websitePreviews.length);
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, manualPauseUntil]);
+
+  const handleIndicatorClick = (index) => {
+    setActiveIndex(index);
+    setManualPauseUntil(Date.now() + MANUAL_PAUSE_MS);
+  };
 
   return (
     <section className="section-container section-spacing pt-20 sm:pt-28">
@@ -179,15 +320,10 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mx-auto w-full max-w-2xl"
         >
-          <p className="mb-3 text-center text-xs font-medium tracking-wide text-slate-400 sm:text-sm">
-            Beispiele moderner Business-Websites
-          </p>
           <motion.div
             animate={floatAnimation}
             whileHover={{ y: -6, scale: 1.01, boxShadow: '0 24px 60px rgba(15, 23, 42, 0.14)' }}
             transition={{ duration: 0.25 }}
-            onHoverStart={() => setIsHoveringPreview(true)}
-            onHoverEnd={() => setIsHoveringPreview(false)}
             className="overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-100 via-white to-slate-50 shadow-2xl shadow-slate-300/40"
           >
             <div className="flex items-center gap-2 border-b border-slate-200/80 bg-gradient-to-b from-slate-100 to-slate-50 px-5 py-3">
@@ -195,33 +331,43 @@ export default function Hero() {
               <span className="h-2.5 w-2.5 rounded-full border border-amber-200 bg-amber-300/90" />
               <span className="h-2.5 w-2.5 rounded-full border border-emerald-200 bg-emerald-300/90" />
               <div className="ml-3 flex h-7 flex-1 items-center rounded-lg border border-slate-200/70 bg-white/90 px-3 text-xs text-slate-400 shadow-inner shadow-slate-200/70">
-                {isHoveringPreview ? 'www.business-websites-hamburg.de' : websitePreviews[0].browserLabel}
+                {websitePreviews[activeIndex].browserLabel}
               </div>
             </div>
 
-            <div className="overflow-hidden">
+            <div className="relative overflow-hidden">
               <motion.div
                 className="flex"
-                animate={
-                  isHoveringPreview
-                    ? { x: ['0%', '-100%', '-200%', '0%'] }
-                    : { x: '0%' }
-                }
-                transition={
-                  isHoveringPreview
-                    ? {
-                        duration: 18,
-                        times: [0, 0.33, 0.66, 1],
-                        repeat: Infinity,
-                        ease: 'easeInOut'
-                      }
-                    : { duration: 0.5, ease: 'easeOut' }
-                }
+                animate={{ x: `-${activeIndex * 100}%` }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
                 {websitePreviews.map((site, index) => (
-                  <SitePreview key={site.logo} site={site} isFirst={index === 0} />
+                  <SitePreview key={site.id} site={site} isActive={index === activeIndex} isFirst={index === 0} />
                 ))}
               </motion.div>
+
+              <div className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center">
+                <div className="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/20 px-2.5 py-1.5 shadow-sm backdrop-blur">
+                  {websitePreviews.map((site, index) => {
+                    const isActive = index === activeIndex;
+
+                    return (
+                      <button
+                        key={site.id}
+                        type="button"
+                        aria-label={`Zu ${site.logo} wechseln`}
+                        aria-current={isActive ? 'true' : 'false'}
+                        onClick={() => handleIndicatorClick(index)}
+                        className={`h-2.5 rounded-full border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 ${
+                          isActive
+                            ? 'w-6 border-white/70 bg-white/80'
+                            : 'w-2.5 border-white/50 bg-white/40 hover:bg-white/60'
+                        }`}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </motion.div>
         </motion.div>
