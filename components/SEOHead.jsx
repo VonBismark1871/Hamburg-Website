@@ -2,7 +2,11 @@ import Head from 'next/head';
 import { defaultSeo, getCanonical } from '../lib/seo';
 
 export default function SEOHead({ title, description, path = '/', schema }) {
-  const pageTitle = title ? `${title} | ${defaultSeo.siteName}` : defaultSeo.title;
+  const pageTitle = title
+    ? title === defaultSeo.siteName
+      ? title
+      : `${title} | ${defaultSeo.siteName}`
+    : defaultSeo.title;
   const pageDescription = description || defaultSeo.description;
   const canonical = getCanonical(path);
 

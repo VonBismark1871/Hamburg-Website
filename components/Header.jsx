@@ -1,27 +1,47 @@
 import Link from 'next/link';
 
 const navItems = [
-  { href: '#features', label: 'Leistungen' },
-  { href: '#process', label: 'Ablauf' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Kontakt' }
+  { href: '#pricing', label: 'Preise' },
+  { href: '#about', label: 'Über uns' },
+  { href: '#contact', label: 'Kontaktaufnahme' }
 ];
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
-      <div className="section-container flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="text-sm font-semibold tracking-wide text-slateBlue sm:text-base">
-          Webentwickler Hamburg
+      <div className="section-container flex items-center justify-between gap-3 py-3 sm:gap-6">
+        <Link href="/" className="text-base font-semibold tracking-wide text-slateBlue sm:text-lg">
+          Hamburg Websites
         </Link>
-        <nav aria-label="Hauptnavigation" className="flex flex-wrap items-center justify-end gap-4 text-sm text-slate-600 sm:gap-6">
+
+        <div className="flex items-center gap-2 sm:gap-4">
+          <nav aria-label="Hauptnavigation" className="hidden items-center gap-5 text-sm text-slate-600 md:flex">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} className="font-medium transition hover:text-accent">
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <a
+            href="#portfolio"
+            className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slateBlue transition hover:border-accent hover:text-accent sm:text-sm"
+          >
+            Genauer ansehen
+          </a>
+        </div>
+      </div>
+
+      <nav aria-label="Mobile Navigation" className="border-t border-slate-200/70 bg-white/95 md:hidden">
+        <div className="section-container flex flex-wrap items-center gap-x-4 gap-y-2 py-2 text-sm text-slate-600">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="transition hover:text-accent">
+            <a key={item.href} href={item.href} className="font-medium transition hover:text-accent">
               {item.label}
             </a>
           ))}
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
   );
 }

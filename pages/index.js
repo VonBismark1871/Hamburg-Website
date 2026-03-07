@@ -13,15 +13,15 @@ import { faqSchema, serviceSchema } from '../lib/seo';
 const relatedLinks = [
   { href: '/#portfolio', label: 'Demo-Webseiten Beispiele' },
   { href: '/#pricing', label: 'Website-Pakete & Preise' },
-  { href: '/#contact', label: 'Kostenlose Erstberatung' }
+  { href: '/#contact', label: 'Kontaktaufnahme' }
 ];
 
 export default function HomePage() {
   return (
     <>
       <SEOHead
-        title="Webentwickler Hamburg für moderne Unternehmenswebsites"
-        description="Freiberuflicher Webentwickler aus Hamburg. Mobile-First Webseiten, lokale SEO-Struktur und klare Conversion-Elemente für mehr Anfragen."
+        title="Hamburg Websites"
+        description="Hamburg Websites – Moderne Webseiten für Hamburger Unternehmen mit klarer Struktur, lokaler SEO-Basis und überzeugender Nutzerführung."
         path="/"
         schema={[serviceSchema(), faqSchema(faqItems)]}
       />
@@ -34,9 +34,9 @@ export default function HomePage() {
             Webdesign & Webentwicklung in Hamburg für lokale Unternehmen
           </h2>
           <p className="mt-5 max-w-4xl text-lg leading-relaxed text-slate-600">
-            Ich unterstütze Selbstständige und kleine Unternehmen in Hamburg bei der Erstellung von schnellen,
-            mobil optimierten Webseiten mit klarer Struktur. Ziel ist eine professionelle Online-Präsenz, die
-            Vertrauen aufbaut, bei Google indexierbar ist und Besucher zuverlässig zu Anfragen führt.
+            Wir unterstützen Unternehmen in Hamburg bei der Erstellung schneller, mobil optimierter Webseiten mit
+            klarer Struktur. Ziel ist eine professionelle Online-Präsenz, die Vertrauen schafft, bei Google indexierbar
+            bleibt und Besucher zuverlässig in qualifizierte Anfragen überführt.
           </p>
         </section>
 
@@ -55,7 +55,7 @@ export default function HomePage() {
                 mobilfreundliche Darstellung. Dadurch bleiben Inhalte auf allen Geräten lesbar und crawlbar.
               </p>
               <p>
-                Zusätzlich integriere ich Conversion-Bausteine wie Vertrauenssignale, strukturierte Leistungen,
+                Zusätzlich integrieren wir Conversion-Bausteine wie Vertrauenssignale, strukturierte Leistungen,
                 Handlungsaufforderungen und FAQ-Blöcke, damit Besucher schneller Entscheidungen treffen können.
               </p>
             </div>
@@ -64,21 +64,28 @@ export default function HomePage() {
 
         <Pricing />
 
-        <section className="section-container pb-16" aria-labelledby="trust-heading">
+        <section className="section-container pb-16" id="about" aria-labelledby="about-heading">
           <div className="grid gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:grid-cols-3">
             <div>
-              <h2 id="trust-heading" className="text-xl font-semibold text-slateBlue">
-                Warum Unternehmen mir vertrauen
+              <h2 id="about-heading" className="text-xl font-semibold text-slateBlue">
+                Über uns
               </h2>
-              <p className="mt-3 text-slate-600">Direkte Kommunikation, transparente Schritte und klare Ergebnisse.</p>
+              <p className="mt-3 text-slate-600">
+                Hamburg Websites unterstützt lokale Unternehmen mit einem klar strukturierten, verlässlichen
+                Webauftritt.
+              </p>
             </div>
             <div>
               <h3 className="font-semibold text-slateBlue">Klare Projektstruktur</h3>
-              <p className="mt-2 text-slate-600">Von der Seitenstruktur bis zur Live-Schaltung erhältst du einen nachvollziehbaren Ablauf.</p>
+              <p className="mt-2 text-slate-600">
+                Von der Seitenstruktur bis zur Live-Schaltung erhalten Sie einen nachvollziehbaren Ablauf.
+              </p>
             </div>
             <div>
               <h3 className="font-semibold text-slateBlue">Fokus auf lokale Sichtbarkeit</h3>
-              <p className="mt-2 text-slate-600">Inhalte und Seitentitel werden auf relevante Suchanfragen in Hamburg abgestimmt.</p>
+              <p className="mt-2 text-slate-600">
+                Inhalte und Seitentitel werden auf relevante Suchanfragen in Hamburg abgestimmt.
+              </p>
             </div>
           </div>
         </section>

@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion';
 
 const plans = [
-  { name: 'Demo-Webseite', price: 'Kostenlos', description: 'Vorschau-Konzept, damit du deine künftige Webseite sehen kannst.' },
-  { name: 'Starter-Webseite', price: 'ab 500 €', description: 'Perfekt für kleine lokale Unternehmen.' },
-  { name: 'Business-Webseite', price: 'ab 900 €', description: 'Erweiterte Seiten und Strategie für Wachstum.' }
+  { name: 'Demo-Webseite', price: 'Kostenlos', description: 'Vorschau-Konzept, damit Sie Ihre künftige Webseite frühzeitig sehen können.' },
+  { name: 'Starter-Webseite', price: 'ab 500 €', description: 'Passend für kleine lokale Unternehmen mit klarem Leistungsprofil.' },
+  { name: 'Business-Webseite', price: 'ab 900 €', description: 'Erweiterte Seitenstruktur und Strategie für nachhaltiges Wachstum.' }
 ];
 
 export default function Pricing() {
   return (
-    <section className="section-container section-spacing" id="pricing">
+    <section className="section-container section-spacing" id="pricing" aria-labelledby="pricing-heading">
       <motion.h2
+        id="pricing-heading"
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

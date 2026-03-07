@@ -262,18 +262,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="section-container section-spacing pt-20 sm:pt-28">
+    <section className="section-container section-spacing pt-12 sm:pt-16">
       <div className="grid items-center gap-10 lg:grid-cols-2">
         <div className="space-y-6">
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.4 }}
-            className="inline-flex rounded-full bg-indigo-50 px-4 py-1 text-sm font-medium text-accent"
-          >
-            Freiberuflicher Webentwickler · Hamburg
-          </motion.p>
           <motion.h1
             initial="hidden"
             animate="visible"
@@ -290,7 +281,8 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-xl text-lg text-slate-600"
           >
-            Schnelle, mobil optimierte Webseiten, die lokalen Unternehmen helfen, mehr Kundschaft zu gewinnen.
+            Schnelle, mobil optimierte Webseiten, die lokale Unternehmen dabei unterstützen,
+            mehr qualifizierte Anfragen zu gewinnen.
           </motion.p>
           <motion.div
             initial="hidden"
@@ -303,13 +295,13 @@ export default function Hero() {
               href="#contact"
               className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500"
             >
-              Kostenlose Demo-Webseite anfordern
+              Fordern Sie eine kostenlose Demo-Webseite an
             </a>
             <a
               href="#portfolio"
               className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
             >
-              Beispiele ansehen
+              Sehen Sie sich Beispiele an
             </a>
           </motion.div>
           <motion.div
@@ -320,13 +312,13 @@ export default function Hero() {
             className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500"
           >
             <span className="inline-flex items-center gap-1.5">
-              <span className="text-emerald-500">✓</span> Kostenlose Demo-Website
+              <span className="text-emerald-500">✓</span> Kostenlose Demo-Webseite
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <span className="text-emerald-500">✓</span> Keine Verpflichtung
+              <span className="text-emerald-500">✓</span> Unverbindliches Erstgespräch
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <span className="text-emerald-500">✓</span> Fertig in wenigen Tagen
+              <span className="text-emerald-500">✓</span> Umsetzung in wenigen Tagen
             </span>
           </motion.div>
         </div>

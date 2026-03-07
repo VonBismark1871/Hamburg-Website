@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Contact() {
   return (
-    <section className="section-container section-spacing" id="contact">
+    <section className="section-container section-spacing" id="contact" aria-labelledby="contact-heading">
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -10,7 +10,7 @@ export default function Contact() {
         transition={{ duration: 0.45 }}
         className="mx-auto max-w-3xl rounded-2xl bg-slate-50 p-8 shadow-soft"
       >
-        <h2 className="text-3xl font-bold">Hol dir eine kostenlose Demo-Webseite für dein Unternehmen.</h2>
+        <h2 id="contact-heading" className="text-3xl font-bold">Fordern Sie eine kostenlose Demo-Webseite für Ihr Unternehmen an.</h2>
         <form
           name="contact"
           method="POST"
@@ -22,7 +22,7 @@ export default function Contact() {
           <input type="hidden" name="form-name" value="contact" />
           <p className="hidden">
             <label>
-              Dieses Feld bitte nicht ausfüllen, wenn du ein Mensch bist: <input name="bot-field" />
+              Dieses Feld bitte nicht ausfüllen, wenn Sie ein Mensch sind: <input name="bot-field" />
             </label>
           </p>
           <label className="grid gap-2">
