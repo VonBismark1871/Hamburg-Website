@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 function IconBase({ children }) {
@@ -98,12 +99,12 @@ export default function Features() {
               Eine gute Unternehmenswebsite überzeugt nicht nur optisch. Sie lädt schnell, funktioniert auf allen
               Geräten und hilft potenziellen Kunden, Ihr Unternehmen online zu finden.
             </p>
-            <a
-              href="#pricing"
+            <Link
+              href="/preise"
               className="mt-6 inline-flex items-center text-sm font-semibold text-indigo-700 transition hover:text-indigo-600"
             >
               Preise ansehen
-            </a>
+            </Link>
           </motion.div>
 
           <div className="grid gap-5 sm:grid-cols-2">

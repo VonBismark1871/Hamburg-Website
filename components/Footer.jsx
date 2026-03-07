@@ -7,10 +7,11 @@ const legalLinks = [
 ];
 
 const pageLinks = [
-  { href: '/#contact', label: 'Kontaktaufnahme' },
-  { href: '/#faq', label: 'FAQ' },
+  { href: '/kontakt', label: 'Kontaktaufnahme' },
+  { href: '/faq', label: 'FAQ' },
   { href: '/#features', label: 'Webdesign Leistungen' },
-  { href: '/#pricing', label: 'Preise' }
+  { href: '/preise', label: 'Preise' },
+  { href: '/ueber-uns', label: 'Über uns' }
 ];
 
 export default function Footer() {

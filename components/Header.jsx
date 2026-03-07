@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
 const navItems = [
-  { href: '#faq', label: 'FAQ' },
-  { href: '#pricing', label: 'Preise' },
-  { href: '#about', label: 'Über uns' },
-  { href: '#contact', label: 'Kontaktaufnahme' }
+  { href: '/faq', label: 'FAQ' },
+  { href: '/preise', label: 'Preise' },
+  { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/kontakt', label: 'Kontaktaufnahme' }
 ];
 
 export default function Header() {
@@ -18,27 +18,27 @@ export default function Header() {
         <div className="flex items-center gap-2 sm:gap-4">
           <nav aria-label="Hauptnavigation" className="hidden items-center gap-5 text-sm text-slate-600 md:flex">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="font-medium transition hover:text-accent">
+              <Link key={item.href} href={item.href} className="font-medium transition hover:text-accent">
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          <a
-            href="#portfolio"
+          <Link
+            href="/#portfolio"
             className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slateBlue transition hover:border-accent hover:text-accent sm:text-sm"
           >
             Genauer ansehen
-          </a>
+          </Link>
         </div>
       </div>
 
       <nav aria-label="Mobile Navigation" className="border-t border-slate-200/70 bg-white/95 md:hidden">
         <div className="section-container flex flex-wrap items-center gap-x-4 gap-y-2 py-2 text-sm text-slate-600">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="font-medium transition hover:text-accent">
+            <Link key={item.href} href={item.href} className="font-medium transition hover:text-accent">
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
       </nav>
