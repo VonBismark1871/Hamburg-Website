@@ -7,19 +7,19 @@ export const faqItems = [
       'Eine typische Unternehmenswebsite mit 4 bis 6 Seiten ist oft in 7 bis 14 Tagen online. Umfang und Feedbackzyklen beeinflussen die genaue Dauer.'
   },
   {
-    question: 'Brauche ich eigenes Hosting?',
+    question: 'Benötigen wir eigenes Hosting?',
     answer:
-      'Nein, ich kann Hosting und Domain mit einrichten oder bestehendes Hosting übernehmen. Du bekommst eine klare Empfehlung passend zu deinem Budget.'
+      'Nein, wir können Hosting und Domain für Sie einrichten oder Ihr bestehendes Hosting übernehmen. Sie erhalten eine klare Empfehlung passend zu Ihrem Budget.'
   },
   {
-    question: 'Kannst du meine bestehende Website neu gestalten?',
+    question: 'Können Sie unsere bestehende Website neu gestalten?',
     answer:
-      'Ja. Ich überarbeite Struktur, Design und Inhalte so, dass die Seite moderner wirkt, mobil besser funktioniert und lokal besser gefunden werden kann.'
+      'Ja. Wir überarbeiten Struktur, Design und Inhalte so, dass die Seite moderner wirkt, mobil besser funktioniert und lokal besser gefunden werden kann.'
   },
   {
     question: 'Ist die Demo wirklich kostenlos?',
     answer:
-      'Ja. Du erhältst eine unverbindliche Demo-Startseite als Vorschau, bevor du dich für eine Umsetzung entscheidest.'
+      'Ja. Sie erhalten eine unverbindliche Demo-Startseite als Vorschau, bevor Sie sich für eine Umsetzung entscheiden.'
   }
 ];
 

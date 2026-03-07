@@ -7,7 +7,7 @@ const legalLinks = [
 ];
 
 const pageLinks = [
-  { href: '/#contact', label: 'Kontakt' },
+  { href: '/#contact', label: 'Kontaktaufnahme' },
   { href: '/#faq', label: 'FAQ' },
   { href: '/#features', label: 'Webdesign Leistungen' },
   { href: '/#pricing', label: 'Preise' }
@@ -18,9 +18,9 @@ export default function Footer() {
     <footer className="border-t border-slate-200 py-10">
       <div className="section-container grid gap-8 text-sm text-slate-600 sm:grid-cols-2">
         <div>
-          <p className="font-medium text-slate-700">Freiberuflicher Webentwickler in Hamburg</p>
+          <p className="font-medium text-slate-700">Hamburg Websites</p>
           <p className="mt-2 max-w-md">
-            Moderne Unternehmenswebsites mit klarem Fokus auf mobile Nutzbarkeit, SEO und Conversion.
+            Moderne Unternehmenswebseiten mit klarem Fokus auf mobile Nutzbarkeit, SEO und Conversion.
           </p>
         </div>
 

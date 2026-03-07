@@ -17,7 +17,7 @@ export default function Features() {
         transition={{ duration: 0.45 }}
         className="mb-10 text-3xl font-bold"
       >
-        Das bekommst du
+        Das erhalten Sie
       </motion.h2>
       <div className="grid gap-6 sm:grid-cols-2">
         {features.map((feature, i) => (
