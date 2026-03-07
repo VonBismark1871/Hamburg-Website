@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -291,18 +292,18 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-wrap gap-4"
           >
-            <a
-              href="#contact"
+            <Link
+              href="/kontakt"
               className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500"
             >
               Fordern Sie eine kostenlose Demo-Webseite an
-            </a>
-            <a
-              href="#portfolio"
+            </Link>
+            <Link
+              href="/#portfolio"
               className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
             >
               Sehen Sie sich Beispiele an
-            </a>
+            </Link>
           </motion.div>
           <motion.div
             initial="hidden"

@@ -1,20 +1,23 @@
+import Link from 'next/link';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 import Portfolio from '../components/Portfolio';
 import Process from '../components/Process';
 import Pricing from '../components/Pricing';
 import FAQ, { faqItems } from '../components/FAQ';
-import Contact from '../components/Contact';
+import AboutSection from '../components/AboutSection';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
 import { faqSchema, serviceSchema } from '../lib/seo';
 
 const relatedLinks = [
-  { href: '/#portfolio', label: 'Demo-Webseiten Beispiele' },
-  { href: '/#pricing', label: 'Website-Pakete & Preise' },
-  { href: '/#contact', label: 'Kontaktaufnahme' }
+  { href: '/preise', label: 'Website-Pakete & Preise' },
+  { href: '/faq', label: 'Alle Fragen ansehen' },
+  { href: '/kontakt', label: 'Kontaktaufnahme' }
 ];
+
+const faqPreviewItems = faqItems.slice(0, 3);
 
 export default function HomePage() {
   return (
@@ -62,35 +65,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        <Pricing />
+        <Pricing cta={{ href: '/preise', label: 'Alle Pakete im Detail ansehen' }} />
 
-        <section className="section-container pb-16" id="about" aria-labelledby="about-heading">
-          <div className="grid gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:grid-cols-3">
-            <div>
-              <h2 id="about-heading" className="text-xl font-semibold text-slateBlue">
-                Über uns
-              </h2>
-              <p className="mt-3 text-slate-600">
-                Hamburg Websites unterstützt lokale Unternehmen mit einem klar strukturierten, verlässlichen
-                Webauftritt.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-slateBlue">Klare Projektstruktur</h3>
-              <p className="mt-2 text-slate-600">
-                Von der Seitenstruktur bis zur Live-Schaltung erhalten Sie einen nachvollziehbaren Ablauf.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-slateBlue">Fokus auf lokale Sichtbarkeit</h3>
-              <p className="mt-2 text-slate-600">
-                Inhalte und Seitentitel werden auf relevante Suchanfragen in Hamburg abgestimmt.
-              </p>
-            </div>
-          </div>
-        </section>
+        <AboutSection cta={{ href: '/ueber-uns', label: 'Mehr über Hamburg Websites' }} />
 
-        <FAQ />
+        <FAQ items={faqPreviewItems} cta={{ href: '/faq', label: 'Alle Fragen ansehen' }} />
 
         <section className="section-container pb-16" aria-labelledby="internal-links-heading">
           <h2 id="internal-links-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
@@ -99,15 +78,13 @@ export default function HomePage() {
           <ul className="mt-4 space-y-2 text-slate-600">
             {relatedLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="font-medium text-accent underline-offset-4 hover:underline">
+                <Link href={link.href} className="font-medium text-accent underline-offset-4 hover:underline">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </section>
-
-        <Contact />
       </main>
       <Footer />
     </>

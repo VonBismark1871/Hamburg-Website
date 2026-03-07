@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export const faqItems = [
@@ -23,32 +24,45 @@ export const faqItems = [
   }
 ];
 
-export default function FAQ() {
+export default function FAQ({
+  headingTag = 'h2',
+  title = 'Häufig gestellte Fragen zur Website-Erstellung',
+  sectionId = 'faq',
+  items = faqItems,
+  cta
+}) {
+  const Heading = headingTag;
+
   return (
-    <section className="section-container section-spacing" id="faq" aria-labelledby="faq-heading">
-      <motion.h2
-        id="faq-heading"
+    <section className="section-container section-spacing" id={sectionId} aria-labelledby="faq-heading">
+      <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.45 }}
-        className="mb-10 text-3xl font-bold"
       >
-        Häufig gestellte Fragen zur Website-Erstellung
-      </motion.h2>
-      <div className="space-y-4">
-        {faqItems.map((item, i) => (
-          <motion.details
+        <Heading id="faq-heading" className="mb-4 text-3xl font-bold text-slateBlue">
+          {title}
+        </Heading>
+        {cta ? (
+          <Link href={cta.href} className="inline-flex text-sm font-semibold text-indigo-700 transition hover:text-indigo-600">
+            {cta.label}
+          </Link>
+        ) : null}
+      </motion.div>
+      <div className="mt-8 space-y-4">
+        {items.map((item, i) => (
+          <motion.article
             key={item.question}
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.35, delay: i * 0.06 }}
-            className="card group"
+            className="card"
           >
-            <summary className="cursor-pointer list-none font-semibold">{item.question}</summary>
+            <h2 className="text-lg font-semibold text-slateBlue">{item.question}</h2>
             <p className="mt-3 text-slate-600">{item.answer}</p>
-          </motion.details>
+          </motion.article>
         ))}
       </div>
     </section>

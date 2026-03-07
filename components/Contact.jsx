@@ -1,16 +1,12 @@
-import { motion } from 'framer-motion';
+export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine kostenlose Demo-Webseite für Ihr Unternehmen an.' }) {
+  const Heading = headingTag;
 
-export default function Contact() {
   return (
     <section className="section-container section-spacing" id="contact" aria-labelledby="contact-heading">
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.45 }}
-        className="mx-auto max-w-3xl rounded-2xl bg-slate-50 p-8 shadow-soft"
-      >
-        <h2 id="contact-heading" className="text-3xl font-bold">Fordern Sie eine kostenlose Demo-Webseite für Ihr Unternehmen an.</h2>
+      <div className="mx-auto max-w-3xl rounded-2xl bg-slate-50 p-8 shadow-soft">
+        <Heading id="contact-heading" className="text-3xl font-bold text-slateBlue">
+          {title}
+        </Heading>
         <form
           name="contact"
           method="POST"
@@ -49,7 +45,7 @@ export default function Contact() {
             Anfrage senden
           </button>
         </form>
-      </motion.div>
+      </div>
     </section>
   );
 }
