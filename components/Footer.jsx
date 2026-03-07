@@ -1,21 +1,52 @@
 import Link from 'next/link';
 
+const legalLinks = [
+  { href: '/impressum', label: 'Impressum' },
+  { href: '/datenschutz', label: 'Datenschutzerklärung' },
+  { href: '/agb', label: 'AGB' }
+];
+
+const pageLinks = [
+  { href: '/#contact', label: 'Kontakt' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#features', label: 'Webdesign Leistungen' },
+  { href: '/#pricing', label: 'Preise' }
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 py-8">
-      <div className="section-container flex flex-col items-start justify-between gap-6 text-sm text-slate-600 sm:flex-row sm:items-center">
-        <p>Unabhängiger Webentwickler mit Sitz in Hamburg.</p>
-        <nav className="flex gap-6">
-          <Link href="/impressum" className="transition hover:text-accent">
-            Impressum
-          </Link>
-          <Link href="/datenschutz" className="transition hover:text-accent">
-            Datenschutzerklärung
-          </Link>
-          <Link href="/agb" className="transition hover:text-accent">
-            AGB
-          </Link>
-        </nav>
+    <footer className="border-t border-slate-200 py-10">
+      <div className="section-container grid gap-8 text-sm text-slate-600 sm:grid-cols-2">
+        <div>
+          <p className="font-medium text-slate-700">Freiberuflicher Webentwickler in Hamburg</p>
+          <p className="mt-2 max-w-md">
+            Moderne Unternehmenswebsites mit klarem Fokus auf mobile Nutzbarkeit, SEO und Conversion.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2">
+          <nav aria-label="Wichtige Seiten" className="space-y-2">
+            <p className="font-medium text-slate-700">Wichtige Seiten</p>
+            {pageLinks.map((link) => (
+              <div key={link.href}>
+                <Link href={link.href} className="transition hover:text-accent">
+                  {link.label}
+                </Link>
+              </div>
+            ))}
+          </nav>
+
+          <nav aria-label="Rechtliche Seiten" className="space-y-2">
+            <p className="font-medium text-slate-700">Rechtliches</p>
+            {legalLinks.map((link) => (
+              <div key={link.href}>
+                <Link href={link.href} className="transition hover:text-accent">
+                  {link.label}
+                </Link>
+              </div>
+            ))}
+          </nav>
+        </div>
       </div>
     </footer>
   );
