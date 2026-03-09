@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { LogoLink } from './Logo';
 
 const navigationLinks = [
   { href: '/referenzen', label: 'Referenzen' },
@@ -35,10 +36,8 @@ export default function Footer() {
     <footer className="border-t border-slate-200 bg-slate-50/60" aria-label="Seitenfuß">
       <div className="section-container py-12 sm:py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          <section aria-labelledby="footer-brand-heading">
-            <h2 id="footer-brand-heading" className="text-lg font-semibold text-slateBlue">
-              Hamburg Websites
-            </h2>
+          <section aria-label="Hamburg Websites">
+            <LogoLink className="inline-flex" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
               Moderne Websites für Unternehmen in Hamburg – klar strukturiert, hochwertig gestaltet und auf Anfragen
               ausgerichtet.
