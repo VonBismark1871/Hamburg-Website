@@ -1,0 +1,20 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <rect width="1200" height="700" fill="#ECE9E3"/>
+  <rect x="70" y="60" width="1060" height="580" rx="34" fill="#F8F7F4"/>
+  <rect x="110" y="105" width="560" height="500" rx="28" fill="#D6D1C8"/>
+  <rect x="145" y="140" width="490" height="330" rx="22" fill="#BFA98D"/>
+  <rect x="145" y="485" width="180" height="12" rx="6" fill="#5A4A39"/>
+  <rect x="145" y="508" width="290" height="10" rx="5" fill="#7D6A55"/>
+  <rect x="145" y="528" width="240" height="10" rx="5" fill="#7D6A55"/>
+  <rect x="710" y="105" width="380" height="220" rx="26" fill="#FFFFFF" stroke="#DDD5C8"/>
+  <rect x="744" y="148" width="210" height="14" rx="7" fill="#3C3126"/>
+  <rect x="744" y="174" width="300" height="10" rx="5" fill="#87745E"/>
+  <rect x="744" y="196" width="240" height="10" rx="5" fill="#87745E"/>
+  <rect x="710" y="345" width="380" height="260" rx="26" fill="#FDFCF9" stroke="#E7DFD2"/>
+  <rect x="744" y="388" width="140" height="120" rx="14" fill="#DDD5C8"/>
+  <rect x="900" y="392" width="150" height="14" rx="7" fill="#3C3126"/>
+  <rect x="900" y="418" width="130" height="10" rx="5" fill="#93816C"/>
+  <rect x="900" y="438" width="130" height="10" rx="5" fill="#93816C"/>
+  <rect x="900" y="474" width="150" height="36" rx="18" fill="#3C3126"/>
+  <text x="744" y="560" fill="#3C3126" font-family="Arial" font-size="30" font-weight="700">ELBIMMOBILIEN</text>
+</svg>

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SEOHead from '../../components/SEOHead';
+import ReferenceBackButton from '../../components/references/ReferenceBackButton';
 
 const featuredMenu = [
   {
@@ -240,6 +241,7 @@ export default function RestaurantDemoPage() {
       />
 
       <div className="min-h-screen bg-[#fdf7ed] text-[#2f2a25]">
+        <ReferenceBackButton />
         <header className="sticky top-0 z-40 border-b border-[#dfcfb4]/70 bg-[#fbf4e8]/90 backdrop-blur">
           <div className="section-container flex h-20 items-center justify-between">
             <Link href="#start" className="text-xl font-semibold tracking-tight text-[#2f2a25]" aria-label="Zur Startsektion">
