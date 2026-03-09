@@ -10,59 +10,107 @@ const services = [
   {
     title: 'Damenhaarschnitt',
     text: 'Präziser Schnitt inklusive individueller Typberatung und passendem Finish.',
-    price: 'ab 48€'
+    price: 'ab 48€',
+    icon: '✂️'
   },
   {
     title: 'Herrenhaarschnitt',
     text: 'Moderne Looks mit sauberen Konturen und unkompliziertem Styling für jeden Tag.',
-    price: 'ab 29€'
+    price: 'ab 29€',
+    icon: '🧔'
   },
   {
     title: 'Föhnen & Styling',
     text: 'Mehr Volumen, Bewegung und Halt – perfekt für Alltag, Business oder Events.',
-    price: 'ab 35€'
+    price: 'ab 35€',
+    icon: '💨'
   },
   {
     title: 'Coloration',
     text: 'Schonende Farbbehandlungen mit natürlichem Glanz und harmonischen Nuancen.',
-    price: 'ab 75€'
+    price: 'ab 75€',
+    icon: '🎨'
   },
   {
     title: 'Balayage / Strähnen',
     text: 'Sanfte Farbverläufe und gezielte Highlights für einen modernen, lebendigen Look.',
-    price: 'ab 120€'
+    price: 'ab 120€',
+    icon: '✨'
   },
   {
     title: 'Pflege & Beratung',
     text: 'Tiefenpflege und professionelle Empfehlungen für gesundes Haar zuhause.',
-    price: 'ab 25€'
+    price: 'ab 25€',
+    icon: '🫶'
   }
 ];
 
 const lookbook = [
   {
-    src: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1700&q=80',
-    alt: 'Friseurin stylt langes Haar vor einem Spiegel im Salon'
+    src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=80',
+    alt: 'Friseurin arbeitet an einem modernen Damenhaarschnitt im hellen Salon',
+    style: 'sm:col-span-2 sm:row-span-2 h-[420px] sm:h-[520px]'
   },
   {
-    src: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1300&q=80',
-    alt: 'Balayage Ergebnis mit weichen Farbverläufen bei natürlichem Licht'
+    src: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Balayage Ergebnis mit weichen Blondnuancen bei natürlichem Licht',
+    style: 'h-[250px] sm:h-[250px]'
   },
   {
-    src: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1300&q=80',
-    alt: 'Moderner Friseursalon mit Styling-Plätzen und Spiegeln'
+    src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Styling mit Föhn und Rundbürste für langes Haar',
+    style: 'h-[300px] sm:h-[350px]'
   },
   {
-    src: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1300&q=80',
-    alt: 'Stylist arbeitet konzentriert am Damenhaarschnitt'
+    src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Kundin mit frisch gestyltem Haar nach dem Salontermin',
+    style: 'h-[250px] sm:h-[280px]'
   },
   {
-    src: 'https://images.unsplash.com/photo-1522337094846-8a818e733e2f?auto=format&fit=crop&w=1300&q=80',
-    alt: 'Fertig gestylte lockige Frisur nach dem Salonbesuch'
+    src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Modernes Saloninterieur mit Spiegeln und Stylingplätzen',
+    style: 'sm:col-span-2 h-[250px] sm:h-[280px]'
   },
   {
-    src: 'https://images.unsplash.com/photo-1562004760-aceed7bb0fe3?auto=format&fit=crop&w=1300&q=80',
-    alt: 'Haarwäschebereich mit eleganten Waschstationen im Friseursalon'
+    src: 'https://images.unsplash.com/photo-1559599076-9c61d8e1b6ed?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Friseurin setzt Highlights mit Folientechnik im Salon',
+    style: 'h-[260px] sm:h-[320px]'
+  }
+];
+
+const transformations = [
+  {
+    title: 'Balayage Farbauffrischung',
+    before: {
+      src: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=1000&q=80',
+      alt: 'Vorher: naturbraunes Haar ohne Highlights'
+    },
+    after: {
+      src: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1000&q=80',
+      alt: 'Nachher: Balayage mit warmen Karamellnuancen'
+    }
+  },
+  {
+    title: 'Frischer Long-Bob mit Glossing',
+    before: {
+      src: 'https://images.unsplash.com/photo-1523263685509-57c1d050d19b?auto=format&fit=crop&w=1000&q=80',
+      alt: 'Vorher: langes Haar vor dem Schnitt'
+    },
+    after: {
+      src: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1000&q=80',
+      alt: 'Nachher: glänzender Long-Bob nach dem Styling'
+    }
+  },
+  {
+    title: 'Pflegekur & definierte Wellen',
+    before: {
+      src: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1000&q=80',
+      alt: 'Vorher: trockenes Haar vor der Intensivpflege'
+    },
+    after: {
+      src: 'https://images.unsplash.com/photo-1522337094846-8a818e733e2f?auto=format&fit=crop&w=1000&q=80',
+      alt: 'Nachher: gesund aussehende, definierte Wellen'
+    }
   }
 ];
 
@@ -70,17 +118,20 @@ const stylists = [
   {
     name: 'Anna',
     role: 'Schnitt & Styling',
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80'
+    note: 'Lieblingslook: luftige Stufenschnitte mit natürlicher Bewegung.',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80'
   },
   {
     name: 'Marco',
     role: 'Coloration & Balayage',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80'
+    note: 'Spezialisiert auf softe Übergänge und blonde Nuancen ohne harte Kanten.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80'
   },
   {
     name: 'Lisa',
     role: 'Beratung & Pflege',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80'
+    note: 'Findet gemeinsam mit Kundinnen und Kunden Routinen, die wirklich alltagstauglich sind.',
+    image: 'https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=900&q=80'
   }
 ];
 
@@ -120,7 +171,7 @@ export default function FriseursalonDemoPage() {
             </p>
           </section>
 
-          <section className="section-container pb-14 pt-8" id="start" aria-labelledby="hero-heading">
+          <section className="section-container pb-10 pt-8" id="start" aria-labelledby="hero-heading">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
               <article className="rounded-[2rem] border border-[#dfd2c4] bg-[#fffdfa] p-7 sm:p-10">
                 <p className="text-xs uppercase tracking-[0.16em] text-[#8b7d73]">Friseursalon Elbhaar · Hamburg</p>
@@ -128,7 +179,7 @@ export default function FriseursalonDemoPage() {
                   Moderner Friseursalon in Hamburg
                 </h1>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-[#655a54]">
-                  Individuelle Haarschnitte, moderne Farbtechniken und eine entspannte Atmosphäre.
+                  Individuelle Haarschnitte, moderne Farbtechniken und eine entspannte Atmosphäre im Herzen von Eimsbüttel.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link href="#termin" className="inline-flex rounded-full bg-[#332d2a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1f1b1a]">
@@ -141,25 +192,34 @@ export default function FriseursalonDemoPage() {
               </article>
               <figure className="overflow-hidden rounded-[2rem]">
                 <Image
-                  src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1500&q=80"
-                  alt="Stylistin arbeitet an einer eleganten Frisur im Friseursalon"
-                  width={1200}
-                  height={1400}
-                  className="h-full min-h-[450px] w-full object-cover"
+                  src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1500&q=80"
+                  alt="Friseurin stylt langes Haar einer Kundin in einem modernen Hamburger Salon"
+                  width={1500}
+                  height={1700}
+                  className="h-full min-h-[380px] w-full object-cover"
                   priority
                 />
               </figure>
             </div>
           </section>
 
+          <section className="section-container pb-14" aria-label="Vertrauen und Bewertungen">
+            <div className="flex flex-col gap-4 rounded-[1.7rem] border border-[#dfd2c4] bg-[#fff8f0] px-6 py-5 md:flex-row md:items-center md:justify-between">
+              <p className="text-sm font-semibold text-[#4c403a] sm:text-base">★★★★★ 4.8 Bewertung bei Google · 120+ Rezensionen</p>
+              <ul className="flex flex-wrap gap-3 text-sm text-[#665951]">
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Über 10 Jahre Erfahrung</li>
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Persönliche Beratung</li>
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Zentrale Lage in Hamburg</li>
+              </ul>
+            </div>
+          </section>
+
           <section className="section-container pb-16" id="leistungen" aria-labelledby="services-heading">
-            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-              <div>
-                <h2 id="services-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Unsere Leistungen
-                </h2>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-[#6f645d]">
-                  Von präzisen Schnitten bis zu aufwendigen Farbveränderungen – transparent kalkuliert und auf Ihren Haar-Typ abgestimmt.
+            <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+              <div className="rounded-[2rem] border border-[#e2d6ca] bg-[#fff9f2] p-7 sm:p-9">
+                <h2 id="services-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Leistungen & Preise</h2>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-[#665b54]">
+                  Transparente Preise und Leistungen, die auf Haarstruktur, Pflegezustand und Wunschlook abgestimmt sind.
                 </p>
               </div>
               <div className="rounded-[2rem] border border-[#dfd3c7] bg-[#fffdfa] p-4 sm:p-5">
@@ -167,7 +227,10 @@ export default function FriseursalonDemoPage() {
                   {services.map((service) => (
                     <li key={service.title} className="rounded-2xl border border-[#e8ddd1] bg-[#fffaf4] p-4 sm:p-5">
                       <div className="flex items-start justify-between gap-4">
-                        <h3 className="text-base font-semibold sm:text-lg">{service.title}</h3>
+                        <h3 className="text-base font-semibold sm:text-lg">
+                          <span className="mr-2" aria-hidden="true">{service.icon}</span>
+                          {service.title}
+                        </h3>
                         <p className="rounded-full bg-[#332d2a] px-3 py-1 text-xs font-semibold text-[#f7f1e9] sm:text-sm">{service.price}</p>
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-[#655a54]">{service.text}</p>
@@ -183,42 +246,54 @@ export default function FriseursalonDemoPage() {
               <h2 id="lookbook-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 Unsere Arbeiten
               </h2>
-              <p className="hidden max-w-md text-right text-sm text-[#6b5f58] md:block">Looks, Farbe und Salonmomente aus dem Alltag.</p>
+              <p className="hidden max-w-md text-right text-sm text-[#6b5f58] md:block">Schnitte, Farbe, Styling und echte Eindrücke direkt aus dem Salonalltag.</p>
             </div>
-            <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <figure className="sm:col-span-2 lg:col-span-2 overflow-hidden rounded-[2rem]">
-                <Image src={lookbook[0].src} alt={lookbook[0].alt} width={1600} height={1100} className="h-[430px] w-full object-cover" />
-              </figure>
-              <figure className="overflow-hidden rounded-[2rem]">
-                <Image src={lookbook[1].src} alt={lookbook[1].alt} width={1000} height={1100} className="h-[430px] w-full object-cover" />
-              </figure>
-              {lookbook.slice(2).map((item) => (
-                <figure key={item.src} className="overflow-hidden rounded-[2rem]">
-                  <Image src={item.src} alt={item.alt} width={1000} height={900} className="h-[260px] w-full object-cover" />
+            <div className="mt-7 grid auto-rows-[120px] gap-4 sm:grid-cols-3">
+              {lookbook.map((item) => (
+                <figure key={item.src} className={`overflow-hidden rounded-[1.8rem] ${item.style}`}>
+                  <Image src={item.src} alt={item.alt} width={1200} height={1200} className="h-full w-full object-cover" />
                 </figure>
               ))}
             </div>
           </section>
 
+          <section className="section-container pb-16" aria-labelledby="transformation-heading">
+            <h2 id="transformation-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Vorher / Nachher</h2>
+            <div className="mt-7 grid gap-5 lg:grid-cols-3">
+              {transformations.map((item) => (
+                <article key={item.title} className="rounded-[1.8rem] border border-[#e0d4c7] bg-[#fffdfa] p-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    <figure>
+                      <Image src={item.before.src} alt={item.before.alt} width={700} height={800} className="h-40 w-full rounded-2xl object-cover" />
+                      <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#8a7d74]">Vorher</figcaption>
+                    </figure>
+                    <figure>
+                      <Image src={item.after.src} alt={item.after.alt} width={700} height={800} className="h-40 w-full rounded-2xl object-cover" />
+                      <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#8a7d74]">Nachher</figcaption>
+                    </figure>
+                  </div>
+                  <p className="mt-3 text-sm font-medium text-[#4b413c]">{item.title}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <section className="section-container pb-16" aria-labelledby="team-heading">
-            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-              <div className="rounded-[2rem] border border-[#e1d5c8] bg-[#fff9f1] p-7">
-                <h2 id="team-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Unser Team</h2>
-                <p className="mt-4 text-sm leading-relaxed text-[#665b54]">
-                  Unser Team verbindet handwerkliche Präzision mit einem sicheren Gespür für aktuelle Trends und tragbare Looks.
-                </p>
-              </div>
-              <div className="grid gap-5 md:grid-cols-3">
-                {stylists.map((member) => (
-                  <article key={member.name} className="overflow-hidden rounded-[1.8rem] border border-[#dfd4c9] bg-[#fffdfa]">
-                    <Image src={member.image} alt={`${member.name}, Friseur mit Schwerpunkt ${member.role}`} width={900} height={980} className="h-64 w-full object-cover" />
-                    <div className="p-5">
-                      <h3 className="text-lg font-semibold">{member.name}</h3>
-                      <p className="mt-1 text-sm text-[#6b6059]">{member.role}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
+            <h2 id="team-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Unser Team</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#665b54]">
+              Drei feste Ansprechpartner, kurze Wege und ehrliche Empfehlungen – bei uns kennt man sich beim Namen.
+            </p>
+            <div className="mt-7 grid gap-5 md:grid-cols-3">
+              {stylists.map((member) => (
+                <article key={member.name} className="overflow-hidden rounded-[1.8rem] bg-[#fffdf9]">
+                  <Image src={member.image} alt={`${member.name}, Friseur mit Schwerpunkt ${member.role}`} width={900} height={980} className="h-72 w-full rounded-[1.8rem] object-cover" />
+                  <div className="px-2 pb-2 pt-4">
+                    <h3 className="text-lg font-semibold">{member.name}</h3>
+                    <p className="text-sm font-medium text-[#6f6158]">{member.role}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-[#6a5e56]">{member.note}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </section>
 
