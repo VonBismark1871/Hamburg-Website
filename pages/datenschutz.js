@@ -13,17 +13,22 @@ const sections = [
           Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist:
         </p>
         <p className="mt-4">
-          <strong>Hamburg Websites</strong>
+          <strong>Andrii Oleksiienko</strong>
           <br />
-          [Name / Unternehmen]
+          Stadtbahnstraße 36
           <br />
-          [Straße, Hausnummer]
+          22393 Hamburg
           <br />
-          [PLZ, Ort]
+          Deutschland
           <br />
           E-Mail:{' '}
           <a href="mailto:info@hamburgwebsites.de" className="text-accent underline-offset-4 hover:underline">
             info@hamburgwebsites.de
+          </a>
+          <br />
+          Telefon:{' '}
+          <a href="tel:+4916096297897" className="text-accent underline-offset-4 hover:underline">
+            +49 160 96297897
           </a>
         </p>
       </>

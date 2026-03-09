@@ -168,6 +168,29 @@ export default function AGBPage() {
           <p className="mt-3 text-base leading-7 font-medium text-slateBlue">
             Das Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB.
           </p>
+
+          <section className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5 text-slate-700" aria-labelledby="anbieter-heading">
+            <h2 id="anbieter-heading" className="text-lg font-semibold text-slateBlue">
+              Anbieter
+            </h2>
+            <p className="mt-3 text-sm leading-7">
+              Andrii Oleksiienko
+              <br />
+              Stadtbahnstraße 36
+              <br />
+              22393 Hamburg
+              <br />
+              E-Mail:{' '}
+              <a href="mailto:info@hamburgwebsites.de" className="text-accent underline-offset-4 hover:underline">
+                info@hamburgwebsites.de
+              </a>
+              <br />
+              Telefon:{' '}
+              <a href="tel:+4916096297897" className="text-accent underline-offset-4 hover:underline">
+                +49 160 96297897
+              </a>
+            </p>
+          </section>
         </header>
 
         <article className="mx-auto mt-10 max-w-4xl space-y-8 text-[1.02rem] leading-8 text-slate-700">
