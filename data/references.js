@@ -8,7 +8,7 @@ export const referenceProjects = [
     tone: 'warm'
   },
   {
-    slug: 'barbershop-demo',
+    slug: 'friseursalon-demo',
     title: 'Friseursalon Website',
     description: 'Moderne Salon-Website mit Terminbuchung, Leistungsübersicht und stilvoller Bildsprache.',
     image: '/demo-images/barbershop.svg',

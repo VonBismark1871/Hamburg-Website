@@ -1,115 +1,63 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
 import ReferenceProjectCTA from '../../components/ReferenceProjectCTA';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
 
 const services = [
+  { title: 'Damenhaarschnitt', text: 'Präziser Schnitt mit persönlicher Stilberatung und passendem Finish.', price: 'ab 62 €' },
+  { title: 'Herrenhaarschnitt', text: 'Moderne Formen, klare Konturen und unkompliziertes Styling für den Alltag.', price: 'ab 40 €' },
+  { title: 'Föhnen & Styling', text: 'Volumen, Bewegung und Halt – abgestimmt auf Anlass und Haarstruktur.', price: 'ab 38 €' },
+  { title: 'Coloration', text: 'Ganzheitliche Farbberatung inklusive Glossing und schonender Veredelung.', price: 'ab 86 €' },
+  { title: 'Balayage / Strähnen', text: 'Natürliche Lichtreflexe mit weichen Übergängen und langlebigem Ergebnis.', price: 'ab 125 €' },
+  { title: 'Pflege & Beratung', text: 'Tiefenpflege, Kopfhautanalyse und Produktempfehlung für zuhause.', price: 'ab 32 €' }
+];
+
+const lookbook = [
   {
-    title: 'Damenhaarschnitt',
-    description: 'Individueller Schnitt mit typgerechter Beratung für Alltag und besondere Anlässe.',
-    price: 'ab 58 €'
+    src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80',
+    alt: 'Stylist bei einem präzisen Damenhaarschnitt im modernen Friseursalon'
   },
   {
-    title: 'Herrenhaarschnitt',
-    description: 'Moderne, präzise Schnitte mit natürlichem Finish und einfacher Styling-Routine.',
-    price: 'ab 39 €'
+    src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1300&q=80',
+    alt: 'Balayage-Färbung an langem Haar mit weichem Farbverlauf'
   },
   {
-    title: 'Föhnen & Styling',
-    description: 'Volumen, Glanz und Form für ein gepflegtes, modernes Erscheinungsbild.',
-    price: 'ab 36 €'
+    src: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=1300&q=80',
+    alt: 'Heller Salonbereich mit Spiegelplätzen und Styling-Stühlen'
   },
   {
-    title: 'Coloration',
-    description: 'Brillante Farben mit schonenden Techniken und passender Pflegeempfehlung.',
-    price: 'ab 82 €'
-  },
-  {
-    title: 'Strähnen / Balayage',
-    description: 'Weiche Übergänge, natürliche Lichtreflexe und personalisierte Farbabstimmung.',
-    price: 'ab 118 €'
-  },
-  {
-    title: 'Pflege & Beratung',
-    description: 'Scalp- und Haaranalyse inkl. Produktempfehlung für gesundes Haar zu Hause.',
-    price: 'ab 29 €'
+    src: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1300&q=80',
+    alt: 'Friseur arbeitet konzentriert am Herrenhaarschnitt'
   }
 ];
 
-const values = [
-  {
-    title: 'Individuelle Beratung',
-    text: 'Jeder Termin beginnt mit einer kurzen Analyse zu Haarstruktur, Stil und Pflegegewohnheiten.'
-  },
-  {
-    title: 'Moderne Farbtechniken',
-    text: 'Balayage, Glossing und sanfte Nuancierungen für ein natürliches, modernes Ergebnis.'
-  },
-  {
-    title: 'Angenehme Atmosphäre',
-    text: 'Ruhiges Studio, ausgewählte Produkte und ein Team, das aufmerksam auf Ihre Wünsche eingeht.'
-  },
-  {
-    title: 'Online Terminbuchung',
-    text: 'Anfragen sind flexibel online möglich – schnell, übersichtlich und ohne Wartezeit.'
-  }
-];
-
-const team = [
+const stylists = [
   {
     name: 'Mila Hansen',
-    specialty: 'Schnitt & Styling',
-    image:
-      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80'
+    role: 'Creative Director · Schnitt & Styling',
+    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80'
   },
   {
     name: 'Aylin Demir',
-    specialty: 'Farbe & Balayage',
-    image:
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80'
+    role: 'Color Specialist · Balayage & Glossing',
+    image: 'https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?auto=format&fit=crop&w=900&q=80'
   },
   {
     name: 'Nora Petersen',
-    specialty: 'Beratung & Pflege',
-    image:
-      'https://images.unsplash.com/photo-1542204625-de293a40268a?auto=format&fit=crop&w=900&q=80'
+    role: 'Senior Stylist · Beratung & Pflege',
+    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=900&q=80'
   }
 ];
 
-const gallery = [
-  {
-    src: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Heller Friseursalon mit Spiegeln, Holzdetails und ruhiger Atmosphäre'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Stylistin arbeitet konzentriert an einem Haarschnitt im Studio'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Detailaufnahme von hochwertigen Haarpflegeprodukten im Friseursalon'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Farbbehandlung an Kundin mit natürlichem Balayage-Ergebnis'
-  }
-];
+const reasons = ['Individuelle Beratung', 'Moderne Farbtechniken', 'Angenehme Atmosphäre', 'Online Terminbuchung'];
 
 const testimonials = [
-  {
-    quote: 'Sehr angenehme Beratung und ein Ergebnis, das wirklich zu mir passt. Ich komme definitiv wieder.',
-    by: 'Laura M. · Eimsbüttel'
-  },
-  {
-    quote: 'Balayage sah direkt natürlich aus und hat sich auch nach Wochen noch sehr schön entwickelt.',
-    by: 'Sophie K. · Winterhude'
-  },
-  {
-    quote: 'Ruhige Atmosphäre, pünktliche Termine und ein Team, das aufmerksam zuhört. Genau so wünsche ich es mir.',
-    by: 'Daniela R. · Altona'
-  }
+  { quote: 'Ich wurde ehrlich beraten und der Schnitt fällt auch ohne viel Aufwand perfekt.', by: 'Julia S. · Eppendorf' },
+  { quote: 'Die Balayage wirkt super natürlich. Genau der elegante Look, den ich wollte.', by: 'Leonie K. · Ottensen' },
+  { quote: 'Pünktlicher Termin, ruhige Stimmung und tolles Team. Klare Empfehlung.', by: 'Miriam T. · Winterhude' }
 ];
 
 export default function FriseursalonDemoPage() {
@@ -120,148 +68,116 @@ export default function FriseursalonDemoPage() {
         description="Beispiel einer modernen Friseursalon-Website mit Leistungen, Terminbuchung, Galerie und Kontaktbereich."
         path="/referenzen/friseursalon-demo"
       />
-
-      <div className="min-h-screen bg-[#fcf9f6] text-[#2f2a29]">
+      <Header />
+      <div className="relative min-h-screen bg-[#f6f1ea] text-[#2f2a28]">
         <ReferenceStickyBackButton />
-
-        <header className="sticky top-0 z-30 border-b border-[#e6dfd6]/80 bg-[#fcf9f6]/95 backdrop-blur">
-          <div className="section-container flex h-20 items-center justify-between">
-            <Link href="#start" className="text-xl font-semibold tracking-tight text-[#2f2a29]" aria-label="Zum Seitenanfang">
-              Salon Elbglanz
-            </Link>
-            <nav aria-label="Demo Navigation" className="hidden items-center gap-5 md:flex">
-              <Link href="#ueber-uns" className="text-sm text-[#5d5550] transition hover:text-[#2f2a29]">Über uns</Link>
-              <Link href="#leistungen" className="text-sm text-[#5d5550] transition hover:text-[#2f2a29]">Leistungen</Link>
-              <Link href="#team" className="text-sm text-[#5d5550] transition hover:text-[#2f2a29]">Team</Link>
-              <Link href="#kontakt" className="text-sm text-[#5d5550] transition hover:text-[#2f2a29]">Kontakt</Link>
-            </nav>
-          </div>
-        </header>
 
         <main>
           <section className="section-container pt-8" aria-label="Demo Hinweis">
-            <p className="inline-flex rounded-full border border-[#ddd3c8] bg-[#f7f2ec] px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#6a625c]">
-              Referenzprojekt für moderne Friseursalons · So könnte eine Website für Ihren Friseursalon aussehen
+            <p className="inline-flex rounded-full border border-[#d9cec2] bg-[#fdfaf5] px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#72665e]">
+              Beispiel einer möglichen Friseursalon-Website · So könnte eine Website für Ihren Friseursalon aussehen
             </p>
           </section>
 
-          <section id="start" className="section-container pb-14 pt-8" aria-labelledby="hero-heading">
-            <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.05fr]">
-              <div>
-                <h1 id="hero-heading" className="text-4xl font-semibold tracking-tight text-[#2f2a29] sm:text-5xl">
+          <section className="section-container pb-14 pt-8" id="start" aria-labelledby="hero-heading">
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+              <article className="rounded-[2rem] border border-[#ded2c6] bg-[#fffdf9] p-7 sm:p-10">
+                <p className="text-xs uppercase tracking-[0.16em] text-[#8b7d73]">Salon Elbatelier · Hamburg</p>
+                <h1 id="hero-heading" className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
                   Moderner Friseursalon in Hamburg
                 </h1>
-                <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#5a524d]">
-                  Individuelle Haarschnitte, moderne Farbtechniken und eine entspannte Atmosphäre für stilbewusste Kundinnen und Kunden.
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-[#655a54]">
+                  Editorial inspirierte Haarkunst mit Fokus auf Schnitt, Farbe und natürliche Ergebnisse – in einem ruhigen, lichtdurchfluteten Studio.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href="#termin" className="inline-flex rounded-2xl bg-[#c48c94] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#b37882]">
+                  <Link href="#termin" className="inline-flex rounded-full bg-[#332d2a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1f1b1a]">
                     Termin buchen
                   </Link>
-                  <Link href="#leistungen" className="inline-flex rounded-2xl border border-[#c9beb2] bg-white px-6 py-3 text-sm font-semibold text-[#3b3330] transition hover:border-[#ab9f93]">
+                  <Link href="#leistungen" className="inline-flex rounded-full border border-[#b6a99c] px-6 py-3 text-sm font-semibold text-[#2f2a28] transition hover:border-[#86786d]">
                     Leistungen ansehen
                   </Link>
                 </div>
-              </div>
-              <figure className="overflow-hidden rounded-[2.25rem]">
+              </article>
+              <figure className="overflow-hidden rounded-[2rem]">
                 <Image
-                  src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1600&q=80"
-                  alt="Eleganter Friseursalon in Hamburg mit hellem Interieur und modernen Stylingplätzen"
-                  width={1600}
-                  height={1150}
+                  src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1500&q=80"
+                  alt="Stylistin arbeitet an einer modernen Frisur in einem Hamburger Salon"
+                  width={1200}
+                  height={1400}
+                  className="h-full min-h-[420px] w-full object-cover"
                   priority
-                  className="h-[430px] w-full object-cover sm:h-[500px]"
                 />
               </figure>
             </div>
           </section>
 
-          <section id="ueber-uns" className="section-container pb-14" aria-labelledby="about-heading">
-            <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-center">
-              <figure className="overflow-hidden rounded-[2rem]">
-                <Image src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=80" alt="Persönliche Beratung in einem modernen Friseurstudio" width={1400} height={1000} className="h-[340px] w-full object-cover" />
-              </figure>
-              <div className="rounded-[2rem] border border-[#e2d8cd] bg-[#f6f0e9] p-8">
-                <h2 id="about-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Über den Salon</h2>
-                <p className="mt-4 text-base leading-relaxed text-[#5b534e]">
-                  Im Salon Elbglanz stehen persönliche Beratung, moderner Stil und hochwertige Produkte im Mittelpunkt. Unser Team arbeitet präzise,
-                  professionell und mit Blick auf Ergebnisse, die zu Persönlichkeit, Alltag und Wunsch-Look passen.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section id="leistungen" className="section-container pb-14" aria-labelledby="services-heading">
-            <h2 id="services-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Leistungen</h2>
-            <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <section className="section-container pb-14" id="leistungen" aria-labelledby="services-heading">
+            <h2 id="services-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Leistungen & Preise</h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
               {services.map((service) => (
-                <article key={service.title} className="rounded-3xl border border-[#e5ddd3] bg-white p-6">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-lg font-semibold text-[#2f2a29]">{service.title}</h3>
-                    <p className="rounded-xl bg-[#f7f1eb] px-3 py-1 text-sm font-semibold text-[#5b534e]">{service.price}</p>
+                <article key={service.title} className="grid gap-3 rounded-3xl border border-[#dfd3c7] bg-[#fffdfa] p-6 sm:grid-cols-[1fr_auto] sm:items-start">
+                  <div>
+                    <h3 className="text-lg font-semibold">{service.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#655a54]">{service.text}</p>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-[#665d57]">{service.description}</p>
+                  <p className="text-sm font-semibold tracking-wide text-[#7c6859] sm:pt-1">{service.price}</p>
                 </article>
               ))}
             </div>
           </section>
 
-          <section className="section-container pb-14" aria-labelledby="benefits-heading">
-            <h2 id="benefits-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Warum Kundinnen und Kunden uns wählen</h2>
-            <div className="mt-7 grid gap-4 md:grid-cols-2">
-              {values.map((value) => (
-                <article key={value.title} className="rounded-3xl border border-[#e3d9ce] bg-[#faf6f2] p-6">
-                  <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#ebd5d9] text-[#7d5a61]">
-                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </div>
-                  <h3 className="text-xl font-medium">{value.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#635b55]">{value.text}</p>
-                </article>
-              ))}
+          <section className="section-container pb-14" aria-labelledby="lookbook-heading">
+            <div className="flex items-end justify-between gap-6">
+              <h2 id="lookbook-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Lookbook & Galerie</h2>
+              <p className="hidden max-w-md text-right text-sm text-[#6b5f58] md:block">Ergebnisse, Atmosphäre und echte Salonmomente aus dem Alltag.</p>
             </div>
-          </section>
-
-          <section id="team" className="section-container pb-14" aria-labelledby="team-heading">
-            <h2 id="team-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Unser Team</h2>
-            <div className="mt-7 grid gap-5 md:grid-cols-3">
-              {team.map((person) => (
-                <article key={person.name} className="overflow-hidden rounded-3xl border border-[#e6ddd4] bg-white">
-                  <Image src={person.image} alt={`${person.name}, Stylistin im Friseursalon mit Schwerpunkt ${person.specialty}`} width={900} height={900} className="h-72 w-full object-cover" />
-                  <div className="p-5">
-                    <h3 className="text-xl font-semibold">{person.name}</h3>
-                    <p className="mt-1 text-sm text-[#665d57]">{person.specialty}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section id="termin" className="section-container pb-14" aria-labelledby="booking-heading">
-            <div className="rounded-[2rem] bg-[#2f2a29] px-7 py-8 text-[#f8f5f2] sm:px-10 sm:py-10">
-              <h2 id="booking-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Jetzt Termin anfragen</h2>
-              <p className="mt-4 max-w-3xl text-base leading-relaxed text-[#ddd3c8]">
-                Ob neuer Haarschnitt, frische Farbe oder persönliches Styling – Termine können schnell und unkompliziert angefragt werden.
-              </p>
-              <p className="mt-2 text-sm text-[#c5bbb0]">Telefonisch erreichbar unter 040 / 987 65 43 · Beratungstermine auch am frühen Abend möglich.</p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="#kontakt" className="inline-flex rounded-2xl bg-[#d8a8af] px-6 py-3 text-sm font-semibold text-[#2f2a29] transition hover:bg-[#e5bcc2]">
-                  Termin buchen
-                </Link>
-                <Link href="#kontakt" className="inline-flex rounded-2xl border border-[#958981] px-6 py-3 text-sm font-semibold text-[#f5ede6] transition hover:border-[#b7aba2]">
-                  Kontakt aufnehmen
-                </Link>
-              </div>
-            </div>
-          </section>
-
-          <section className="section-container pb-14" aria-labelledby="gallery-heading">
-            <h2 id="gallery-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Galerie & Studio-Eindrücke</h2>
-            <div className="mt-7 grid gap-4 sm:grid-cols-2">
-              {gallery.map((image, index) => (
-                <figure key={image.src} className={`${index === 0 ? 'sm:col-span-2' : ''} overflow-hidden rounded-[1.8rem]`}>
-                  <Image src={image.src} alt={image.alt} width={1300} height={900} className={`w-full object-cover ${index === 0 ? 'h-[340px] sm:h-[410px]' : 'h-[280px] sm:h-[320px]'}`} />
+            <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr]">
+              <figure className="sm:row-span-2 overflow-hidden rounded-[2rem]">
+                <Image src={lookbook[0].src} alt={lookbook[0].alt} width={1500} height={1800} className="h-full min-h-[520px] w-full object-cover" />
+              </figure>
+              {lookbook.slice(1).map((item) => (
+                <figure key={item.src} className="overflow-hidden rounded-[2rem]">
+                  <Image src={item.src} alt={item.alt} width={1200} height={900} className="h-[250px] w-full object-cover" />
                 </figure>
               ))}
+            </div>
+          </section>
+
+          <section className="section-container pb-14" aria-labelledby="team-heading">
+            <h2 id="team-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Stylistinnen</h2>
+            <div className="mt-7 grid gap-5 md:grid-cols-3">
+              {stylists.map((member) => (
+                <article key={member.name} className="overflow-hidden rounded-[1.8rem] border border-[#dfd4c9] bg-[#fffdfa]">
+                  <Image src={member.image} alt={`${member.name}, Friseurin mit Schwerpunkt ${member.role}`} width={900} height={980} className="h-72 w-full object-cover" />
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold">{member.name}</h3>
+                    <p className="mt-1 text-sm text-[#6b6059]">{member.role}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="section-container pb-14" aria-labelledby="reasons-heading">
+            <div className="rounded-[2rem] border border-[#dbcebf] bg-[#fffaf3] p-7 sm:p-10">
+              <h2 id="reasons-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Warum Kundinnen uns wählen</h2>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {reasons.map((reason) => (
+                  <li key={reason} className="rounded-2xl border border-[#e4d8cc] bg-white px-4 py-3 text-sm font-medium text-[#4b423e]">
+                    {reason}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section className="section-container pb-14" id="termin" aria-labelledby="booking-heading">
+            <div className="rounded-[2rem] bg-[#332d2a] px-7 py-9 text-[#f7f1e9] sm:px-10 sm:py-11">
+              <h2 id="booking-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Jetzt Termin anfragen</h2>
+              <p className="mt-4 max-w-2xl text-[#ddcfc2]">Schnell online anfragen und Wunschzeit sichern – für Schnitt, Styling oder Farbtermin.</p>
+              <Link href="#kontakt" className="mt-7 inline-flex rounded-full bg-[#e8c6a8] px-6 py-3 text-sm font-semibold text-[#2f2a28] transition hover:bg-[#f0d3b8]">
+                Termin buchen
+              </Link>
             </div>
           </section>
 
@@ -269,44 +185,45 @@ export default function FriseursalonDemoPage() {
             <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Kundenstimmen</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
-                <blockquote key={item.by} className="rounded-3xl border border-[#e5ddd3] bg-white p-6">
-                  <p className="text-base leading-relaxed text-[#4d4541]">“{item.quote}”</p>
-                  <footer className="mt-4 text-sm font-semibold text-[#6a615b]">{item.by}</footer>
+                <blockquote key={item.by} className="rounded-3xl border border-[#dfd3c7] bg-[#fffdfa] p-6">
+                  <p className="leading-relaxed text-[#4f453f]">“{item.quote}”</p>
+                  <footer className="mt-4 text-sm font-semibold text-[#74685f]">{item.by}</footer>
                 </blockquote>
               ))}
             </div>
           </section>
 
-          <section id="kontakt" className="section-container pb-14" aria-labelledby="contact-heading">
-            <h2 id="contact-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Kontakt & Öffnungszeiten</h2>
+          <section className="section-container pb-14" id="kontakt" aria-labelledby="contact-heading">
+            <h2 id="contact-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Kontakt, Öffnungszeiten & Standort</h2>
             <div className="mt-7 grid gap-5 lg:grid-cols-2">
-              <article className="rounded-3xl border border-[#e2d9cf] bg-[#f7f2ec] p-7">
-                <h3 className="text-lg font-semibold">Salon Elbglanz</h3>
-                <p className="mt-3 text-[#59514c]">Osterstraße 128, 20255 Hamburg</p>
-                <p className="mt-2 text-[#59514c]">Telefon: 040 / 987 65 43</p>
-                <p className="mt-2 text-[#59514c]">E-Mail: hallo@elbglanz-demo.de</p>
-                <p className="mt-5 text-sm text-[#6b625c]">Mo–Fr: 09:00–19:00 · Sa: 09:00–15:00 · So: geschlossen</p>
+              <article className="rounded-[1.8rem] border border-[#ded1c3] bg-[#fffdfa] p-7">
+                <h3 className="text-lg font-semibold">Salon Elbatelier</h3>
+                <p className="mt-3 text-[#5f554f]">Isestraße 44, 20144 Hamburg</p>
+                <p className="mt-2 text-[#5f554f]">Telefon: 040 / 389 74 112</p>
+                <p className="mt-2 text-[#5f554f]">E-Mail: termin@elbatelier-demo.de</p>
+                <dl className="mt-6 space-y-2 text-sm text-[#6b6059]">
+                  <div className="flex justify-between gap-4"><dt>Mo–Fr</dt><dd>09:00–19:00</dd></div>
+                  <div className="flex justify-between gap-4"><dt>Samstag</dt><dd>09:00–15:00</dd></div>
+                  <div className="flex justify-between gap-4"><dt>Sonntag</dt><dd>Geschlossen</dd></div>
+                </dl>
               </article>
-              <aside className="rounded-3xl border border-dashed border-[#cfc4b8] bg-white p-7">
-                <h3 className="text-lg font-semibold">Standort</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#645b55]">
-                  Platzhalter für Kartenansicht oder eingebettete Standortdarstellung in Hamburg.
+              <aside className="rounded-[1.8rem] border border-dashed border-[#cdbfac] bg-[#f9f3eb] p-7">
+                <h3 className="text-lg font-semibold">Anfahrt</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#61554f]">
+                  U-Bahn Hoheluftbrücke in Laufnähe, Fahrradstellplätze direkt am Salon und Parkhäuser in der Umgebung.
                 </p>
-                <div className="mt-5 rounded-2xl bg-[#f2ece5] p-5 text-sm text-[#6b625c]">
-                  Gute Erreichbarkeit mit U2 und Buslinien · Parkmöglichkeiten in direkter Umgebung.
-                </div>
+                <p className="mt-4 text-sm text-[#756960]">Platzhalter für Kartenmodul oder eingebettete Standortansicht.</p>
               </aside>
             </div>
           </section>
 
           <ReferenceProjectCTA
             title="Sie möchten eine ähnliche Website für Ihren Friseursalon?"
-            text="Wir entwickeln moderne Websites für lokale Unternehmen – klar strukturiert, mobil optimiert und professionell umgesetzt."
+            text="Wir gestalten individuelle Salon-Websites mit klarer Struktur, starker Bildsprache und überzeugender Terminführung."
           />
         </main>
-
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 }
