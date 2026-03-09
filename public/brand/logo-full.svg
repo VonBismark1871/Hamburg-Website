@@ -1,0 +1,21 @@
+<svg viewBox="0 0 530 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hamburg Websites logo">
+  <defs>
+    <linearGradient id="hwDark" x1="0%" y1="100%" x2="75%" y2="0%">
+      <stop offset="0%" stop-color="#0b163d" />
+      <stop offset="100%" stop-color="#2d8fd6" />
+    </linearGradient>
+    <linearGradient id="hwLight" x1="20%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1d7fc5" />
+      <stop offset="100%" stop-color="#66cde7" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(0 0)">
+    <path d="M14 20h28v52h46V20h28v130H88v-50H42v50H14z" fill="url(#hwDark)" />
+    <path d="M94 150l60-62h28l-60 62z" fill="#0b163d" opacity="0.75" />
+    <path d="M94 150l62-66h28l-62 66z" fill="url(#hwDark)" />
+    <path d="M156 84h28l28 66h-28z" fill="url(#hwDark)" />
+    <path d="M174 56h32l-36 94h-32z" fill="url(#hwLight)" />
+  </g>
+  <text x="235" y="72" fill="#0f183d" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="600">Hamburg</text>
+  <text x="235" y="128" fill="#3aa9df" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="600">Websites</text>
+</svg>

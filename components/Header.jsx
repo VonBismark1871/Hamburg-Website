@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { LogoLink } from './Logo';
 
 const navItems = [
   { href: '/referenzen', label: 'Referenzen' },
@@ -13,9 +14,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
       <div className="section-container flex items-center justify-between gap-6 py-3">
-        <Link href="/" className="text-base font-semibold tracking-wide text-slateBlue sm:text-lg">
-          Hamburg Websites
-        </Link>
+        <LogoLink className="shrink-0" />
 
         <nav aria-label="Hauptnavigation" className="hidden items-center gap-5 text-sm text-slate-600 md:flex">
           {navItems.map((item) => (
