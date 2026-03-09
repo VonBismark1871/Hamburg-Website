@@ -7,16 +7,22 @@ export default function PropertyCard({ property }) {
       <figure className="relative overflow-hidden">
         <Image
           src={property.image}
-          alt={`${property.type} in ${property.district} in Hamburg`}
+          alt={property.imageAlt || `${property.type} in ${property.district} in Hamburg`}
           width={1500}
           height={1000}
           className="h-64 w-full object-cover"
         />
+        {property.label && (
+          <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-stone-800">
+            {property.label}
+          </span>
+        )}
       </figure>
       <div className="space-y-4 p-6">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-stone-500">{property.district}</p>
           <h3 className="mt-2 text-xl font-semibold leading-tight text-stone-900">{property.title}</h3>
+          <p className="mt-2 text-sm text-stone-600">{property.angle}</p>
         </div>
 
         <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-stone-700">
