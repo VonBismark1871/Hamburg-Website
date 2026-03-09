@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import FAQ, { faqItems } from '../components/FAQ';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -28,23 +27,6 @@ export default function FaqPage() {
 
         <FAQ headingTag="h2" sectionId="faq-content" items={faqItems} />
 
-        <section className="section-container pb-16" aria-labelledby="faq-next-heading">
-          <h2 id="faq-next-heading" className="text-2xl font-bold text-slateBlue">
-            Nächster Schritt
-          </h2>
-          <p className="mt-3 max-w-3xl text-slate-600">
-            Wenn Ihre Frage hier nicht dabei ist, können Sie uns direkt schreiben. Wir melden uns mit einer klaren,
-            verständlichen Empfehlung für Ihr Projekt.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-4">
-            <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500">
-              Kontakt aufnehmen
-            </Link>
-            <Link href="/preise" className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent">
-              Preise ansehen
-            </Link>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
