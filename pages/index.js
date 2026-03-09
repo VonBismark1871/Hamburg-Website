@@ -20,6 +20,36 @@ const pricingPreview = [
   { title: 'Mehrseitige Website', price: 'ab 1.000 €', text: 'Für Unternehmen mit mehreren Inhalten.' }
 ];
 
+const homepageFaqPreview = [
+  {
+    question: 'Wie lange dauert die Erstellung einer Website?',
+    answer:
+      'In vielen Fällen kann eine erste Version innerhalb weniger Tage erstellt werden. Der genaue Zeitrahmen hängt vom Umfang des Projekts ab.'
+  },
+  {
+    question: 'Ist die erste Demo wirklich kostenlos?',
+    answer:
+      'Ja. Eine erste Demo zeigt, wie Struktur und Design Ihrer Website aussehen könnten, bevor eine vollständige Umsetzung beauftragt wird.'
+  },
+  {
+    question: 'Kann eine bestehende Website überarbeitet werden?',
+    answer:
+      'Ja. Bestehende Websites können modernisiert, strukturell verbessert oder technisch neu umgesetzt werden.'
+  },
+  {
+    question: 'Übernehmen Sie auch Hosting oder Pflege?',
+    answer:
+      'Auf Wunsch können Hosting sowie kleinere inhaltliche Anpassungen im Rahmen einer laufenden Websitepflege übernommen werden.'
+  },
+  {
+    question: 'Wie läuft ein typisches Projekt ab?',
+    answer:
+      'Der Ablauf umfasst in der Regel eine Anfrage, eine Demo-Vorschau, eine kurze Abstimmung und anschließend die Umsetzung der Website.'
+  }
+];
+
+const introTags = ['Dienstleister', 'Praxen', 'Studios', 'Lokale Unternehmen', 'Kleine Betriebe'];
+
 export default function HomePage() {
   return (
     <>
@@ -32,7 +62,40 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+
+        <section className="section-container pt-6" aria-labelledby="local-business-heading">
+          <div className="max-w-3xl">
+            <h2 id="local-business-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+              Für Unternehmen in Hamburg
+            </h2>
+            <p className="mt-3 text-slate-600">
+              Wir entwickeln moderne Websites für lokale Unternehmen, die online professionell auftreten und neue Kunden
+              erreichen möchten.
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-2" aria-label="Geeignet für folgende Unternehmenstypen">
+              {introTags.map((tag) => (
+                <li key={tag} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         <Features />
+
+        <section className="section-container pt-2" aria-labelledby="references-intro-heading">
+          <div className="max-w-3xl">
+            <h2 id="references-intro-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+              Beispiele moderner Unternehmenswebsites
+            </h2>
+            <p className="mt-3 text-slate-600">
+              Die folgenden Beispiele zeigen, wie eine strukturierte und moderne Website für verschiedene Unternehmen
+              aussehen kann.
+            </p>
+          </div>
+        </section>
+
         <Portfolio />
 
         <section className="section-container section-spacing" aria-labelledby="process-preview-heading">
@@ -79,6 +142,39 @@ export default function HomePage() {
             >
               Alle Preise ansehen
             </Link>
+          </div>
+        </section>
+
+        <section className="section-container section-spacing pt-2" aria-labelledby="faq-preview-heading">
+          <div className="max-w-4xl">
+            <h2 id="faq-preview-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+              Häufige Fragen
+            </h2>
+            <div className="mt-6 space-y-4">
+              {homepageFaqPreview.map((item) => (
+                <article key={item.question} className="border-b border-slate-200 pb-4 last:border-b-0 last:pb-0">
+                  <h3 className="text-base font-semibold text-slateBlue">{item.question}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{item.answer}</p>
+                </article>
+              ))}
+            </div>
+            <Link
+              href="/faq"
+              className="mt-6 inline-flex text-sm font-semibold text-accent underline-offset-4 transition hover:underline"
+            >
+              Alle Fragen ansehen
+            </Link>
+          </div>
+        </section>
+
+        <section className="section-container pt-2" aria-labelledby="final-bridge-heading">
+          <div className="max-w-3xl">
+            <h2 id="final-bridge-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+              Klarer Ablauf, nachvollziehbare Preise
+            </h2>
+            <p className="mt-3 text-slate-600">
+              Von der ersten Demo bis zur veröffentlichten Website bleibt jeder Schritt transparent und übersichtlich.
+            </p>
           </div>
         </section>
 
