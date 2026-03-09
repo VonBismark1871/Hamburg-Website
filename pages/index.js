@@ -17,7 +17,6 @@ const relatedLinks = [
   { href: '/kontakt', label: 'Kontaktaufnahme' }
 ];
 
-const faqPreviewItems = faqItems.slice(0, 3);
 
 export default function HomePage() {
   return (
@@ -69,7 +68,7 @@ export default function HomePage() {
 
         <AboutSection cta={{ href: '/ueber-uns', label: 'Mehr über Hamburg Websites' }} />
 
-        <FAQ items={faqPreviewItems} cta={{ href: '/faq', label: 'Alle Fragen ansehen' }} />
+        <FAQ items={faqItems} />
 
         <section className="section-container pb-16" aria-labelledby="internal-links-heading">
           <h2 id="internal-links-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
