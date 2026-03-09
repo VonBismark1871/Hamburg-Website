@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -29,8 +28,8 @@ export default function ReferenzenPage() {
   return (
     <>
       <SEOHead
-        title="Referenzen und Beispiel-Websites"
-        description="Beispiele moderner Unternehmenswebsites von Hamburg Websites mit klarer Struktur, modernem Design und schnellen Ladezeiten."
+        title="Referenzen – Hamburg Websites"
+        description="Beispiele moderner Websites für Restaurants, Barbershops, Praxen, Werkstätten, Immobilien und weitere Unternehmen."
         path="/referenzen"
       />
       <Header />
@@ -40,8 +39,7 @@ export default function ReferenzenPage() {
             Referenzen und Beispiel-Websites
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-slate-600">
-            Hier finden Sie Beispiele moderner Unternehmenswebsites, die zeigen, wie strukturierte Inhalte, klares Design
-            und schnelle Ladezeiten zusammenwirken können.
+            Hier finden Sie Beispiele moderner Unternehmenswebsites, die zeigen, wie Design, Struktur und Nutzerführung in unterschiedlichen Branchen umgesetzt werden können.
           </p>
         </section>
 

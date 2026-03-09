@@ -1,24 +1,11 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import ReferenceCard from './references/ReferenceCard';
+import { getReferenceBySlug } from '../data/references';
 
-const demos = [
-  {
-    title: 'Restaurant Website',
-    description: 'Moderne Speisekarten-Struktur mit klarer Nutzerführung zur Reservierungsanfrage.',
-    image: '/demo-images/restaurant.svg'
-  },
-  {
-    title: 'Barbershop Website',
-    description: 'Kompakter Auftritt mit Leistungen, Öffnungszeiten und direktem Kontakt.',
-    image: '/demo-images/barbershop.svg'
-  },
-  {
-    title: 'Auto Service Website',
-    description: 'Vertrauensstarker Serviceauftritt mit klaren Angebotsblöcken und Anfragefokus.',
-    image: '/demo-images/local-service.svg'
-  }
-];
+const homepageProjects = ['restaurant-demo', 'barbershop-demo', 'autoservice-demo']
+  .map((slug) => getReferenceBySlug(slug))
+  .filter(Boolean);
 
 export default function Portfolio() {
   return (
@@ -34,32 +21,23 @@ export default function Portfolio() {
         Referenzen im Überblick
       </motion.h2>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {demos.map((demo, i) => (
-          <motion.article
-            key={demo.title}
+        {homepageProjects.map((demo, i) => (
+          <motion.div
+            key={demo.slug}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45, delay: i * 0.1 }}
-            className="card overflow-hidden p-0"
           >
-            <Image src={demo.image} alt={demo.title} width={700} height={450} className="h-52 w-full object-cover" />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-slateBlue">{demo.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{demo.description}</p>
-              <Link
-                href="/referenzen"
-                className="mt-4 inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold transition hover:border-accent hover:text-accent"
-              >
-                Projekt ansehen
-              </Link>
-            </div>
-          </motion.article>
+            <ReferenceCard project={demo} />
+          </motion.div>
         ))}
       </div>
-      <Link href="/referenzen" className="mt-8 inline-flex text-sm font-semibold text-accent underline-offset-4 hover:underline">
-        Alle Referenzen ansehen
-      </Link>
+      <div className="mt-10">
+        <Link href="/referenzen" className="inline-flex rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500">
+          Weitere Referenzen ansehen
+        </Link>
+      </div>
     </section>
   );
 }
