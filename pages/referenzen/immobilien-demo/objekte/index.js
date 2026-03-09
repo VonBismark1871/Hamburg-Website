@@ -20,8 +20,7 @@ export default function ImmobilienObjektePage() {
             Aktuelle Immobilienangebote
           </h1>
           <p className="mt-4 max-w-3xl text-stone-700">
-            Entdecken Sie ausgewählte Immobilien in Hamburg – vom hochwertigen Penthouse bis zum Familienhaus in
-            ruhiger Lage. Alle Objekte dienen als Demo-Inhalte dieses Referenzprojekts.
+            Entdecken Sie sechs klar differenzierte Immobilien in Hamburg – von der Altbauwohnung in Eppendorf über das Stadthaus in Blankenese bis zur Kapitalanlage in Altona. Jedes Exposé ist individuell aufgebaut und direkt verlinkt.
           </p>
 
           <div className="mt-8">
