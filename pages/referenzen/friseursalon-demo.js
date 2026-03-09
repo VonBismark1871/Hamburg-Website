@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
@@ -47,60 +48,28 @@ const services = [
 
 const lookbook = [
   {
-    src: 'https://images.unsplash.com/photo-1523263685509-57c1d050d19b?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Haarschnitt-Ergebnis mit sauberem Fall und natürlichem Glanz',
+    src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80',
+    fallbackSrc: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Fertiges Farbergebnis mit glänzendem, weich fallendem Haar',
     style: 'h-[250px] sm:h-[290px]'
   },
   {
-    src: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Coloration-Ergebnis mit weichen Balayage-Verläufen',
+    src: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80',
+    fallbackSrc: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Moderner Haarschnitt mit gestyltem Volumen als Salonergebnis',
     style: 'h-[250px] sm:h-[290px]'
   },
   {
-    src: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Styled Hair Portrait mit definierten Wellen nach dem Salontermin',
+    src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80',
+    fallbackSrc: 'https://images.unsplash.com/photo-1522337094846-8a818e733e2f?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Stylistin arbeitet an einem Damenhaarschnitt im Salon',
     style: 'h-[250px] sm:h-[290px]'
   },
   {
     src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Helles Saloninterieur mit modernen Stylingplätzen',
+    fallbackSrc: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Helles Saloninterieur mit Spiegelplätzen und Stylingstühlen',
     style: 'h-[250px] sm:h-[290px]'
-  }
-];
-
-const transformations = [
-  {
-    title: 'Balayage Farbauffrischung',
-    before: {
-      src: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=1000&q=80',
-      alt: 'Vorher: naturbraunes Haar ohne Highlights'
-    },
-    after: {
-      src: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1000&q=80',
-      alt: 'Nachher: Balayage mit warmen Karamellnuancen'
-    }
-  },
-  {
-    title: 'Frischer Long-Bob mit Glossing',
-    before: {
-      src: 'https://images.unsplash.com/photo-1523263685509-57c1d050d19b?auto=format&fit=crop&w=1000&q=80',
-      alt: 'Vorher: langes Haar vor dem Schnitt'
-    },
-    after: {
-      src: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1000&q=80',
-      alt: 'Nachher: glänzender Long-Bob nach dem Styling'
-    }
-  },
-  {
-    title: 'Pflegekur & definierte Wellen',
-    before: {
-      src: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1000&q=80',
-      alt: 'Vorher: trockenes Haar vor der Intensivpflege'
-    },
-    after: {
-      src: 'https://images.unsplash.com/photo-1522337094846-8a818e733e2f?auto=format&fit=crop&w=1000&q=80',
-      alt: 'Nachher: gesund aussehende, definierte Wellen'
-    }
   }
 ];
 
@@ -157,6 +126,27 @@ const popularServices = [
     text: 'Sanfte Highlights für lebendige Haarfarben.'
   }
 ];
+
+
+function SalonImage({ src, fallbackSrc, alt, width, height, className, priority = false }) {
+  const [currentSrc, setCurrentSrc] = useState(src);
+
+  return (
+    <Image
+      src={currentSrc}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      priority={priority}
+      onError={() => {
+        if (fallbackSrc && currentSrc !== fallbackSrc) {
+          setCurrentSrc(fallbackSrc);
+        }
+      }}
+    />
+  );
+}
 
 const testimonials = [
   {
@@ -288,29 +278,15 @@ export default function FriseursalonDemoPage() {
             <div className="mt-7 grid gap-4 sm:grid-cols-2">
               {lookbook.map((item) => (
                 <figure key={item.src} className={`overflow-hidden rounded-[1.8rem] ${item.style}`}>
-                  <Image src={item.src} alt={item.alt} width={1200} height={1200} className="h-full w-full object-cover" />
+                  <SalonImage
+                    src={item.src}
+                    fallbackSrc={item.fallbackSrc}
+                    alt={item.alt}
+                    width={1200}
+                    height={1200}
+                    className="h-full w-full object-cover"
+                  />
                 </figure>
-              ))}
-            </div>
-          </section>
-
-          <section className="section-container pb-16" aria-labelledby="transformation-heading">
-            <h2 id="transformation-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Vorher / Nachher</h2>
-            <div className="mt-7 grid gap-5 lg:grid-cols-3">
-              {transformations.map((item) => (
-                <article key={item.title} className="rounded-[1.8rem] border border-[#e0d4c7] bg-[#fffdfa] p-4">
-                  <div className="grid grid-cols-2 gap-3">
-                    <figure>
-                      <Image src={item.before.src} alt={item.before.alt} width={700} height={800} className="h-40 w-full rounded-2xl object-cover" />
-                      <figcaption className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#8a7d74]">Vorher</figcaption>
-                    </figure>
-                    <figure>
-                      <Image src={item.after.src} alt={item.after.alt} width={700} height={800} className="h-40 w-full rounded-2xl object-cover" />
-                      <figcaption className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#8a7d74]">Nachher</figcaption>
-                    </figure>
-                  </div>
-                  <p className="mt-4 border-t border-[#e8ddd2] pt-3 text-sm font-medium text-[#4b413c]">{item.title}</p>
-                </article>
               ))}
             </div>
           </section>
