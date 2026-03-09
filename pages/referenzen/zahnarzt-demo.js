@@ -51,7 +51,7 @@ const trustPoints = [
 
 const teamMembers = [
   {
-    name: 'Dr. Anna Becker',
+    name: 'Dr. David Becker',
     role: 'Allgemeine Zahnheilkunde',
     image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1000&q=80'
   },
