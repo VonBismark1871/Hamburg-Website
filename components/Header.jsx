@@ -1,8 +1,10 @@
 import Link from 'next/link';
 
 const navItems = [
-  { href: '/faq', label: 'FAQ' },
+  { href: '/referenzen', label: 'Referenzen' },
+  { href: '/ablauf', label: 'Ablauf' },
   { href: '/preise', label: 'Preise' },
+  { href: '/faq', label: 'FAQ' },
   { href: '/ueber-uns', label: 'Über uns' },
   { href: '/kontakt', label: 'Kontaktaufnahme' }
 ];
@@ -10,27 +12,18 @@ const navItems = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
-      <div className="section-container flex items-center justify-between gap-3 py-3 sm:gap-6">
+      <div className="section-container flex items-center justify-between gap-6 py-3">
         <Link href="/" className="text-base font-semibold tracking-wide text-slateBlue sm:text-lg">
           Hamburg Websites
         </Link>
 
-        <div className="flex items-center gap-2 sm:gap-4">
-          <nav aria-label="Hauptnavigation" className="hidden items-center gap-5 text-sm text-slate-600 md:flex">
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className="font-medium transition hover:text-accent">
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <Link
-            href="/#portfolio"
-            className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slateBlue transition hover:border-accent hover:text-accent sm:text-sm"
-          >
-            Genauer ansehen
-          </Link>
-        </div>
+        <nav aria-label="Hauptnavigation" className="hidden items-center gap-5 text-sm text-slate-600 md:flex">
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href} className="font-medium transition hover:text-accent">
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
 
       <nav aria-label="Mobile Navigation" className="border-t border-slate-200/70 bg-white/95 md:hidden">
