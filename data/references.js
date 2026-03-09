@@ -9,8 +9,8 @@ export const referenceProjects = [
   },
   {
     slug: 'barbershop-demo',
-    title: 'Barbershop Website',
-    description: 'Urbaner Auftritt mit klarer Terminbuchung, Leistungsübersicht und markanter Bildsprache.',
+    title: 'Friseursalon Website',
+    description: 'Moderne Salon-Website mit Terminbuchung, Leistungsübersicht und stilvoller Bildsprache.',
     image: '/demo-images/barbershop.svg',
     tags: ['Terminbuchung', 'Leistungen', 'Kontakt'],
     tone: 'dark'

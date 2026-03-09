@@ -3,10 +3,10 @@ import ReferenceDemoTemplate from '../../components/references/ReferenceDemoTemp
 export default function BarbershopDemoPage() {
   return (
     <ReferenceDemoTemplate
-      title="Barbershop Website"
-      description="Dunkler, urbaner Demo-Auftritt für moderne Barbershops mit klarer Terminführung und Leistungsfokus."
+      title="Friseursalon Website"
+      description="Moderne Salon-Website mit Terminbuchung, Leistungsübersicht und stilvoller Bildsprache."
       path="/referenzen/barbershop-demo"
-      business="Nordbarber Studio"
+      business="Friseursalon Studio"
       tone="dark"
       highlights={['Online-Terminbuchung', 'Leistungsübersicht', 'Team & Kontakt', 'Stilvolle Hero-Sektion']}
     />
