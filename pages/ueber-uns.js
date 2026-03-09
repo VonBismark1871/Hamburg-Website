@@ -18,7 +18,6 @@ const trustCards = [
   },
 ];
 
-const industries = ['Restaurants', 'Friseursalons', 'Werkstätten', 'lokale Dienstleister', 'kleinere Unternehmen'];
 
 export default function UeberUnsPage() {
   return (
@@ -80,18 +79,6 @@ export default function UeberUnsPage() {
           </div>
         </section>
 
-        <section className="section-container pb-16" aria-labelledby="industries-heading">
-          <h2 id="industries-heading" className="text-2xl font-bold text-slateBlue">
-            Für wen wir Websites entwickeln
-          </h2>
-          <ul className="mt-5 flex flex-wrap gap-3">
-            {industries.map((industry) => (
-              <li key={industry} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600">
-                {industry}
-              </li>
-            ))}
-          </ul>
-        </section>
 
         <section className="section-container pb-16" aria-labelledby="about-cta-heading">
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
