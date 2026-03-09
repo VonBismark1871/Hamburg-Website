@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../../components/Footer';
@@ -28,8 +29,12 @@ const services = [
     description: 'Moderne Implantatversorgung mit strukturierter Planung und klaren Behandlungsschritten.'
   },
   {
-    title: 'Vorsorgeuntersuchung',
-    description: 'Gründliche Untersuchung inklusive transparenter Erklärung der nächsten sinnvollen Maßnahmen.'
+    title: 'Kinderzahnheilkunde',
+    description: 'Einfühlsame Behandlung für Kinder mit altersgerechter Aufklärung und ruhiger Betreuung.'
+  },
+  {
+    title: 'Parodontologie',
+    description: 'Gezielte Therapie bei Zahnfleischerkrankungen für langfristig stabile Mundgesundheit.'
   }
 ];
 
@@ -44,36 +49,36 @@ const teamMembers = [
   {
     name: 'Dr. Anna Becker',
     role: 'Allgemeine Zahnheilkunde',
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1000&q=80'
+    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1000&q=80'
   },
   {
     name: 'Dr. Michael Hansen',
     role: 'Implantologie',
-    image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1000&q=80'
+    image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=1000&q=80'
   },
   {
     name: 'Lisa Krause',
     role: 'Prophylaxe & Patientenbetreuung',
-    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1000&q=80'
+    image: 'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1000&q=80'
   }
 ];
 
 const practicePhotos = [
   {
-    src: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Heller und moderner Behandlungsraum in einer Zahnarztpraxis'
+    src: 'https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Moderne Behandlungseinheit mit Dentalstuhl und Deckenleuchte'
   },
   {
-    src: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Empfangsbereich einer Zahnarztpraxis mit freundlicher Atmosphäre'
+    src: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Zahnärztin behandelt einen Patienten in einem hellen Behandlungszimmer'
   },
   {
-    src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Wartebereich mit ruhigem, patientenfreundlichem Interieur'
+    src: 'https://images.unsplash.com/photo-1643297654419-bc54ff95d84d?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Dentalinstrumente und moderne Geräte auf einem Behandlungstablett'
   },
   {
-    src: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Moderne medizinische Ausstattung in der Zahnarztpraxis'
+    src: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Freundlicher Empfangs- und Wartebereich einer Zahnarztpraxis'
   }
 ];
 
@@ -100,7 +105,14 @@ const openingHours = [
   { day: 'Freitag', time: '08:00–14:00' }
 ];
 
+const heroImages = {
+  primary: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1600&q=80',
+  fallback: '/demo-images/zahnarzt.svg'
+};
+
 export default function ZahnarztDemoPage() {
+  const [heroImage, setHeroImage] = useState(heroImages.primary);
+
   return (
     <>
       <SEOHead
@@ -119,7 +131,7 @@ export default function ZahnarztDemoPage() {
             </p>
           </section>
 
-          <section className="section-container pb-16 pt-8" id="start" aria-labelledby="hero-heading">
+          <section className="section-container pb-8 pt-8" id="start" aria-labelledby="hero-heading">
             <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <article className="rounded-3xl bg-white p-8 shadow-[0_20px_60px_rgba(11,49,64,0.08)] sm:p-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5f7d88]">Praxis ElbDent · Hamburg</p>
@@ -147,14 +159,27 @@ export default function ZahnarztDemoPage() {
 
               <figure className="overflow-hidden rounded-3xl border border-[#d5e3e8] bg-white">
                 <Image
-                  src="https://images.unsplash.com/photo-1588776814546-ec7e0fedd4f7?auto=format&fit=crop&w=1600&q=80"
+                  src={heroImage}
                   alt="Zahnärztin behandelt einen Patienten in einem modernen Behandlungsraum"
                   width={1600}
                   height={1200}
                   className="h-full w-full object-cover"
                   priority
+                  onError={() => {
+                    if (heroImage !== heroImages.fallback) {
+                      setHeroImage(heroImages.fallback);
+                    }
+                  }}
                 />
               </figure>
+            </div>
+          </section>
+
+          <section className="section-container pb-16" aria-label="Google Bewertung">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border border-[#d4e2e7] bg-white px-6 py-4 text-sm text-[#2d4a56]">
+              <span className="text-lg tracking-wide text-[#f2b01e]" aria-hidden="true">★★★★★</span>
+              <p className="font-medium">4.8 Bewertung bei Google · 120+ Rezensionen</p>
+              <p className="text-[#5c7781]">Viele zufriedene Patientinnen und Patienten aus Hamburg.</p>
             </div>
           </section>
 
@@ -171,6 +196,55 @@ export default function ZahnarztDemoPage() {
                   <h3 className="text-lg font-semibold text-[#1e3a45]">{service.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#4a6671]">{service.description}</p>
                 </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="section-container pb-16" id="termin" aria-labelledby="booking-heading">
+            <div className="rounded-3xl bg-[#1f5f78] px-7 py-10 text-white sm:px-10">
+              <h2 id="booking-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                Jetzt Termin anfragen
+              </h2>
+              <p className="mt-4 max-w-2xl text-[#dbeaf0]">
+                Ob Vorsorge, Zahnreinigung oder individuelle Behandlung – Termine können unkompliziert angefragt werden.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link href="#kontakt" className="inline-flex items-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#1f5f78] transition hover:bg-[#edf6f9]">
+                  Termin anfragen
+                </Link>
+                <Link
+                  href="#kontakt"
+                  className="inline-flex items-center rounded-md border border-[#8fb6c3] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1a5065]"
+                >
+                  Kontakt aufnehmen
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="section-container pb-16" aria-labelledby="practice-heading">
+            <h2 id="practice-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
+              Ein Blick in unsere Praxis
+            </h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {practicePhotos.map((photo) => (
+                <figure key={photo.src} className="overflow-hidden rounded-3xl border border-[#d4e2e7] bg-white">
+                  <Image src={photo.src} alt={photo.alt} width={1400} height={1000} className="h-64 w-full object-cover" />
+                </figure>
+              ))}
+            </div>
+          </section>
+
+          <section className="section-container pb-16" aria-labelledby="testimonials-heading">
+            <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
+              Patientenstimmen
+            </h2>
+            <div className="mt-7 grid gap-4 md:grid-cols-3">
+              {testimonials.map((item) => (
+                <blockquote key={item.author} className="rounded-3xl border border-[#d4e2e7] bg-white p-6">
+                  <p className="text-sm leading-relaxed text-[#3f5e69]">“{item.quote}”</p>
+                  <footer className="mt-4 text-sm font-semibold text-[#5b7680]">{item.author}</footer>
+                </blockquote>
               ))}
             </div>
           </section>
@@ -214,55 +288,6 @@ export default function ZahnarztDemoPage() {
             </div>
           </section>
 
-          <section className="section-container pb-16" aria-labelledby="practice-heading">
-            <h2 id="practice-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
-              Ein Blick in unsere Praxis
-            </h2>
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {practicePhotos.map((photo) => (
-                <figure key={photo.src} className="overflow-hidden rounded-3xl border border-[#d4e2e7] bg-white">
-                  <Image src={photo.src} alt={photo.alt} width={1400} height={1000} className="h-64 w-full object-cover" />
-                </figure>
-              ))}
-            </div>
-          </section>
-
-          <section className="section-container pb-16" aria-labelledby="testimonials-heading">
-            <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
-              Patientenstimmen
-            </h2>
-            <div className="mt-7 grid gap-4 md:grid-cols-3">
-              {testimonials.map((item) => (
-                <blockquote key={item.author} className="rounded-3xl border border-[#d4e2e7] bg-white p-6">
-                  <p className="text-sm leading-relaxed text-[#3f5e69]">“{item.quote}”</p>
-                  <footer className="mt-4 text-sm font-semibold text-[#5b7680]">{item.author}</footer>
-                </blockquote>
-              ))}
-            </div>
-          </section>
-
-          <section className="section-container pb-16" id="termin" aria-labelledby="booking-heading">
-            <div className="rounded-3xl bg-[#1f5f78] px-7 py-10 text-white sm:px-10">
-              <h2 id="booking-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                Jetzt Termin anfragen
-              </h2>
-              <p className="mt-4 max-w-2xl text-[#dbeaf0]">
-                Ob Vorsorge, Zahnreinigung oder individuelle Behandlung – Termine können unkompliziert angefragt werden.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="#kontakt" className="inline-flex items-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#1f5f78] transition hover:bg-[#edf6f9]">
-                  Termin anfragen
-                </Link>
-                <Link
-                  href="#kontakt"
-                  className="inline-flex items-center rounded-md border border-[#8fb6c3] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1a5065]"
-                >
-                  Kontakt aufnehmen
-                </Link>
-              </div>
-            </div>
-          </section>
-
           <section className="section-container pb-14" id="kontakt" aria-labelledby="contact-heading">
             <h2 id="contact-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
               Öffnungszeiten, Kontakt & Standort
@@ -287,13 +312,19 @@ export default function ZahnarztDemoPage() {
                 </dl>
               </article>
 
-              <aside className="rounded-3xl border border-dashed border-[#b9d0d9] bg-[#eef6f8] p-7">
-                <h3 className="text-lg font-semibold text-[#244653]">Anfahrt</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#48636e]">
+              <aside className="rounded-3xl border border-[#d4e2e7] bg-white p-4 sm:p-5">
+                <h3 className="px-2 text-lg font-semibold text-[#244653]">Anfahrt</h3>
+                <p className="mt-2 px-2 text-sm leading-relaxed text-[#48636e]">
                   Zentral in Hamburg gelegen, gut erreichbar mit U-Bahn und Bus. Fahrradstellplätze befinden sich direkt vor der Praxis.
                 </p>
-                <div className="mt-5 rounded-2xl border border-[#c8dbe1] bg-white p-4 text-sm text-[#56737d]">
-                  Standortkarte (Platzhalter)
+                <div className="mt-4 overflow-hidden rounded-2xl border border-[#d4e2e7]">
+                  <iframe
+                    title="Google Maps Standort Praxis ElbDent"
+                    src="https://www.google.com/maps?q=Jungfernstieg%2C%20Hamburg&z=14&output=embed"
+                    className="h-64 w-full md:h-[320px]"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </aside>
             </div>
