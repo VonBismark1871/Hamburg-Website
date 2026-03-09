@@ -47,34 +47,24 @@ const services = [
 
 const lookbook = [
   {
-    src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Friseurin arbeitet an einem modernen Damenhaarschnitt im hellen Salon',
-    style: 'sm:col-span-2 sm:row-span-2 h-[420px] sm:h-[520px]'
+    src: 'https://images.unsplash.com/photo-1523263685509-57c1d050d19b?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Haarschnitt-Ergebnis mit sauberem Fall und natürlichem Glanz',
+    style: 'h-[250px] sm:h-[290px]'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Coloration-Ergebnis mit weichen Balayage-Verläufen',
+    style: 'h-[250px] sm:h-[290px]'
   },
   {
     src: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Balayage Ergebnis mit weichen Blondnuancen bei natürlichem Licht',
-    style: 'h-[250px] sm:h-[250px]'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Styling mit Föhn und Rundbürste für langes Haar',
-    style: 'h-[300px] sm:h-[350px]'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Kundin mit frisch gestyltem Haar nach dem Salontermin',
-    style: 'h-[250px] sm:h-[280px]'
+    alt: 'Styled Hair Portrait mit definierten Wellen nach dem Salontermin',
+    style: 'h-[250px] sm:h-[290px]'
   },
   {
     src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Modernes Saloninterieur mit Spiegeln und Stylingplätzen',
-    style: 'sm:col-span-2 h-[250px] sm:h-[280px]'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1559599076-9c61d8e1b6ed?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Friseurin setzt Highlights mit Folientechnik im Salon',
-    style: 'h-[260px] sm:h-[320px]'
+    alt: 'Helles Saloninterieur mit modernen Stylingplätzen',
+    style: 'h-[250px] sm:h-[290px]'
   }
 ];
 
@@ -135,7 +125,38 @@ const stylists = [
   }
 ];
 
-const reasons = ['Individuelle Beratung', 'Moderne Farbtechniken', 'Angenehme Atmosphäre'];
+const reasons = [
+  {
+    title: 'Individuelle Beratung',
+    text: 'Wir analysieren Haarstruktur, Gesichtsform und persönliche Wünsche, um den passenden Look zu finden.'
+  },
+  {
+    title: 'Moderne Farbtechniken',
+    text: 'Balayage, Highlights und natürliche Farbverläufe für moderne und langlebige Ergebnisse.'
+  },
+  {
+    title: 'Angenehme Atmosphäre',
+    text: 'Ein ruhiger Salon mit persönlicher Betreuung und genügend Zeit für jeden Termin.'
+  }
+];
+
+const popularServices = [
+  {
+    icon: '✂️',
+    title: 'Haarschnitt',
+    text: 'Präzise Schnitte für Damen und Herren.'
+  },
+  {
+    icon: '🎨',
+    title: 'Coloration',
+    text: 'Moderne Farbtechniken für natürliche Ergebnisse.'
+  },
+  {
+    icon: '✨',
+    title: 'Balayage',
+    text: 'Sanfte Highlights für lebendige Haarfarben.'
+  }
+];
 
 const testimonials = [
   {
@@ -203,6 +224,22 @@ export default function FriseursalonDemoPage() {
             </div>
           </section>
 
+          <section className="section-container pb-16" aria-labelledby="popular-services-heading">
+            <h2 id="popular-services-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Unsere beliebtesten Leistungen</h2>
+            <div className="mt-7 grid gap-4 md:grid-cols-3">
+              {popularServices.map((service) => (
+                <article
+                  key={service.title}
+                  className="rounded-[1.7rem] border border-[#e1d6c9] bg-[#fffdfa] p-6 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-22px_rgba(53,40,33,0.55)]"
+                >
+                  <p className="text-2xl" aria-hidden="true">{service.icon}</p>
+                  <h3 className="mt-4 text-xl font-semibold text-[#3b312d]">{service.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#655951]">{service.text}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <section className="section-container pb-14" aria-label="Vertrauen und Bewertungen">
             <div className="flex flex-col gap-4 rounded-[1.7rem] border border-[#dfd2c4] bg-[#fff8f0] px-6 py-5 md:flex-row md:items-center md:justify-between">
               <p className="text-sm font-semibold text-[#4c403a] sm:text-base">★★★★★ 4.8 Bewertung bei Google · 120+ Rezensionen</p>
@@ -223,9 +260,9 @@ export default function FriseursalonDemoPage() {
                 </p>
               </div>
               <div className="rounded-[2rem] border border-[#dfd3c7] bg-[#fffdfa] p-4 sm:p-5">
-                <ul className="space-y-3">
+                <ul className="divide-y divide-[#ebe1d6] overflow-hidden rounded-2xl border border-[#ece2d7] bg-[#fffaf4]">
                   {services.map((service) => (
-                    <li key={service.title} className="rounded-2xl border border-[#e8ddd1] bg-[#fffaf4] p-4 sm:p-5">
+                    <li key={service.title} className="p-4 sm:p-5">
                       <div className="flex items-start justify-between gap-4">
                         <h3 className="text-base font-semibold sm:text-lg">
                           <span className="mr-2" aria-hidden="true">{service.icon}</span>
@@ -248,7 +285,7 @@ export default function FriseursalonDemoPage() {
               </h2>
               <p className="hidden max-w-md text-right text-sm text-[#6b5f58] md:block">Schnitte, Farbe, Styling und echte Eindrücke direkt aus dem Salonalltag.</p>
             </div>
-            <div className="mt-7 grid auto-rows-[120px] gap-4 sm:grid-cols-3">
+            <div className="mt-7 grid gap-4 sm:grid-cols-2">
               {lookbook.map((item) => (
                 <figure key={item.src} className={`overflow-hidden rounded-[1.8rem] ${item.style}`}>
                   <Image src={item.src} alt={item.alt} width={1200} height={1200} className="h-full w-full object-cover" />
@@ -265,16 +302,33 @@ export default function FriseursalonDemoPage() {
                   <div className="grid grid-cols-2 gap-3">
                     <figure>
                       <Image src={item.before.src} alt={item.before.alt} width={700} height={800} className="h-40 w-full rounded-2xl object-cover" />
-                      <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#8a7d74]">Vorher</figcaption>
+                      <figcaption className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#8a7d74]">Vorher</figcaption>
                     </figure>
                     <figure>
                       <Image src={item.after.src} alt={item.after.alt} width={700} height={800} className="h-40 w-full rounded-2xl object-cover" />
-                      <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#8a7d74]">Nachher</figcaption>
+                      <figcaption className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#8a7d74]">Nachher</figcaption>
                     </figure>
                   </div>
-                  <p className="mt-3 text-sm font-medium text-[#4b413c]">{item.title}</p>
+                  <p className="mt-4 border-t border-[#e8ddd2] pt-3 text-sm font-medium text-[#4b413c]">{item.title}</p>
                 </article>
               ))}
+            </div>
+          </section>
+
+          <section className="section-container pb-16" aria-labelledby="post-transformation-cta-heading">
+            <div className="rounded-[2rem] bg-[#332d2a] px-7 py-9 text-[#f7f1e9] sm:px-10 sm:py-11">
+              <h2 id="post-transformation-cta-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Bereit für einen neuen Look?</h2>
+              <p className="mt-4 max-w-2xl text-[#ddcfc2]">
+                Vereinbaren Sie jetzt einen Termin und lassen Sie sich persönlich beraten.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link href="#kontakt" className="inline-flex rounded-full bg-[#e8c6a8] px-6 py-3 text-sm font-semibold text-[#2f2a28] transition hover:bg-[#f0d3b8]">
+                  Termin buchen
+                </Link>
+                <Link href="#kontakt" className="inline-flex rounded-full border border-[#9d8d81] px-6 py-3 text-sm font-semibold text-[#f8f2ea] transition hover:border-[#d8c6b5]">
+                  Kontakt aufnehmen
+                </Link>
+              </div>
             </div>
           </section>
 
@@ -300,10 +354,11 @@ export default function FriseursalonDemoPage() {
           <section className="section-container pb-16" aria-labelledby="reasons-heading">
             <div className="rounded-[2rem] border border-[#dbcebf] bg-[#fffaf3] p-7 sm:p-10">
               <h2 id="reasons-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Warum Kundinnen und Kunden uns wählen</h2>
-              <ul className="mt-6 grid gap-3 sm:grid-cols-3">
+              <ul className="mt-6 grid gap-4 sm:grid-cols-3">
                 {reasons.map((reason) => (
-                  <li key={reason} className="rounded-2xl border border-[#e4d8cc] bg-white px-4 py-4 text-sm font-medium text-[#4b423e]">
-                    {reason}
+                  <li key={reason.title} className="rounded-2xl border border-[#e4d8cc] bg-white p-5 shadow-[0_12px_24px_-22px_rgba(52,39,32,0.6)]">
+                    <h3 className="text-base font-semibold text-[#453b36]">{reason.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#635850]">{reason.text}</p>
                   </li>
                 ))}
               </ul>
@@ -362,11 +417,22 @@ export default function FriseursalonDemoPage() {
                   </div>
                 </dl>
               </article>
-              <aside className="rounded-[1.8rem] border border-dashed border-[#cdbfac] bg-[#f9f3eb] p-7">
+              <aside className="rounded-[1.8rem] border border-[#ded1c3] bg-[#f9f3eb] p-7">
                 <h3 className="text-lg font-semibold">Anfahrt</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#61554f]">
                   U-Bahn Hoheluftbrücke in Laufnähe, Fahrradstellplätze direkt am Salon und Parkhäuser in der Umgebung.
                 </p>
+                <div className="mt-4 overflow-hidden rounded-2xl border border-[#d6c8ba]">
+                  <div className="relative w-full overflow-hidden pb-[66%]">
+                    <iframe
+                      title="Standort von Friseursalon Elbhaar in der Isestraße 44, Hamburg"
+                      src="https://maps.google.com/maps?q=Isestra%C3%9Fe%2044%2C%2020144%20Hamburg&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                      className="absolute left-0 top-0 h-full w-full"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                </div>
                 <p className="mt-4 text-sm text-[#756960]">Termine telefonisch, per E-Mail oder über das Kontaktformular anfragen.</p>
               </aside>
             </div>
