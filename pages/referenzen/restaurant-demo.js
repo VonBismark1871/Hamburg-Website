@@ -3,85 +3,97 @@ import Link from 'next/link';
 import SEOHead from '../../components/SEOHead';
 import ReferenceBackButton from '../../components/references/ReferenceBackButton';
 
-const featuredDishes = [
+const menuCategories = [
   {
-    name: 'Steinbutt · Fenchel · Zitronenbutter',
-    description: 'Sanft gegarter Steinbutt mit geschmortem Fenchel, Kartoffelcreme und frischer Zitronenbutter.',
-    price: '34 €',
-    image:
-      'https://images.unsplash.com/photo-1515669097368-22e68427d265?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Fein angerichtetes Fischgericht mit Fenchel auf dunklem Teller'
+    category: 'Vorspeisen',
+    items: [
+      {
+        name: 'Burrata mit Tomaten und Basilikum',
+        description: 'Cremige Burrata, bunte Tomaten, kaltgepresstes Olivenöl und Basilikum.',
+        price: '12 €'
+      },
+      {
+        name: 'Rindercarpaccio mit Parmesan',
+        description: 'Hauchdünn geschnittenes Rindfleisch mit Rucola, Zitrone und gehobeltem Parmesan.',
+        price: '14 €'
+      },
+      {
+        name: 'Gebratene Garnelen mit Kräutern',
+        description: 'In Knoblauch und Petersilie geschwenkte Garnelen mit leichter Zitronennote.',
+        price: '15 €'
+      }
+    ]
   },
   {
-    name: 'Geschmorte Rote Bete · Burrata · Haselnuss',
-    description: 'Warme Rote Bete aus dem Ofen mit cremiger Burrata, gerösteten Haselnüssen und Kräutern.',
-    price: '16 €',
-    image:
-      'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Vorspeise mit Roter Bete und Burrata in modernem Restaurantstil'
+    category: 'Hauptgerichte',
+    items: [
+      {
+        name: 'Gebratenes Lachsfilet mit Gemüse',
+        description: 'Auf der Haut gebratenes Lachsfilet mit saisonalem Marktgemüse und Kräuterbutter.',
+        price: '24 €'
+      },
+      {
+        name: 'Rinderfilet mit Rosmarinkartoffeln',
+        description: 'Zartes Rinderfilet, geröstete Rosmarinkartoffeln und dunkler Jus.',
+        price: '29 €'
+      },
+      {
+        name: 'Hausgemachte Pasta mit Trüffel',
+        description: 'Frische Pasta mit cremiger Trüffelsauce, Parmesan und schwarzem Pfeffer.',
+        price: '19 €'
+      }
+    ]
   },
   {
-    name: 'Tagliatelle · Pilze · Thymianjus',
-    description: 'Hausgemachte Tagliatelle mit sautierten Waldpilzen, Parmesan und feiner Thymiannote.',
-    price: '22 €',
-    image:
-      'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Pasta-Teller mit Pilzen und Kräutern in warmem Licht'
+    category: 'Desserts',
+    items: [
+      {
+        name: 'Tiramisu',
+        description: 'Klassisch geschichtet mit Espresso, Mascarpone und feinem Kakaopulver.',
+        price: '9 €'
+      },
+      {
+        name: 'Zitronentarte',
+        description: 'Mürber Boden, frische Zitronencreme und leicht karamellisierte Meringue.',
+        price: '8 €'
+      },
+      {
+        name: 'Schokoladenmousse',
+        description: 'Luftige Mousse aus dunkler Schokolade mit marinierten Beeren.',
+        price: '9 €'
+      }
+    ]
   },
   {
-    name: 'Schokoladenmousse · Birne · Mandel',
-    description: 'Luftige Mousse au Chocolat mit pochierter Birne und knusprigem Mandelkrokant.',
-    price: '12 €',
-    image:
-      'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Dessert mit Schokoladenmousse und Birne auf Keramikteller'
+    category: 'Getränke',
+    items: [
+      {
+        name: 'Hausgemachte Limonade',
+        description: 'Zitrone, Minze und Soda, frisch serviert auf Eis.',
+        price: '6 €'
+      },
+      {
+        name: 'Grauburgunder, trocken (0,2 l)',
+        description: 'Fruchtig-mineralischer Weißwein, passend zu Fisch und Vorspeisen.',
+        price: '8 €'
+      }
+    ]
   }
 ];
 
-const galleryImages = [
-  {
-    src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Restaurantbar mit warmen Naturmaterialien und stimmungsvoller Beleuchtung'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Gedeckter Tisch mit Kerzenlicht in elegantem Hamburger Restaurant'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Chef beim finalen Anrichten eines Tellers in offener Küche'
-  }
-];
-
-const reasons = ['Frische Küche', 'Stilvolles Ambiente', 'Einfache Reservierung'];
-
-const testimonials = [
-  {
-    quote: 'Ein ruhiger, schöner Abend mit exzellenter Küche. Besonders die saisonalen Gerichte waren hervorragend.',
-    author: 'Julia M., Hamburg'
-  },
-  {
-    quote: 'Unkomplizierte Reservierung, aufmerksamer Service und ein Ambiente, in dem man gern länger bleibt.',
-    author: 'Leon & Mara'
-  },
-  {
-    quote: 'Modern, herzlich und kulinarisch auf den Punkt. Genau die Art Restaurant, die wir gesucht haben.',
-    author: 'Tobias R.'
-  }
-];
 
 function RestaurantHero() {
   return (
     <section id="start" className="section-container pb-16 pt-8 sm:pt-10" aria-labelledby="hero-heading">
       <p className="text-sm text-[#6a5e50]">Beispiel einer möglichen Restaurant-Website</p>
-      <div className="mt-4 grid gap-5 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
-        <figure className="relative overflow-hidden rounded-[2rem]">
+      <div className="mt-4 grid gap-5 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
+        <figure className="relative overflow-hidden rounded-[2rem] shadow-[0_24px_70px_-40px_rgba(33,22,13,0.8)]">
           <Image
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=80"
-            alt="Modernes Restaurantinterieur mit gedeckten Tischen und warmer Abendstimmung"
+            src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1900&q=80"
+            alt="Detailreich angerichtetes Gericht auf einem Holztisch in warmem Restaurantlicht"
             width={1800}
             height={1300}
-            className="h-[520px] w-full object-cover"
+            className="h-[560px] w-full object-cover"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#201a16]/80 via-[#201a16]/30 to-transparent" />
@@ -90,7 +102,7 @@ function RestaurantHero() {
               Modernes Restaurant in Hamburg
             </h1>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-[#f1e5d7] sm:text-lg">
-              Saisonale Küche, ruhige Atmosphäre und ein Abend, der sich leicht und besonders anfühlt.
+              Frische Küche, stilvolles Ambiente und entspannte Abende im Herzen Hamburgs.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -109,14 +121,14 @@ function RestaurantHero() {
           </div>
         </figure>
         <aside className="grid gap-5 rounded-[2rem] bg-[#efe5d7] p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold text-[#2a2420]">Küche mit hanseatischer Ruhe</h2>
+          <h2 className="text-2xl font-semibold text-[#2a2420]">Abende mit Geschmack und Atmosphäre</h2>
           <p className="text-[#4d4339]">
-            Im Hafenblick verbinden wir regionale Produkte mit moderner Leichtigkeit. Der Fokus liegt auf klaren Aromen,
-            guter Gastlichkeit und einer entspannten Abendstimmung.
+            Im Hafenblick trifft moderne Küche auf aufmerksamen Service. Unser Gastraum ist ruhig, warm beleuchtet und
+            ideal für Dinner zu zweit oder gesellige Runden.
           </p>
           <Image
-            src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80"
-            alt="Ansprechend angerichtetes Hauptgericht in modernem Restaurant"
+            src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80"
+            alt="Chef richtet in einer offenen Restaurantküche ein Gericht an"
             width={1200}
             height={900}
             className="h-56 w-full rounded-2xl object-cover"
@@ -132,23 +144,57 @@ function MenuPreview() {
     <section id="speisekarte" className="section-container pb-16" aria-labelledby="menu-heading">
       <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
         <h2 id="menu-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-          Kuratierte Menüvorschau
+          Speisekarte
         </h2>
-        <p className="max-w-lg text-sm text-[#635749]">Vier ausgewählte Gerichte als Eindruck der Karte.</p>
+        <p className="max-w-lg text-sm text-[#635749]">Eine Auswahl aus unserer aktuellen Abendkarte.</p>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {featuredDishes.map((dish) => (
-          <article key={dish.name} className="overflow-hidden rounded-[1.5rem] bg-[#f7f0e6]">
-            <Image src={dish.image} alt={dish.alt} width={1200} height={900} className="h-52 w-full object-cover" />
-            <div className="space-y-3 p-5">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-lg font-semibold text-[#2a2420]">{dish.name}</h3>
-                <p className="text-sm font-semibold text-[#7e5132]">{dish.price}</p>
-              </div>
-              <p className="text-sm leading-relaxed text-[#544a40]">{dish.description}</p>
-            </div>
+      <div className="grid gap-5 lg:grid-cols-2">
+        {menuCategories.map((section) => (
+          <article key={section.category} className="rounded-[1.5rem] bg-[#f8f1e7] p-6">
+            <h3 className="text-2xl font-semibold text-[#2f2721]">{section.category}</h3>
+            <ul className="mt-4 space-y-4">
+              {section.items.map((dish) => (
+                <li key={dish.name} className="border-b border-[#d8c7b4]/70 pb-4 last:border-b-0 last:pb-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="font-medium text-[#2f2721]">{dish.name}</p>
+                    <p className="whitespace-nowrap text-sm font-semibold text-[#7e5132]">{dish.price}</p>
+                  </div>
+                  <p className="mt-1 text-sm leading-relaxed text-[#544a40]">{dish.description}</p>
+                </li>
+              ))}
+            </ul>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function KitchenStory() {
+  return (
+    <section className="section-container pb-16" aria-labelledby="kitchen-heading">
+      <div className="grid gap-6 rounded-[2rem] bg-[#efe3d4] p-7 lg:grid-cols-[1fr_1.1fr] lg:items-center sm:p-10">
+        <figure className="overflow-hidden rounded-[1.5rem]">
+          <Image
+            src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1400&q=80"
+            alt="Mehrere Teller mit modern angerichteten Speisen auf einem Restauranttisch"
+            width={1400}
+            height={1000}
+            className="h-72 w-full object-cover"
+          />
+        </figure>
+        <div>
+          <h2 id="kitchen-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
+            Unsere Küche
+          </h2>
+          <p className="mt-4 text-[#4f453b]">
+            Unsere Küche verbindet moderne europäische Gerichte mit frischen Zutaten aus der Region. Im Mittelpunkt
+            stehen klare Aromen, saisonale Produkte und eine Atmosphäre, in der man entspannt genießen kann.
+          </p>
+          <p className="mt-3 text-[#4f453b]">
+            Vom ersten Aperitif bis zum Dessert soll jeder Besuch leicht, hochwertig und herzlich wirken.
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -158,24 +204,37 @@ function AtmosphereGallery() {
   return (
     <section id="galerie" className="section-container pb-16" aria-labelledby="gallery-heading">
       <h2 id="gallery-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-        Atmosphäre im Haus
+        Eindrücke aus dem Restaurant
       </h2>
-      <div className="mt-6 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="mt-6 grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
         <figure className="overflow-hidden rounded-[1.8rem]">
           <Image
-            src={galleryImages[0].src}
-            alt={galleryImages[0].alt}
-            width={1600}
-            height={1100}
-            className="h-[430px] w-full object-cover"
+            src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1800&q=80"
+            alt="Stilvoller Restaurantinnenraum mit gedeckten Tischen und warmen Lichtakzenten"
+            width={1800}
+            height={1200}
+            className="h-[520px] w-full object-cover"
           />
         </figure>
         <div className="grid gap-4">
-          {galleryImages.slice(1).map((image) => (
-            <figure key={image.src} className="overflow-hidden rounded-[1.6rem]">
-              <Image src={image.src} alt={image.alt} width={1200} height={900} className="h-[207px] w-full object-cover" />
-            </figure>
-          ))}
+          <figure className="overflow-hidden rounded-[1.6rem]">
+            <Image
+              src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80"
+              alt="Frisch angerichtete Speisen und Weingläser auf einem Restauranttisch"
+              width={1200}
+              height={900}
+              className="h-[252px] w-full object-cover"
+            />
+          </figure>
+          <figure className="overflow-hidden rounded-[1.6rem]">
+            <Image
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80"
+              alt="Liebevoll gedeckter Tisch mit Kerzenlicht für ein Abendessen"
+              width={1200}
+              height={900}
+              className="h-[252px] w-full object-cover"
+            />
+          </figure>
         </div>
       </div>
     </section>
@@ -197,51 +256,34 @@ export default function RestaurantDemoPage() {
         <main>
           <RestaurantHero />
           <MenuPreview />
+          <KitchenStory />
           <AtmosphereGallery />
 
-          <section className="section-container pb-16" aria-labelledby="reasons-heading">
-            <h2 id="reasons-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-              Warum Gäste dieses Restaurant wählen
-            </h2>
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              {reasons.map((reason) => (
-                <article key={reason} className="rounded-2xl border border-[#d8c7b4] bg-[#f7efe4] p-5">
-                  <h3 className="text-lg font-medium text-[#3a312b]">{reason}</h3>
-                </article>
-              ))}
-            </div>
-          </section>
-
           <section id="reservierung" className="section-container pb-16" aria-labelledby="reservation-heading">
-            <div className="grid gap-5 rounded-[2rem] bg-[#2e2a27] p-8 text-[#f6eee2] lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="grid gap-5 rounded-[2rem] bg-[#2e2a27] p-8 text-[#f6eee2] shadow-[0_24px_60px_-36px_rgba(0,0,0,0.8)] lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <h2 id="reservation-heading" className="text-3xl font-semibold sm:text-4xl">
                   Reservieren Sie Ihren Tisch
                 </h2>
                 <p className="mt-3 max-w-xl text-[#dfd1c0]">
-                  Für Lunch, Dinner oder einen besonderen Anlass. Wir bestätigen Ihre Anfrage zeitnah.
+                  Ob Dinner zu zweit oder ein gemeinsamer Abend mit Freunden – Reservierungen können schnell und
+                  unkompliziert angefragt werden.
                 </p>
               </div>
-              <Link
-                href="tel:+49401234567"
-                className="inline-flex h-fit rounded-md bg-[#c67b4a] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#b36b3c]"
-              >
-                Jetzt reservieren
-              </Link>
-            </div>
-          </section>
-
-          <section className="section-container pb-16" aria-labelledby="testimonials-heading">
-            <h2 id="testimonials-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-              Stimmen unserer Gäste
-            </h2>
-            <div className="mt-6 grid gap-4 lg:grid-cols-3">
-              {testimonials.map((testimonial) => (
-                <blockquote key={testimonial.author} className="rounded-2xl bg-[#f8f1e7] p-6">
-                  <p className="text-sm leading-relaxed text-[#4f453b]">“{testimonial.quote}”</p>
-                  <cite className="mt-4 block text-sm font-semibold not-italic text-[#7a4f30]">{testimonial.author}</cite>
-                </blockquote>
-              ))}
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <Link
+                  href="tel:+49401234567"
+                  className="inline-flex h-fit rounded-md bg-[#c67b4a] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#b36b3c]"
+                >
+                  Jetzt reservieren
+                </Link>
+                <Link
+                  href="mailto:reservierung@hafenblick-demo.de"
+                  className="inline-flex h-fit rounded-md border border-[#d9c7b3] px-7 py-3 text-sm font-semibold text-[#f6eee2] transition hover:bg-[#f6eee2]/10"
+                >
+                  Kontakt aufnehmen
+                </Link>
+              </div>
             </div>
           </section>
 
