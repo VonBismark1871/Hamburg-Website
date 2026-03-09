@@ -12,9 +12,9 @@ const projects = [
     image: '/demo-images/restaurant.svg'
   },
   {
-    title: 'Barbershop Website',
+    title: 'Friseursalon Website Demo',
     description:
-      'Website für Friseursalons mit Terminbuchung, Leistungsübersicht und moderner Bilddarstellung.',
+      'Elegantes Website-Beispiel für moderne Friseursalons mit Leistungsbereich, Teamsektion und Termin-CTA.',
     image: '/demo-images/barbershop.svg'
   },
   {
@@ -57,7 +57,13 @@ export default function ReferenzenPage() {
                   <h3 className="text-xl font-semibold text-slateBlue">{project.title}</h3>
                   <p className="mt-3 text-slate-600">{project.description}</p>
                   <Link
-                    href={project.title === 'Restaurant Website Demo' ? '/referenzen/restaurant-demo' : '/kontakt'}
+                    href={
+                      project.title === 'Restaurant Website Demo'
+                        ? '/referenzen/restaurant-demo'
+                        : project.title === 'Friseursalon Website Demo'
+                          ? '/referenzen/friseursalon-demo'
+                          : '/kontakt'
+                    }
                     className="mt-5 inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
                   >
                     Demo ansehen
