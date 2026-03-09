@@ -3,6 +3,17 @@ import Link from 'next/link';
 import SEOHead from '../../components/SEOHead';
 import ReferenceBackButton from '../../components/references/ReferenceBackButton';
 
+const chefRecommendations = [
+  {
+    name: 'Rinderfilet mit Trüffeljus',
+    price: '29 €'
+  },
+  {
+    name: 'Hausgemachte Tagliatelle mit Burrata',
+    price: '18 €'
+  }
+];
+
 const menuCategories = [
   {
     category: 'Vorspeisen',
@@ -81,16 +92,15 @@ const menuCategories = [
   }
 ];
 
-
 function RestaurantHero() {
   return (
-    <section id="start" className="section-container pb-16 pt-8 sm:pt-10" aria-labelledby="hero-heading">
+    <section id="start" className="section-container pb-12 pt-8 sm:pt-10" aria-labelledby="hero-heading">
       <p className="text-sm text-[#6a5e50]">Beispiel einer möglichen Restaurant-Website</p>
       <div className="mt-4 grid gap-5 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
         <figure className="relative overflow-hidden rounded-[2rem] shadow-[0_24px_70px_-40px_rgba(33,22,13,0.8)]">
           <Image
-            src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1900&q=80"
-            alt="Detailreich angerichtetes Gericht auf einem Holztisch in warmem Restaurantlicht"
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1900&q=80"
+            alt="Fein angerichtete Gerichte und Weingläser auf einem warm beleuchteten Restauranttisch"
             width={1800}
             height={1300}
             className="h-[560px] w-full object-cover"
@@ -109,7 +119,7 @@ function RestaurantHero() {
                 href="#reservierung"
                 className="inline-flex rounded-md bg-[#c67b4a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#b36b3c]"
               >
-                Tisch reservieren
+                Jetzt reservieren
               </Link>
               <Link
                 href="#speisekarte"
@@ -127,8 +137,8 @@ function RestaurantHero() {
             ideal für Dinner zu zweit oder gesellige Runden.
           </p>
           <Image
-            src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80"
-            alt="Chef richtet in einer offenen Restaurantküche ein Gericht an"
+            src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80"
+            alt="Chef finalisiert ein detailreich angerichtetes Hauptgericht in der Restaurantküche"
             width={1200}
             height={900}
             className="h-56 w-full rounded-2xl object-cover"
@@ -139,32 +149,15 @@ function RestaurantHero() {
   );
 }
 
-function MenuPreview() {
+function TrustBlock() {
   return (
-    <section id="speisekarte" className="section-container pb-16" aria-labelledby="menu-heading">
-      <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
-        <h2 id="menu-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-          Speisekarte
-        </h2>
-        <p className="max-w-lg text-sm text-[#635749]">Eine Auswahl aus unserer aktuellen Abendkarte.</p>
-      </div>
-      <div className="grid gap-5 lg:grid-cols-2">
-        {menuCategories.map((section) => (
-          <article key={section.category} className="rounded-[1.5rem] bg-[#f8f1e7] p-6">
-            <h3 className="text-2xl font-semibold text-[#2f2721]">{section.category}</h3>
-            <ul className="mt-4 space-y-4">
-              {section.items.map((dish) => (
-                <li key={dish.name} className="border-b border-[#d8c7b4]/70 pb-4 last:border-b-0 last:pb-0">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="font-medium text-[#2f2721]">{dish.name}</p>
-                    <p className="whitespace-nowrap text-sm font-semibold text-[#7e5132]">{dish.price}</p>
-                  </div>
-                  <p className="mt-1 text-sm leading-relaxed text-[#544a40]">{dish.description}</p>
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
+    <section className="section-container pb-14" aria-label="Bewertungen">
+      <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-[#d9c7b4] bg-[#f8f1e7] px-5 py-3 text-sm text-[#4f453b] sm:gap-4">
+        <span className="tracking-[0.12em] text-[#b27141]" aria-hidden="true">
+          ★★★★★
+        </span>
+        <p className="font-medium">4.7 bei Google · 180 Bewertungen</p>
+        <p className="text-[#6b5e4f]">Beliebt bei Gästen aus ganz Hamburg.</p>
       </div>
     </section>
   );
@@ -191,26 +184,77 @@ function KitchenStory() {
             Unsere Küche verbindet moderne europäische Gerichte mit frischen Zutaten aus der Region. Im Mittelpunkt
             stehen klare Aromen, saisonale Produkte und eine Atmosphäre, in der man entspannt genießen kann.
           </p>
-          <p className="mt-3 text-[#4f453b]">
-            Vom ersten Aperitif bis zum Dessert soll jeder Besuch leicht, hochwertig und herzlich wirken.
-          </p>
+
+          <div className="mt-6 rounded-2xl border border-[#d7c1ab] bg-[#f7efe4] p-5">
+            <h3 className="text-xl font-semibold text-[#2f2721]">Unser Küchenchef</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#544a40]">
+              Mit einer klaren, saisonalen Handschrift bringt unser Küchenchef moderne europäische Gerichte und frische
+              Produkte aus der Region auf den Teller.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
+function MenuPreview() {
+  return (
+    <section id="speisekarte" className="section-container pb-16" aria-labelledby="menu-heading">
+      <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+        <h2 id="menu-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
+          Speisekarte
+        </h2>
+        <p className="max-w-lg text-sm text-[#635749]">Eine Auswahl aus unserer aktuellen Abendkarte.</p>
+      </div>
+
+      <article className="mb-6 rounded-[1.4rem] border border-[#d8c7b4] bg-[#f7eee2] p-6">
+        <h3 className="text-xl font-semibold text-[#2f2721]">Empfehlung des Küchenchefs</h3>
+        <ul className="mt-4 space-y-3">
+          {chefRecommendations.map((dish) => (
+            <li key={dish.name} className="flex items-start justify-between gap-3 border-b border-[#dac8b6]/70 pb-3 last:border-b-0 last:pb-0">
+              <p className="font-medium text-[#2f2721]">{dish.name}</p>
+              <p className="whitespace-nowrap text-sm font-semibold text-[#7e5132]">{dish.price}</p>
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <div className="grid gap-5 lg:grid-cols-2">
+        {menuCategories.map((section) => (
+          <article key={section.category} className="rounded-[1.5rem] bg-[#f8f1e7] p-6">
+            <h3 className="text-2xl font-semibold text-[#2f2721]">{section.category}</h3>
+            <ul className="mt-4 space-y-4">
+              {section.items.map((dish) => (
+                <li key={dish.name} className="border-b border-[#d8c7b4]/70 pb-4 last:border-b-0 last:pb-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="font-medium text-[#2f2721]">{dish.name}</p>
+                    <p className="whitespace-nowrap text-sm font-semibold text-[#7e5132]">{dish.price}</p>
+                  </div>
+                  <p className="mt-1 text-sm leading-relaxed text-[#544a40]">{dish.description}</p>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <p className="mt-5 text-sm text-[#635749]">Saisonale Gerichte wechseln regelmäßig je nach Marktangebot.</p>
+    </section>
+  );
+}
+
 function AtmosphereGallery() {
   return (
-    <section id="galerie" className="section-container pb-16" aria-labelledby="gallery-heading">
+    <section id="galerie" className="section-container pb-12" aria-labelledby="gallery-heading">
       <h2 id="gallery-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
         Eindrücke aus dem Restaurant
       </h2>
-      <div className="mt-6 grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
+      <div className="mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
         <figure className="overflow-hidden rounded-[1.8rem]">
           <Image
-            src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1800&q=80"
-            alt="Stilvoller Restaurantinnenraum mit gedeckten Tischen und warmen Lichtakzenten"
+            src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=80"
+            alt="Ansprechend angerichtete Hauptspeise mit Beilagen auf einem Restauranttisch"
             width={1800}
             height={1200}
             className="h-[520px] w-full object-cover"
@@ -220,7 +264,7 @@ function AtmosphereGallery() {
           <figure className="overflow-hidden rounded-[1.6rem]">
             <Image
               src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80"
-              alt="Frisch angerichtete Speisen und Weingläser auf einem Restauranttisch"
+              alt="Gedeckter Esstisch mit mehreren Tellern und Weingläsern im Abendlicht"
               width={1200}
               height={900}
               className="h-[252px] w-full object-cover"
@@ -228,8 +272,8 @@ function AtmosphereGallery() {
           </figure>
           <figure className="overflow-hidden rounded-[1.6rem]">
             <Image
-              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80"
-              alt="Liebevoll gedeckter Tisch mit Kerzenlicht für ein Abendessen"
+              src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80"
+              alt="Servierter Rotwein neben kleinen Vorspeisentellern in stilvollem Ambiente"
               width={1200}
               height={900}
               className="h-[252px] w-full object-cover"
@@ -246,7 +290,7 @@ export default function RestaurantDemoPage() {
     <>
       <SEOHead
         title="Restaurant Website Demo – Hamburg Websites"
-        description="Beispiel einer modernen Restaurant-Website mit Reservierung, Speisekarte, Galerie und Kontaktbereich."
+        description="Beispiel einer modernen Restaurant-Website mit Speisekarte, Galerie und Reservierungsfunktion."
         path="/referenzen/restaurant-demo"
       />
 
@@ -255,9 +299,16 @@ export default function RestaurantDemoPage() {
 
         <main>
           <RestaurantHero />
-          <MenuPreview />
+          <TrustBlock />
           <KitchenStory />
+          <MenuPreview />
           <AtmosphereGallery />
+
+          <section className="section-container pb-12" aria-label="Atmosphäre Hinweis">
+            <p className="rounded-2xl bg-[#efe4d6] px-6 py-4 text-[#4f453b]">
+              Genießen Sie moderne Küche in entspannter Atmosphäre mit Blick auf den Hafen.
+            </p>
+          </section>
 
           <section id="reservierung" className="section-container pb-16" aria-labelledby="reservation-heading">
             <div className="grid gap-5 rounded-[2rem] bg-[#2e2a27] p-8 text-[#f6eee2] shadow-[0_24px_60px_-36px_rgba(0,0,0,0.8)] lg:grid-cols-[1fr_auto] lg:items-center">
@@ -266,22 +317,21 @@ export default function RestaurantDemoPage() {
                   Reservieren Sie Ihren Tisch
                 </h2>
                 <p className="mt-3 max-w-xl text-[#dfd1c0]">
-                  Ob Dinner zu zweit oder ein gemeinsamer Abend mit Freunden – Reservierungen können schnell und
-                  unkompliziert angefragt werden.
+                  Ob Dinner zu zweit oder ein gemeinsamer Abend mit Freunden – wir freuen uns auf Ihre Reservierung.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 lg:justify-end">
                 <Link
-                  href="tel:+49401234567"
+                  href="mailto:reservierung@hafenblick-demo.de"
                   className="inline-flex h-fit rounded-md bg-[#c67b4a] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#b36b3c]"
                 >
                   Jetzt reservieren
                 </Link>
                 <Link
-                  href="mailto:reservierung@hafenblick-demo.de"
+                  href="tel:+49401234567"
                   className="inline-flex h-fit rounded-md border border-[#d9c7b3] px-7 py-3 text-sm font-semibold text-[#f6eee2] transition hover:bg-[#f6eee2]/10"
                 >
-                  Kontakt aufnehmen
+                  Telefonisch reservieren
                 </Link>
               </div>
             </div>
@@ -301,8 +351,11 @@ export default function RestaurantDemoPage() {
                 <p>Telefon: 040 / 123 45 67</p>
                 <p>E-Mail: reservierung@hafenblick-demo.de</p>
                 <div className="pt-2">
-                  <Link href="mailto:reservierung@hafenblick-demo.de" className="text-sm font-semibold text-[#7a4f30] underline underline-offset-4">
-                    Kontakt aufnehmen
+                  <Link
+                    href="mailto:reservierung@hafenblick-demo.de"
+                    className="text-sm font-semibold text-[#7a4f30] underline underline-offset-4"
+                  >
+                    Reservierung per E-Mail
                   </Link>
                 </div>
               </div>
