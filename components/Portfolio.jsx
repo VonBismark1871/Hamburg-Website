@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import ReferenceCard from './references/ReferenceCard';
 import { getReferenceBySlug } from '../data/references';
 
-const homepageProjects = ['restaurant-demo', 'barbershop-demo', 'autoservice-demo']
+const homepageProjects = ['restaurant-demo', 'friseursalon-demo', 'autoservice-demo']
   .map((slug) => getReferenceBySlug(slug))
   .filter(Boolean);
 
