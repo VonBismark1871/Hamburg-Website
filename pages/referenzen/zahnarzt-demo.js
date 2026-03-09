@@ -10,15 +10,19 @@ import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButto
 const services = [
   {
     title: 'Prophylaxe',
-    description: 'Regelmäßige Vorsorge für gesunde Zähne und frühzeitige Erkennung von Veränderungen.'
+    description: 'Regelmäßige Vorsorge für gesunde Zähne und das frühzeitige Erkennen von Problemen.'
+  },
+  {
+    title: 'Vorsorgeuntersuchung',
+    description: 'Gründliche Kontrolltermine mit klaren Empfehlungen, damit Sie gut informiert entscheiden können.'
   },
   {
     title: 'Professionelle Zahnreinigung',
-    description: 'Sanfte Reinigung zur Entfernung von Belägen mit verständlicher Nachberatung für zuhause.'
+    description: 'Schonende Entfernung von Belägen und Verfärbungen inklusive Tipps für die tägliche Zahnpflege.'
   },
   {
     title: 'Ästhetische Zahnheilkunde',
-    description: 'Natürlich wirkende Korrekturen für ein harmonisches und selbstbewusstes Lächeln.'
+    description: 'Natürlich wirkende Korrekturen wie Bleaching oder kleine Formanpassungen für ein harmonisches Lächeln.'
   },
   {
     title: 'Zahnersatz',
@@ -26,7 +30,7 @@ const services = [
   },
   {
     title: 'Implantologie',
-    description: 'Moderne Implantatversorgung mit strukturierter Planung und klaren Behandlungsschritten.'
+    description: 'Sorgfältig geplante Implantatversorgung mit persönlicher Beratung in jeder Behandlungsphase.'
   },
   {
     title: 'Kinderzahnheilkunde',
@@ -47,52 +51,52 @@ const trustPoints = [
 
 const teamMembers = [
   {
-    name: 'Dr. Anna Becker',
+    name: 'Dr. David Becker',
     role: 'Allgemeine Zahnheilkunde',
     image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1000&q=80'
   },
   {
     name: 'Dr. Michael Hansen',
     role: 'Implantologie',
-    image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=1000&q=80'
+    image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1000&q=80'
   },
   {
     name: 'Lisa Krause',
     role: 'Prophylaxe & Patientenbetreuung',
-    image: 'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1000&q=80'
+    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1000&q=80'
   }
 ];
 
 const practicePhotos = [
   {
-    src: 'https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Moderne Behandlungseinheit mit Dentalstuhl und Deckenleuchte'
-  },
-  {
     src: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Zahnärztin behandelt einen Patienten in einem hellen Behandlungszimmer'
+    alt: 'Helles Behandlungszimmer mit modernem Dentalstuhl und ruhiger Praxisatmosphäre'
   },
   {
-    src: 'https://images.unsplash.com/photo-1643297654419-bc54ff95d84d?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Dentalinstrumente und moderne Geräte auf einem Behandlungstablett'
+    src: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Zahnarzt im Beratungsgespräch mit Patientin vor der Behandlung'
   },
   {
-    src: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Freundlicher Empfangs- und Wartebereich einer Zahnarztpraxis'
+    src: 'https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Behandlungssituation in einer modernen Zahnarztpraxis'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Freundlicher Empfangsbereich mit Sitzgelegenheiten in der Zahnarztpraxis'
   }
 ];
 
 const testimonials = [
   {
-    quote: 'Die Praxis ist modern, freundlich und sehr gut organisiert. Ich habe mich direkt gut aufgehoben gefühlt.',
+    quote: 'Ich wurde pünktlich aufgerufen und alles wurde ruhig erklärt. Genau so wünsche ich mir einen Zahnarzttermin.',
     author: 'Patientin aus Eppendorf'
   },
   {
-    quote: 'Sehr ruhige Atmosphäre und eine klare Erklärung aller Behandlungsschritte. Das hat mir Sicherheit gegeben.',
+    quote: 'Besonders angenehm fand ich die freundliche Betreuung und dass auf meine Fragen wirklich eingegangen wurde.',
     author: 'Patient aus Winterhude'
   },
   {
-    quote: 'Von der Terminvergabe bis zur Behandlung lief alles unkompliziert und professionell.',
+    quote: 'Von der Online-Anfrage bis zur Behandlung lief alles strukturiert und unkompliziert.',
     author: 'Patientin aus Altona'
   }
 ];
@@ -106,7 +110,7 @@ const openingHours = [
 ];
 
 const heroImages = {
-  primary: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1600&q=80',
+  primary: 'https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1600&q=80',
   fallback: '/demo-images/zahnarzt.svg'
 };
 
@@ -175,8 +179,8 @@ export default function ZahnarztDemoPage() {
             </div>
           </section>
 
-          <section className="section-container pb-16" aria-label="Google Bewertung">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border border-[#d4e2e7] bg-white px-6 py-4 text-sm text-[#2d4a56]">
+          <section className="section-container pb-14" aria-label="Google Bewertung">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-[#d4e2e7] bg-white px-6 py-4 text-sm text-[#2d4a56] sm:px-7">
               <span className="text-lg tracking-wide text-[#f2b01e]" aria-hidden="true">★★★★★</span>
               <p className="font-medium">4.8 Bewertung bei Google · 120+ Rezensionen</p>
               <p className="text-[#5c7781]">Viele zufriedene Patientinnen und Patienten aus Hamburg.</p>
@@ -201,13 +205,14 @@ export default function ZahnarztDemoPage() {
           </section>
 
           <section className="section-container pb-16" id="termin" aria-labelledby="booking-heading">
-            <div className="rounded-3xl bg-[#1f5f78] px-7 py-10 text-white sm:px-10">
+            <div className="rounded-3xl bg-[#1f5f78] px-7 py-10 text-white sm:px-10 sm:py-11">
               <h2 id="booking-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 Jetzt Termin anfragen
               </h2>
               <p className="mt-4 max-w-2xl text-[#dbeaf0]">
                 Ob Vorsorge, Zahnreinigung oder individuelle Behandlung – Termine können unkompliziert angefragt werden.
               </p>
+              <p className="mt-2 text-sm text-[#c7dde6]">Neue Patientinnen und Patienten willkommen.</p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link href="#kontakt" className="inline-flex items-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#1f5f78] transition hover:bg-[#edf6f9]">
                   Termin anfragen
@@ -241,8 +246,8 @@ export default function ZahnarztDemoPage() {
             </h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
-                <blockquote key={item.author} className="rounded-3xl border border-[#d4e2e7] bg-white p-6">
-                  <p className="text-sm leading-relaxed text-[#3f5e69]">“{item.quote}”</p>
+                <blockquote key={item.author} className="rounded-3xl border border-[#d4e2e7] bg-white p-6 shadow-[0_8px_24px_rgba(15,48,62,0.04)]">
+                  <p className="text-[15px] leading-relaxed text-[#3f5e69]">“{item.quote}”</p>
                   <footer className="mt-4 text-sm font-semibold text-[#5b7680]">{item.author}</footer>
                 </blockquote>
               ))}
@@ -271,13 +276,13 @@ export default function ZahnarztDemoPage() {
             </h2>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {teamMembers.map((member) => (
-                <article key={member.name} className="overflow-hidden rounded-3xl border border-[#d4e2e7] bg-white">
+                <article key={member.name} className="overflow-hidden rounded-3xl border border-[#d4e2e7] bg-white shadow-[0_12px_28px_rgba(12,42,54,0.06)]">
                   <Image
                     src={member.image}
                     alt={`${member.name}, Schwerpunkt ${member.role}`}
                     width={1000}
                     height={1150}
-                    className="h-64 w-full object-cover"
+                    className="h-64 w-full object-cover object-top"
                   />
                   <div className="p-5">
                     <h3 className="text-lg font-semibold text-[#1e3b46]">{member.name}</h3>
@@ -292,7 +297,7 @@ export default function ZahnarztDemoPage() {
             <h2 id="contact-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
               Öffnungszeiten, Kontakt & Standort
             </h2>
-            <div className="mt-7 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="mt-7 grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
               <article className="rounded-3xl border border-[#d4e2e7] bg-white p-7">
                 <h3 className="text-lg font-semibold text-[#1c3a45]">Praxis ElbDent</h3>
                 <p className="mt-3 text-sm text-[#49646f]">Musterstraße 27, 20095 Hamburg</p>
@@ -317,11 +322,11 @@ export default function ZahnarztDemoPage() {
                 <p className="mt-2 px-2 text-sm leading-relaxed text-[#48636e]">
                   Zentral in Hamburg gelegen, gut erreichbar mit U-Bahn und Bus. Fahrradstellplätze befinden sich direkt vor der Praxis.
                 </p>
-                <div className="mt-4 overflow-hidden rounded-2xl border border-[#d4e2e7]">
+                <div className="mt-4 overflow-hidden rounded-2xl border border-[#d4e2e7] bg-[#eef4f7]">
                   <iframe
                     title="Google Maps Standort Praxis ElbDent"
                     src="https://www.google.com/maps?q=Jungfernstieg%2C%20Hamburg&z=14&output=embed"
-                    className="h-64 w-full md:h-[320px]"
+                    className="h-[280px] w-full md:h-[320px]"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                   />
