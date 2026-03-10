@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
       <div className="section-container flex items-center justify-between gap-6 py-3">
-        <LogoLink className="shrink-0" />
+        <LogoLink className="shrink-0" showIcon={false} />
 
         <nav aria-label="Hauptnavigation" className="hidden items-center gap-5 text-sm text-slate-600 md:flex">
           {navItems.map((item) => (
