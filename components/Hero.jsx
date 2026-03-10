@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -19,6 +19,7 @@ const floatAnimation = {
 
 const AUTO_ADVANCE_MS = 4500;
 const MANUAL_PAUSE_MS = 4500;
+const SLIDE_TRANSITION_SECONDS = 0.56;
 
 const websitePreviews = [
   {
@@ -226,40 +227,67 @@ function SitePreview({ site, isActive, isFirst }) {
 }
 
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [resumeAutoplayAt, setResumeAutoplayAt] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTabVisible, setIsTabVisible] = useState(true);
 
-  useEffect(() => {
-    let intervalId;
-    let resumeTimeoutId;
+  const autoplayTimeoutRef = useRef(null);
+  const manualPauseUntilRef = useRef(0);
 
-    const startAutoplay = () => {
-      intervalId = window.setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % websitePreviews.length);
-      }, AUTO_ADVANCE_MS);
-    };
+  const clearAutoplayTimeout = useCallback(() => {
+    if (autoplayTimeoutRef.current) {
+      window.clearTimeout(autoplayTimeoutRef.current);
+      autoplayTimeoutRef.current = null;
+    }
+  }, []);
 
-    const remainingPause = Math.max(0, resumeAutoplayAt - Date.now());
+  const scheduleAutoplay = useCallback(() => {
+    clearAutoplayTimeout();
 
-    if (remainingPause > 0) {
-      resumeTimeoutId = window.setTimeout(startAutoplay, remainingPause);
-    } else {
-      startAutoplay();
+    if (shouldReduceMotion || isHovered || !isTabVisible) {
+      return;
     }
 
-    return () => {
-      if (intervalId) {
-        window.clearInterval(intervalId);
-      }
-      if (resumeTimeoutId) {
-        window.clearTimeout(resumeTimeoutId);
-      }
+    const waitTime = Math.max(AUTO_ADVANCE_MS, manualPauseUntilRef.current - Date.now());
+
+    autoplayTimeoutRef.current = window.setTimeout(() => {
+      setActiveIndex((prev) => (prev + 1) % websitePreviews.length);
+    }, waitTime);
+  }, [clearAutoplayTimeout, isHovered, isTabVisible, shouldReduceMotion]);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') {
+      return undefined;
+    }
+
+    const updateVisibility = () => {
+      setIsTabVisible(document.visibilityState === 'visible');
     };
-  }, [resumeAutoplayAt]);
+
+    updateVisibility();
+    document.addEventListener('visibilitychange', updateVisibility);
+
+    return () => {
+      document.removeEventListener('visibilitychange', updateVisibility);
+    };
+  }, []);
+
+  useEffect(() => {
+    scheduleAutoplay();
+    return () => {
+      clearAutoplayTimeout();
+    };
+  }, [activeIndex, clearAutoplayTimeout, scheduleAutoplay]);
 
   const handleIndicatorClick = (index) => {
+    if (index === activeIndex) {
+      return;
+    }
+
+    clearAutoplayTimeout();
     setActiveIndex(index);
-    setResumeAutoplayAt(Date.now() + MANUAL_PAUSE_MS);
+    manualPauseUntilRef.current = Date.now() + MANUAL_PAUSE_MS;
   };
 
   return (
@@ -331,9 +359,13 @@ export default function Hero() {
           className="mx-auto w-full max-w-2xl"
         >
           <motion.div
-            animate={floatAnimation}
+            animate={shouldReduceMotion ? undefined : floatAnimation}
             whileHover={{ y: -6, scale: 1.01, boxShadow: '0 24px 60px rgba(15, 23, 42, 0.14)' }}
             transition={{ duration: 0.25 }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onFocusCapture={() => setIsHovered(true)}
+            onBlurCapture={() => setIsHovered(false)}
             className="overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-100 via-white to-slate-50 shadow-2xl shadow-slate-300/40"
           >
             <div className="flex items-center gap-2 border-b border-slate-200/80 bg-gradient-to-b from-slate-100 to-slate-50 px-5 py-3">
@@ -347,9 +379,13 @@ export default function Hero() {
 
             <div className="relative h-[30rem] overflow-hidden sm:h-[32rem] lg:h-[34rem]">
               <motion.div
-                className="flex h-full"
+                className="flex h-full will-change-transform"
                 animate={{ x: `-${activeIndex * 100}%` }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : { duration: SLIDE_TRANSITION_SECONDS, ease: [0.22, 1, 0.36, 1] }
+                }
               >
                 {websitePreviews.map((site, index) => (
                   <SitePreview key={site.id} site={site} isActive={index === activeIndex} isFirst={index === 0} />
