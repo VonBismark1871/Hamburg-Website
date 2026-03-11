@@ -6,9 +6,9 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/brand/hw-monogram-favicon-v2.svg?v=20260311" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/brand/hw-monogram-favicon-v2.svg?v=20260311" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/brand/hw-monogram-favicon-v2.svg?v=20260311" />
+        <link rel="icon" href="/brand/favicon-v3.svg?v=20260311b" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/brand/favicon-v3.svg?v=20260311b" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/brand/favicon-v3.svg?v=20260311b" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link

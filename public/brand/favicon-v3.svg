@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="HW Favicon">
+  <defs>
+    <linearGradient id="fav-bg" x1="8" y1="56" x2="56" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#071438"/>
+      <stop offset="1" stop-color="#2fa0e6"/>
+    </linearGradient>
+    <linearGradient id="fav-dark" x1="15" y1="47" x2="29" y2="11" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#071438"/>
+      <stop offset="1" stop-color="#1f4f91"/>
+    </linearGradient>
+    <linearGradient id="fav-mid" x1="25" y1="45" x2="44" y2="17" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0a1c49"/>
+      <stop offset="1" stop-color="#2f93df"/>
+    </linearGradient>
+    <linearGradient id="fav-light" x1="37" y1="46" x2="57" y2="13" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1589d2"/>
+      <stop offset="1" stop-color="#6ad4f2"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="32" cy="32" r="30" fill="url(#fav-bg)"/>
+  <path d="M14 45V20l8-3v10h8V17l8-3v15l-16 10v6z" fill="url(#fav-dark)"/>
+  <path d="M26 45v-6l16-10h6l-12 16z" fill="url(#fav-mid)"/>
+  <path d="M43 29l3 14h5l8-30-8 3-3 10-2-4z" fill="url(#fav-light)"/>
+</svg>
