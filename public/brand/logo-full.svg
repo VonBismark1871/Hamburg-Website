@@ -1,7 +1,0 @@
-<svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hamburg Websites logo">
-  <rect x="0" y="18" width="40" height="40" rx="8" fill="#f8fafc"/>
-  <path d="M8 24h5v9h7v-9h5v28h-5V38h-7v14H8z" fill="#0f183d"/>
-  <path d="M27 24h4l2.5 18 2.5-18h4l-4 28h-5l-4-28z" fill="#3aa9df"/>
-  <text x="58" y="45" fill="#0f183d" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600" letter-spacing="-0.4">Hamburg</text>
-  <text x="222" y="45" fill="#3aa9df" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600" letter-spacing="-0.4">Websites</text>
-</svg>
