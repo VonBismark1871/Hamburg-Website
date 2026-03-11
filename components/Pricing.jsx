@@ -18,7 +18,8 @@ const projectPricingCards = [
     bullets: ['1 Seite', '1 Korrekturschleife', 'Responsives Design', 'Kontaktmöglichkeit', '7 Tage Prüfungsphase'],
     preview: {
       description: 'Kompakte Basis-Präsenz mit kurzer Vorstellung, Kontaktdaten und einfacher Struktur.',
-      bullets: ['1 Seite', 'Grundlegende Informationen', 'Kontaktmöglichkeit']
+      bullets: ['1 Seite', 'Grundlegende Informationen', 'Kontaktmöglichkeit'],
+      type: 'visitenkarte'
     }
   },
   {
@@ -35,7 +36,8 @@ const projectPricingCards = [
     ],
     preview: {
       description: 'Strukturierte Ein-Seiten-Website mit mehr Inhalten, klarer Nutzerführung und stärkerem Fokus auf Anfragen.',
-      bullets: ['1 längere Seite', 'Leistungen / Vorteile / Kontakt', 'Conversion-orientiert']
+      bullets: ['1 längere Seite', 'Leistungen / Vorteile / Kontakt', 'Conversion-orientiert'],
+      type: 'onepager'
     }
   },
   {
@@ -48,7 +50,8 @@ const projectPricingCards = [
     badge: 'Besonders gefragt',
     preview: {
       description: 'Website mit mehreren Unterseiten für umfangreichere Inhalte, bessere Navigation und detailliertere Informationen.',
-      bullets: ['mehrere Unterseiten', 'klarere Informationsstruktur', 'geeignet für größere Projekte']
+      bullets: ['mehrere Unterseiten', 'klarere Informationsstruktur', 'geeignet für größere Projekte'],
+      type: 'multipage'
     }
   },
   {
@@ -120,8 +123,13 @@ function PricingCard({ card, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
-      className={`card relative ${card.featured ? 'border-2 border-accent/45 bg-accent/[0.04] shadow-[0_18px_40px_-26px_rgba(79,70,229,0.55)]' : ''}`}
+      className={`card relative overflow-hidden ${
+        card.featured
+          ? 'border-2 border-accent/45 bg-gradient-to-b from-accent/[0.09] via-accent/[0.04] to-white shadow-[0_22px_45px_-30px_rgba(79,70,229,0.55)]'
+          : ''
+      }`}
     >
+      {card.featured ? <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-accent/10 to-transparent" /> : null}
       {card.badge ? (
         <span
           className={`mb-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
