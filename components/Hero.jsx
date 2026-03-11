@@ -377,9 +377,9 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="relative h-[30rem] overflow-hidden sm:h-[32rem] lg:h-[34rem]">
+            <div className="relative overflow-hidden">
               <motion.div
-                className="flex h-full will-change-transform"
+                className="flex will-change-transform"
                 animate={{ x: `-${activeIndex * 100}%` }}
                 transition={
                   shouldReduceMotion
@@ -391,29 +391,29 @@ export default function Hero() {
                   <SitePreview key={site.id} site={site} isActive={index === activeIndex} isFirst={index === 0} />
                 ))}
               </motion.div>
+            </div>
 
-              <div className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center">
-                <div className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-slate-300/90 bg-white/90 px-3 py-2 shadow-md shadow-slate-300/40 backdrop-blur">
-                  {websitePreviews.map((site, index) => {
-                    const isActive = index === activeIndex;
+            <div className="flex justify-center border-t border-slate-200/70 bg-white/80 px-4 py-3">
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-slate-300/90 bg-white/90 px-3 py-2 shadow-md shadow-slate-300/40 backdrop-blur">
+                {websitePreviews.map((site, index) => {
+                  const isActive = index === activeIndex;
 
-                    return (
-                      <button
-                        key={site.id}
-                        type="button"
-                        aria-label={`Zu ${site.logo} wechseln`}
-                        aria-current={isActive ? 'true' : 'false'}
-                        aria-pressed={isActive}
-                        onClick={() => handleIndicatorClick(index)}
-                        className={`h-3.5 rounded-full border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 ${
-                          isActive
-                            ? 'w-8 border-indigo-300 bg-indigo-500 shadow-sm shadow-indigo-300/60'
-                            : 'w-3.5 border-slate-300 bg-slate-300/90 hover:border-slate-400 hover:bg-slate-400/80'
-                        }`}
-                      />
-                    );
-                  })}
-                </div>
+                  return (
+                    <button
+                      key={site.id}
+                      type="button"
+                      aria-label={`Zu ${site.logo} wechseln`}
+                      aria-current={isActive ? 'true' : 'false'}
+                      aria-pressed={isActive}
+                      onClick={() => handleIndicatorClick(index)}
+                      className={`h-3.5 rounded-full border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 ${
+                        isActive
+                          ? 'w-8 border-indigo-300 bg-indigo-500 shadow-sm shadow-indigo-300/60'
+                          : 'w-3.5 border-slate-300 bg-slate-300/90 hover:border-slate-400 hover:bg-slate-400/80'
+                      }`}
+                    />
+                  );
+                })}
               </div>
             </div>
           </motion.div>
