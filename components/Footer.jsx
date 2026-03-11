@@ -37,7 +37,7 @@ export default function Footer() {
       <div className="section-container py-12 sm:py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <section aria-label="Hamburg Websites">
-            <LogoLink className="inline-flex" />
+            <LogoLink className="inline-flex" compact />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
               Moderne Websites für Unternehmen in Hamburg – klar strukturiert, hochwertig gestaltet und auf Anfragen
               ausgerichtet.
