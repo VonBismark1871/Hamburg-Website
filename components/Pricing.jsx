@@ -12,13 +12,15 @@ const projectPricingCards = [
   {
     title: 'Website-Visitenkarte',
     price: 'ab 400 €',
-    description: 'Kompakte Webpräsenz für Unternehmen, die online professionell auffindbar sein möchten.',
+    description:
+      'Sehr kompakte Webpräsenz für grundlegende Online-Sichtbarkeit mit Kontaktinformationen und professionellem Ersteindruck.',
     bullets: ['1 Seite', '1 Korrekturschleife', 'Responsives Design', 'Kontaktmöglichkeit', '7 Tage Prüfungsphase']
   },
   {
     title: 'Onepager',
     price: 'ab 650 €',
-    description: 'Eine strukturierte, conversion-orientierte Website auf einer Seite mit klarer Nutzerführung.',
+    description:
+      'Strukturierte, conversion-orientierte Einzelseite mit klarer Inhaltshierarchie und gezielter Nutzerführung.',
     bullets: [
       '1 strukturierte Landingpage',
       '2 Korrekturschleifen',
@@ -98,7 +100,7 @@ function PricingCard({ card, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
-      className={`card relative ${card.featured ? 'border-accent/40 bg-slate-50/60' : ''}`}
+      className={`card relative ${card.featured ? 'border-2 border-accent/45 bg-accent/[0.04] shadow-[0_18px_40px_-26px_rgba(79,70,229,0.55)]' : ''}`}
     >
       {card.badge ? (
         <span className="mb-4 inline-flex rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
@@ -106,7 +108,7 @@ function PricingCard({ card, index }) {
         </span>
       ) : null}
       <h3 className="text-xl font-semibold text-slateBlue">{card.title}</h3>
-      <p className="mt-3 text-3xl font-bold text-accent">{card.price}</p>
+      <p className={`mt-3 text-accent ${card.featured ? 'text-4xl font-extrabold' : 'text-3xl font-bold'}`}>{card.price}</p>
       <p className="mt-3 text-slate-600">{card.description}</p>
       <ul className="mt-5 space-y-2 text-sm text-slate-700">
         {card.bullets.map((item) => (
