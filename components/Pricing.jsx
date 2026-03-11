@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import PackagePreviewPopover from './pricing/PackagePreviewPopover';
 
 const projectPricingCards = [
   {
@@ -14,7 +15,11 @@ const projectPricingCards = [
     price: 'ab 400 €',
     description:
       'Sehr kompakte Webpräsenz für grundlegende Online-Sichtbarkeit mit Kontaktinformationen und professionellem Ersteindruck.',
-    bullets: ['1 Seite', '1 Korrekturschleife', 'Responsives Design', 'Kontaktmöglichkeit', '7 Tage Prüfungsphase']
+    bullets: ['1 Seite', '1 Korrekturschleife', 'Responsives Design', 'Kontaktmöglichkeit', '7 Tage Prüfungsphase'],
+    preview: {
+      description: 'Kompakte Basis-Präsenz mit kurzer Vorstellung, Kontaktdaten und einfacher Struktur.',
+      bullets: ['1 Seite', 'Grundlegende Informationen', 'Kontaktmöglichkeit']
+    }
   },
   {
     title: 'Onepager',
@@ -27,7 +32,11 @@ const projectPricingCards = [
       'Klare Inhaltsstruktur',
       'Technische Veröffentlichung',
       '7 Tage Prüfungsphase'
-    ]
+    ],
+    preview: {
+      description: 'Strukturierte Ein-Seiten-Website mit mehr Inhalten, klarer Nutzerführung und stärkerem Fokus auf Anfragen.',
+      bullets: ['1 längere Seite', 'Leistungen / Vorteile / Kontakt', 'Conversion-orientiert']
+    }
   },
   {
     title: 'Mehrseitige Website',
@@ -36,13 +45,24 @@ const projectPricingCards = [
     bullets: ['Mehrere Unterseiten', '2 Korrekturschleifen', 'Strukturierte Navigation', 'Technische Einrichtung', '7 Tage Prüfungsphase'],
     note: 'Abhängig von Seitenanzahl und Umfang',
     featured: true,
-    badge: 'Besonders gefragt'
+    badge: 'Besonders gefragt',
+    preview: {
+      description: 'Website mit mehreren Unterseiten für umfangreichere Inhalte, bessere Navigation und detailliertere Informationen.',
+      bullets: ['mehrere Unterseiten', 'klarere Informationsstruktur', 'geeignet für größere Projekte']
+    }
   },
   {
     title: 'Website mit Adminbereich',
     price: 'ab 1.500 €',
     description: 'Geeignet für Projekte, bei denen Inhalte später eigenständig verwaltet werden sollen.',
-    bullets: ['Mehrseitige Website', 'Adminbereich / CMS', '2–3 Korrekturschleifen', 'Strukturierte Inhaltsverwaltung', '7 Tage Prüfungsphase']
+    bullets: ['Mehrseitige Website', 'Adminbereich / CMS', '2–3 Korrekturschleifen', 'Strukturierte Inhaltsverwaltung', '7 Tage Prüfungsphase'],
+    badge: 'Professioneller Standard',
+    badgeStyle: 'premium',
+    preview: {
+      description: 'Website mit bearbeitbaren Inhalten und eigenständiger Pflege über einen Adminbereich.',
+      bullets: ['Inhalte selbst ändern', 'Bilder und Texte aktualisieren', 'langfristig flexibel nutzbar'],
+      type: 'admin'
+    }
   },
   {
     title: 'Individuelle Funktionen',
@@ -103,7 +123,13 @@ function PricingCard({ card, index }) {
       className={`card relative ${card.featured ? 'border-2 border-accent/45 bg-accent/[0.04] shadow-[0_18px_40px_-26px_rgba(79,70,229,0.55)]' : ''}`}
     >
       {card.badge ? (
-        <span className="mb-4 inline-flex rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+        <span
+          className={`mb-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+            card.badgeStyle === 'premium'
+              ? 'border border-slate-300 bg-slate-100 text-slate-700'
+              : 'border border-accent/30 bg-accent/10 text-accent'
+          }`}
+        >
           {card.badge}
         </span>
       ) : null}
@@ -118,6 +144,14 @@ function PricingCard({ card, index }) {
           </li>
         ))}
       </ul>
+      {card.preview ? (
+        <PackagePreviewPopover
+          title={card.title}
+          description={card.preview.description}
+          bullets={card.preview.bullets}
+          type={card.preview.type}
+        />
+      ) : null}
       {card.note ? <p className="mt-4 text-xs font-medium text-slate-500">{card.note}</p> : null}
     </motion.article>
   );
