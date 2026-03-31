@@ -1,0 +1,184 @@
+diff --git a/lib/seo.js b/lib/seo.js
+index 1e3d647..d6c2f99 100644
+--- a/lib/seo.js
++++ b/lib/seo.js
+@@ -1,5 +1,19 @@
+ const siteUrl = 'https://hamburgwebsites.de';
+ 
++const businessNap = {
++  name: 'Hamburg Websites',
++  email: 'info@hamburgwebsites.de',
++  phone: '+49 160 96297897',
++  address: {
++    streetAddress: 'Stadtbahnstraße 36',
++    postalCode: '22393',
++    addressLocality: 'Hamburg',
++    addressCountry: 'DE'
++  }
++};
++
++const defaultPriceCurrency = 'EUR';
++
+ export const defaultSeo = {
+   title: 'Hamburg Websites – Moderne Webseiten für Hamburger Unternehmen',
+   description:
+@@ -13,15 +27,99 @@ export function getCanonical(path = '/') {
+   return `${siteUrl}${path}`;
+ }
+ 
+-export function serviceSchema() {
++export function localBusinessSchema() {
++  return {
++    '@context': 'https://schema.org',
++    '@type': ['Organization', 'LocalBusiness'],
++    '@id': `${siteUrl}#organization`,
++    name: businessNap.name,
++    url: siteUrl,
++    telephone: businessNap.phone,
++    email: businessNap.email,
++    address: {
++      '@type': 'PostalAddress',
++      ...businessNap.address
++    },
++    areaServed: {
++      '@type': 'City',
++      name: 'Hamburg'
++    },
++    contactPoint: [
++      {
++        '@type': 'ContactPoint',
++        telephone: businessNap.phone,
++        email: businessNap.email,
++        contactType: 'customer support',
++        areaServed: 'DE',
++        availableLanguage: ['de']
++      }
++    ]
++  };
++}
++
++export function serviceSchema(services = []) {
++  const mappedOffers = services
++    .filter((service) => typeof service?.priceFromEur === 'number')
++    .map((service) => ({
++      '@type': 'Offer',
++      priceCurrency: defaultPriceCurrency,
++      priceSpecification: {
++        '@type': 'UnitPriceSpecification',
++        priceCurrency: defaultPriceCurrency,
++        price: service.priceFromEur,
++        minPrice: service.priceFromEur
++      }
++    }));
++
++  const mappedServices = services.map((service) => {
++    const serviceNode = {
++      '@type': 'Service',
++      name: service.name,
++      provider: {
++        '@id': `${siteUrl}#organization`
++      },
++      areaServed: {
++        '@type': 'City',
++        name: 'Hamburg'
++      }
++    };
++
++    if (typeof service?.priceFromEur === 'number') {
++      serviceNode.offers = {
++        '@type': 'Offer',
++        priceCurrency: defaultPriceCurrency,
++        priceSpecification: {
++          '@type': 'UnitPriceSpecification',
++          priceCurrency: defaultPriceCurrency,
++          price: service.priceFromEur,
++          minPrice: service.priceFromEur
++        }
++      };
++    }
++
++    return serviceNode;
++  });
++
+   return {
+     '@context': 'https://schema.org',
+-    '@type': 'ProfessionalService',
+-    name: 'Hamburg Websites',
+-    areaServed: 'Hamburg',
++    '@type': 'Service',
++    name: 'Webdesign und Webentwicklung für Unternehmen in Hamburg',
++    provider: {
++      '@id': `${siteUrl}#organization`
++    },
+     url: siteUrl,
+-    serviceType: 'Webdesign und Webentwicklung',
+-    description: defaultSeo.description
++    areaServed: {
++      '@type': 'City',
++      name: 'Hamburg'
++    },
++    hasOfferCatalog: {
++      '@type': 'OfferCatalog',
++      name: 'Leistungsübersicht',
++      itemListElement: mappedServices
++    },
++    offers: mappedOffers.length > 0 ? mappedOffers : undefined,
++    description: defaultSeo.description,
++    serviceType: 'Webdesign und Webentwicklung'
+   };
+ }
+ 
+diff --git a/pages/index.js b/pages/index.js
+index 0408911..d450978 100644
+--- a/pages/index.js
++++ b/pages/index.js
+@@ -5,7 +5,13 @@ import Portfolio from '../components/Portfolio';
+ import Footer from '../components/Footer';
+ import Header from '../components/Header';
+ import SEOHead from '../components/SEOHead';
+-import { serviceSchema } from '../lib/seo';
++import { localBusinessSchema, serviceSchema } from '../lib/seo';
++
++const serviceItems = [
++  { name: 'Website-Visitenkarte', priceFromEur: 400 },
++  { name: 'Onepager', priceFromEur: 650 },
++  { name: 'Mehrseitige Website', priceFromEur: 1000 }
++];
+ 
+ const processSteps = [
+   { title: 'Anfrage', text: 'Kurze Infos zu Ihrem Unternehmen und Ihrem Ziel.' },
+@@ -57,7 +63,7 @@ export default function HomePage() {
+         title="Hamburg Websites"
+         description="Hamburg Websites – Moderne Webseiten für Hamburger Unternehmen mit klarer Struktur, lokaler SEO-Basis und überzeugender Nutzerführung."
+         path="/"
+-        schema={[serviceSchema()]}
++        schema={[localBusinessSchema(), serviceSchema(serviceItems)]}
+       />
+       <Header />
+       <main>
+diff --git a/pages/preise.js b/pages/preise.js
+index 9e1befc..a07c130 100644
+--- a/pages/preise.js
++++ b/pages/preise.js
+@@ -3,6 +3,13 @@ import Footer from '../components/Footer';
+ import Header from '../components/Header';
+ import Pricing from '../components/Pricing';
+ import SEOHead from '../components/SEOHead';
++import { localBusinessSchema, serviceSchema } from '../lib/seo';
++
++const serviceItems = [
++  { name: 'Website-Visitenkarte', priceFromEur: 400 },
++  { name: 'Onepager', priceFromEur: 650 },
++  { name: 'Mehrseitige Website', priceFromEur: 1000 }
++];
+ 
+ export default function PreisePage() {
+   return (
+@@ -11,6 +18,7 @@ export default function PreisePage() {
+         title="Preise für Website-Erstellung in Hamburg"
+         description="Unsere transparenten Pakete für die Website-Erstellung in Hamburg – von der kostenlosen Demo bis zur Business-Webseite."
+         path="/preise"
++        schema={[localBusinessSchema(), serviceSchema(serviceItems)]}
+       />
+       <Header />
+       <main>
