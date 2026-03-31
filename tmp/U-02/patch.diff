@@ -1,0 +1,152 @@
+diff --git a/components/Contact.jsx b/components/Contact.jsx
+index 452eb1f..5ec8496 100644
+--- a/components/Contact.jsx
++++ b/components/Contact.jsx
+@@ -2,47 +2,111 @@ export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine ko
+   const Heading = headingTag;
+ 
+   return (
+-    <section className="section-container section-spacing" id="contact" aria-labelledby="contact-heading">
+-      <div className="mx-auto max-w-3xl rounded-2xl bg-slate-50 p-8 shadow-soft">
+-        <Heading id="contact-heading" className="text-3xl font-bold text-slateBlue">
+-          {title}
+-        </Heading>
+-        <form
+-          name="contact"
+-          method="POST"
+-          data-netlify="true"
+-          data-netlify-honeypot="bot-field"
+-          action="/thank-you"
+-          className="mt-8 grid gap-4"
+-        >
+-          <input type="hidden" name="form-name" value="contact" />
+-          <p className="hidden">
+-            <label>
+-              Dieses Feld bitte nicht ausfüllen, wenn Sie ein Mensch sind: <input name="bot-field" />
+-            </label>
+-          </p>
+-          <label className="grid gap-2">
+-            <span className="font-medium">Name</span>
+-            <input name="name" required className="rounded-xl border border-slate-300 px-4 py-3" />
+-          </label>
+-          <label className="grid gap-2">
+-            <span className="font-medium">Unternehmensname</span>
+-            <input name="business" className="rounded-xl border border-slate-300 px-4 py-3" />
+-          </label>
+-          <label className="grid gap-2">
+-            <span className="font-medium">E-Mail</span>
+-            <input name="email" type="email" required className="rounded-xl border border-slate-300 px-4 py-3" />
+-          </label>
+-          <label className="grid gap-2">
+-            <span className="font-medium">Webseite (optional)</span>
+-            <input name="website" type="url" className="rounded-xl border border-slate-300 px-4 py-3" />
+-          </label>
+-          <label className="grid gap-2">
+-            <span className="font-medium">Nachricht</span>
+-            <textarea name="message" required rows="5" className="rounded-xl border border-slate-300 px-4 py-3" />
+-          </label>
+-          <button type="submit" className="mt-2 rounded-xl bg-accent px-5 py-3 font-semibold text-white transition hover:bg-indigo-500">
+-            Anfrage senden
+-          </button>
+-        </form>
++    <section className="section-container section-spacing" id="contact" aria-labelledby="contact-heading">
++      <div className="mx-auto grid max-w-5xl gap-8 rounded-2xl bg-slate-50 p-8 shadow-soft lg:grid-cols-[1fr_320px]">
++        <div>
++          <Heading id="contact-heading" className="text-3xl font-bold text-slateBlue">
++            {title}
++          </Heading>
++          <p className="mt-3 text-slate-600">Demo ist kostenlos, keine Verpflichtung.</p>
++          <form
++            name="contact"
++            method="POST"
++            data-netlify="true"
++            data-netlify-honeypot="bot-field"
++            action="/thank-you"
++            className="mt-8 grid gap-4"
++          >
++            <input type="hidden" name="form-name" value="contact" />
++            <p className="hidden">
++              <label>
++                Dieses Feld bitte nicht ausfüllen, wenn Sie ein Mensch sind: <input name="bot-field" />
++              </label>
++            </p>
++
++            <label className="grid gap-2">
++              <span className="font-medium">Name</span>
++              <input name="name" required className="rounded-xl border border-slate-300 px-4 py-3" />
++            </label>
++            <label className="grid gap-2">
++              <span className="font-medium">Unternehmensname</span>
++              <input name="business" className="rounded-xl border border-slate-300 px-4 py-3" />
++            </label>
++            <label className="grid gap-2">
++              <span className="font-medium">E-Mail</span>
++              <input name="email" type="email" required className="rounded-xl border border-slate-300 px-4 py-3" />
++            </label>
++            <label className="grid gap-2">
++              <span className="font-medium">Webseite (optional)</span>
++              <input name="website" type="url" className="rounded-xl border border-slate-300 px-4 py-3" />
++            </label>
++
++            <label className="grid gap-2">
++              <span className="font-medium">Ziel (optional)</span>
++              <select name="ziel" className="rounded-xl border border-slate-300 bg-white px-4 py-3">
++                <option value="">Bitte auswählen</option>
++                <option value="Mehr Anfragen">Mehr Anfragen</option>
++                <option value="Bessere Sichtbarkeit">Bessere Sichtbarkeit</option>
++                <option value="Relaunch">Relaunch</option>
++                <option value="Sonstiges">Sonstiges</option>
++              </select>
++            </label>
++            <label className="grid gap-2">
++              <span className="font-medium">Budget (optional)</span>
++              <select name="budget" className="rounded-xl border border-slate-300 bg-white px-4 py-3">
++                <option value="">Bitte auswählen</option>
++                <option value="&lt;500€">&lt;500€</option>
++                <option value="500–1000€">500–1000€</option>
++                <option value="1000–2000€">1000–2000€</option>
++                <option value="2000€+">2000€+</option>
++                <option value="noch unklar">noch unklar</option>
++              </select>
++            </label>
++            <label className="grid gap-2">
++              <span className="font-medium">Gewünschter Start (optional)</span>
++              <select name="start" className="rounded-xl border border-slate-300 bg-white px-4 py-3">
++                <option value="">Bitte auswählen</option>
++                <option value="sofort">sofort</option>
++                <option value="2–4 Wochen">2–4 Wochen</option>
++                <option value="1–2 Monate">1–2 Monate</option>
++                <option value="später">später</option>
++              </select>
++            </label>
++            <label className="grid gap-2">
++              <span className="font-medium">Branche (optional)</span>
++              <input name="branche" className="rounded-xl border border-slate-300 px-4 py-3" />
++            </label>
++
++            <label className="grid gap-2">
++              <span className="font-medium">Nachricht (optional)</span>
++              <textarea name="message" rows="5" className="rounded-xl border border-slate-300 px-4 py-3" />
++            </label>
++            <button type="submit" className="mt-2 rounded-xl bg-accent px-5 py-3 font-semibold text-white transition hover:bg-indigo-500">
++              Anfrage senden
++            </button>
++          </form>
++        </div>
++
++        <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
++          <h3 className="text-xl font-bold text-slateBlue">Schnellkontakt & Vertrauen</h3>
++          <ul className="mt-4 grid gap-3 text-slate-700">
++            <li>
++              <span className="font-semibold text-slateBlue">Telefon:</span>{' '}
++              <a href="tel:+4916096297897" className="text-accent hover:underline">+49 160 96297897</a>
++            </li>
++            <li><span className="font-semibold text-slateBlue">Antwortzeit:</span> Antwort i.d.R. innerhalb 24h</li>
++            <li><span className="font-semibold text-slateBlue">Standort:</span> Hamburg</li>
++            <li><span className="font-semibold text-slateBlue">Betreuung:</span> Inhaber / direkter Ansprechpartner</li>
++          </ul>
++        </aside>
+       </div>
+     </section>
+   );
+ }
