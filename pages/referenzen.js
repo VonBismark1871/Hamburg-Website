@@ -29,7 +29,7 @@ const portfolioSections = [
     description:
       'Beispiele für umfangreichere Websites mit mehreren Seiten, detaillierten Leistungsbereichen und erweiterten Inhalten.',
     siteType: 'Mehrseitig',
-    projects: ['physio-demo', 'autoservice-demo', 'immobilien-demo']
+    projects: ['physio-demo', 'autoservice-demo', 'autoservice-sales-case', 'immobilien-demo']
   }
 ];
 
@@ -89,6 +89,9 @@ export default function ReferenzenPage() {
           </p>
           <p className="mt-3 max-w-3xl text-sm text-slate-500">
             Design, Inhalte und Seitenstruktur werden für jedes Projekt individuell angepasst.
+          </p>
+          <p className="mt-2 max-w-3xl text-sm text-slate-500">
+            Alle gezeigten Referenzen sind als Demo-Beispiele gekennzeichnet und stellen keine verifizierten Kundenprojekte dar.
           </p>
         </section>
 
