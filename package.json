@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next build"
+    "export": "next build",
+    "screenshot:proof": "node scripts/proof-screenshot-pack.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.0.24",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.4",
+    "playwright": "^1.54.2"
   }
 }
