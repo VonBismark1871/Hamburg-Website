@@ -85,10 +85,12 @@ export default function ReferenzenPage() {
             Referenzen und Beispiel-Websites
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-slate-600">
-            Hier finden Sie Beispiele moderner Unternehmenswebsites, die zeigen, wie Design, Struktur und Nutzerführung in unterschiedlichen Branchen umgesetzt werden können.
+            Diese Beispiele zeigen nicht nur Design, sondern vor allem klare Seitenstrukturen für konkrete Ziele wie
+            Kontaktanfragen, Terminwünsche oder Leistungsanfragen.
           </p>
           <p className="mt-3 max-w-3xl text-sm text-slate-500">
-            Design, Inhalte und Seitenstruktur werden für jedes Projekt individuell angepasst.
+            Jede Demo ist auf typische Entscheidungswege in der jeweiligen Branche ausgerichtet und wird für Ihr
+            Projekt individuell angepasst.
           </p>
           <p className="mt-2 max-w-3xl text-sm text-slate-500">
             Alle gezeigten Referenzen sind als Demo-Beispiele gekennzeichnet und stellen keine verifizierten Kundenprojekte dar.

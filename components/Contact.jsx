@@ -8,7 +8,10 @@ export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine k
           <Heading id="contact-heading" className="text-3xl font-bold text-slateBlue">
             {title}
           </Heading>
-          <p className="mt-3 text-slate-600">Demo ist kostenlos, keine Verpflichtung.</p>
+          <p className="mt-3 text-slate-600">
+            Demo ist kostenlos und unverbindlich. Auf Wunsch erhalten Sie vorab eine realistische Preisrange und eine
+            kurze Empfehlung für den sinnvollsten Startumfang.
+          </p>
           <form
             name="contact"
             method="POST"
@@ -125,6 +128,10 @@ export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine k
             </li>
             <li>
               <span className="font-semibold text-slateBlue">Betreuung:</span> Inhaber / direkter Ansprechpartner
+            </li>
+            <li>
+              <span className="font-semibold text-slateBlue">Arbeitsweise:</span> Klare Rückmeldeschleifen statt
+              Ticket-System
             </li>
           </ul>
         </aside>
