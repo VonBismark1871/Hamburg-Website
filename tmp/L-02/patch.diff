@@ -1,0 +1,112 @@
+diff --git a/pages/_app.js b/pages/_app.js
+--- a/pages/_app.js
++++ b/pages/_app.js
+@@ -9,12 +9,6 @@
+         <link rel="icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
+         <link rel="shortcut icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
+         <link rel="apple-touch-icon" href="/brand/hw-approved-icon-transparent-v1.png" />
+-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+-        <link
+-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+-          rel="stylesheet"
+-        />
+       </Head>
+       <Component {...pageProps} />
+     </>
+diff --git a/pages/datenschutz.js b/pages/datenschutz.js
+--- a/pages/datenschutz.js
++++ b/pages/datenschutz.js
+@@ -189,10 +189,13 @@
+     content: (
+       <>
+         <p>
+-          Diese Website lädt zur Darstellung der Schriftart „Inter“ externe Ressourcen von{' '}
+-          <strong>Google Fonts</strong> (fonts.googleapis.com / fonts.gstatic.com). Dabei kann Ihre IP-Adresse an
+-          Server von Google übermittelt werden, soweit dies technisch für die Auslieferung der Schriftarten
+-          erforderlich ist.
++          Diese Website verwendet die Schriftart „Inter“ in lokal gehosteter Form. Die Font-Dateien werden direkt
++          von unserem Server ausgeliefert, sodass beim Laden der Website keine Verbindung zu externen
++          Schriftanbieter-Diensten (z. B. Google Fonts) aufgebaut wird.
++        </p>
++        <p className="mt-4">
++          Eine Übermittlung personenbezogener Daten (insbesondere der IP-Adresse) an externe Font-Provider findet
++          in diesem Zusammenhang nicht statt.
+         </p>
+         <p className="mt-4">
+           Darüber hinaus werden derzeit keine eingebetteten Karten, Videos, Terminbuchungs-Tools oder
+diff --git a/public/assets/fonts/inter/README.md b/public/assets/fonts/inter/README.md
+new file mode 100644
+--- /dev/null
++++ b/public/assets/fonts/inter/README.md
+@@ -0,0 +1,20 @@
++# Inter Font Assets (Self-hosted)
++
++Lege die folgenden Dateien in dieses Verzeichnis, um Inter lokal bereitzustellen:
++
++- `inter-latin-400.woff2`
++- `inter-latin-500.woff2`
++- `inter-latin-600.woff2`
++- `inter-latin-700.woff2`
++- `inter-latin-800.woff2`
++
++Empfohlene Quelle: offizielles Inter-Release oder eigener, rechtssicherer Font-Export.
++
++Hinweise:
++
++- Nur Dateien verwenden, deren Lizenz und Herkunft geprüft sind.
++- Dateinamen und Pfad müssen exakt den Angaben in `styles/globals.css` entsprechen.
++- Optional können zusätzliche Subsets/Gewichte ergänzt werden.
++- Optional können zusätzlich `.woff`-Dateien abgelegt und in `@font-face` ergänzt werden.
++
++Nach dem Ablegen der Dateien werden keine externen Requests zu `fonts.googleapis.com` oder `fonts.gstatic.com` benötigt.
+diff --git a/styles/globals.css b/styles/globals.css
+--- a/styles/globals.css
++++ b/styles/globals.css
+@@ -1,6 +1,46 @@
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
++
++@font-face {
++  font-family: 'Inter';
++  src: url('/assets/fonts/inter/inter-latin-400.woff2') format('woff2');
++  font-weight: 400;
++  font-style: normal;
++  font-display: swap;
++}
++
++@font-face {
++  font-family: 'Inter';
++  src: url('/assets/fonts/inter/inter-latin-500.woff2') format('woff2');
++  font-weight: 500;
++  font-style: normal;
++  font-display: swap;
++}
++
++@font-face {
++  font-family: 'Inter';
++  src: url('/assets/fonts/inter/inter-latin-600.woff2') format('woff2');
++  font-weight: 600;
++  font-style: normal;
++  font-display: swap;
++}
++
++@font-face {
++  font-family: 'Inter';
++  src: url('/assets/fonts/inter/inter-latin-700.woff2') format('woff2');
++  font-weight: 700;
++  font-style: normal;
++  font-display: swap;
++}
++
++@font-face {
++  font-family: 'Inter';
++  src: url('/assets/fonts/inter/inter-latin-800.woff2') format('woff2');
++  font-weight: 800;
++  font-style: normal;
++  font-display: swap;
++}
+ 
+ html {
+   scroll-behavior: smooth;

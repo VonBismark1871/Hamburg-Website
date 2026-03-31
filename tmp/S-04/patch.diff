@@ -23,6 +23,16 @@ index 1e3d647..d6c2f99 100644
    title: 'Hamburg Websites – Moderne Webseiten für Hamburger Unternehmen',
    description:
 @@ -13,15 +27,99 @@ export function getCanonical(path = '/') {
+index 9f8f1d2..4b8a2ac 100644
+--- a/lib/seo.js
++++ b/lib/seo.js
+@@ -1,4 +1,5 @@
+ const siteUrl = 'https://hamburgwebsites.de';
++const sameAs = [];
+ 
+ export const defaultSeo = {
+   title: 'Hamburg Websites – Moderne Webseiten für Hamburger Unternehmen',
+@@ -16,14 +17,95 @@ export function getCanonical(path = '/') {
    return `${siteUrl}${path}`;
  }
  
@@ -39,6 +49,34 @@ index 1e3d647..d6c2f99 100644
 +    address: {
 +      '@type': 'PostalAddress',
 +      ...businessNap.address
++export function organizationSchema() {
+   return {
+     '@context': 'https://schema.org',
+-    '@type': 'ProfessionalService',
++    '@type': 'Organization',
+     name: 'Hamburg Websites',
+-    areaServed: 'Hamburg',
++    url: siteUrl,
++    email: 'info@hamburgwebsites.de',
++    telephone: '+49 160 96297897',
++    sameAs
++  };
++}
++
++export function localBusinessSchema() {
++  return {
++    '@context': 'https://schema.org',
++    '@type': 'LocalBusiness',
++    name: 'Hamburg Websites',
++    image: `${siteUrl}/brand/logo.svg`,
++    email: 'info@hamburgwebsites.de',
++    telephone: '+49 160 96297897',
++    address: {
++      '@type': 'PostalAddress',
++      streetAddress: 'Stadtbahnstraße 36',
++      postalCode: '22393',
++      addressLocality: 'Hamburg',
++      addressCountry: 'DE'
 +    },
 +    areaServed: {
 +      '@type': 'City',
@@ -148,11 +186,153 @@ index 0408911..d450978 100644
  const processSteps = [
    { title: 'Anfrage', text: 'Kurze Infos zu Ihrem Unternehmen und Ihrem Ziel.' },
 @@ -57,7 +63,7 @@ export default function HomePage() {
++    priceRange: '€€',
++    url: siteUrl,
++    sameAs
++  };
++}
++
++export function serviceSchema() {
++  return {
++    '@context': 'https://schema.org',
++    '@type': 'Service',
++    name: 'Webdesign und Webentwicklung für Unternehmen',
++    serviceType: 'Webdesign und Webentwicklung',
++    provider: {
++      '@type': 'LocalBusiness',
++      name: 'Hamburg Websites',
++      url: siteUrl
++    },
++    areaServed: {
++      '@type': 'City',
++      name: 'Hamburg'
++    },
++    url: siteUrl,
++    description: defaultSeo.description
++  };
++}
++
++export function servicesCatalogSchema() {
++  return {
++    '@context': 'https://schema.org',
++    '@type': 'OfferCatalog',
++    name: 'Webdesign Leistungen und Preisrahmen',
++    itemListElement: [
++      {
++        '@type': 'Offer',
++        itemOffered: {
++          '@type': 'Service',
++          name: 'Website-Visitenkarte'
++        },
++        priceSpecification: {
++          '@type': 'PriceSpecification',
++          price: 400,
++          priceCurrency: 'EUR'
++        }
++      },
++      {
++        '@type': 'Offer',
++        itemOffered: {
++          '@type': 'Service',
++          name: 'Onepager'
++        },
++        priceSpecification: {
++          '@type': 'PriceSpecification',
++          price: 650,
++          priceCurrency: 'EUR'
++        }
++      },
++      {
++        '@type': 'Offer',
++        itemOffered: {
++          '@type': 'Service',
++          name: 'Mehrseitige Website'
++        },
++        priceSpecification: {
++          '@type': 'PriceSpecification',
++          price: 1000,
++          priceCurrency: 'EUR'
++        }
++      }
++    ]
++  };
++}
++
++export function faqPageSchema(items = []) {
++  const entities = items
++    .map((item) => {
++      const text = item.answerText || (typeof item.answer === 'string' ? item.answer : '');
++      if (!item.question || !text) return null;
++      return {
++        '@type': 'Question',
++        name: item.question,
++        acceptedAnswer: {
++          '@type': 'Answer',
++          text
++        }
++      };
++    })
++    .filter(Boolean);
++
++  return {
++    '@context': 'https://schema.org',
++    '@type': 'FAQPage',
++    mainEntity: entities
++  };
++}
++
++export function homepageSchema() {
++  return [organizationSchema(), localBusinessSchema(), serviceSchema()];
++}
++
++export function pricingPageSchema() {
++  return [localBusinessSchema(), servicesCatalogSchema()];
++}
++
++export function faqSchema(items = []) {
++  return faqPageSchema(items);
++}
++
++export function legacyServiceSchema() {
++  // Deprecated: retained for backwards compatibility if imported elsewhere.
++  return serviceSchema();
++}
+-    url: siteUrl,
+-    serviceType: 'Webdesign und Webentwicklung',
+-    description: defaultSeo.description
+-  };
+-}
+-
+-export function faqSchema(items = []) {
+-  return {
+-    '@context': 'https://schema.org',
+-    '@type': 'FAQPage',
+-    mainEntity: items.map((item) => ({
+-      '@type': 'Question',
+-      name: item.question,
+-      acceptedAnswer: {
+-        '@type': 'Answer',
+-        text: item.answerText || (typeof item.answer === 'string' ? item.answer : '')
+-      }
+-    }))
+-  };
+-}
+diff --git a/pages/index.js b/pages/index.js
+index 92d132f..62fd510 100644
+--- a/pages/index.js
++++ b/pages/index.js
+@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
+ import Header from '../components/Header';
+ import SEOHead from '../components/SEOHead';
+-import { serviceSchema } from '../lib/seo';
++import { homepageSchema } from '../lib/seo';
+@@ -62,7 +62,7 @@ export default function HomePage() {
          title="Hamburg Websites"
          description="Hamburg Websites – Moderne Webseiten für Hamburger Unternehmen mit klarer Struktur, lokaler SEO-Basis und überzeugender Nutzerführung."
          path="/"
 -        schema={[serviceSchema()]}
 +        schema={[localBusinessSchema(), serviceSchema(serviceItems)]}
++        schema={homepageSchema()}
        />
        <Header />
        <main>
@@ -179,6 +359,38 @@ index 9e1befc..a07c130 100644
          description="Unsere transparenten Pakete für die Website-Erstellung in Hamburg – von der kostenlosen Demo bis zur Business-Webseite."
          path="/preise"
 +        schema={[localBusinessSchema(), serviceSchema(serviceItems)]}
+index 431cf90..86973c7 100644
+--- a/pages/preise.js
++++ b/pages/preise.js
+@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
+ import Header from '../components/Header';
+ import Pricing from '../components/Pricing';
+ import SEOHead from '../components/SEOHead';
++import { pricingPageSchema } from '../lib/seo';
+@@ -11,6 +12,7 @@ export default function PreisePage() {
+         title="Preise für Website-Erstellung in Hamburg"
+         description="Unsere transparenten Pakete für die Website-Erstellung in Hamburg – von der kostenlosen Demo bis zur Business-Webseite."
+         path="/preise"
++        schema={pricingPageSchema()}
+       />
+       <Header />
+       <main>
+diff --git a/pages/faq.js b/pages/faq.js
+index 8df8f61..8d7f160 100644
+--- a/pages/faq.js
++++ b/pages/faq.js
+@@ -2,7 +2,7 @@ import FAQ, { faqItems } from '../components/FAQ';
+ import Footer from '../components/Footer';
+ import Header from '../components/Header';
+ import SEOHead from '../components/SEOHead';
+-import { faqSchema } from '../lib/seo';
++import { faqPageSchema } from '../lib/seo';
+@@ -13,7 +13,7 @@ export default function FaqPage() {
+         title="FAQ – Website erstellen lassen in Hamburg"
+         description="Antworten auf häufige Fragen zur Website-Erstellung in Hamburg: Dauer, Kosten, Hosting und Ablauf der Zusammenarbeit."
+         path="/faq"
+-        schema={faqSchema(faqItems)}
++        schema={faqPageSchema(faqItems)}
        />
        <Header />
        <main>
