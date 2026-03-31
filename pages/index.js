@@ -5,7 +5,13 @@ import Portfolio from '../components/Portfolio';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
-import { serviceSchema } from '../lib/seo';
+import { localBusinessSchema, organizationSchema, serviceSchema } from '../lib/seo';
+
+const serviceItems = [
+  { name: 'Website-Visitenkarte', priceFromEur: 400 },
+  { name: 'Onepager', priceFromEur: 650 },
+  { name: 'Mehrseitige Website', priceFromEur: 1000 }
+];
 
 const processSteps = [
   { title: 'Anfrage', text: 'Kurze Infos zu Ihrem Unternehmen und Ihrem Ziel.' },
@@ -57,7 +63,7 @@ export default function HomePage() {
         title="Hamburg Websites"
         description="Hamburg Websites – Moderne Webseiten für Hamburger Unternehmen mit klarer Struktur, lokaler SEO-Basis und überzeugender Nutzerführung."
         path="/"
-        schema={[serviceSchema()]}
+        schema={[organizationSchema(), localBusinessSchema(), serviceSchema(serviceItems)]}
       />
       <Header />
       <main>
