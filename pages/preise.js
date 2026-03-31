@@ -3,6 +3,13 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Pricing from '../components/Pricing';
 import SEOHead from '../components/SEOHead';
+import { serviceSchema } from '../lib/seo';
+
+const serviceItems = [
+  { name: 'Website-Visitenkarte', priceFromEur: 400 },
+  { name: 'Onepager', priceFromEur: 650 },
+  { name: 'Mehrseitige Website', priceFromEur: 1000 }
+];
 
 export default function PreisePage() {
   return (
@@ -11,6 +18,7 @@ export default function PreisePage() {
         title="Preise für Website-Erstellung in Hamburg"
         description="Unsere transparenten Pakete für die Website-Erstellung in Hamburg – von der kostenlosen Demo bis zur Business-Webseite."
         path="/preise"
+        schema={serviceSchema(serviceItems)}
       />
       <Header />
       <main>
