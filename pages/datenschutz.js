@@ -189,10 +189,13 @@ const sections = [
     content: (
       <>
         <p>
-          Diese Website lädt zur Darstellung der Schriftart „Inter“ externe Ressourcen von{' '}
-          <strong>Google Fonts</strong> (fonts.googleapis.com / fonts.gstatic.com). Dabei kann Ihre IP-Adresse an
-          Server von Google übermittelt werden, soweit dies technisch für die Auslieferung der Schriftarten
-          erforderlich ist.
+          Diese Website verwendet die Schriftart „Inter“ in lokal gehosteter Form. Die Font-Dateien werden direkt
+          von unserem Server ausgeliefert, sodass beim Laden der Website keine Verbindung zu externen
+          Schriftanbieter-Diensten (z. B. Google Fonts) aufgebaut wird.
+        </p>
+        <p className="mt-4">
+          Eine Übermittlung personenbezogener Daten (insbesondere der IP-Adresse) an externe Font-Provider findet
+          in diesem Zusammenhang nicht statt.
         </p>
         <p className="mt-4">
           Darüber hinaus werden derzeit keine eingebetteten Karten, Videos, Terminbuchungs-Tools oder
