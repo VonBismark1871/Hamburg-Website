@@ -204,9 +204,12 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
           Richtwerte für typische Webprojekte
         </Heading>
         <p className="mt-5 max-w-4xl text-lg leading-relaxed text-slate-600">
-          Die folgenden Preisrahmen dienen als Orientierung für typische Projektumfänge. Der tatsächliche Aufwand
-          richtet sich nach Inhalt, Seitenanzahl und gewünschtem Funktionsumfang, bewegt sich jedoch in der Regel im
-          genannten Rahmen.
+          Die folgenden Preisrahmen dienen als belastbare Orientierung für typische Projektumfänge. Vor Projektstart
+          erhalten Sie eine nachvollziehbare Preisrange inklusive der Faktoren, die den Endpreis tatsächlich
+          beeinflussen.
+        </p>
+        <p className="mt-3 max-w-4xl text-base leading-relaxed text-slate-500">
+          So bleibt die Planung realistisch: klare Leistungen, klare Abgrenzung und keine versteckten Paketlogiken.
         </p>
       </motion.div>
 

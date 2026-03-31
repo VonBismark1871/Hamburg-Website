@@ -301,7 +301,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl font-extrabold tracking-tight text-slateBlue sm:text-5xl"
           >
-            Moderne Webseiten für Hamburger Unternehmen
+            Websites für Hamburger Unternehmen, die messbar zu Anfragen führen
           </motion.h1>
           <motion.p
             initial="hidden"
@@ -310,8 +310,8 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-xl text-lg text-slate-600"
           >
-            Schnelle, mobil optimierte Webseiten, die lokale Unternehmen dabei unterstützen,
-            mehr qualifizierte Anfragen zu gewinnen.
+            Wir verbinden klare Nutzerführung, schnelle Technik und verständliche Inhalte, damit jede Seite eine
+            konkrete Aufgabe im Vertriebsprozess erfüllt.
           </motion.p>
           <motion.div
             initial="hidden"
@@ -344,10 +344,10 @@ export default function Hero() {
               <span className="text-emerald-500">✓</span> Kostenlose Demo-Webseite
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <span className="text-emerald-500">✓</span> Unverbindliches Erstgespräch
+              <span className="text-emerald-500">✓</span> Preisrange vor Projektstart
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <span className="text-emerald-500">✓</span> Umsetzung in wenigen Tagen
+              <span className="text-emerald-500">✓</span> Direkter Ansprechpartner statt Ticketschleife
             </span>
           </motion.div>
         </div>

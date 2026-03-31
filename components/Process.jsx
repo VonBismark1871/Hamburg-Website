@@ -3,23 +3,23 @@ import { motion } from 'framer-motion';
 const steps = [
   {
     title: 'Anfrage',
-    text: 'Sie senden uns einige Informationen zu Ihrem Unternehmen, Ihren Leistungen und Ihren Vorstellungen.'
+    text: 'Sie senden uns die wichtigsten Infos zu Unternehmen, Zielgruppe und gewünschtem Ergebnis (z. B. mehr Anfragen).'
   },
   {
     title: 'Kostenlose Demo-Website',
-    text: 'Auf Basis Ihrer Angaben erstellen wir eine erste Demo-Website, damit Sie Aufbau, Stil und Struktur sehen können.'
+    text: 'Auf Basis Ihrer Angaben erstellen wir eine erste Demo-Website, damit Sie Struktur, Nutzerführung und Positionierung früh bewerten können.'
   },
   {
     title: 'Abstimmung',
-    text: 'Sie prüfen die Demo-Website und teilen uns Ihre Wünsche und Anpassungen mit.'
+    text: 'Sie geben Feedback zu Inhalten, Seitenzielen und Prioritäten. Daraus entsteht der verbindliche Umsetzungsrahmen.'
   },
   {
     title: 'Umsetzung',
-    text: 'Nach der Abstimmung setzen wir die vollständige Website um und bereiten sie technisch für die Veröffentlichung vor.'
+    text: 'Nach der Abstimmung setzen wir die Website technisch sauber um und bauen nur Funktionen ein, die im Alltag wirklich nutzbar sind.'
   },
   {
     title: 'Prüfung und Livegang',
-    text: 'Nach Fertigstellung erhalten Sie die Website zur finalen Prüfung. Anschließend wird sie veröffentlicht.'
+    text: 'Nach der finalen Prüfung geht die Website live. Danach schauen wir zuerst auf Anfragequalität und Nutzerpfade.'
   }
 ];
 
@@ -43,7 +43,8 @@ export default function Process() {
         transition={{ duration: 0.45, delay: 0.08 }}
         className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600"
       >
-        Von der ersten Anfrage bis zur veröffentlichten Website bleibt der Ablauf klar, nachvollziehbar und effizient.
+        Von der ersten Anfrage bis zum Livegang bleibt der Ablauf klar, nachvollziehbar und auf konkrete Vertriebsziele
+        ausgerichtet.
       </motion.p>
 
       <div className="relative mt-12">
