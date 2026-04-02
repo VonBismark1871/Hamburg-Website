@@ -1,0 +1,63 @@
+name: PR Guardrails
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  tmp-only-guardrail:
+    name: Tmp-only PR classification guardrail
+    runs-on: ubuntu-latest
+    steps:
+      - name: Evaluate changed files and labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const pull_number = context.payload.pull_request.number;
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner,
+              repo,
+              pull_number,
+              per_page: 100,
+            });
+
+            const labels = context.payload.pull_request.labels.map((l) => l.name);
+            const overrideLabel = 'artifacts-only';
+
+            const changed = files
+              .map((f) => f.filename)
+              .filter((name) => !name.startsWith('.github/workflows/guardrails.yml'));
+
+            if (changed.length === 0) {
+              core.notice('No non-guardrail files changed in this PR.');
+              return;
+            }
+
+            const onlyTmpChanges = changed.every((name) => name.startsWith('tmp/'));
+            const hasOverride = labels.includes(overrideLabel);
+
+            core.info(`Changed files: ${changed.join(', ')}`);
+            core.info(`Labels: ${labels.join(', ') || '(none)'}`);
+
+            if (onlyTmpChanges && !hasOverride) {
+              core.setFailed(
+                `This PR changes only tmp/** files. Add the '${overrideLabel}' label to explicitly mark it as artifact-only, or include production-impacting changes outside tmp/**.`
+              );
+              return;
+            }
+
+            if (onlyTmpChanges && hasOverride) {
+              core.notice(
+                `Tmp-only PR allowed because '${overrideLabel}' label is set. This PR must be treated as artifact-only, not implementation.`
+              );
+              return;
+            }
+
+            core.notice('Guardrail passed: PR includes changes outside tmp/** and remains eligible as implementation work.');
