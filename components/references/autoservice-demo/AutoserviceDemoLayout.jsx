@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SEOHead from '../../SEOHead';
 import ReferenceBackButton from '../ReferenceBackButton';
+import Header from '../../Header';
 
 const navItems = [
   { href: '/referenzen/autoservice-demo', label: 'Start' },
@@ -14,6 +15,7 @@ export default function AutoserviceDemoLayout({ title, description, path, childr
     <>
       <SEOHead title={title} description={description} path={path} noIndex />
       <div className="min-h-screen bg-[#f3f5f7] text-[#1a2028]">
+        <Header />
         <div className="section-container pt-8">
           <ReferenceBackButton href="/referenzen" label="Zurück zu den Referenzen" />
         </div>
