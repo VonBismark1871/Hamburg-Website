@@ -292,6 +292,8 @@ export default function Hero() {
 
   return (
     <section className="hero py-16 text-white sm:py-20">
+      <span className="glow-blob glow-blob--purple" aria-hidden="true" />
+      <span className="glow-blob glow-blob--teal" aria-hidden="true" />
       <div className="section-container relative">
         <span className="hero-watermark" aria-hidden="true">
           HAMBURG
@@ -306,7 +308,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl tracking-tight text-white sm:text-5xl"
           >
-            <span className="h1-accent-italic">Websites</span> für Hamburger Unternehmen, die messbar zu Anfragen
+            <span className="gradient-text">Websites</span> für Hamburger Unternehmen, die messbar zu Anfragen
             führen
           </motion.h1>
           <motion.p
@@ -346,13 +348,13 @@ export default function Hero() {
             transition={{ duration: 0.45, delay: 0.38 }}
             className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-300"
           >
-            <span className="inline-flex items-center gap-1.5">
+            <span className="floating-tag inline-flex items-center gap-1.5">
               <span className="text-emerald-500">✓</span> Kostenlose Demo-Webseite
             </span>
-            <span className="inline-flex items-center gap-1.5">
+            <span className="floating-tag inline-flex items-center gap-1.5">
               <span className="text-emerald-500">✓</span> Preisrange vor Projektstart
             </span>
-            <span className="inline-flex items-center gap-1.5">
+            <span className="floating-tag inline-flex items-center gap-1.5">
               <span className="text-emerald-500">✓</span> Direkter Ansprechpartner statt Ticketschleife
             </span>
           </motion.div>
