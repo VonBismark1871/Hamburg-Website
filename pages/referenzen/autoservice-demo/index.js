@@ -14,6 +14,7 @@ export default function AutoserviceDemoHomePage() {
     <AutoserviceDemoLayout
       title="Auto Service Demo | Hamburg Websites Referenz"
       description="Praxisnahe Mehrseiten-Demo für eine moderne Kfz-Werkstatt in Hamburg mit Fokus auf Leistungen und Terminanfragen."
+      path="/referenzen/autoservice-demo"
     >
       <section className="section-container py-10">
         <p className="text-sm font-medium text-[#4d5d73]">So könnte eine Website für Ihre Autowerkstatt aussehen.</p>

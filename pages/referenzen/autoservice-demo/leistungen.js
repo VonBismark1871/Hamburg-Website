@@ -9,6 +9,7 @@ export default function AutoserviceServicesPage() {
     <AutoserviceDemoLayout
       title="Leistungen | Auto Service Demo"
       description="Leistungsübersicht einer modernen Kfz-Werkstatt in Hamburg mit klaren Beschreibungen und Anfrageoptionen."
+      path="/referenzen/autoservice-demo/leistungen"
     >
       <section className="section-container py-12">
         <h1 className="text-4xl font-bold text-[#111926]">Unsere Leistungen</h1>
