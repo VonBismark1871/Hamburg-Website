@@ -16,20 +16,20 @@ const toneClasses = {
 
 const portfolioSections = [
   {
+    id: 'mehrseitige-websites',
+    title: 'Mehrseitige Websites',
+    description:
+      'Beispiele für umfangreichere Websites mit mehreren Seiten, detaillierten Leistungsbereichen und erweiterten Inhalten.',
+    siteType: 'Mehrseitig',
+    projects: ['physio-demo', 'autoservice-demo', 'immobilien-demo']
+  },
+  {
     id: 'einfache-websites',
     title: 'Einfache Websites',
     description:
       'Beispiele für kompakte Unternehmenswebsites mit klarer Struktur und schneller Nutzerführung. Ideal für kleinere Betriebe oder lokale Dienstleistungen.',
     siteType: 'Onepager',
     projects: ['restaurant-demo', 'friseursalon-demo', 'zahnarzt-demo']
-  },
-  {
-    id: 'mehrseitige-websites',
-    title: 'Mehrseitige Websites',
-    description:
-      'Beispiele für umfangreichere Websites mit mehreren Seiten, detaillierten Leistungsbereichen und erweiterten Inhalten.',
-    siteType: 'Mehrseitig',
-    projects: ['physio-demo', 'autoservice-demo', 'autoservice-sales-case', 'redesign-beispiel-1', 'immobilien-demo']
   }
 ];
 
