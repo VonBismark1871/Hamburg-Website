@@ -39,18 +39,18 @@ export default function PhysioDemoHomePage() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a38]/80 via-[#264f4b]/45 to-[#375f5b]/15" />
             <div className="absolute inset-0 flex items-end p-8 sm:p-10">
-              <div className="max-w-xl text-white">
+              <div className="max-w-xl text-[var(--text-primary)]">
                 <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">Moderne Physiotherapie in Hamburg</h1>
                 <p className="mt-4 text-base text-[#e4f2ef] sm:text-lg">
                   Individuelle Behandlung, klare Therapiepläne und eine ruhige Praxisatmosphäre für Ihre nachhaltige Verbesserung im Alltag.
                 </p>
                 <div className="mt-7 flex flex-wrap gap-3">
-                  <Link href="/referenzen/physio-demo/kontakt" className="rounded-full bg-[#f2faf8] px-6 py-3 text-sm font-semibold text-[#2a5a54] transition hover:bg-white">
+                  <Link href="/referenzen/physio-demo/kontakt" className="rounded-full bg-[#f2faf8] px-6 py-3 text-sm font-semibold text-[#2a5a54] transition hover:bg-[var(--bg-card)]">
                     Termin anfragen
                   </Link>
                   <Link
                     href="/referenzen/physio-demo/leistungen"
-                    className="rounded-full border border-[#d3e4df] bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+                    className="rounded-full border border-[#d3e4df] bg-[var(--bg-card)]/10 px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[var(--bg-card)]/20"
                   >
                     Leistungen ansehen
                   </Link>
@@ -59,7 +59,7 @@ export default function PhysioDemoHomePage() {
             </div>
           </article>
 
-          <aside className="rounded-3xl border border-[#d4e2dd] bg-white p-7">
+          <aside className="rounded-3xl border border-[#d4e2dd] bg-[var(--bg-card)] p-7">
             <h2 className="text-2xl font-semibold text-[#254542]">Ihr Weg zur passenden Behandlung</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#4d6c69]">
               Wir schauen nicht nur auf den aktuellen Schmerzpunkt, sondern auf Bewegungsmuster, Belastungen im Alltag und Ihre persönlichen Ziele.
@@ -84,7 +84,7 @@ export default function PhysioDemoHomePage() {
       <section className="section-container pb-10">
         <div className="grid gap-3 rounded-2xl bg-[#dcebe6] p-5 sm:grid-cols-2 lg:grid-cols-4">
           {trustPoints.map((point) => (
-            <p key={point} className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#315652]">
+            <p key={point} className="rounded-xl bg-[var(--bg-card)] px-4 py-3 text-sm font-medium text-[#315652]">
               {point}
             </p>
           ))}
@@ -116,7 +116,7 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <div className="grid gap-6 rounded-3xl bg-white p-7 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-6 rounded-3xl bg-[var(--bg-card)] p-7 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="text-3xl font-semibold text-[#244240]">Warum Patientinnen und Patienten uns wählen</h2>
             <ul className="mt-5 space-y-3">
@@ -161,7 +161,7 @@ export default function PhysioDemoHomePage() {
             Ob akute Beschwerden oder längerfristige Therapie – Anfragen können unkompliziert gestellt werden.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/referenzen/physio-demo/kontakt" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#2a5b55] hover:bg-[#f2faf8]">
+            <Link href="/referenzen/physio-demo/kontakt" className="rounded-full bg-[var(--bg-card)] px-6 py-3 text-sm font-semibold text-[#2a5b55] hover:bg-[#f2faf8]">
               Termin anfragen
             </Link>
             <Link href="/referenzen/physio-demo/kontakt" className="rounded-full border border-[#9ec0bb] px-6 py-3 text-sm font-semibold text-[#f0f7f5] hover:bg-[#356d66]">
@@ -172,7 +172,7 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-16">
-        <div className="grid gap-6 rounded-3xl border border-[#cadbd6] bg-white p-7 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-6 rounded-3xl border border-[#cadbd6] bg-[var(--bg-card)] p-7 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 className="text-2xl font-semibold text-[#244240]">Kontakt, Öffnungszeiten & Lage</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#4d6c69]">{practiceInfo.address}</p>
@@ -185,7 +185,7 @@ export default function PhysioDemoHomePage() {
             </ul>
           </div>
           <div className="flex items-center justify-start lg:justify-end">
-            <Link href="/referenzen/physio-demo/kontakt" className="rounded-full bg-[#2f736b] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#285f58]">
+            <Link href="/referenzen/physio-demo/kontakt" className="rounded-full bg-[#2f736b] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#285f58]">
               Zur Kontaktseite
             </Link>
           </div>

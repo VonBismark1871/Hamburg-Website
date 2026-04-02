@@ -18,7 +18,7 @@ export default function PhysioDemoKontaktPage() {
 
       <section className="section-container pb-12">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <aside className="rounded-3xl border border-[#cfdfda] bg-white p-6">
+          <aside className="rounded-3xl border border-[#cfdfda] bg-[var(--bg-card)] p-6">
             <h2 className="text-2xl font-semibold text-[#244240]">Praxisinformationen</h2>
             <div className="mt-4 space-y-4 text-sm text-[#4d6c69]">
               <p>
