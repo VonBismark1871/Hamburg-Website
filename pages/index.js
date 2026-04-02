@@ -70,7 +70,7 @@ export default function HomePage() {
         <Hero />
 
         <section className="section-container pt-6" aria-labelledby="local-business-heading">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl px-6 sm:px-8 lg:px-10">
             <p className="section-label">Leistungen</p>
             <h2 id="local-business-heading" className="text-2xl text-slateBlue sm:text-3xl">
               Für Unternehmen in Hamburg
