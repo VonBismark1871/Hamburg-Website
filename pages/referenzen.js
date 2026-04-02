@@ -61,7 +61,7 @@ function ReferenceCard({ project, siteType }) {
         <p className="mt-4 text-xs font-medium uppercase tracking-wider text-slate-500">{siteType === 'Onepager' ? 'Onepager' : 'Mehrseitige Website'}</p>
         <Link
           href={`/referenzen/${project.slug}`}
-          className="mt-5 inline-flex w-fit rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+          className="mt-5 inline-flex secondary-btn text-sm text-slateBlue"
         >
           Demo ansehen
         </Link>
@@ -81,8 +81,8 @@ export default function ReferenzenPage() {
       <Header />
       <main>
         <section className="section-container section-spacing pb-8" aria-labelledby="referenzen-heading">
-          <h1 id="referenzen-heading" className="text-4xl font-extrabold tracking-tight text-slateBlue sm:text-5xl">
-            Referenzen und Beispiel-Websites
+          <h1 id="referenzen-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
+            <span className="h1-accent-italic">Referenzen</span> und Beispiel-Websites
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-slate-600">
             Diese Beispiele zeigen nicht nur Design, sondern vor allem klare Seitenstrukturen für konkrete Ziele wie
@@ -107,9 +107,10 @@ export default function ReferenzenPage() {
               <section
                 key={section.id}
                 aria-labelledby={`${section.id}-heading`}
-                className={`${index === 0 ? '' : 'mt-16 border-t border-slate-200 pt-14'}`}
+                className={`${index === 0 ? '' : 'mt-16 pt-14'}`}
               >
-                <h2 id={`${section.id}-heading`} className="text-2xl font-bold text-slateBlue sm:text-3xl">
+                <p className="section-label">{section.siteType === 'Onepager' ? 'Einfache Websites' : 'Mehrseitige Websites'}</p>
+                <h2 id={`${section.id}-heading`} className="text-2xl text-slateBlue sm:text-3xl">
                   {section.title}
                 </h2>
                 <p className="mt-3 max-w-3xl text-slate-600">{section.description}</p>
@@ -132,12 +133,12 @@ export default function ReferenzenPage() {
               Wir entwickeln Websites für viele weitere Branchen – individuell, klar strukturiert und passend zu Ihrem Unternehmen.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500">
+              <Link href="/kontakt" className="primary-btn">
                 Projekt anfragen
               </Link>
               <Link
                 href="/preise"
-                className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+                className="secondary-btn text-slateBlue"
               >
                 Preise ansehen
               </Link>

@@ -98,10 +98,10 @@ export default function UeberUnsPage() {
       />
       <Header />
       <main>
-        <section className="bg-slateBlue py-20 text-white sm:py-24" aria-labelledby="ueber-uns-hero-heading">
+        <section className="section-dark py-20 text-white sm:py-24" aria-labelledby="ueber-uns-hero-heading">
           <div className="section-container">
-            <h1 id="ueber-uns-hero-heading" className="max-w-4xl text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Ein Studio. Ein Ansprechpartner. Klare Arbeit.
+            <h1 id="ueber-uns-hero-heading" className="max-w-4xl text-4xl font-normal tracking-tight sm:text-5xl">
+              <span className="h1-accent-italic">Ein</span> Studio. Ein Ansprechpartner. Klare Arbeit.
             </h1>
             <p className="mt-6 max-w-3xl text-base text-slate-200 sm:text-lg">
               Hamburg Websites ist ein spezialisiertes Webstudio für lokale Unternehmen — mit dem Fokus auf das, was wirklich zählt: Struktur, Klarheit und messbare Ergebnisse.
@@ -109,7 +109,7 @@ export default function UeberUnsPage() {
           </div>
         </section>
 
-        <section className="border-b border-slate-200 bg-white py-14 sm:py-16" data-reveal-group aria-labelledby="manifest-heading">
+        <section className="bg-white py-14 sm:py-16" data-reveal-group aria-labelledby="manifest-heading">
           <div className="section-container reveal-item" data-reveal-item>
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Wofür wir stehen</p>
             <h2 id="manifest-heading" className="mt-4 max-w-5xl text-3xl font-serif text-slateBlue sm:text-4xl lg:text-5xl">
@@ -120,14 +120,15 @@ export default function UeberUnsPage() {
         </section>
 
         <section className="section-container section-spacing" aria-labelledby="arbeitsweise-heading">
-          <h2 id="arbeitsweise-heading" className="text-3xl font-bold tracking-tight text-slateBlue sm:text-4xl">
+          <p className="section-label">Arbeitsweise</p>
+          <h2 id="arbeitsweise-heading" className="text-3xl tracking-tight text-slateBlue sm:text-4xl">
             Arbeitsweise
           </h2>
           <ol className="mt-10 space-y-7" data-reveal-group data-stagger="80">
             {principles.map((item) => (
               <li key={item.number} className="reveal-item rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-7" data-reveal-item>
                 <article className="grid gap-4 sm:grid-cols-[70px_minmax(0,1fr)] sm:gap-6">
-                  <span className="text-6xl font-extrabold leading-none text-slate-200 sm:text-7xl" aria-hidden="true">
+                  <span className="text-6xl font-normal leading-none text-slate-200 sm:text-7xl" aria-hidden="true">
                     {item.number}
                   </span>
                   <div>
@@ -141,7 +142,8 @@ export default function UeberUnsPage() {
         </section>
 
         <section className="section-container pb-16 sm:pb-20" aria-labelledby="studio-vorteile-heading">
-          <h2 id="studio-vorteile-heading" className="text-3xl font-bold tracking-tight text-slateBlue sm:text-4xl">
+          <p className="section-label">Warum wir</p>
+          <h2 id="studio-vorteile-heading" className="text-3xl tracking-tight text-slateBlue sm:text-4xl">
             Warum ein kleines Studio?
           </h2>
           <div className="mt-8 grid gap-5 md:grid-cols-2" data-reveal-group data-stagger="70">
@@ -154,7 +156,7 @@ export default function UeberUnsPage() {
           </div>
         </section>
 
-        <section className="bg-slateBlue py-16 text-white sm:py-20" aria-labelledby="einordnung-heading">
+        <section className="section-dark py-16 text-white sm:py-20" aria-labelledby="einordnung-heading">
           <div className="section-container">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-indigo-200">Eine kurze Einordnung</p>
             <blockquote className="mt-5 max-w-4xl text-2xl italic text-slate-100 sm:text-3xl">
@@ -165,7 +167,8 @@ export default function UeberUnsPage() {
         </section>
 
         <section className="section-container section-spacing" aria-labelledby="zusagen-heading">
-          <h2 id="zusagen-heading" className="text-3xl font-bold tracking-tight text-slateBlue sm:text-4xl">
+          <p className="section-label">Zusagen</p>
+          <h2 id="zusagen-heading" className="text-3xl tracking-tight text-slateBlue sm:text-4xl">
             Unsere Zusagen
           </h2>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group data-stagger="60" aria-label="Zusagen von Hamburg Websites">
@@ -191,12 +194,12 @@ export default function UeberUnsPage() {
               Schauen Sie sich unsere Referenzen an oder starten Sie direkt mit einer kostenlosen Demo.
             </p>
             <div className="mt-7 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500">
+              <Link href="/kontakt" className="primary-btn">
                 Kostenlose Demo starten
               </Link>
               <Link
                 href="/referenzen"
-                className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+                className="secondary-btn text-slateBlue"
               >
                 Referenzen ansehen
               </Link>

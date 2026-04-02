@@ -80,7 +80,8 @@ export default function FAQ({
 
   return (
     <section className="section-container section-spacing" id={sectionId} aria-labelledby="faq-heading">
-      <Heading id="faq-heading" className="text-3xl font-bold text-slateBlue">
+      <p className="section-label">FAQ</p>
+      <Heading id="faq-heading" className="text-3xl text-slateBlue">
         {title}
       </Heading>
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">{intro}</p>
@@ -89,7 +90,7 @@ export default function FAQ({
         {items.map((item) => (
           <details
             key={item.question}
-            className="group rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-sm transition hover:border-slate-300 hover:shadow"
+            className="faq-item group card px-6 py-5"
           >
             <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
               <h3 className="text-lg font-semibold text-slateBlue">{item.question}</h3>
@@ -108,19 +109,19 @@ export default function FAQ({
       </div>
 
       {showFinalCta ? (
-        <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-8">
+        <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
           <h3 className="text-2xl font-bold text-slateBlue">Haben Sie noch Fragen?</h3>
           <p className="mt-3 max-w-3xl text-slate-600">
             Wenn Ihre Frage hier nicht beantwortet wurde, können Sie uns gerne direkt kontaktieren. Wir geben Ihnen
             eine klare Einschätzung für Ihr Projekt.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500">
+            <Link href="/kontakt" className="primary-btn">
               Projekt anfragen
             </Link>
             <Link
               href="/preise"
-              className="rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+              className="secondary-btn text-slateBlue"
             >
               Preise ansehen
             </Link>

@@ -15,8 +15,8 @@ export default function KontaktPage() {
       <Header />
       <main>
         <section className="section-container section-spacing pb-6" aria-labelledby="kontakt-heading">
-          <h1 id="kontakt-heading" className="text-4xl font-extrabold tracking-tight text-slateBlue sm:text-5xl">
-            Kontakt – Website erstellen lassen in Hamburg
+          <h1 id="kontakt-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
+            <span className="h1-accent-italic">Kontakt</span> – Website erstellen lassen in Hamburg
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-slate-600">
             Nutzen Sie das Formular für Ihre Anfrage. Wir melden uns zeitnah mit einem konkreten Vorschlag für den
@@ -27,14 +27,15 @@ export default function KontaktPage() {
         <Contact headingTag="h2" title="Schreiben Sie uns Ihr Website-Projekt" />
 
         <section className="section-container pb-16" aria-labelledby="kontakt-links-heading">
-          <h2 id="kontakt-links-heading" className="text-2xl font-bold text-slateBlue">
+          <p className="section-label">Weitere Links</p>
+          <h2 id="kontakt-links-heading" className="text-2xl text-slateBlue">
             Weitere Informationen
           </h2>
           <div className="mt-4 flex flex-wrap gap-4">
-            <Link href="/faq" className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent">
+            <Link href="/faq" className="secondary-btn text-slateBlue">
               FAQ lesen
             </Link>
-            <Link href="/preise" className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent">
+            <Link href="/preise" className="secondary-btn text-slateBlue">
               Preise ansehen
             </Link>
           </div>

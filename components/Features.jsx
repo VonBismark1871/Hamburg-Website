@@ -89,7 +89,8 @@ export default function Features() {
           transition={{ duration: 0.45 }}
           className="max-w-3xl"
         >
-          <h2 id="features-heading" className="text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+          <p className="section-label">Leistungen</p>
+          <h2 id="features-heading" className="text-3xl leading-tight text-slate-900 sm:text-4xl">
             Was eine moderne Website leisten sollte
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -107,8 +108,8 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className={`rounded-2xl border bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lg ${
-                  feature.accent ? 'border-indigo-200/80 bg-indigo-50/40 shadow-md' : 'border-slate-200'
+                className={`feature-item card ${
+                  feature.accent ? 'bg-indigo-50/40 shadow-md' : ''
                 }`}
               >
                 <span
