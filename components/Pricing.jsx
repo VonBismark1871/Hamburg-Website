@@ -78,27 +78,6 @@ const projectPricingCards = [
   }
 ];
 
-const packageScopes = [
-  {
-    packageName: 'Website-Visitenkarte',
-    included: ['Seitenstruktur für 1 Seite', 'Kontakt-CTA', 'SEO-Basics'],
-    excluded: ['Mehrsprachigkeit', 'CMS/Adminbereich', 'Individuelle Integrationen'],
-    addons: ['Zusätzliche Sektionen', 'Weitere Korrekturschleifen', 'Texterstellung']
-  },
-  {
-    packageName: 'Onepager',
-    included: ['Sektionen für Leistungen/Über uns/Kontakt', 'Kontaktformular', 'Performance-Basics'],
-    excluded: ['Komplexe Funnel-Logik', 'Mehrere Unterseiten', 'Schnittstellen zu Dritttools'],
-    addons: ['Zusätzliche Conversion-Sektionen', 'Tracking-Setup', 'Erweiterte Formularlogik']
-  },
-  {
-    packageName: 'Mehrseitige Website',
-    included: ['5–8 Seitenplan', 'Interne Verlinkung', 'Übergabe / Ownership nach Livegang'],
-    excluded: ['Redaktionelle Dauerpflege', 'Individuelle Web-App-Funktionen', 'Fortlaufende SEO-Betreuung'],
-    addons: ['Weitere Unterseiten', 'Adminbereich/CMS', 'Monatliche Pflegepakete']
-  }
-];
-
 const includedItems = [
   'Responsive Umsetzung',
   'Grundlegende SEO-Struktur',
@@ -240,46 +219,6 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
         {projectPricingCards.map((card, index) => (
           <PricingCard key={card.title} card={card} index={index} />
         ))}
-      </div>
-
-      <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-soft sm:p-8">
-        <h3 className="text-2xl font-bold text-slateBlue">Leistungsrahmen je Paket</h3>
-        <p className="mt-3 max-w-4xl text-sm text-slate-600">
-          Kurz und klar: was im Basispreis enthalten ist, was nicht enthalten ist und welche Zusatzleistungen möglich sind.
-        </p>
-        <div className="mt-6 grid gap-4 lg:grid-cols-3">
-          {packageScopes.map((scope) => (
-            <article key={scope.packageName} className="rounded-xl border border-slate-200 bg-white p-4">
-              <h4 className="text-lg font-semibold text-slateBlue">{scope.packageName}</h4>
-              <div className="mt-3 space-y-3 text-sm">
-                <div>
-                  <p className="font-semibold text-slate-800">Inklusive</p>
-                  <ul className="mt-1 space-y-1 text-slate-600">
-                    {scope.included.map((item) => (
-                      <li key={item}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p className="font-semibold text-slate-800">Nicht inklusive</p>
-                  <ul className="mt-1 space-y-1 text-slate-600">
-                    {scope.excluded.map((item) => (
-                      <li key={item}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p className="font-semibold text-slate-800">Als Zusatzleistung möglich</p>
-                  <ul className="mt-1 space-y-1 text-slate-600">
-                    {scope.addons.map((item) => (
-                      <li key={item}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
       </div>
 
       <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
