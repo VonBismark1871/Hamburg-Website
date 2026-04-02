@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import SEOHead from '../../../../components/SEOHead';
+import Header from '../../../../components/Header';
 import ReferenceStickyBackButton from '../../../../components/ReferenceStickyBackButton';
 import FilterChips from '../../../../components/references/immobilien-demo/FilterChips';
 import PropertyCard from '../../../../components/references/immobilien-demo/PropertyCard';
@@ -13,6 +14,7 @@ export default function ImmobilienObjektePage() {
         description="Beispiel einer Objektübersicht für eine moderne Immobilienmakler-Website."
         path="/referenzen/immobilien-demo/objekte"
       />
+      <Header />
       <main className="bg-[#f6f3ee] pb-20 pt-10 text-stone-900">
         <section className="section-container" aria-labelledby="objekte-heading">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-stone-500">Elbquartier Immobilien · Hamburg</p>
