@@ -68,8 +68,7 @@ const features = [
   {
     icon: SearchIcon,
     title: 'Lokale Sichtbarkeit',
-    text: 'Klare Struktur und Inhalte helfen, in Hamburg besser gefunden zu werden.',
-    accent: true
+    text: 'Klare Struktur und Inhalte helfen, in Hamburg besser gefunden zu werden.'
   },
   {
     icon: LayoutIcon,
@@ -108,16 +107,10 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className={`feature-item card ${
-                  feature.accent ? 'bg-indigo-50/40 shadow-md' : ''
-                }`}
+                className="card"
               >
                 <span
-                  className={`mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border ${
-                    feature.accent
-                      ? 'border-indigo-200 bg-white text-indigo-700'
-                      : 'border-slate-200 bg-slate-50 text-slate-700'
-                  }`}
+                  className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700"
                 >
                   <Icon />
                 </span>
