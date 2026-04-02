@@ -38,3 +38,6 @@ PSI_API_KEY=your_local_key python3 scripts/psi_snapshot.py
 - Do **not** commit PSI keys to the repository.
 - Use environment variables in local shell or CI secret storage.
 - Dry-run behavior (no `PSI_API_KEY`) intentionally exits successfully to keep onboarding and CI smoke checks safe.
+
+## Detailed baseline guide
+- Follow `docs/performance/psi-baseline.md` for run naming, storage layout, and baseline comparison workflow.
