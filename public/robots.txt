@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hamburg-webentwickler.de/sitemap.xml
+Sitemap: https://hamburgwebsites.de/sitemap.xml
