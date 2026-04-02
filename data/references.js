@@ -40,23 +40,6 @@ export const referenceProjects = [
     tone: 'contrast'
   },
   {
-    slug: 'autoservice-sales-case',
-    title: 'Auto Service Sales Case (Demo)',
-    description: 'Transparentes Demo-Case-Study zur Website-Strategie für eine Kfz-Werkstatt in Hamburg.',
-    image: '/demo-images/local-service.svg',
-    tags: ['Demo Case', 'SEO-Basis', 'Conversion'],
-    tone: 'contrast'
-  },
-
-  {
-    slug: 'redesign-beispiel-1',
-    title: 'Beispiel-Redesign (kein Kunde)',
-    description: 'Ehrliches Vorher/Nachher-Demo mit klarem Fokus auf Struktur, Conversion und SEO-Basis ohne Erfolgsversprechen.',
-    image: '/demo-images/local-service.svg',
-    tags: ['Redesign', 'Vorher/Nachher', 'Demo'],
-    tone: 'contrast'
-  },
-  {
     slug: 'immobilien-demo',
     title: 'Immobilienmakler Website',
     description: 'Editorial geprägte Immobilienpräsentation mit Objektfokus, Exposé und Kontakt.',
