@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SEOHead from '../../../components/SEOHead';
+import Header from '../../../components/Header';
 import ReferenceStickyBackButton from '../../../components/ReferenceStickyBackButton';
 import PropertyCard from '../../../components/references/immobilien-demo/PropertyCard';
 import { featuredPropertyIds, properties } from '../../../components/references/immobilien-demo/properties';
@@ -28,6 +29,7 @@ export default function ImmobilienDemoHomePage() {
         description="Beispiel einer modernen Immobilienmakler-Website mit Objektübersicht, Exposé und Anfragebereich."
         path="/referenzen/immobilien-demo"
       />
+      <Header />
       <main className="bg-[#f6f3ee] text-stone-900">
         <section className="section-container pb-12 pt-10">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-stone-500">

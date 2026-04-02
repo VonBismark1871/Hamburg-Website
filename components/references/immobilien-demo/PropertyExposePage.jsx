@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SEOHead from '../../SEOHead';
+import Header from '../../Header';
 import ReferenceStickyBackButton from '../../ReferenceStickyBackButton';
 import InquiryCard from './InquiryCard';
 
@@ -8,6 +9,7 @@ export default function PropertyExposePage({ path, content }) {
   return (
     <>
       <SEOHead title={content.seoTitle} description={content.seoDescription} path={path} />
+      <Header />
       <main className="bg-[#f6f3ee] pb-20 text-stone-900">
         <section className="section-container pt-10" aria-labelledby="expose-heading">
           <figure className="overflow-hidden rounded-[2rem]">
