@@ -13,6 +13,7 @@ export default function AutoserviceContactPage() {
     <AutoserviceDemoLayout
       title="Kontakt & Termin | Auto Service Demo"
       description="Kontakt- und Terminseite einer Kfz-Werkstatt mit Werkstattdaten, Karte und Anfrageformular."
+      path="/referenzen/autoservice-demo/kontakt"
     >
       <section className="section-container py-12">
         <h1 className="text-4xl font-bold text-[#111926]">Kontakt & Termin</h1>

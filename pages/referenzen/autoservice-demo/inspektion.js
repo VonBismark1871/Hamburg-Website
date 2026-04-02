@@ -7,6 +7,7 @@ export default function AutoserviceInspectionPage() {
     <AutoserviceDemoLayout
       title="Inspektion | Auto Service Demo"
       description="Beispiel einer Leistungsdetailseite für eine Fahrzeuginspektion in einer Hamburger Werkstatt."
+      path="/referenzen/autoservice-demo/inspektion"
     >
       <section className="section-container py-12">
         <h1 className="text-4xl font-bold text-[#111926]">Inspektion für Ihr Fahrzeug</h1>

@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import { defaultSeo, getCanonical } from '../lib/seo';
+import { defaultSeo, getCanonical, isPreviewEnvironment } from '../lib/seo';
 
-export default function SEOHead({ title, description, path = '/', schema }) {
+export default function SEOHead({ title, description, path = '/', schema, noIndex = false }) {
   const pageTitle = title
     ? title === defaultSeo.siteName
       ? title
@@ -9,11 +9,13 @@ export default function SEOHead({ title, description, path = '/', schema }) {
     : defaultSeo.title;
   const pageDescription = description || defaultSeo.description;
   const canonical = getCanonical(path);
+  const shouldNoIndex = noIndex || isPreviewEnvironment();
 
   return (
     <Head>
       <title>{pageTitle}</title>
       <meta name="description" content={pageDescription} />
+      {shouldNoIndex ? <meta name="robots" content="noindex, nofollow" /> : null}
       <link rel="canonical" href={canonical} />
       <meta property="og:type" content={defaultSeo.type} />
       <meta property="og:site_name" content={defaultSeo.siteName} />

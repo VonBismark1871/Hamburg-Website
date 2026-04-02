@@ -9,10 +9,10 @@ const navItems = [
   { href: '/referenzen/autoservice-demo/inspektion', label: 'Inspektion' }
 ];
 
-export default function AutoserviceDemoLayout({ title, description, children }) {
+export default function AutoserviceDemoLayout({ title, description, path, children }) {
   return (
     <>
-      <SEOHead title={title} description={description} path="/referenzen/autoservice-demo" noIndex />
+      <SEOHead title={title} description={description} path={path} noIndex />
       <div className="min-h-screen bg-[#f3f5f7] text-[#1a2028]">
         <div className="section-container pt-8">
           <ReferenceBackButton href="/referenzen" label="Zurück zu den Referenzen" />
