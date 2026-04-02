@@ -29,7 +29,7 @@ const portfolioSections = [
     description:
       'Beispiele für umfangreichere Websites mit mehreren Seiten, detaillierten Leistungsbereichen und erweiterten Inhalten.',
     siteType: 'Mehrseitig',
-    projects: ['physio-demo', 'autoservice-demo', 'autoservice-sales-case', 'immobilien-demo']
+    projects: ['physio-demo', 'autoservice-demo', 'autoservice-sales-case', 'redesign-beispiel-1', 'immobilien-demo']
   }
 ];
 
