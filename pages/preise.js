@@ -27,7 +27,8 @@ export default function PreisePage() {
             Preise für Website-Erstellung in Hamburg
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-slate-600">
-            Unsere Pakete sind klar strukturiert, damit Sie den Umfang und die Investition sofort einordnen können.
+            Unsere Pakete sind klar strukturiert, damit Sie Umfang, Abgrenzung und Investition sofort einordnen
+            können.
           </p>
         </section>
 
@@ -43,8 +44,8 @@ export default function PreisePage() {
               technische Basis für gute Indexierbarkeit.
             </p>
             <p>
-              Je nach Paket erweitern wir den Umfang um zusätzliche Seiten, Inhalte und Conversion-Elemente, damit Ihre
-              Website zu Ihrem Geschäftsziel passt.
+              Zusätzlich sehen Sie pro Paket klar, was inklusive ist, was nicht enthalten ist und welche
+              Zusatzleistungen bei Bedarf ergänzt werden können.
             </p>
           </div>
           <div className="mt-6 flex flex-wrap gap-4">
