@@ -306,7 +306,7 @@ export default function AblaufPage() {
           font-weight: 700;
           letter-spacing: 0.04em;
           color: #334155;
-          background: #fff;
+          background: var(--bg-card);
           transition: border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
         }
 

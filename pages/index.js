@@ -192,6 +192,8 @@ export default function HomePage() {
 
         <section className="section-container section-spacing pt-2" aria-labelledby="final-cta-heading">
           <div className="section-dark rounded-2xl border border-slate-800 p-8 text-white sm:p-10">
+            <span className="glow-blob glow-blob--purple" aria-hidden="true" />
+            <span className="glow-blob glow-blob--teal" aria-hidden="true" />
             <h2 id="final-cta-heading" className="text-3xl text-white">
               Bereit für Ihre neue Website?
             </h2>

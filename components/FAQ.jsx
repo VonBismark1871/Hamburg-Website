@@ -103,7 +103,7 @@ export default function FAQ({
                 <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             </summary>
-            <p className="mt-4 pr-8 leading-relaxed text-slate-600">{item.answer ?? item.answerText}</p>
+            <div className="faq-answer"><p className="mt-4 pr-8 leading-relaxed text-slate-600">{item.answer ?? item.answerText}</p></div>
           </details>
         ))}
       </div>

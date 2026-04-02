@@ -62,7 +62,7 @@ export default function Process() {
               className="relative pl-14 md:pl-0"
             >
               <div className="card relative h-full border border-slate-200 bg-white p-5 transition-shadow duration-300 hover:shadow-md md:flex md:min-h-[210px] md:flex-col md:items-start">
-                <span className="absolute -left-3 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-white md:-top-5 md:left-5">
+                <span className="absolute -left-3 top-6 flex h-10 w-10 items-center justify-center step-badge rounded-full bg-accent text-sm font-semibold text-white md:-top-5 md:left-5">
                   {index + 1}
                 </span>
 
