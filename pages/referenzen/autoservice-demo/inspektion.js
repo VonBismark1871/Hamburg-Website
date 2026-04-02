@@ -16,7 +16,7 @@ export default function AutoserviceInspectionPage() {
           Gleichzeitig bleibt Ihr Fahrzeug zuverlässig und sicher im Alltag.
         </p>
 
-        <div className="mt-8 rounded-2xl border border-[#cbd4df] bg-white p-6">
+        <div className="mt-8 rounded-2xl border border-[#cbd4df] bg-[var(--bg-card)] p-6">
           <h2 className="text-2xl font-semibold text-[#111926]">Was wir bei der Inspektion prüfen</h2>
           <ul className="mt-4 space-y-3">
             {inspectionChecklist.map((item) => (
@@ -35,7 +35,7 @@ export default function AutoserviceInspectionPage() {
           </p>
           <Link
             href="/referenzen/autoservice-demo/kontakt"
-            className="mt-5 inline-flex rounded-md bg-[#b8453c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#9f392f]"
+            className="mt-5 inline-flex rounded-md bg-[#b8453c] px-5 py-2.5 text-sm font-semibold text-[var(--text-primary)] hover:bg-[#9f392f]"
           >
             Termin für Inspektion anfragen
           </Link>

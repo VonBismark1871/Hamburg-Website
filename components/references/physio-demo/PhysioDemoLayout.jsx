@@ -30,7 +30,7 @@ export default function PhysioDemoLayout({ title, description, path, children })
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-full border border-[#c4d8d3] bg-white/80 px-4 py-2 font-medium text-[#355955] transition hover:border-[#8fb0ab] hover:bg-white"
+                    className="rounded-full border border-[#c4d8d3] bg-[var(--bg-card)]/80 px-4 py-2 font-medium text-[#355955] transition hover:border-[#8fb0ab] hover:bg-[var(--bg-card)]"
                   >
                     {item.label}
                   </Link>

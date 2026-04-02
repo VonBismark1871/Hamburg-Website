@@ -118,7 +118,7 @@ function RestaurantHero() {
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="#reservierung"
-                className="inline-flex rounded-md bg-[#c67b4a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#b36b3c]"
+                className="inline-flex rounded-md bg-[#c67b4a] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#b36b3c]"
               >
                 Jetzt reservieren
               </Link>
@@ -325,7 +325,7 @@ export default function RestaurantDemoPage() {
               <div className="flex flex-wrap gap-3 lg:justify-end">
                 <Link
                   href="mailto:reservierung@hafenblick-demo.de"
-                  className="inline-flex h-fit rounded-md bg-[#c67b4a] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#b36b3c]"
+                  className="inline-flex h-fit rounded-md bg-[#c67b4a] px-7 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#b36b3c]"
                 >
                   Jetzt reservieren
                 </Link>

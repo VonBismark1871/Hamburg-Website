@@ -35,7 +35,7 @@ export default function ImmobilienObjektePage() {
             ))}
           </div>
 
-          <div className="mt-12 rounded-2xl border border-stone-300 bg-white p-6">
+          <div className="mt-12 rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
             <h2 className="text-2xl font-semibold">Sie möchten ein ähnliches Objekt verkaufen?</h2>
             <p className="mt-3 text-sm text-stone-700">
               Unsere Vermarktung verbindet lokale Marktkenntnis mit hochwertiger Präsentation – digital, strukturiert

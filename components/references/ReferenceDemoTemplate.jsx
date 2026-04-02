@@ -7,35 +7,35 @@ const palette = {
     page: 'bg-zinc-950 text-zinc-100',
     panel: 'border-zinc-700 bg-zinc-900/80',
     muted: 'text-zinc-300',
-    primary: 'bg-white text-zinc-900 hover:bg-zinc-200',
+    primary: 'bg-[var(--bg-card)] text-zinc-900 hover:bg-zinc-200',
     secondary: 'border-zinc-500 text-zinc-100 hover:bg-zinc-800'
   },
   clean: {
     page: 'bg-sky-50 text-slate-800',
-    panel: 'border-sky-100 bg-white/95',
+    panel: 'border-sky-100 bg-[var(--bg-card)]/95',
     muted: 'text-slate-600',
-    primary: 'bg-sky-600 text-white hover:bg-sky-700',
+    primary: 'bg-sky-600 text-[var(--text-primary)] hover:bg-sky-700',
     secondary: 'border-slate-300 text-slate-700 hover:bg-slate-50'
   },
   calm: {
     page: 'bg-emerald-50 text-slate-800',
-    panel: 'border-emerald-100 bg-white/95',
+    panel: 'border-emerald-100 bg-[var(--bg-card)]/95',
     muted: 'text-slate-600',
-    primary: 'bg-emerald-600 text-white hover:bg-emerald-700',
+    primary: 'bg-emerald-600 text-[var(--text-primary)] hover:bg-emerald-700',
     secondary: 'border-slate-300 text-slate-700 hover:bg-slate-50'
   },
   contrast: {
     page: 'bg-slate-100 text-slate-900',
-    panel: 'border-slate-300 bg-white',
+    panel: 'border-slate-300 bg-[var(--bg-card)]',
     muted: 'text-slate-600',
-    primary: 'bg-slate-900 text-white hover:bg-black',
+    primary: 'bg-slate-900 text-[var(--text-primary)] hover:bg-black',
     secondary: 'border-slate-300 text-slate-700 hover:bg-slate-50'
   },
   premium: {
     page: 'bg-stone-100 text-stone-900',
-    panel: 'border-stone-300 bg-white/95',
+    panel: 'border-stone-300 bg-[var(--bg-card)]/95',
     muted: 'text-stone-600',
-    primary: 'bg-stone-900 text-white hover:bg-black',
+    primary: 'bg-stone-900 text-[var(--text-primary)] hover:bg-black',
     secondary: 'border-stone-300 text-stone-800 hover:bg-stone-50'
   }
 };

@@ -24,7 +24,7 @@ export default function PropertyExposePage({ path, content }) {
               </h1>
               <p className="mt-5 max-w-3xl text-stone-700">{content.intro}</p>
 
-              <dl className="mt-8 grid gap-4 rounded-2xl border border-stone-300 bg-white p-6 sm:grid-cols-2">
+              <dl className="mt-8 grid gap-4 rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6 sm:grid-cols-2">
                 {content.facts.map(([label, value]) => (
                   <div key={label}>
                     <dt className="text-sm text-stone-500">{label}</dt>
@@ -52,13 +52,13 @@ export default function PropertyExposePage({ path, content }) {
 
         <section className="section-container pt-14" aria-labelledby="beschreibung-heading">
           <div className="grid gap-5">
-            <article className="rounded-2xl border border-stone-300 bg-white p-6">
+            <article className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
               <h2 id="beschreibung-heading" className="text-2xl font-semibold">
                 Objektbeschreibung
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-700">{content.description}</p>
             </article>
-            <article className="rounded-2xl border border-stone-300 bg-white p-6">
+            <article className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
               <h2 className="text-2xl font-semibold">Ausstattung</h2>
               <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-stone-700">
                 {content.features.map((feature) => (
@@ -66,11 +66,11 @@ export default function PropertyExposePage({ path, content }) {
                 ))}
               </ul>
             </article>
-            <article className="rounded-2xl border border-stone-300 bg-white p-6">
+            <article className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
               <h2 className="text-2xl font-semibold">Lage</h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-700">{content.location}</p>
             </article>
-            <article className="rounded-2xl border border-stone-300 bg-white p-6">
+            <article className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
               <h2 className="text-2xl font-semibold">Sonstiges</h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-700">{content.misc}</p>
             </article>
