@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Pricing from '../components/Pricing';
@@ -33,6 +34,16 @@ export default function PreisePage() {
 
         <Pricing headingTag="h2" sectionId="preise-pakete" />
 
+        <section className="section-container pb-16" aria-label="Preise Aktionen">
+          <div className="mt-6 flex flex-wrap gap-4">
+            <Link href="/kontakt" className="primary-btn">
+              Unverbindlich anfragen
+            </Link>
+            <Link href="/faq" className="secondary-btn text-slateBlue">
+              Fragen & Antworten lesen
+            </Link>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
