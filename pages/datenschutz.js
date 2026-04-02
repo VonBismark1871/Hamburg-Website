@@ -189,9 +189,9 @@ const sections = [
     content: (
       <>
         <p>
-          Diese Website verwendet die Schriftart „Inter“ in lokal gehosteter Form. Die Font-Dateien werden direkt
-          von unserem Server ausgeliefert, sodass beim Laden der Website keine Verbindung zu externen
-          Schriftanbieter-Diensten (z. B. Google Fonts) aufgebaut wird.
+          Diese Website ist für die Schriftart „Inter“ in lokal gehosteter Form konfiguriert. Die Einbindung erfolgt
+          ohne externe Schriftanbieter-Dienste (z. B. Google Fonts). Falls lokale Font-Dateien vorübergehend nicht
+          verfügbar sind, wird automatisch auf lokale Systemschriften des Endgeräts zurückgegriffen.
         </p>
         <p className="mt-4">
           Eine Übermittlung personenbezogener Daten (insbesondere der IP-Adresse) an externe Font-Provider findet
