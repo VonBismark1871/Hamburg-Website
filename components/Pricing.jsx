@@ -258,23 +258,6 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
         </p>
       </div>
 
-      <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
-        <p className="text-slate-600">
-          Jedes Projekt wird individuell geplant. Die genannten Preise dienen als realistische Orientierung für typische
-          Anforderungen.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-4">
-          <Link href="/kontakt" className="primary-btn">
-            Projekt anfragen
-          </Link>
-          <Link
-            href="/kontakt"
-            className="secondary-btn text-slateBlue"
-          >
-            Kostenlose Demo anfragen
-          </Link>
-        </div>
-      </div>
     </section>
   );
 }
