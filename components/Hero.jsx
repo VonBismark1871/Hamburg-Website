@@ -291,24 +291,30 @@ export default function Hero() {
   };
 
   return (
-    <section className="section-container section-spacing pt-12 sm:pt-16">
-      <div className="grid items-center gap-10 lg:grid-cols-2">
+    <section className="hero py-16 text-white sm:py-20">
+      <div className="section-container relative">
+        <span className="hero-watermark" aria-hidden="true">
+          HAMBURG
+        </span>
+      </div>
+      <div className="section-container grid items-center gap-10 lg:grid-cols-2">
         <div className="space-y-6">
           <motion.h1
             initial="hidden"
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl font-extrabold tracking-tight text-slateBlue sm:text-5xl"
+            className="text-4xl tracking-tight text-white sm:text-5xl"
           >
-            Websites für Hamburger Unternehmen, die messbar zu Anfragen führen
+            <span className="h1-accent-italic">Websites</span> für Hamburger Unternehmen, die messbar zu Anfragen
+            führen
           </motion.h1>
           <motion.p
             initial="hidden"
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-xl text-lg text-slate-600"
+            className="max-w-xl text-lg text-slate-200"
           >
             Wir verbinden klare Nutzerführung, schnelle Technik und verständliche Inhalte, damit jede Seite eine
             konkrete Aufgabe im Vertriebsprozess erfüllt.
@@ -322,13 +328,13 @@ export default function Hero() {
           >
             <Link
               href="/kontakt"
-              className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500"
+              className="primary-btn"
             >
               Fordern Sie eine kostenlose Demo-Webseite an
             </Link>
             <Link
               href="/#portfolio"
-              className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+              className="secondary-btn text-white"
             >
               Sehen Sie sich Beispiele an
             </Link>
@@ -338,7 +344,7 @@ export default function Hero() {
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.45, delay: 0.38 }}
-            className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500"
+            className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-300"
           >
             <span className="inline-flex items-center gap-1.5">
               <span className="text-emerald-500">✓</span> Kostenlose Demo-Webseite
@@ -366,7 +372,7 @@ export default function Hero() {
             onMouseLeave={() => setIsHovered(false)}
             onFocusCapture={() => setIsHovered(true)}
             onBlurCapture={() => setIsHovered(false)}
-            className="overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-100 via-white to-slate-50 shadow-2xl shadow-slate-300/40"
+            className="overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-100 via-white to-slate-50 shadow-2xl shadow-slate-900/30"
           >
             <div className="flex items-center gap-2 border-b border-slate-200/80 bg-gradient-to-b from-slate-100 to-slate-50 px-5 py-3">
               <span className="h-2.5 w-2.5 rounded-full border border-red-200 bg-red-300/90" />

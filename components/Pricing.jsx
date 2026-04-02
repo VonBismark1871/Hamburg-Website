@@ -49,7 +49,7 @@ const projectPricingCards = [
     bullets: ['5–8 Seitenplan', 'Interne Verlinkung', 'Übergabe / Ownership', '2 Korrekturschleifen', '7 Tage Prüfungsphase'],
     note: 'Abhängig von Seitenanzahl und Umfang',
     featured: true,
-    badge: 'Besonders gefragt',
+    badge: 'Beliebt',
     preview: {
       description: 'Website mit mehreren Unterseiten für umfangreichere Inhalte, bessere Navigation und detailliertere Informationen.',
       bullets: ['mehrere Unterseiten', 'klarere Informationsstruktur', 'geeignet für größere Projekte'],
@@ -125,25 +125,12 @@ function PricingCard({ card, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
-      className={`card relative overflow-hidden ${
-        card.featured
-          ? 'border-2 border-accent/45 bg-gradient-to-b from-accent/[0.09] via-accent/[0.04] to-white shadow-[0_22px_45px_-30px_rgba(79,70,229,0.55)]'
-          : ''
-      }`}
+      className={`price-card card relative overflow-visible ${card.featured ? 'featured' : ''}`}
     >
-      {card.featured ? <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-accent/10 to-transparent" /> : null}
-      {card.badge ? (
-        <span
-          className={`mb-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-            card.badgeStyle === 'premium'
-              ? 'border border-slate-300 bg-slate-100 text-slate-700'
-              : 'border border-accent/30 bg-accent/10 text-accent'
-          }`}
-        >
-          {card.badge}
-        </span>
+            {card.badge ? (
+        <span className={`mb-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${card.featured ? 'price-card-badge' : card.badgeStyle === 'premium' ? 'border border-slate-300 bg-slate-100 text-slate-700' : 'border border-accent/30 bg-accent/10 text-accent'}`}>{card.badge}</span>
       ) : null}
-      <h3 className="text-xl font-semibold text-slateBlue">{card.title}</h3>
+      <h3 className="text-xl text-slateBlue">{card.title}</h3>
       <p className={`mt-3 text-accent ${card.featured ? 'text-4xl font-extrabold' : 'text-3xl font-bold'}`}>{card.price}</p>
       <p className="mt-3 text-slate-600">{card.description}</p>
       <ul className="mt-5 space-y-2 text-sm text-slate-700">
@@ -176,7 +163,7 @@ function ServiceCard({ card, index }) {
       transition={{ duration: 0.45, delay: index * 0.08 }}
       className="card"
     >
-      <h4 className="text-lg font-semibold text-slateBlue">{card.title}</h4>
+      <h4 className="text-lg text-slateBlue">{card.title}</h4>
       <p className="mt-2 text-2xl font-bold text-accent">{card.price}</p>
       <p className="mt-3 text-slate-600">{card.description}</p>
       <ul className="mt-5 space-y-2 text-sm text-slate-700">
@@ -202,7 +189,8 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
         viewport={{ once: true }}
         transition={{ duration: 0.45 }}
       >
-        <Heading id="pricing-heading" className="text-3xl font-bold text-slateBlue">
+        <p className="section-label">Unsere Pakete</p>
+        <Heading id="pricing-heading" className="text-3xl text-slateBlue">
           Richtwerte für typische Webprojekte
         </Heading>
         <p className="mt-5 max-w-4xl text-lg leading-relaxed text-slate-600">
@@ -222,7 +210,8 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
       </div>
 
       <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-        <h3 className="text-2xl font-bold text-slateBlue">In den meisten Projekten enthalten</h3>
+        <p className="section-label">Im Preis enthalten</p>
+        <h3 className="text-2xl text-slateBlue">In den meisten Projekten enthalten</h3>
         <ul className="mt-6 grid gap-3 text-slate-700 sm:grid-cols-2">
           {includedItems.map((item) => (
             <li key={item} className="flex items-start gap-2 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3">
@@ -275,12 +264,12 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
           Anforderungen.
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
-          <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500">
+          <Link href="/kontakt" className="primary-btn">
             Projekt anfragen
           </Link>
           <Link
             href="/kontakt"
-            className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+            className="secondary-btn text-slateBlue"
           >
             Kostenlose Demo anfragen
           </Link>

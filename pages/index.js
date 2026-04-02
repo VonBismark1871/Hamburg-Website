@@ -71,7 +71,8 @@ export default function HomePage() {
 
         <section className="section-container pt-6" aria-labelledby="local-business-heading">
           <div className="max-w-3xl">
-            <h2 id="local-business-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+            <p className="section-label">Leistungen</p>
+            <h2 id="local-business-heading" className="text-2xl text-slateBlue sm:text-3xl">
               Für Unternehmen in Hamburg
             </h2>
             <p className="mt-3 text-slate-600">
@@ -92,7 +93,8 @@ export default function HomePage() {
 
         <section className="section-container pt-2" aria-labelledby="references-intro-heading">
           <div className="max-w-3xl">
-            <h2 id="references-intro-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+            <p className="section-label">Referenzen</p>
+            <h2 id="references-intro-heading" className="text-2xl text-slateBlue sm:text-3xl">
               Beispiele moderner Unternehmenswebsites
             </h2>
             <p className="mt-3 text-slate-600">
@@ -106,7 +108,8 @@ export default function HomePage() {
 
         <section className="section-container section-spacing" aria-labelledby="process-preview-heading">
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8 lg:p-10">
-            <h2 id="process-preview-heading" className="text-3xl font-bold text-slateBlue">
+            <p className="section-label">Ablauf</p>
+            <h2 id="process-preview-heading" className="text-3xl text-slateBlue">
               So läuft die Zusammenarbeit ab
             </h2>
             <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -129,7 +132,8 @@ export default function HomePage() {
 
         <section className="section-container section-spacing" aria-labelledby="pricing-preview-heading">
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8 lg:p-10">
-            <h2 id="pricing-preview-heading" className="text-3xl font-bold text-slateBlue">
+            <p className="section-label">Preise</p>
+            <h2 id="pricing-preview-heading" className="text-3xl text-slateBlue">
               Preise im Überblick
             </h2>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -153,7 +157,8 @@ export default function HomePage() {
 
         <section className="section-container section-spacing pt-2" aria-labelledby="faq-preview-heading">
           <div className="max-w-4xl">
-            <h2 id="faq-preview-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+            <p className="section-label">FAQ</p>
+            <h2 id="faq-preview-heading" className="text-2xl text-slateBlue sm:text-3xl">
               Häufige Fragen
             </h2>
             <div className="mt-6 space-y-4">
@@ -175,7 +180,8 @@ export default function HomePage() {
 
         <section className="section-container pt-2" aria-labelledby="final-bridge-heading">
           <div className="max-w-3xl">
-            <h2 id="final-bridge-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+            <p className="section-label">Zusammenarbeit</p>
+            <h2 id="final-bridge-heading" className="text-2xl text-slateBlue sm:text-3xl">
               Klarer Ablauf, nachvollziehbare Preise
             </h2>
             <p className="mt-3 text-slate-600">
@@ -185,20 +191,20 @@ export default function HomePage() {
         </section>
 
         <section className="section-container section-spacing pt-2" aria-labelledby="final-cta-heading">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8 sm:p-10">
-            <h2 id="final-cta-heading" className="text-3xl font-bold text-slateBlue">
+          <div className="section-dark rounded-2xl border border-slate-800 p-8 text-white sm:p-10">
+            <h2 id="final-cta-heading" className="text-3xl text-white">
               Bereit für Ihre neue Website?
             </h2>
-            <p className="mt-4 max-w-2xl text-slate-600">
+            <p className="mt-4 max-w-2xl text-slate-200">
               Fordern Sie eine kostenlose Demo-Vorschau an oder lassen Sie Ihr Projekt unverbindlich einschätzen.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500">
+              <Link href="/kontakt" className="primary-btn">
                 Projekt anfragen
               </Link>
               <Link
                 href="/preise"
-                className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+                className="secondary-btn text-white"
               >
                 Preise ansehen
               </Link>

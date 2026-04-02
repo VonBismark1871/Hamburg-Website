@@ -108,11 +108,11 @@ export default function AblaufPage() {
       />
       <Header />
       <main>
-        <section className="relative overflow-hidden bg-slateBlue py-20 text-white sm:py-24" aria-labelledby="ablauf-hero-heading">
+        <section className="section-dark py-20 text-white sm:py-24" aria-labelledby="ablauf-hero-heading">
           <div className="section-container">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-indigo-200">Hamburg Websites — Prozess</p>
-            <h1 id="ablauf-hero-heading" className="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl">
-              So läuft Ihr Projekt ab
+            <h1 id="ablauf-hero-heading" className="mt-4 max-w-3xl text-4xl font-normal tracking-tight sm:text-5xl">
+              <span className="h1-accent-italic">So</span> läuft Ihr Projekt ab
             </h1>
             <p className="mt-5 max-w-3xl text-base text-slate-200 sm:text-lg">
               Von der ersten Nachricht bis zur veröffentlichten Website — transparent, klar und ohne unnötige Umwege.
@@ -132,7 +132,8 @@ export default function AblaufPage() {
 
         <section className="section-container -mt-10 pb-8 sm:-mt-12" aria-labelledby="zeitplan-heading">
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8" data-reveal>
-            <h2 id="zeitplan-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+            <p className="section-label">Ablauf</p>
+            <h2 id="zeitplan-heading" className="text-2xl text-slateBlue sm:text-3xl">
               Zeitplan auf einen Blick
             </h2>
             <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200">
@@ -157,7 +158,8 @@ export default function AblaufPage() {
         </section>
 
         <section className="section-container section-spacing pt-8" aria-labelledby="prozess-timeline-heading">
-          <h2 id="prozess-timeline-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+          <p className="section-label">Prozess</p>
+          <h2 id="prozess-timeline-heading" className="text-2xl text-slateBlue sm:text-3xl">
             Ihr Projekt in fünf klaren Schritten
           </h2>
 
@@ -199,7 +201,7 @@ export default function AblaufPage() {
         </section>
 
         <section className="section-container pb-16 sm:pb-20" aria-labelledby="ablauf-cta-heading">
-          <div className="rounded-3xl bg-slateBlue p-8 text-white sm:p-10 lg:p-12">
+          <div className="section-dark rounded-3xl p-8 text-white sm:p-10 lg:p-12">
             <h2 id="ablauf-cta-heading" className="text-3xl font-bold sm:text-4xl">
               Bereit für den ersten Schritt?
             </h2>
@@ -208,12 +210,12 @@ export default function AblaufPage() {
               aussehen könnte.
             </p>
             <div className="mt-7 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 font-semibold text-white transition hover:bg-indigo-500">
+              <Link href="/kontakt" className="primary-btn">
                 Zur Kontaktanfrage
               </Link>
               <Link
                 href="/preise"
-                className="rounded-xl border border-slate-300/80 px-6 py-3 font-semibold text-white transition hover:border-white hover:bg-white/10"
+                className="secondary-btn text-white"
               >
                 Preise ansehen
               </Link>

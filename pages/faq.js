@@ -16,8 +16,8 @@ export default function FaqPage() {
       <Header />
       <main>
         <section className="section-container section-spacing pb-6" aria-labelledby="faq-page-heading">
-          <h1 id="faq-page-heading" className="text-4xl font-extrabold tracking-tight text-slateBlue sm:text-5xl">
-            Häufig gestellte Fragen zur Website-Erstellung
+          <h1 id="faq-page-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
+            <span className="h1-accent-italic">Häufig</span> gestellte Fragen zur Website-Erstellung
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-slate-600">
             Hier finden Sie kompakte Antworten zu typischen Fragen rund um Planung, Umsetzung und Betrieb Ihrer neuen

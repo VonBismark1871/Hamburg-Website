@@ -10,13 +10,14 @@ const homepageProjects = ['restaurant-demo', 'friseursalon-demo', 'autoservice-d
 export default function Portfolio() {
   return (
     <section className="section-container section-spacing" id="portfolio" aria-labelledby="portfolio-heading">
+      <p className="section-label">Referenzen</p>
       <motion.h2
         id="portfolio-heading"
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.45 }}
-        className="text-3xl font-bold text-slateBlue"
+        className="text-3xl text-slateBlue"
       >
         Referenzen im Überblick
       </motion.h2>
@@ -34,7 +35,7 @@ export default function Portfolio() {
         ))}
       </div>
       <div className="mt-10">
-        <Link href="/referenzen" className="inline-flex rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500">
+        <Link href="/referenzen" className="primary-btn inline-flex">
           Weitere Referenzen ansehen
         </Link>
       </div>

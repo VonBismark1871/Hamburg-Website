@@ -5,7 +5,8 @@ export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine k
     <section className="section-container section-spacing" id="contact" aria-labelledby="contact-heading">
       <div className="mx-auto grid max-w-5xl gap-8 rounded-2xl bg-slate-50 p-8 shadow-soft lg:grid-cols-[1fr_320px]">
         <div>
-          <Heading id="contact-heading" className="text-3xl font-bold text-slateBlue">
+          <p className="section-label">Kontakt</p>
+          <Heading id="contact-heading" className="text-3xl text-slateBlue">
             {title}
           </Heading>
           <p className="mt-3 text-slate-600">
@@ -104,7 +105,7 @@ export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine k
             </label>
             <button
               type="submit"
-              className="mt-2 rounded-xl bg-accent px-5 py-3 font-semibold text-white transition hover:bg-indigo-500"
+              className="mt-2 primary-btn"
             >
               Anfrage senden
             </button>
