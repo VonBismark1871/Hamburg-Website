@@ -31,7 +31,7 @@ export default function AutoserviceDemoLayout({ title, description, path, childr
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-[12px] border border-[#2c3a4d] px-3 py-2 transition hover:border-[#b8453c] hover:text-[var(--text-primary)]"
+                  className="rounded-md border border-[#2c3a4d] px-3 py-2 transition hover:border-[#b8453c] hover:text-white"
                 >
                   {item.label}
                 </Link>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function InquiryCard() {
   return (
-    <aside className="space-y-5 rounded-[20px] bg-stone-50 shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6 lg:sticky lg:top-8">
+    <aside className="space-y-5 rounded-[1.5rem] border border-stone-300 bg-stone-50 p-6 lg:sticky lg:top-8">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">Ansprechpartnerin</p>
       <div>
         <p className="text-xl font-semibold text-stone-900">Mara Petersen</p>
@@ -21,13 +21,13 @@ export default function InquiryCard() {
       <div className="space-y-3 pt-3">
         <Link
           href="/referenzen/immobilien-demo/kontakt"
-          className="inline-flex w-full items-center justify-center rounded-[12px] bg-stone-900 px-4 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
+          className="inline-flex w-full items-center justify-center rounded-md bg-stone-900 px-4 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
         >
           Exposé anfragen
         </Link>
         <Link
           href="/referenzen/immobilien-demo/kontakt"
-          className="inline-flex w-full items-center justify-center rounded-[12px] border border-stone-900 px-4 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
+          className="inline-flex w-full items-center justify-center rounded-md border border-stone-900 px-4 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
         >
           Besichtigung vereinbaren
         </Link>

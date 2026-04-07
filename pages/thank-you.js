@@ -8,7 +8,17 @@ export default function ThankYouPage() {
     <>
       <SEOHead title="Danke für deine Anfrage" path="/thank-you" description="Bestätigung der gesendeten Kontaktanfrage." />
       <Header />
-      <main className="section-spacing"><div className="section-container"><div className="card mx-auto max-w-2xl p-8 text-center"><h1 className="text-3xl">Danke für deine Anfrage.</h1><p className="mt-4">Deine Nachricht ist eingegangen. Ich melde mich zeitnah mit den nächsten Schritten für deine Website.</p><Link href="/" className="secondary-btn mt-6 inline-flex">Zurück zur Startseite</Link></div></div></main>
+      <main className="section-container section-spacing">
+        <div className="mx-auto max-w-2xl rounded-2xl bg-slate-50 p-8 text-center shadow-soft">
+          <h1 className="text-3xl font-bold">Danke für deine Anfrage.</h1>
+          <p className="mt-4 text-slate-700">
+            Deine Nachricht ist eingegangen. Ich melde mich zeitnah mit den nächsten Schritten für deine Website.
+          </p>
+          <Link href="/" className="mt-6 inline-block font-medium text-accent underline-offset-4 hover:underline">
+            Zurück zur Startseite
+          </Link>
+        </div>
+      </main>
       <Footer />
     </>
   );

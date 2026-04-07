@@ -130,14 +130,14 @@ export default function ZahnarztDemoPage() {
 
         <main>
           <section className="section-container pt-8" aria-label="Demo Hinweis">
-            <p className="inline-flex items-center rounded-[12px] border border-[#c7d8df] bg-[var(--bg-card)] px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#4f6974]">
+            <p className="inline-flex items-center rounded-md border border-[#c7d8df] bg-white px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#4f6974]">
               Referenzprojekt für moderne Zahnarztpraxen
             </p>
           </section>
 
           <section className="section-container pb-8 pt-8" id="start" aria-labelledby="hero-heading">
             <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-              <article className="rounded-[32px] bg-[var(--bg-card)] p-8 shadow-[0_20px_60px_rgba(11,49,64,0.08)] sm:p-10">
+              <article className="rounded-3xl bg-white p-8 shadow-[0_20px_60px_rgba(11,49,64,0.08)] sm:p-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5f7d88]">Praxis ElbDent · Hamburg</p>
                 <h1 id="hero-heading" className="mt-4 text-4xl font-semibold tracking-tight text-[#17303a] sm:text-5xl">
                   Moderne Zahnarztpraxis in Hamburg
@@ -148,21 +148,21 @@ export default function ZahnarztDemoPage() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     href="#termin"
-                    className="inline-flex items-center rounded-[12px] bg-[#1f5f78] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#184a5d]"
+                    className="inline-flex items-center rounded-md bg-[#1f5f78] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#184a5d]"
                   >
                     Termin anfragen
                   </Link>
                   <Link
                     href="#leistungen"
-                    className="inline-flex items-center rounded-[12px] border border-[#9bb8c2] bg-[#f7fbfc] px-6 py-3 text-sm font-semibold text-[#20404c] transition hover:bg-[#edf5f7]"
+                    className="inline-flex items-center rounded-md border border-[#9bb8c2] bg-[#f7fbfc] px-6 py-3 text-sm font-semibold text-[#20404c] transition hover:bg-[#edf5f7]"
                   >
                     Leistungen ansehen
                   </Link>
                 </div>
               </article>
 
-              <figure className="overflow-hidden rounded-[32px] bg-[var(--bg-card)]">
- shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)]                <Image
+              <figure className="overflow-hidden rounded-3xl border border-[#d5e3e8] bg-white">
+                <Image
                   src={heroImage}
                   alt="Zahnärztin behandelt einen Patienten in einem modernen Behandlungsraum"
                   width={1600}
@@ -180,7 +180,7 @@ export default function ZahnarztDemoPage() {
           </section>
 
           <section className="section-container pb-14" aria-label="Google Bewertung">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] px-6 py-4 text-sm text-[#2d4a56] sm:px-7">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-[#d4e2e7] bg-white px-6 py-4 text-sm text-[#2d4a56] sm:px-7">
               <span className="text-lg tracking-wide text-[#f2b01e]" aria-hidden="true">★★★★★</span>
               <p className="font-medium">4.8 Bewertung bei Google · 120+ Rezensionen</p>
               <p className="text-[#5c7781]">Viele zufriedene Patientinnen und Patienten aus Hamburg.</p>
@@ -205,7 +205,7 @@ export default function ZahnarztDemoPage() {
           </section>
 
           <section className="section-container pb-16" id="termin" aria-labelledby="booking-heading">
-            <div className="rounded-[32px] bg-[#1f5f78] px-7 py-10 text-[var(--text-primary)] sm:px-10 sm:py-11">
+            <div className="rounded-3xl bg-[#1f5f78] px-7 py-10 text-white sm:px-10 sm:py-11">
               <h2 id="booking-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 Jetzt Termin anfragen
               </h2>
@@ -214,12 +214,12 @@ export default function ZahnarztDemoPage() {
               </p>
               <p className="mt-2 text-sm text-[#c7dde6]">Neue Patientinnen und Patienten willkommen.</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="#kontakt" className="inline-flex items-center rounded-[12px] bg-[var(--bg-card)] px-6 py-3 text-sm font-semibold text-[#1f5f78] transition hover:bg-[#edf6f9]">
+                <Link href="#kontakt" className="inline-flex items-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#1f5f78] transition hover:bg-[#edf6f9]">
                   Termin anfragen
                 </Link>
                 <Link
                   href="#kontakt"
-                  className="inline-flex items-center rounded-[12px] border border-[#8fb6c3] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#1a5065]"
+                  className="inline-flex items-center rounded-md border border-[#8fb6c3] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1a5065]"
                 >
                   Kontakt aufnehmen
                 </Link>
@@ -233,8 +233,8 @@ export default function ZahnarztDemoPage() {
             </h2>
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               {practicePhotos.map((photo) => (
-                <figure key={photo.src} className="overflow-hidden rounded-[32px] bg-[var(--bg-card)]">
- shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)]                  <Image src={photo.src} alt={photo.alt} width={1400} height={1000} className="h-64 w-full object-cover" />
+                <figure key={photo.src} className="overflow-hidden rounded-3xl border border-[#d4e2e7] bg-white">
+                  <Image src={photo.src} alt={photo.alt} width={1400} height={1000} className="h-64 w-full object-cover" />
                 </figure>
               ))}
             </div>
@@ -246,7 +246,7 @@ export default function ZahnarztDemoPage() {
             </h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
-                <blockquote key={item.author} className="rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6 shadow-[0_8px_24px_rgba(15,48,62,0.04)]">
+                <blockquote key={item.author} className="rounded-3xl border border-[#d4e2e7] bg-white p-6 shadow-[0_8px_24px_rgba(15,48,62,0.04)]">
                   <p className="text-[15px] leading-relaxed text-[#3f5e69]">“{item.quote}”</p>
                   <footer className="mt-4 text-sm font-semibold text-[#5b7680]">{item.author}</footer>
                 </blockquote>
@@ -255,13 +255,13 @@ export default function ZahnarztDemoPage() {
           </section>
 
           <section className="section-container pb-16" aria-labelledby="trust-heading">
-            <div className="rounded-[32px] bg-[#e9f3f6] px-7 py-10 sm:px-10">
+            <div className="rounded-3xl bg-[#e9f3f6] px-7 py-10 sm:px-10">
               <h2 id="trust-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
                 Warum Patientinnen und Patienten uns vertrauen
               </h2>
               <ul className="mt-7 grid gap-4 md:grid-cols-2">
                 {trustPoints.map((point) => (
-                  <li key={point} className="flex items-start gap-3 rounded-[20px] bg-[var(--bg-card)] px-4 py-4 text-sm text-[#33525e]">
+                  <li key={point} className="flex items-start gap-3 rounded-2xl bg-white px-4 py-4 text-sm text-[#33525e]">
                     <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-[#53a5b7]" aria-hidden="true" />
                     <span>{point}</span>
                   </li>
@@ -276,7 +276,7 @@ export default function ZahnarztDemoPage() {
             </h2>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {teamMembers.map((member) => (
-                <article key={member.name} className="overflow-hidden rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] shadow-[0_12px_28px_rgba(12,42,54,0.06)]">
+                <article key={member.name} className="overflow-hidden rounded-3xl border border-[#d4e2e7] bg-white shadow-[0_12px_28px_rgba(12,42,54,0.06)]">
                   <Image
                     src={member.image}
                     alt={`${member.name}, Schwerpunkt ${member.role}`}
@@ -298,7 +298,7 @@ export default function ZahnarztDemoPage() {
               Öffnungszeiten, Kontakt & Standort
             </h2>
             <div className="mt-7 grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
-              <article className="rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-7">
+              <article className="rounded-3xl border border-[#d4e2e7] bg-white p-7">
                 <h3 className="text-lg font-semibold text-[#1c3a45]">Praxis ElbDent</h3>
                 <p className="mt-3 text-sm text-[#49646f]">Musterstraße 27, 20095 Hamburg</p>
                 <p className="mt-2 text-sm text-[#49646f]">Telefon: 040 / 123 45 67</p>
@@ -317,13 +317,13 @@ export default function ZahnarztDemoPage() {
                 </dl>
               </article>
 
-              <aside className="rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-4 sm:p-5">
+              <aside className="rounded-3xl border border-[#d4e2e7] bg-white p-4 sm:p-5">
                 <h3 className="px-2 text-lg font-semibold text-[#244653]">Anfahrt</h3>
                 <p className="mt-2 px-2 text-sm leading-relaxed text-[#48636e]">
                   Zentral in Hamburg gelegen, gut erreichbar mit U-Bahn und Bus. Fahrradstellplätze befinden sich direkt vor der Praxis.
                 </p>
-                <div className="mt-4 overflow-hidden rounded-[20px] bg-[#eef4f7]">
- shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)]                  <iframe
+                <div className="mt-4 overflow-hidden rounded-2xl border border-[#d4e2e7] bg-[#eef4f7]">
+                  <iframe
                     title="Google Maps Standort Praxis ElbDent"
                     src="https://www.google.com/maps?q=Jungfernstieg%2C%20Hamburg&z=14&output=embed"
                     className="h-[280px] w-full md:h-[320px]"

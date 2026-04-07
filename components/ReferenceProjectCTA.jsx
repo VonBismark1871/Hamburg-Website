@@ -11,13 +11,13 @@ export default function ReferenceProjectCTA({ title, text, primaryLabel = 'Eigen
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href={primaryHref}
-            className="inline-flex rounded-2xl bg-[#2f2a29] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#1f1a1a]"
+            className="inline-flex rounded-2xl bg-[#2f2a29] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1f1a1a]"
           >
             {primaryLabel}
           </Link>
           <Link
             href={secondaryHref}
-            className="inline-flex rounded-2xl border border-[#b8b0a6] bg-[var(--bg-card)] px-6 py-3 text-sm font-semibold text-[#2f2a29] transition hover:border-[#8f867c]"
+            className="inline-flex rounded-2xl border border-[#b8b0a6] bg-white px-6 py-3 text-sm font-semibold text-[#2f2a29] transition hover:border-[#8f867c]"
           >
             {secondaryLabel}
           </Link>

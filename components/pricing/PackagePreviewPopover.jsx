@@ -7,7 +7,7 @@ const MOBILE_GAP = 8;
 
 function VisitenkarteMockup() {
   return (
-    <div className="rounded-lg border border-slate-200 bg-gradient-to-br from-slate-50 to-[var(--bg-card)] p-2.5">
+    <div className="rounded-lg border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-2.5">
       <div className="flex items-center justify-between">
         <div className="h-2 w-10 rounded-full bg-slate-300/80" />
         <div className="h-1.5 w-6 rounded-full bg-slate-200" />
@@ -17,7 +17,7 @@ function VisitenkarteMockup() {
         <div className="h-1.5 w-4/5 rounded-full bg-slate-200" />
         <div className="h-1.5 w-2/3 rounded-full bg-slate-200/85" />
       </div>
-      <div className="mt-3 rounded-md border border-slate-200 bg-[var(--bg-card)] px-2 py-1.5">
+      <div className="mt-3 rounded-md border border-slate-200 bg-white px-2 py-1.5">
         <div className="h-1.5 w-1/2 rounded-full bg-slate-300/80" />
       </div>
     </div>
@@ -26,7 +26,7 @@ function VisitenkarteMockup() {
 
 function OnepagerMockup() {
   return (
-    <div className="rounded-lg border border-blue-200/70 bg-gradient-to-b from-blue-50/70 to-[var(--bg-card)] p-2.5">
+    <div className="rounded-lg border border-blue-200/70 bg-gradient-to-b from-blue-50/70 to-white p-2.5">
       <div className="h-2 w-12 rounded-full bg-blue-300/70" />
       <div className="mt-2 h-8 rounded-md bg-blue-100" />
       <div className="mt-2 grid grid-cols-3 gap-1.5">
@@ -46,7 +46,7 @@ function OnepagerMockup() {
 
 function MultipageMockup() {
   return (
-    <div className="rounded-lg border border-accent/25 bg-gradient-to-b from-accent/[0.08] to-[var(--bg-card)] p-2.5">
+    <div className="rounded-lg border border-accent/25 bg-gradient-to-b from-accent/[0.08] to-white p-2.5">
       <div className="flex items-center gap-1.5">
         <div className="h-2 w-9 rounded-full bg-accent/40" />
         <div className="h-1.5 w-7 rounded-full bg-accent/20" />
@@ -54,7 +54,7 @@ function MultipageMockup() {
         <div className="h-1.5 w-7 rounded-full bg-accent/20" />
       </div>
       <div className="mt-2 grid grid-cols-[1.2fr_0.8fr] gap-1.5">
-        <div className="h-14 rounded-md bg-[var(--bg-card)] ring-1 ring-accent/20" />
+        <div className="h-14 rounded-md bg-white ring-1 ring-accent/20" />
         <div className="space-y-1.5 rounded-md bg-accent/[0.08] p-1.5">
           <div className="h-2 rounded bg-accent/25" />
           <div className="h-2 rounded bg-accent/20" />
@@ -73,7 +73,7 @@ function MultipageMockup() {
 function AdminMockup() {
   return (
     <div className="grid grid-cols-[1.2fr_0.8fr] gap-2">
-      <div className="rounded-lg border border-slate-200 bg-gradient-to-br from-slate-50 to-[var(--bg-card)] p-2">
+      <div className="rounded-lg border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-2">
         <div className="h-2 w-10 rounded-full bg-slate-300/80" />
         <div className="mt-2 h-8 rounded bg-slate-100" />
         <div className="mt-2 grid grid-cols-2 gap-1.5">
@@ -176,7 +176,7 @@ export default function PackagePreviewPopover({ title, description, bullets, typ
       <button
         ref={buttonRef}
         type="button"
-        className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-[var(--bg-card)] px-3 py-1 text-xs font-medium text-slate-500 transition hover:border-accent/40 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
+        className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-500 transition hover:border-accent/40 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
       >
@@ -185,7 +185,7 @@ export default function PackagePreviewPopover({ title, description, bullets, typ
 
       <div
         ref={popoverRef}
-        className={`fixed z-40 w-[min(18rem,calc(100vw-1.5rem))] rounded-xl border border-slate-200 bg-[var(--bg-card)] p-3 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.5)] transition duration-150 ${
+        className={`fixed z-40 w-[min(18rem,calc(100vw-1.5rem))] rounded-xl border border-slate-200 bg-white p-3 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.5)] transition duration-150 ${
           isOpen
             ? `pointer-events-auto visible opacity-100 ${position.placement === 'bottom' ? 'translate-y-0' : 'translate-y-0'}`
             : 'pointer-events-none invisible -translate-y-1 opacity-0'

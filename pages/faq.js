@@ -2,15 +2,31 @@ import FAQ, { faqItems } from '../components/FAQ';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
+import { faqSchema } from '../lib/seo';
 
 export default function FaqPage() {
   return (
     <>
-      <SEOHead title="FAQ – Website erstellen lassen in Hamburg" description="Antworten auf häufige Fragen zur Website-Erstellung in Hamburg: Dauer, Kosten, Hosting und Ablauf der Zusammenarbeit." path="/faq" />
+      <SEOHead
+        title="FAQ – Website erstellen lassen in Hamburg"
+        description="Antworten auf häufige Fragen zur Website-Erstellung in Hamburg: Dauer, Kosten, Hosting und Ablauf der Zusammenarbeit."
+        path="/faq"
+        schema={faqSchema(faqItems)}
+      />
       <Header />
       <main>
-        <section className="section-spacing" aria-labelledby="faq-page-heading"><div className="section-container reveal-section"><h1 id="faq-page-heading" className="text-5xl"><span className="gradient-text">Häufig</span> gestellte Fragen zur Website-Erstellung</h1></div></section>
-        <FAQ items={faqItems} />
+        <section className="section-container section-spacing pb-6" aria-labelledby="faq-page-heading">
+          <h1 id="faq-page-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
+            <span className="h1-accent-italic">Häufig</span> gestellte Fragen zur Website-Erstellung
+          </h1>
+          <p className="mt-5 max-w-3xl text-lg text-slate-600">
+            Hier finden Sie kompakte Antworten zu typischen Fragen rund um Planung, Umsetzung und Betrieb Ihrer neuen
+            Unternehmenswebsite.
+          </p>
+        </section>
+
+        <FAQ headingTag="h2" sectionId="faq-content" items={faqItems} />
+
       </main>
       <Footer />
     </>

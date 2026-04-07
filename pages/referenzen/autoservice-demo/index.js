@@ -20,7 +20,7 @@ export default function AutoserviceDemoHomePage() {
         <p className="text-sm font-medium text-[#4d5d73]">So könnte eine Website für Ihre Autowerkstatt aussehen.</p>
 
         <div className="mt-4 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
-          <article className="relative overflow-hidden rounded-[32px] bg-[#0f1724]">
+          <article className="relative overflow-hidden rounded-3xl bg-[#0f1724]">
             <Image
               src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=2000&q=80"
               alt="Kfz-Mechaniker prüft ein Fahrzeug in einer modernen Werkstatt"
@@ -39,13 +39,13 @@ export default function AutoserviceDemoHomePage() {
                 <div className="mt-7 flex flex-wrap gap-3">
                   <Link
                     href="/referenzen/autoservice-demo/kontakt"
-                    className="rounded-[12px] bg-[#b8453c] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#9f392f]"
+                    className="rounded-md bg-[#b8453c] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#9f392f]"
                   >
                     Termin anfragen
                   </Link>
                   <Link
                     href="/referenzen/autoservice-demo/leistungen"
-                    className="rounded-[12px] border border-[#cdd5e0] px-6 py-3 text-sm font-semibold text-[#f4f7fb] transition hover:bg-[var(--bg-card)]/10"
+                    className="rounded-md border border-[#cdd5e0] px-6 py-3 text-sm font-semibold text-[#f4f7fb] transition hover:bg-white/10"
                   >
                     Leistungen ansehen
                   </Link>
@@ -54,13 +54,13 @@ export default function AutoserviceDemoHomePage() {
             </div>
           </article>
 
-          <aside className="rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-7">
+          <aside className="rounded-3xl border border-[#c9d1dc] bg-white p-7">
             <h2 className="text-2xl font-semibold text-[#111926]">Werkstatt mit klaren Abläufen</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#435067]">
               Von der Annahme bis zur Fahrzeugübergabe erhalten Kundinnen und Kunden verständliche Rückmeldungen,
               realistische Zeitfenster und eine transparente Kostenübersicht.
             </p>
-            <div className="mt-6 rounded-[20px] bg-[#eef2f6] p-4 text-sm text-[#2f3b4d]">
+            <div className="mt-6 rounded-2xl bg-[#eef2f6] p-4 text-sm text-[#2f3b4d]">
               <p className="font-semibold">Öffnungszeiten</p>
               <ul className="mt-2 space-y-1">
                 {workshopDetails.hours.map((entry) => (
@@ -68,7 +68,7 @@ export default function AutoserviceDemoHomePage() {
                 ))}
               </ul>
             </div>
-            <div className="mt-5 rounded-[20px] border border-[#d6dde7] p-4 text-sm">
+            <div className="mt-5 rounded-2xl border border-[#d6dde7] p-4 text-sm">
               <p className="font-semibold text-[#172131]">Direkter Kontakt</p>
               <p className="mt-2 text-[#435067]">Tel. {workshopDetails.phone}</p>
               <p className="text-[#435067]">{workshopDetails.email}</p>
@@ -78,9 +78,9 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-10">
-        <div className="grid gap-3 rounded-[20px] bg-[#172131] p-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 rounded-2xl bg-[#172131] p-5 sm:grid-cols-2 lg:grid-cols-4">
           {quickTrustPoints.map((point) => (
-            <p key={point} className="rounded-[20px] bg-[#202d41] px-4 py-3 text-sm font-medium text-[#e3ebf7]">
+            <p key={point} className="rounded-xl bg-[#202d41] px-4 py-3 text-sm font-medium text-[#e3ebf7]">
               {point}
             </p>
           ))}
@@ -96,7 +96,7 @@ export default function AutoserviceDemoHomePage() {
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {services.slice(0, 6).map((service) => (
-            <article key={service.title} className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-5">
+            <article key={service.title} className="rounded-2xl border border-[#ccd4df] bg-white p-5">
               <h3 className="text-lg font-semibold text-[#111926]">{service.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#48566c]">{service.description}</p>
             </article>
@@ -105,18 +105,18 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <div className="grid gap-6 rounded-[32px] bg-[var(--bg-card)] p-7 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-6 rounded-3xl bg-white p-7 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="text-3xl font-semibold text-[#111926]">Warum Kundinnen und Kunden uns wählen</h2>
             <ul className="mt-5 space-y-3">
               {reasons.map((reason) => (
-                <li key={reason} className="rounded-[20px] bg-[#edf1f6] px-4 py-3 text-sm text-[#2d3a4d]">
+                <li key={reason} className="rounded-xl bg-[#edf1f6] px-4 py-3 text-sm text-[#2d3a4d]">
                   {reason}
                 </li>
               ))}
             </ul>
           </div>
-          <figure className="overflow-hidden rounded-[20px]">
+          <figure className="overflow-hidden rounded-2xl">
             <Image
               src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1600&q=80"
               alt="Zwei Kfz-Mechatroniker besprechen einen Serviceauftrag in der Werkstatt"
@@ -132,7 +132,7 @@ export default function AutoserviceDemoHomePage() {
         <h2 className="text-3xl font-semibold text-[#111926]">Kundenstimmen</h2>
         <div className="mt-5 grid gap-4 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <blockquote key={testimonial.name} className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-5">
+            <blockquote key={testimonial.name} className="rounded-2xl border border-[#ccd4df] bg-white p-5">
               <p className="text-sm leading-relaxed text-[#3b495f]">„{testimonial.quote}“</p>
               <footer className="mt-4 text-sm font-semibold text-[#111926]">{testimonial.name}</footer>
             </blockquote>
@@ -141,16 +141,16 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <div className="rounded-[32px] bg-[#111926] p-8 text-[#e9eef6]">
+        <div className="rounded-3xl bg-[#111926] p-8 text-[#e9eef6]">
           <h2 className="text-3xl font-semibold">Jetzt Termin anfragen</h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#c8d2e1]">
             Ob Inspektion, Diagnose oder Reparatur – Anfragen können schnell und unkompliziert gestellt werden.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/referenzen/autoservice-demo/kontakt" className="rounded-[12px] bg-[#b8453c] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] hover:bg-[#9f392f]">
+            <Link href="/referenzen/autoservice-demo/kontakt" className="rounded-md bg-[#b8453c] px-6 py-3 text-sm font-semibold text-white hover:bg-[#9f392f]">
               Termin anfragen
             </Link>
-            <Link href="/referenzen/autoservice-demo/kontakt" className="rounded-[12px] border border-[#4a5b74] px-6 py-3 text-sm font-semibold text-[#e9eef6] hover:bg-[#1a263a]">
+            <Link href="/referenzen/autoservice-demo/kontakt" className="rounded-md border border-[#4a5b74] px-6 py-3 text-sm font-semibold text-[#e9eef6] hover:bg-[#1a263a]">
               Kontakt aufnehmen
             </Link>
           </div>
@@ -158,7 +158,7 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-16">
-        <div className="grid gap-6 rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-7 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-6 rounded-3xl border border-[#cad2dd] bg-white p-7 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 className="text-2xl font-semibold text-[#111926]">Kontakt, Öffnungszeiten & Anfahrt</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#445269]">{workshopDetails.address}</p>
@@ -173,7 +173,7 @@ export default function AutoserviceDemoHomePage() {
           <div className="flex items-center justify-start lg:justify-end">
             <Link
               href="/referenzen/autoservice-demo/kontakt"
-              className="rounded-[12px] bg-[#111926] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#1a273b]"
+              className="rounded-md bg-[#111926] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1a273b]"
             >
               Zur Kontaktseite
             </Link>

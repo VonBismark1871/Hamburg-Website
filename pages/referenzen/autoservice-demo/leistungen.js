@@ -20,7 +20,7 @@ export default function AutoserviceServicesPage() {
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {services.map((service, index) => (
-            <article key={service.title} className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
+            <article key={service.title} className="rounded-2xl border border-[#cbd3de] bg-white p-6">
               <div className="flex items-start justify-between gap-4">
                 <h2 className="text-2xl font-semibold text-[#111926]">{service.title}</h2>
                 <span className="text-2xl" aria-hidden="true">
@@ -30,7 +30,7 @@ export default function AutoserviceServicesPage() {
               <p className="mt-3 text-sm leading-relaxed text-[#445269]">{service.description}</p>
               <Link
                 href="/referenzen/autoservice-demo/kontakt"
-                className="mt-5 inline-flex rounded-[12px] bg-[#111926] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#1a273b]"
+                className="mt-5 inline-flex rounded-md bg-[#111926] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#1a273b]"
               >
                 Termin anfragen
               </Link>
@@ -38,7 +38,7 @@ export default function AutoserviceServicesPage() {
           ))}
         </div>
 
-        <p className="mt-8 rounded-[20px] bg-[#eff3f8] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-4 text-sm text-[#2e3b4f]">
+        <p className="mt-8 rounded-xl border border-[#d6dde8] bg-[#eff3f8] p-4 text-sm text-[#2e3b4f]">
           Ersatzteile in geprüfter Qualität und transparente Rückmeldung zu allen Arbeiten.
         </p>
       </section>

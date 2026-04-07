@@ -35,7 +35,7 @@ export default function ImmobilienObjektePage() {
             ))}
           </div>
 
-          <div className="mt-12 rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
+          <div className="mt-12 rounded-2xl border border-stone-300 bg-white p-6">
             <h2 className="text-2xl font-semibold">Sie möchten ein ähnliches Objekt verkaufen?</h2>
             <p className="mt-3 text-sm text-stone-700">
               Unsere Vermarktung verbindet lokale Marktkenntnis mit hochwertiger Präsentation – digital, strukturiert
@@ -44,13 +44,13 @@ export default function ImmobilienObjektePage() {
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 href="/referenzen/immobilien-demo/kontakt"
-                className="inline-flex rounded-[12px] bg-stone-900 px-5 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
+                className="inline-flex rounded-md bg-stone-900 px-5 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
               >
                 Bewertung anfragen
               </Link>
               <Link
                 href="/referenzen/immobilien-demo"
-                className="inline-flex rounded-[12px] border border-stone-900 px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
+                className="inline-flex rounded-md border border-stone-900 px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
               >
                 Zur Startseite
               </Link>

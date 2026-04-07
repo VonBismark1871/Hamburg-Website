@@ -5,7 +5,7 @@ export default function AboutSection({ headingTag = 'h2', title = 'Über uns', c
 
   return (
     <section className="section-container pb-16" aria-labelledby="about-heading">
-      <div className="grid gap-6 rounded-2xl border border-slate-200 bg-[var(--bg-card)] p-6 shadow-soft sm:grid-cols-3">
+      <div className="grid gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:grid-cols-3">
         <div>
           <Heading id="about-heading" className="text-xl font-semibold text-slateBlue">
             {title}
