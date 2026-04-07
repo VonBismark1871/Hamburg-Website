@@ -16,18 +16,18 @@ export default function AutoserviceInspectionPage() {
           Gleichzeitig bleibt Ihr Fahrzeug zuverlässig und sicher im Alltag.
         </p>
 
-        <div className="mt-8 rounded-2xl border border-[#cbd4df] bg-white p-6">
+        <div className="mt-8 rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
           <h2 className="text-2xl font-semibold text-[#111926]">Was wir bei der Inspektion prüfen</h2>
           <ul className="mt-4 space-y-3">
             {inspectionChecklist.map((item) => (
-              <li key={item} className="rounded-lg bg-[#edf2f7] px-4 py-3 text-sm text-[#2d3a4d]">
+              <li key={item} className="rounded-[12px] bg-[#edf2f7] px-4 py-3 text-sm text-[#2d3a4d]">
                 {item}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="mt-8 rounded-2xl bg-[#111926] p-7 text-[#e7edf6]">
+        <div className="mt-8 rounded-[20px] bg-[#111926] p-7 text-[#e7edf6]">
           <h2 className="text-2xl font-semibold">Warum regelmäßige Inspektionen wichtig sind</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#c8d2e1]">
             Regelmäßige Wartungsintervalle erhalten den Fahrzeugwert, verbessern die Betriebssicherheit und schaffen
@@ -35,7 +35,7 @@ export default function AutoserviceInspectionPage() {
           </p>
           <Link
             href="/referenzen/autoservice-demo/kontakt"
-            className="mt-5 inline-flex rounded-md bg-[#b8453c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#9f392f]"
+            className="mt-5 inline-flex rounded-[12px] bg-[#b8453c] px-5 py-2.5 text-sm font-semibold text-[var(--text-primary)] hover:bg-[#9f392f]"
           >
             Termin für Inspektion anfragen
           </Link>

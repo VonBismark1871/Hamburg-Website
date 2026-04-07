@@ -24,7 +24,7 @@ export default function AutoserviceContactPage() {
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {contactCards.map((card) => (
-            <article key={card.label} className="rounded-2xl border border-[#cad2de] bg-white p-5">
+            <article key={card.label} className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-5">
               <h2 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#5a687d]">{card.label}</h2>
               <p className="mt-2 text-base text-[#1e2a3c]">{card.value}</p>
             </article>
@@ -32,8 +32,8 @@ export default function AutoserviceContactPage() {
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-2xl border border-[#cbd3df] bg-white">
-            <iframe
+          <div className="overflow-hidden rounded-[20px] bg-[var(--bg-card)]">
+ shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)]            <iframe
               title="Kartenansicht Elbwerk Kfz-Service in Hamburg"
               src="https://www.google.com/maps?q=Ausschl%C3%A4ger+Weg+62,+Hamburg&output=embed"
               className="h-[360px] w-full"
@@ -42,28 +42,28 @@ export default function AutoserviceContactPage() {
             />
           </div>
 
-          <form className="rounded-2xl border border-[#cad2de] bg-white p-6">
+          <form className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
             <h2 className="text-2xl font-semibold text-[#111926]">Termin anfragen</h2>
             <div className="mt-4 grid gap-4">
               <label className="text-sm font-medium text-[#2f3b4f]">
                 Name
-                <input type="text" className="mt-1 w-full rounded-md border border-[#ccd4df] px-3 py-2" placeholder="Vor- und Nachname" />
+                <input type="text" className="mt-1 w-full rounded-[12px] border border-[#ccd4df] px-3 py-2" placeholder="Vor- und Nachname" />
               </label>
               <label className="text-sm font-medium text-[#2f3b4f]">
                 Telefon oder E-Mail
                 <input
                   type="text"
-                  className="mt-1 w-full rounded-md border border-[#ccd4df] px-3 py-2"
+                  className="mt-1 w-full rounded-[12px] border border-[#ccd4df] px-3 py-2"
                   placeholder="z. B. 040 123456 oder name@email.de"
                 />
               </label>
               <label className="text-sm font-medium text-[#2f3b4f]">
                 Fahrzeug / Modell
-                <input type="text" className="mt-1 w-full rounded-md border border-[#ccd4df] px-3 py-2" placeholder="z. B. VW Golf VII" />
+                <input type="text" className="mt-1 w-full rounded-[12px] border border-[#ccd4df] px-3 py-2" placeholder="z. B. VW Golf VII" />
               </label>
               <label className="text-sm font-medium text-[#2f3b4f]">
                 Gewünschte Leistung
-                <select className="mt-1 w-full rounded-md border border-[#ccd4df] px-3 py-2">
+                <select className="mt-1 w-full rounded-[12px] border border-[#ccd4df] px-3 py-2">
                   <option>Bitte wählen</option>
                   <option>Inspektion</option>
                   <option>Ölwechsel</option>
@@ -75,10 +75,10 @@ export default function AutoserviceContactPage() {
               </label>
               <label className="text-sm font-medium text-[#2f3b4f]">
                 Nachricht
-                <textarea className="mt-1 h-28 w-full rounded-md border border-[#ccd4df] px-3 py-2" placeholder="Kurze Beschreibung Ihres Anliegens" />
+                <textarea className="mt-1 h-28 w-full rounded-[12px] border border-[#ccd4df] px-3 py-2" placeholder="Kurze Beschreibung Ihres Anliegens" />
               </label>
             </div>
-            <button type="button" className="mt-5 rounded-md bg-[#b8453c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#9f392f]">
+            <button type="button" className="mt-5 rounded-[12px] bg-[#b8453c] px-5 py-2.5 text-sm font-semibold text-[var(--text-primary)] hover:bg-[#9f392f]">
               Anfrage senden
             </button>
             <p className="mt-4 text-sm text-[#445269]">

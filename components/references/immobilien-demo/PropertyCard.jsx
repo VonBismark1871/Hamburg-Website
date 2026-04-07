@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function PropertyCard({ property }) {
   return (
-    <article className="overflow-hidden rounded-[1.75rem] border border-stone-200 bg-white shadow-[0_30px_80px_-48px_rgba(0,0,0,0.4)] transition hover:-translate-y-1 hover:shadow-[0_38px_90px_-45px_rgba(0,0,0,0.45)]">
+    <article className="overflow-hidden rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] shadow-[0_30px_80px_-48px_rgba(0,0,0,0.4)] transition hover:-translate-y-1 hover:shadow-[0_38px_90px_-45px_rgba(0,0,0,0.45)]">
       <figure className="relative overflow-hidden">
         <Image
           src={property.image}
@@ -13,7 +13,7 @@ export default function PropertyCard({ property }) {
           className="h-64 w-full object-cover"
         />
         {property.label && (
-          <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-stone-800">
+          <span className="absolute left-4 top-4 rounded-full bg-[var(--bg-card)]/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-stone-800">
             {property.label}
           </span>
         )}
@@ -48,7 +48,7 @@ export default function PropertyCard({ property }) {
           <p className="text-lg font-semibold text-stone-900">{property.price}</p>
           <Link
             href={property.href}
-            className="inline-flex items-center rounded-md border border-stone-800 px-4 py-2 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
+            className="inline-flex items-center rounded-[12px] border border-stone-800 px-4 py-2 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
           >
             Zum Exposé
           </Link>

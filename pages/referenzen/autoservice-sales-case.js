@@ -54,7 +54,7 @@ export default function AutoServiceSalesCasePage() {
         <ReferenceStickyBackButton />
 
         <main className="section-container py-12 sm:py-14">
-          <article className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-10">
+          <article className="mx-auto max-w-4xl rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6 shadow-soft sm:p-10">
             <p className="inline-flex rounded-full border border-amber-300 bg-amber-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-amber-800">
               Demo Case Study · Kein echter Kundenauftrag
             </p>
@@ -104,7 +104,7 @@ export default function AutoServiceSalesCasePage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 rounded-xl border border-slate-200 bg-slate-100 px-4 py-3 text-sm text-slate-700">
+              <p className="mt-4 rounded-[20px] bg-slate-100 shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] px-4 py-3 text-sm text-slate-700">
                 Hinweis: Diese Maßnahmen verbessern die Ausgangslage, garantieren jedoch keine bestimmten Rankings.
               </p>
             </section>
@@ -139,7 +139,7 @@ export default function AutoServiceSalesCasePage() {
                 Enthalten sind eine beispielhafte Seitenstruktur, Mustertexte für Leistungs- und Kontaktseiten, CTA-Vorschläge
                 sowie eine grundlegende Onpage-SEO-Struktur.
               </p>
-              <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-900">
+              <p className="mt-4 rounded-[20px] bg-amber-50 shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] px-4 py-3 text-sm font-medium text-amber-900">
                 Abgrenzung: Keine echten Kundenkennzahlen, keine Referenzlogos, keine Leistungsversprechen mit garantierten Ergebnissen.
               </p>
             </section>
@@ -147,18 +147,18 @@ export default function AutoServiceSalesCasePage() {
             <section className="mt-10" aria-labelledby="cta-heading">
               <h2 id="cta-heading" className="text-2xl font-bold text-slateBlue">Passende nächste Schritte</h2>
               <div className="mt-5 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500">
+                <Link href="/kontakt" className="rounded-[20px] bg-accent px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-indigo-500">
                   Kostenlose Demo anfragen
                 </Link>
                 <Link
                   href="/kontakt"
-                  className="rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+                  className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] px-6 py-3 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
                 >
                   Unverbindliches Website-Konzept erhalten
                 </Link>
                 <Link
                   href="/kontakt"
-                  className="rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+                  className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] px-6 py-3 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
                 >
                   15-Minuten Erstgespräch buchen
                 </Link>

@@ -45,7 +45,7 @@ export default function RedesignBeispiel1Page() {
         <ReferenceStickyBackButton />
 
         <main className="section-container py-12 sm:py-14">
-          <article className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-10">
+          <article className="mx-auto max-w-4xl rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6 shadow-soft sm:p-10">
             <p className="inline-flex rounded-full border border-amber-300 bg-amber-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-amber-800">
               Beispiel-Redesign · Kein echter Kunde
             </p>
@@ -114,7 +114,7 @@ export default function RedesignBeispiel1Page() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 rounded-xl border border-slate-200 bg-slate-100 px-4 py-3 text-sm text-slate-700">
+              <p className="mt-4 rounded-[20px] bg-slate-100 shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] px-4 py-3 text-sm text-slate-700">
                 Wichtig: SEO-Basis schafft bessere Voraussetzungen, ersetzt aber keine fortlaufende Optimierung und gibt
                 keine Garantie auf konkrete Rankings.
               </p>
@@ -136,12 +136,12 @@ export default function RedesignBeispiel1Page() {
                 Redesign-Konzept für Ihre aktuelle Website.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500">
+                <Link href="/kontakt" className="rounded-[20px] bg-accent px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-indigo-500">
                   Redesign-Konzept anfragen
                 </Link>
                 <Link
                   href="/referenzen"
-                  className="rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+                  className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] px-6 py-3 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
                 >
                   Weitere Demo-Beispiele ansehen
                 </Link>

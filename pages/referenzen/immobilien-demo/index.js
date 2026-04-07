@@ -36,7 +36,7 @@ export default function ImmobilienDemoHomePage() {
             Beispiel einer möglichen Immobilienmakler-Website
           </p>
           <div className="mt-5 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
-            <div className="relative overflow-hidden rounded-[2rem]">
+            <div className="relative overflow-hidden rounded-[32px]">
               <Image
                 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=80"
                 alt="Exklusive Dachterrasse mit Blick über Hamburg"
@@ -57,13 +57,13 @@ export default function ImmobilienDemoHomePage() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     href="/referenzen/immobilien-demo/objekte"
-                    className="inline-flex rounded-md bg-stone-100 px-6 py-3 text-sm font-semibold text-stone-900 transition hover:bg-white"
+                    className="inline-flex rounded-[12px] bg-stone-100 px-6 py-3 text-sm font-semibold text-stone-900 transition hover:bg-[var(--bg-card)]"
                   >
                     Objekte ansehen
                   </Link>
                   <Link
                     href="/referenzen/immobilien-demo/kontakt"
-                    className="inline-flex rounded-md border border-stone-200 px-6 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-100/20"
+                    className="inline-flex rounded-[12px] border border-stone-200 px-6 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-100/20"
                   >
                     Immobilie bewerten lassen
                   </Link>
@@ -71,7 +71,7 @@ export default function ImmobilienDemoHomePage() {
               </div>
             </div>
 
-            <aside className="flex flex-col justify-between rounded-[2rem] border border-stone-300 bg-[#ebe6de] p-7 sm:p-8">
+            <aside className="flex flex-col justify-between rounded-[32px] bg-[#ebe6de] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-7 sm:p-8">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">Elbquartier Immobilien</p>
                 <h2 className="mt-4 text-3xl font-semibold leading-tight">Diskret, lokal und hochwertig in der Vermarktung</h2>
@@ -106,13 +106,13 @@ export default function ImmobilienDemoHomePage() {
         </section>
 
         <section className="section-container pb-16" aria-labelledby="warum-wir">
-          <div className="rounded-[2rem] border border-stone-300 bg-[#ece7df] p-8 sm:p-10">
+          <div className="rounded-[32px] bg-[#ece7df] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-8 sm:p-10">
             <h2 id="warum-wir" className="text-3xl font-semibold sm:text-4xl">
               Warum Eigentümer und Käufer mit uns arbeiten
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {reasons.map((reason) => (
-                <p key={reason} className="rounded-xl border border-stone-300 bg-stone-100/70 p-4 text-sm text-stone-700">
+                <p key={reason} className="rounded-[20px] bg-stone-100/70 shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-4 text-sm text-stone-700">
                   {reason}
                 </p>
               ))}
@@ -121,7 +121,7 @@ export default function ImmobilienDemoHomePage() {
         </section>
 
         <section className="section-container pb-16" aria-labelledby="bewertung">
-          <div className="grid gap-6 rounded-[2rem] bg-stone-900 p-8 text-stone-100 sm:p-10 lg:grid-cols-[1.4fr_0.6fr] lg:items-center">
+          <div className="grid gap-6 rounded-[32px] bg-stone-900 p-8 text-stone-100 sm:p-10 lg:grid-cols-[1.4fr_0.6fr] lg:items-center">
             <div>
               <h2 id="bewertung" className="text-3xl font-semibold sm:text-4xl">
                 Immobilie bewerten lassen
@@ -134,7 +134,7 @@ export default function ImmobilienDemoHomePage() {
             <div>
               <Link
                 href="/referenzen/immobilien-demo/kontakt"
-                className="inline-flex w-full items-center justify-center rounded-md bg-stone-100 px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-white"
+                className="inline-flex w-full items-center justify-center rounded-[12px] bg-stone-100 px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-[var(--bg-card)]"
               >
                 Bewertung anfragen
               </Link>
@@ -148,7 +148,7 @@ export default function ImmobilienDemoHomePage() {
           </h2>
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
-              <blockquote key={testimonial} className="rounded-2xl border border-stone-300 bg-white p-6 text-sm leading-relaxed text-stone-700">
+              <blockquote key={testimonial} className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6 text-sm leading-relaxed text-stone-700">
                 {testimonial}
               </blockquote>
             ))}
@@ -156,20 +156,20 @@ export default function ImmobilienDemoHomePage() {
         </section>
 
         <section className="section-container pb-20" aria-labelledby="schluss-cta">
-          <div className="rounded-[2rem] border border-stone-300 bg-white p-8 sm:p-10">
+          <div className="rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-8 sm:p-10">
             <h2 id="schluss-cta" className="text-3xl font-semibold sm:text-4xl">
               Sie möchten Ihre Immobilie professionell präsentieren?
             </h2>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/referenzen/immobilien-demo/kontakt"
-                className="inline-flex rounded-md bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
+                className="inline-flex rounded-[12px] bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
               >
                 Kontakt aufnehmen
               </Link>
               <Link
                 href="/referenzen/immobilien-demo/objekte"
-                className="inline-flex rounded-md border border-stone-900 px-6 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
+                className="inline-flex rounded-[12px] border border-stone-900 px-6 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
               >
                 Objekte ansehen
               </Link>

@@ -4,15 +4,15 @@ import Link from 'next/link';
 const toneClasses = {
   warm: 'from-amber-100 via-orange-50 to-amber-50',
   dark: 'from-slate-800 via-slate-900 to-zinc-900',
-  clean: 'from-cyan-50 via-sky-50 to-white',
-  calm: 'from-emerald-50 via-teal-50 to-white',
-  contrast: 'from-slate-200 via-white to-slate-100',
-  premium: 'from-zinc-100 via-stone-50 to-white'
+  clean: 'from-cyan-50 via-sky-50 to-[var(--bg-card)]',
+  calm: 'from-emerald-50 via-teal-50 to-[var(--bg-card)]',
+  contrast: 'from-slate-200 via-[var(--bg-card)] to-slate-100',
+  premium: 'from-zinc-100 via-stone-50 to-[var(--bg-card)]'
 };
 
 export default function ReferenceCard({ project }) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+    <article className="group overflow-hidden rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
       <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${toneClasses[project.tone] || toneClasses.calm}`}>
         <Image
           src={project.image}
@@ -34,7 +34,7 @@ export default function ReferenceCard({ project }) {
         </ul>
         <Link
           href={`/referenzen/${project.slug}`}
-          className="mt-5 inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+          className="mt-5 inline-flex rounded-[12px] border border-slate-300 px-4 py-2 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
         >
           Demo ansehen
         </Link>

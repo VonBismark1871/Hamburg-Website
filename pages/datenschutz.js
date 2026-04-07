@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import SEOHead from '../components/SEOHead';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import LegalLayout from '../components/legal/LegalLayout';
 
 const sections = [
   {
@@ -22,12 +20,12 @@ const sections = [
           Deutschland
           <br />
           E-Mail:{' '}
-          <a href="mailto:info@hamburgwebsites.de" className="text-accent underline-offset-4 hover:underline">
+          <a href="mailto:info@hamburgwebsites.de">
             info@hamburgwebsites.de
           </a>
           <br />
           Telefon:{' '}
-          <a href="tel:+4916096297897" className="text-accent underline-offset-4 hover:underline">
+          <a href="tel:+4916096297897">
             +49 160 96297897
           </a>
         </p>
@@ -144,7 +142,7 @@ const sections = [
       <>
         <p>
           Die Kommunikation erfolgt auch über geschäftliche E-Mail-Adressen, insbesondere über{' '}
-          <a href="mailto:info@hamburgwebsites.de" className="text-accent underline-offset-4 hover:underline">
+          <a href="mailto:info@hamburgwebsites.de">
             info@hamburgwebsites.de
           </a>
           .
@@ -274,42 +272,23 @@ export default function DatenschutzPage() {
         path="/datenschutz"
         description="Datenschutzerklärung von Hamburg Websites mit Informationen zur Verarbeitung personenbezogener Daten auf dieser Website."
       />
-      <Header />
-      <main className="section-container section-spacing" aria-labelledby="datenschutz-heading">
-        <div className="mx-auto max-w-4xl">
-          <h1 id="datenschutz-heading" className="text-4xl font-bold tracking-tight text-slateBlue sm:text-5xl">
-            Datenschutzerklärung
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-slate-600">
-            Mit dieser Datenschutzerklärung informieren wir über Art, Umfang und Zweck der Verarbeitung
-            personenbezogener Daten im Zusammenhang mit der Nutzung dieser Website.
-          </p>
-
-          <div className="mt-12 space-y-10 text-base leading-8 text-slate-700">
-            {sections.map((section) => (
-              <section key={section.id} id={section.id} aria-labelledby={`${section.id}-heading`}>
-                <h2 id={`${section.id}-heading`} className="text-2xl font-semibold text-slateBlue">
-                  {section.title}
-                </h2>
-                <div className="mt-4">{section.content}</div>
-              </section>
-            ))}
-          </div>
-
-          <nav className="mt-14 flex flex-wrap gap-4 border-t border-slate-200 pt-8" aria-label="Weiterführende Links">
-            <Link href="/impressum" className="text-accent underline-offset-4 hover:underline">
-              Zum Impressum
-            </Link>
-            <Link href="/agb" className="text-accent underline-offset-4 hover:underline">
-              Zu den AGB
-            </Link>
-            <Link href="/kontakt" className="text-accent underline-offset-4 hover:underline">
-              Zur Kontaktseite
-            </Link>
-          </nav>
-        </div>
-      </main>
-      <Footer />
+      <LegalLayout
+        headingId="datenschutz-heading"
+        title="Datenschutzerklärung"
+        intro="Mit dieser Datenschutzerklärung informieren wir über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten im Zusammenhang mit der Nutzung dieser Website."
+        navLinks={[
+          { href: '/impressum', label: 'Zum Impressum' },
+          { href: '/agb', label: 'Zu den AGB' },
+          { href: '/kontakt', label: 'Zur Kontaktseite' },
+        ]}
+      >
+        {sections.map((section) => (
+          <section key={section.id} id={section.id} aria-labelledby={`${section.id}-heading`} className="space-y-4">
+            <h2 id={`${section.id}-heading`}>{section.title}</h2>
+            <div>{section.content}</div>
+          </section>
+        ))}
+      </LegalLayout>
     </>
   );
 }

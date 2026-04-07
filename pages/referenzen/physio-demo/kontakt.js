@@ -18,7 +18,7 @@ export default function PhysioDemoKontaktPage() {
 
       <section className="section-container pb-12">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <aside className="rounded-3xl border border-[#cfdfda] bg-white p-6">
+          <aside className="rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
             <h2 className="text-2xl font-semibold text-[#244240]">Praxisinformationen</h2>
             <div className="mt-4 space-y-4 text-sm text-[#4d6c69]">
               <p>
@@ -45,13 +45,13 @@ export default function PhysioDemoKontaktPage() {
                 </ul>
               </div>
             </div>
-            <p className="mt-6 rounded-xl bg-[#edf5f2] p-3 text-sm text-[#3c5f5b]">
+            <p className="mt-6 rounded-[20px] bg-[#edf5f2] p-3 text-sm text-[#3c5f5b]">
               Bei akuten Beschwerden empfehlen wir die telefonische Kontaktaufnahme.
             </p>
           </aside>
 
           <div className="grid gap-6">
-            <div className="overflow-hidden rounded-3xl border border-[#d0dfda]">
+            <div className="overflow-hidden rounded-[32px] border border-[#d0dfda]">
               <iframe
                 title="Karte zur Physiotherapiepraxis in Hamburg"
                 src="https://www.google.com/maps?q=Osterstra%C3%9Fe+142,+Hamburg&output=embed"
