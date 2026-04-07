@@ -177,14 +177,14 @@ export default function FriseursalonDemoPage() {
 
         <main>
           <section className="section-container pt-8" aria-label="Demo Hinweis">
-            <p className="inline-flex rounded-full border border-[#dccfc2] bg-[#fffaf3] px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#776a61]">
+            <p className="inline-flex rounded-full border border-[#dccfc2] bg-[var(--text-primary)af3] px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#776a61]">
               Demo-Projekt · So könnte eine moderne Friseursalon-Website aussehen
             </p>
           </section>
 
           <section className="section-container pb-10 pt-8" id="start" aria-labelledby="hero-heading">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-              <article className="rounded-[2rem] border border-[#dfd2c4] bg-[#fffdfa] p-7 sm:p-10">
+              <article className="rounded-[2rem] border border-[#dfd2c4] bg-[var(--text-primary)dfa] p-7 sm:p-10">
                 <p className="text-xs uppercase tracking-[0.16em] text-[#8b7d73]">Friseursalon Elbhaar · Hamburg</p>
                 <h1 id="hero-heading" className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
                   Moderner Friseursalon in Hamburg
@@ -193,7 +193,7 @@ export default function FriseursalonDemoPage() {
                   Individuelle Haarschnitte, moderne Farbtechniken und eine entspannte Atmosphäre im Herzen von Eimsbüttel.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href="#termin" className="inline-flex rounded-full bg-[#332d2a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1f1b1a]">
+                  <Link href="#termin" className="inline-flex rounded-full bg-[#332d2a] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#1f1b1a]">
                     Termin buchen
                   </Link>
                   <Link href="#leistungen" className="inline-flex rounded-full border border-[#b6a99c] px-6 py-3 text-sm font-semibold text-[#2f2a28] transition hover:border-[#86786d]">
@@ -220,7 +220,7 @@ export default function FriseursalonDemoPage() {
               {popularServices.map((service) => (
                 <article
                   key={service.title}
-                  className="rounded-[1.7rem] border border-[#e1d6c9] bg-[#fffdfa] p-6 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-22px_rgba(53,40,33,0.55)]"
+                  className="rounded-[1.7rem] border border-[#e1d6c9] bg-[var(--text-primary)dfa] p-6 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-22px_rgba(53,40,33,0.55)]"
                 >
                   <p className="text-2xl" aria-hidden="true">{service.icon}</p>
                   <h3 className="mt-4 text-xl font-semibold text-[#3b312d]">{service.title}</h3>
@@ -231,26 +231,26 @@ export default function FriseursalonDemoPage() {
           </section>
 
           <section className="section-container pb-14" aria-label="Vertrauen und Bewertungen">
-            <div className="flex flex-col gap-4 rounded-[1.7rem] border border-[#dfd2c4] bg-[#fff8f0] px-6 py-5 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-4 rounded-[1.7rem] border border-[#dfd2c4] bg-[var(--text-primary)8f0] px-6 py-5 md:flex-row md:items-center md:justify-between">
               <p className="text-sm font-semibold text-[#4c403a] sm:text-base">★★★★★ 4.8 Bewertung bei Google · 120+ Rezensionen</p>
               <ul className="flex flex-wrap gap-3 text-sm text-[#665951]">
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Über 10 Jahre Erfahrung</li>
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Persönliche Beratung</li>
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Zentrale Lage in Hamburg</li>
+                <li className="rounded-full bg-[var(--bg-card)] px-3 py-1.5">✦ Über 10 Jahre Erfahrung</li>
+                <li className="rounded-full bg-[var(--bg-card)] px-3 py-1.5">✦ Persönliche Beratung</li>
+                <li className="rounded-full bg-[var(--bg-card)] px-3 py-1.5">✦ Zentrale Lage in Hamburg</li>
               </ul>
             </div>
           </section>
 
           <section className="section-container pb-16" id="leistungen" aria-labelledby="services-heading">
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-              <div className="rounded-[2rem] border border-[#e2d6ca] bg-[#fff9f2] p-7 sm:p-9">
+              <div className="rounded-[2rem] border border-[#e2d6ca] bg-[var(--text-primary)9f2] p-7 sm:p-9">
                 <h2 id="services-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Leistungen & Preise</h2>
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-[#665b54]">
                   Transparente Preise und Leistungen, die auf Haarstruktur, Pflegezustand und Wunschlook abgestimmt sind.
                 </p>
               </div>
-              <div className="rounded-[2rem] border border-[#dfd3c7] bg-[#fffdfa] p-4 sm:p-5">
-                <ul className="divide-y divide-[#ebe1d6] overflow-hidden rounded-2xl border border-[#ece2d7] bg-[#fffaf4]">
+              <div className="rounded-[2rem] border border-[#dfd3c7] bg-[var(--text-primary)dfa] p-4 sm:p-5">
+                <ul className="divide-y divide-[#ebe1d6] overflow-hidden rounded-2xl border border-[#ece2d7] bg-[var(--text-primary)af4]">
                   {services.map((service) => (
                     <li key={service.title} className="p-4 sm:p-5">
                       <div className="flex items-start justify-between gap-4">
@@ -315,7 +315,7 @@ export default function FriseursalonDemoPage() {
             </p>
             <div className="mt-7 grid gap-5 md:grid-cols-3">
               {stylists.map((member) => (
-                <article key={member.name} className="overflow-hidden rounded-[1.8rem] bg-[#fffdf9]">
+                <article key={member.name} className="overflow-hidden rounded-[1.8rem] bg-[var(--text-primary)df9]">
                   <Image src={member.image} alt={`${member.name}, Friseur mit Schwerpunkt ${member.role}`} width={900} height={980} className="h-72 w-full rounded-[1.8rem] object-cover" />
                   <div className="px-2 pb-2 pt-4">
                     <h3 className="text-lg font-semibold">{member.name}</h3>
@@ -328,11 +328,11 @@ export default function FriseursalonDemoPage() {
           </section>
 
           <section className="section-container pb-16" aria-labelledby="reasons-heading">
-            <div className="rounded-[2rem] border border-[#dbcebf] bg-[#fffaf3] p-7 sm:p-10">
+            <div className="rounded-[2rem] border border-[#dbcebf] bg-[var(--text-primary)af3] p-7 sm:p-10">
               <h2 id="reasons-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Warum Kundinnen und Kunden uns wählen</h2>
               <ul className="mt-6 grid gap-4 sm:grid-cols-3">
                 {reasons.map((reason) => (
-                  <li key={reason.title} className="rounded-2xl border border-[#e4d8cc] bg-white p-5 shadow-[0_12px_24px_-22px_rgba(52,39,32,0.6)]">
+                  <li key={reason.title} className="rounded-2xl border border-[#e4d8cc] bg-[var(--bg-card)] p-5 shadow-[0_12px_24px_-22px_rgba(52,39,32,0.6)]">
                     <h3 className="text-base font-semibold text-[#453b36]">{reason.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#635850]">{reason.text}</p>
                   </li>
@@ -362,7 +362,7 @@ export default function FriseursalonDemoPage() {
             <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Kundenstimmen</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
-                <blockquote key={item.by} className="rounded-3xl border border-[#dfd3c7] bg-[#fffdfa] p-6">
+                <blockquote key={item.by} className="rounded-3xl border border-[#dfd3c7] bg-[var(--text-primary)dfa] p-6">
                   <p className="leading-relaxed text-[#4f453f]">“{item.quote}”</p>
                   <footer className="mt-4 text-sm font-semibold text-[#74685f]">{item.by}</footer>
                 </blockquote>
@@ -373,7 +373,7 @@ export default function FriseursalonDemoPage() {
           <section className="section-container pb-14" id="kontakt" aria-labelledby="contact-heading">
             <h2 id="contact-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Kontakt & Öffnungszeiten</h2>
             <div className="mt-7 grid gap-5 lg:grid-cols-2">
-              <article className="rounded-[1.8rem] border border-[#ded1c3] bg-[#fffdfa] p-7">
+              <article className="rounded-[1.8rem] border border-[#ded1c3] bg-[var(--text-primary)dfa] p-7">
                 <h3 className="text-lg font-semibold">Friseursalon Elbhaar</h3>
                 <p className="mt-3 text-[#5f554f]">Isestraße 44, 20144 Hamburg</p>
                 <p className="mt-2 text-[#5f554f]">Telefon: 040 / 389 74 112</p>

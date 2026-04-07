@@ -42,15 +42,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap"
-          rel="stylesheet"
-        />
         <link rel="icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
-        <link rel="shortcut icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/brand/hw-approved-icon-transparent-v1.png" />
       </Head>
       <Component {...pageProps} />
     </>

@@ -5,7 +5,7 @@ export function ComplaintCards({ items }) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {items.map((item) => (
-        <article key={item.title} className="rounded-2xl border border-[#d4e1dd] bg-white p-5">
+        <article key={item.title} className="rounded-2xl border border-[#d4e1dd] bg-[var(--bg-card)] p-5">
           <h3 className="text-xl font-semibold text-[#264543]">{item.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-[#486664]">{item.description}</p>
           {item.href ? (
@@ -35,7 +35,7 @@ export function TreatmentCard({ service, showCta = false }) {
 
 export function TherapistCard({ person }) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-[#d2dfdb] bg-white">
+    <article className="overflow-hidden rounded-2xl border border-[#d2dfdb] bg-[var(--bg-card)]">
       <Image src={person.image} alt={`Portrait von ${person.name}, ${person.role}`} width={700} height={700} className="h-56 w-full object-cover" />
       <div className="p-5">
         <h3 className="text-lg font-semibold text-[#264543]">{person.name}</h3>
@@ -62,7 +62,7 @@ export function PhysioTestimonials({ testimonials }) {
   return (
     <div className="grid gap-4 lg:grid-cols-3">
       {testimonials.map((testimonial) => (
-        <blockquote key={testimonial.name} className="rounded-2xl border border-[#d0dfda] bg-white p-5">
+        <blockquote key={testimonial.name} className="rounded-2xl border border-[#d0dfda] bg-[var(--bg-card)] p-5">
           <p className="text-sm leading-relaxed text-[#4a6967]">„{testimonial.quote}“</p>
           <footer className="mt-4 text-sm font-semibold text-[#244240]">{testimonial.name}</footer>
         </blockquote>
@@ -73,7 +73,7 @@ export function PhysioTestimonials({ testimonials }) {
 
 export function AppointmentFormDemo() {
   return (
-    <form className="grid gap-4 rounded-2xl border border-[#d2e2dd] bg-white p-6">
+    <form className="grid gap-4 rounded-2xl border border-[#d2e2dd] bg-[var(--bg-card)] p-6">
       <label className="text-sm font-medium text-[#2b4b48]">
         Name
         <input type="text" className="mt-1 w-full rounded-xl border border-[#c7d9d4] px-3 py-2 text-sm outline-none focus:border-[#7aa8a1]" />
@@ -94,7 +94,7 @@ export function AppointmentFormDemo() {
         Nachricht
         <textarea rows={4} className="mt-1 w-full rounded-xl border border-[#c7d9d4] px-3 py-2 text-sm outline-none focus:border-[#7aa8a1]" />
       </label>
-      <button type="button" className="rounded-full bg-[#2f736b] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#285e57]">
+      <button type="button" className="rounded-full bg-[#2f736b] px-5 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#285e57]">
         Anfrage senden
       </button>
     </form>

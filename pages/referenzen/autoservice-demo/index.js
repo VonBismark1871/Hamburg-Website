@@ -39,13 +39,13 @@ export default function AutoserviceDemoHomePage() {
                 <div className="mt-7 flex flex-wrap gap-3">
                   <Link
                     href="/referenzen/autoservice-demo/kontakt"
-                    className="rounded-md bg-[#b8453c] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#9f392f]"
+                    className="rounded-md bg-[#b8453c] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#9f392f]"
                   >
                     Termin anfragen
                   </Link>
                   <Link
                     href="/referenzen/autoservice-demo/leistungen"
-                    className="rounded-md border border-[#cdd5e0] px-6 py-3 text-sm font-semibold text-[#f4f7fb] transition hover:bg-white/10"
+                    className="rounded-md border border-[#cdd5e0] px-6 py-3 text-sm font-semibold text-[#f4f7fb] transition hover:bg-[var(--bg-card)]/10"
                   >
                     Leistungen ansehen
                   </Link>
@@ -54,7 +54,7 @@ export default function AutoserviceDemoHomePage() {
             </div>
           </article>
 
-          <aside className="rounded-3xl border border-[#c9d1dc] bg-white p-7">
+          <aside className="rounded-3xl border border-[#c9d1dc] bg-[var(--bg-card)] p-7">
             <h2 className="text-2xl font-semibold text-[#111926]">Werkstatt mit klaren Abläufen</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#435067]">
               Von der Annahme bis zur Fahrzeugübergabe erhalten Kundinnen und Kunden verständliche Rückmeldungen,
@@ -96,7 +96,7 @@ export default function AutoserviceDemoHomePage() {
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {services.slice(0, 6).map((service) => (
-            <article key={service.title} className="rounded-2xl border border-[#ccd4df] bg-white p-5">
+            <article key={service.title} className="rounded-2xl border border-[#ccd4df] bg-[var(--bg-card)] p-5">
               <h3 className="text-lg font-semibold text-[#111926]">{service.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#48566c]">{service.description}</p>
             </article>
@@ -105,7 +105,7 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <div className="grid gap-6 rounded-3xl bg-white p-7 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-6 rounded-3xl bg-[var(--bg-card)] p-7 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="text-3xl font-semibold text-[#111926]">Warum Kundinnen und Kunden uns wählen</h2>
             <ul className="mt-5 space-y-3">
@@ -132,7 +132,7 @@ export default function AutoserviceDemoHomePage() {
         <h2 className="text-3xl font-semibold text-[#111926]">Kundenstimmen</h2>
         <div className="mt-5 grid gap-4 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <blockquote key={testimonial.name} className="rounded-2xl border border-[#ccd4df] bg-white p-5">
+            <blockquote key={testimonial.name} className="rounded-2xl border border-[#ccd4df] bg-[var(--bg-card)] p-5">
               <p className="text-sm leading-relaxed text-[#3b495f]">„{testimonial.quote}“</p>
               <footer className="mt-4 text-sm font-semibold text-[#111926]">{testimonial.name}</footer>
             </blockquote>
@@ -147,7 +147,7 @@ export default function AutoserviceDemoHomePage() {
             Ob Inspektion, Diagnose oder Reparatur – Anfragen können schnell und unkompliziert gestellt werden.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/referenzen/autoservice-demo/kontakt" className="rounded-md bg-[#b8453c] px-6 py-3 text-sm font-semibold text-white hover:bg-[#9f392f]">
+            <Link href="/referenzen/autoservice-demo/kontakt" className="rounded-md bg-[#b8453c] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] hover:bg-[#9f392f]">
               Termin anfragen
             </Link>
             <Link href="/referenzen/autoservice-demo/kontakt" className="rounded-md border border-[#4a5b74] px-6 py-3 text-sm font-semibold text-[#e9eef6] hover:bg-[#1a263a]">
@@ -158,7 +158,7 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-16">
-        <div className="grid gap-6 rounded-3xl border border-[#cad2dd] bg-white p-7 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-6 rounded-3xl border border-[#cad2dd] bg-[var(--bg-card)] p-7 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 className="text-2xl font-semibold text-[#111926]">Kontakt, Öffnungszeiten & Anfahrt</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#445269]">{workshopDetails.address}</p>
@@ -173,7 +173,7 @@ export default function AutoserviceDemoHomePage() {
           <div className="flex items-center justify-start lg:justify-end">
             <Link
               href="/referenzen/autoservice-demo/kontakt"
-              className="rounded-md bg-[#111926] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1a273b]"
+              className="rounded-md bg-[#111926] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[#1a273b]"
             >
               Zur Kontaktseite
             </Link>

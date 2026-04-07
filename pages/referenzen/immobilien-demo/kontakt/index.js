@@ -21,7 +21,7 @@ export default function ImmobilienKontaktPage() {
             Diese Seite ist Teil des Referenzprojekts. Ein echter Maklerbetrieb könnte hier ein Anfrageformular,
             Terminbuchung und Rückrufservice integrieren.
           </p>
-          <div className="mt-8 rounded-2xl border border-stone-300 bg-white p-6">
+          <div className="mt-8 rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
             <p className="font-semibold">Elbquartier Immobilien</p>
             <p className="mt-2 text-sm text-stone-700">Telefon: 040 9876 2301 · E-Mail: beratung@elbquartier-immobilien.de</p>
             <div className="mt-5">

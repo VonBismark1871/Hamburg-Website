@@ -1,83 +1,13 @@
-import Link from 'next/link';
+import { useState } from 'react';
 
 export const faqItems = [
-  {
-    question: 'Wie lange dauert die Erstellung einer Website?',
-    answerText:
-      'Die Erstellung einer typischen Unternehmenswebsite dauert in der Regel zwischen 7 und 14 Tagen. Der genaue Zeitraum hängt vom Umfang der Inhalte, der Seitenanzahl und den Feedbackschleifen ab.'
-  },
-  {
-    question: 'Wie viel kostet eine Website?',
-    answerText:
-      'Die meisten Projekte bewegen sich je nach Umfang zwischen etwa 400 € und 1.500 €. Eine genauere Übersicht über typische Projektbudgets finden Sie auf unserer Preisübersicht.',
-    answer: (
-      <>
-        Die meisten Projekte bewegen sich je nach Umfang zwischen etwa 400 € und 1.500 €. Eine genauere Übersicht über
-        typische Projektbudgets finden Sie auf unserer{' '}
-        <Link href="/preise" className="font-medium text-accent underline-offset-4 hover:underline">
-          Preisübersicht
-        </Link>
-        .
-      </>
-    )
-  },
-  {
-    question: 'Ist die Demo wirklich kostenlos?',
-    answerText:
-      'Ja. Sie erhalten eine unverbindliche Demo-Vorschau, damit Sie Stil, Struktur und Aufbau Ihrer möglichen Website sehen können, bevor Sie sich für eine Umsetzung entscheiden.'
-  },
-  {
-    question: 'Wie viele Änderungen sind im Preis enthalten?',
-    answerText:
-      'Je nach Paket sind ein bis zwei Korrekturschleifen enthalten. Nach Fertigstellung erhalten Sie außerdem eine Prüfungsphase von bis zu 7 Tagen, in der kleinere Anpassungen vorgenommen werden können.'
-  },
-  {
-    question: 'Was passiert nach der Fertigstellung der Website?',
-    answerText:
-      'Nach der Veröffentlichung können Sie Ihre Website selbst verwalten oder optional eine laufende Betreuung buchen. Mehr Informationen dazu finden Sie im Bereich Websitepflege und Hosting.',
-    answer: (
-      <>
-        Nach der Veröffentlichung können Sie Ihre Website selbst verwalten oder optional eine laufende Betreuung
-        buchen. Mehr Informationen dazu finden Sie im Bereich{' '}
-        <Link href="/preise" className="font-medium text-accent underline-offset-4 hover:underline">
-          Websitepflege und Hosting
-        </Link>
-        .
-      </>
-    )
-  },
-  {
-    question: 'Bieten Sie Hosting und technische Betreuung an?',
-    answerText:
-      'Ja. Auf Wunsch übernehmen wir Hosting, technische Betreuung sowie kleinere Inhaltsanpassungen im Rahmen einer monatlichen Websitepflege.'
-  },
-  {
-    question: 'Können bestehende Websites überarbeitet werden?',
-    answerText:
-      'Ja. Bestehende Websites können modernisiert, strukturell verbessert und für mobile Geräte sowie Suchmaschinen optimiert werden.'
-  },
-  {
-    question: 'Benötige ich eigene Texte und Bilder?',
-    answerText:
-      'Idealerweise stellen Sie Texte und Bilder bereit. Falls nötig unterstützen wir jedoch bei Struktur, Formulierung und Bildauswahl.'
-  },
-  {
-    question: 'Kann meine Website später erweitert werden?',
-    answerText:
-      'Ja. Websites werden so aufgebaut, dass sie später um zusätzliche Seiten, Inhalte oder Funktionen erweitert werden können.'
-  }
+  { question: 'Wie lange dauert die Erstellung einer Website?', answerText: 'Die Erstellung einer typischen Unternehmenswebsite dauert in der Regel zwischen 7 und 14 Tagen. Der genaue Zeitraum hängt vom Umfang der Inhalte, der Seitenanzahl und den Feedbackschleifen ab.' },
+  { question: 'Wie viel kostet eine Website?', answerText: 'Die meisten Projekte bewegen sich je nach Umfang zwischen etwa 400 € und 1.500 €. Eine genauere Übersicht über typische Projektbudgets finden Sie auf unserer Preisübersicht.' },
+  { question: 'Ist die Demo wirklich kostenlos?', answerText: 'Ja. Sie erhalten eine unverbindliche Demo-Vorschau, damit Sie Stil, Struktur und Aufbau Ihrer möglichen Website sehen können, bevor Sie sich für eine Umsetzung entscheiden.' }
 ];
 
-export default function FAQ({
-  headingTag = 'h2',
-  title = 'Häufig gestellte Fragen',
-  intro = 'Hier finden Sie Antworten auf typische Fragen zur Planung, Erstellung und Betreuung Ihrer neuen Unternehmenswebsite.',
-  sectionId = 'faq',
-  items = faqItems,
-  showFinalCta = true
-}) {
-  const Heading = headingTag;
-
+export default function FAQ({ items = faqItems }) {
+  const [open, setOpen] = useState(0);
   return (
     <section className="section-container section-spacing" id={sectionId} aria-labelledby="faq-heading">
       <p className="section-label">FAQ</p>
@@ -127,7 +57,7 @@ export default function FAQ({
             </Link>
           </div>
         </div>
-      ) : null}
+      </div>
     </section>
   );
 }

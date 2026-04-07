@@ -29,13 +29,13 @@ export default function PhysioDemoLeistungenPage() {
       </section>
 
       <section className="section-container pb-16">
-        <div className="rounded-3xl border border-[#cfded9] bg-white p-7">
+        <div className="rounded-3xl border border-[#cfded9] bg-[var(--bg-card)] p-7">
           <h2 className="text-2xl font-semibold text-[#244240]">Unsicher, welche Leistung passt?</h2>
           <p className="mt-3 text-sm text-[#4d6c69]">
             Beschreiben Sie Ihre Beschwerden kurz – wir melden uns mit einer passenden Ersteinschätzung für den weiteren Ablauf.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Link href="/referenzen/physio-demo/kontakt" className="rounded-full bg-[#2f736b] px-6 py-3 text-sm font-semibold text-white hover:bg-[#285f58]">
+            <Link href="/referenzen/physio-demo/kontakt" className="rounded-full bg-[#2f736b] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] hover:bg-[#285f58]">
               Termin anfragen
             </Link>
             <Link href="/referenzen/physio-demo/rueckenschmerzen" className="rounded-full border border-[#9ab9b4] px-6 py-3 text-sm font-semibold text-[#2f736b] hover:bg-[#f4fbf9]">
