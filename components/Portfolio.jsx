@@ -12,7 +12,7 @@ export default function Portfolio() {
         <h2 id="portfolio-heading" className="text-3xl">Beispiele moderner Unternehmenswebsites</h2>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {projects.map((project, i) => (
-            <motion.article key={project.slug} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }} viewport={{ once: true, amount: 0.2 }} className="card overflow-hidden">
+            <motion.article key={project.slug} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }} viewport={{ once: true, amount: 0.15 }} className="card overflow-hidden">
               <div className="relative h-52">
                 <Image src={project.image} alt={project.title} fill className="object-cover" />
               </div>

@@ -60,13 +60,13 @@ export default function Features() {
   return (
     <section className="section-spacing bg-[var(--bg-surface)]" aria-labelledby="features-heading">
       <div className="section-container">
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: 'easeOut' }} viewport={{ once: true, amount: 0.2 }}>
+        <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }} viewport={{ once: true, amount: 0.15 }}>
           <p className="section-label">Leistungen</p>
           <h2 id="features-heading" className="text-3xl">Was eine moderne Website leisten sollte</h2>
         </motion.div>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {features.map((feature, i) => (
-            <motion.article key={feature.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }} viewport={{ once: true, amount: 0.2 }} className="card p-6">
+            <motion.article key={feature.title} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }} viewport={{ once: true, amount: 0.15 }} className="card p-6">
               <FeatureIcon type={feature.icon} />
               <h3 className="mt-3 text-xl">{feature.title}</h3>
               <p className="mt-2 text-[var(--text-secondary)]">{feature.text}</p>
