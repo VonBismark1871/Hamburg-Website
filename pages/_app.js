@@ -16,10 +16,25 @@ export default function App({ Component, pageProps }) {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
-    document.querySelectorAll('.reveal-section').forEach((el) => observer.observe(el));
+    const revealTargets = [
+      ...document.querySelectorAll('.card, .feature-item, .step, .price-card, .faq-item, .team-item, .promise-item, .reveal-up')
+    ];
+
+    document.querySelectorAll('section > *').forEach((element) => {
+      if (!element.classList.contains('reveal-up')) {
+        element.classList.add('reveal-up');
+      }
+      revealTargets.push(element);
+    });
+
+    revealTargets.forEach((element, index) => {
+      element.style.transitionDelay = `${(index % 6) * 0.08}s`;
+      observer.observe(element);
+    });
+
     return () => observer.disconnect();
   }, [router.asPath]);
 

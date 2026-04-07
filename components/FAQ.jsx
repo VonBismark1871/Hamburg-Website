@@ -9,22 +9,53 @@ export const faqItems = [
 export default function FAQ({ items = faqItems }) {
   const [open, setOpen] = useState(0);
   return (
-    <section className="section-spacing bg-[var(--bg-surface)]" aria-labelledby="faq-heading">
-      <div className="section-container">
-        <p className="section-label">FAQ</p>
-        <h2 id="faq-heading" className="text-3xl">Häufig gestellte Fragen</h2>
-        <div className="mt-8 space-y-3">
-          {items.map((item, idx) => (
-            <article key={item.question} className="card overflow-hidden px-5 py-4">
-              <button className="flex w-full items-center justify-between text-left" onClick={() => setOpen(open === idx ? -1 : idx)}>
-                <span className="text-[var(--text-primary)]">{item.question}</span>
-                <span className={`transition ${open === idx ? 'rotate-180' : ''}`}>⌄</span>
-              </button>
-              <div className="transition-all duration-300" style={{ maxHeight: open === idx ? '220px' : '0px', overflow: 'hidden' }}>
-                <p className="pt-3 text-[var(--text-secondary)]">{item.answerText}</p>
-              </div>
-            </article>
-          ))}
+    <section className="section-container section-spacing" id={sectionId} aria-labelledby="faq-heading">
+      <p className="section-label">FAQ</p>
+      <Heading id="faq-heading" className="text-3xl text-slateBlue">
+        {title}
+      </Heading>
+      <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">{intro}</p>
+
+      <div className="mt-8 space-y-3">
+        {items.map((item) => (
+          <details
+            key={item.question}
+            className="faq-item group card px-6 py-5"
+          >
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
+              <h3 className="text-lg font-semibold text-slateBlue">{item.question}</h3>
+              <svg
+                className="mt-1 h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 group-open:rotate-180"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+            </summary>
+            <div className="faq-answer"><p className="mt-4 pr-8 leading-relaxed text-slate-600">{item.answer ?? item.answerText}</p></div>
+          </details>
+        ))}
+      </div>
+
+      {showFinalCta ? (
+        <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+          <h3 className="text-2xl font-bold text-slateBlue">Haben Sie noch Fragen?</h3>
+          <p className="mt-3 max-w-3xl text-slate-600">
+            Wenn Ihre Frage hier nicht beantwortet wurde, können Sie uns gerne direkt kontaktieren. Wir geben Ihnen
+            eine klare Einschätzung für Ihr Projekt.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/kontakt" className="primary-btn">
+              Projekt anfragen
+            </Link>
+            <Link
+              href="/preise"
+              className="secondary-btn text-slateBlue"
+            >
+              Preise ansehen
+            </Link>
+          </div>
         </div>
       </div>
     </section>

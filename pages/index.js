@@ -45,16 +45,26 @@ export default function HomePage() {
         <Pricing />
         <FAQ />
 
-        <section className="section-spacing" aria-labelledby="final-cta-heading">
-          <div className="section-container">
-            <div className="card relative overflow-hidden p-10">
-              <span className="glow-blob -right-40 -top-40" aria-hidden="true" />
-              <h2 id="final-cta-heading" className="relative z-10 text-3xl">Bereit für Ihre neue Website?</h2>
-              <p className="relative z-10 mt-3 max-w-2xl text-[var(--text-secondary)]">Fordern Sie eine kostenlose Demo-Vorschau an oder lassen Sie Ihr Projekt unverbindlich einschätzen.</p>
-              <div className="relative z-10 mt-6 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="primary-btn">Projekt anfragen</Link>
-                <Link href="/preise" className="secondary-btn">Preise ansehen</Link>
-              </div>
+        <section className="section-container section-spacing pt-2" aria-labelledby="final-cta-heading">
+          <div className="section-dark rounded-2xl border border-slate-800 p-8 text-white sm:p-10">
+            <span className="glow-blob glow-blob--purple" aria-hidden="true" />
+            <span className="glow-blob glow-blob--teal" aria-hidden="true" />
+            <h2 id="final-cta-heading" className="text-3xl text-white">
+              Bereit für Ihre neue Website?
+            </h2>
+            <p className="mt-4 max-w-2xl text-slate-200">
+              Fordern Sie eine kostenlose Demo-Vorschau an oder lassen Sie Ihr Projekt unverbindlich einschätzen.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link href="/kontakt" className="primary-btn">
+                Projekt anfragen
+              </Link>
+              <Link
+                href="/preise"
+                className="secondary-btn text-white"
+              >
+                Preise ansehen
+              </Link>
             </div>
           </div>
         </section>
