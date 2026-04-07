@@ -32,7 +32,7 @@ export default function HomePage() {
             <h2 id="process-heading" className="text-3xl">So läuft die Zusammenarbeit ab</h2>
             <ol className="mt-8 grid gap-4 md:grid-cols-4">
               {steps.map((step, i) => (
-                <motion.li key={step.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }} viewport={{ once: true, amount: 0.2 }} className="card group relative p-5">
+                <motion.li key={step.title} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }} viewport={{ once: true, amount: 0.15 }} className="card group relative p-5">
                   <span className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent-purple)] text-[var(--text-primary)] transition group-hover:scale-110">{i + 1}</span>
                   <h3 className="text-xl">{step.title}</h3>
                   <p className="mt-2 text-sm text-[var(--text-secondary)]">{step.text}</p>
