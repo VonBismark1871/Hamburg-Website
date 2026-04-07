@@ -4,27 +4,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        slateBlue: '#1a1a18',
-        accent: '#2563eb',
-        slate: {
-          50: '#f8f6f0',
-          100: '#f1eee6',
-          200: '#e4e1d8',
-          300: '#d0cdc4',
-          400: '#b0aca2',
-          500: '#9a9890',
-          600: '#6d6b63',
-          700: '#4a4a44',
-          800: '#2f2f2b',
-          900: '#1a1a18'
-        },
-        indigo: {
-          50: '#eff4ff',
-          100: '#dce8ff',
-          300: '#93b4ff',
-          500: '#1d4ed8',
-          600: '#1d4ed8',
-          700: '#1e40af'
+        slateBlue: 'var(--text-primary)',
+        accent: 'var(--accent)',
+        brand: {
+          base: 'var(--bg-base)',
+          surface: 'var(--bg-surface)',
+          card: 'var(--bg-card)',
+          cardHover: 'var(--bg-card-hover)',
+          border: 'var(--border-subtle)',
+          borderAccent: 'var(--border-accent)',
+          text: 'var(--text-primary)',
+          textSecondary: 'var(--text-secondary)',
+          muted: 'var(--text-muted)',
+          accent: 'var(--accent)',
+          accentLight: 'var(--accent-light)',
+          success: 'var(--accent-green)'
         }
       },
       fontFamily: {
@@ -32,7 +26,7 @@ module.exports = {
         serif: ['DM Serif Display', 'Georgia', 'serif']
       },
       boxShadow: {
-        soft: '0 8px 24px rgba(0, 0, 0, 0.07)'
+        soft: '0 8px 24px rgba(2, 8, 23, 0.35)'
       }
     }
   },

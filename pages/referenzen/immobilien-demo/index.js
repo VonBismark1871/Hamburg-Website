@@ -57,7 +57,7 @@ export default function ImmobilienDemoHomePage() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     href="/referenzen/immobilien-demo/objekte"
-                    className="inline-flex rounded-md bg-stone-100 px-6 py-3 text-sm font-semibold text-stone-900 transition hover:bg-white"
+                    className="inline-flex rounded-md bg-stone-100 px-6 py-3 text-sm font-semibold text-stone-900 transition hover:bg-[var(--bg-card)]"
                   >
                     Objekte ansehen
                   </Link>
@@ -134,7 +134,7 @@ export default function ImmobilienDemoHomePage() {
             <div>
               <Link
                 href="/referenzen/immobilien-demo/kontakt"
-                className="inline-flex w-full items-center justify-center rounded-md bg-stone-100 px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-white"
+                className="inline-flex w-full items-center justify-center rounded-md bg-stone-100 px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-[var(--bg-card)]"
               >
                 Bewertung anfragen
               </Link>
@@ -148,7 +148,7 @@ export default function ImmobilienDemoHomePage() {
           </h2>
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
-              <blockquote key={testimonial} className="rounded-2xl border border-stone-300 bg-white p-6 text-sm leading-relaxed text-stone-700">
+              <blockquote key={testimonial} className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6 text-sm leading-relaxed text-stone-700">
                 {testimonial}
               </blockquote>
             ))}
@@ -156,7 +156,7 @@ export default function ImmobilienDemoHomePage() {
         </section>
 
         <section className="section-container pb-20" aria-labelledby="schluss-cta">
-          <div className="rounded-[2rem] border border-stone-300 bg-white p-8 sm:p-10">
+          <div className="rounded-[2rem] border border-stone-300 bg-[var(--bg-card)] p-8 sm:p-10">
             <h2 id="schluss-cta" className="text-3xl font-semibold sm:text-4xl">
               Sie möchten Ihre Immobilie professionell präsentieren?
             </h2>
