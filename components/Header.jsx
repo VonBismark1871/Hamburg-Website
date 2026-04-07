@@ -8,9 +8,10 @@ const navItems = [
   { href: '/ablauf', label: 'Ablauf' },
   { href: '/preise', label: 'Preise' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/ueber-uns', label: 'Über uns' },
-  { href: '/kontakt', label: 'Kontaktaufnahme' }
+  { href: '/ueber-uns', label: 'Über uns' }
 ];
+
+const ctaItem = { href: '/kontakt', label: 'Kontakt' };
 
 export default function Header() {
   const { pathname } = useRouter();
@@ -31,23 +32,24 @@ export default function Header() {
     >
       <div className="section-container flex items-center justify-between py-4">
         <LogoLink className="shrink-0" />
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Hauptnavigation">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`relative text-sm transition after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-[var(--accent-purple-light)] after:transition-all hover:after:w-full ${
-                item.label === 'Kontaktaufnahme'
-                  ? 'primary-btn after:hidden'
-                  : pathname === item.href
-                    ? 'text-[var(--text-primary)]'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-8 md:flex">
+          <nav className="flex items-center gap-6" aria-label="Hauptnavigation">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative text-sm text-[var(--text-secondary)] transition after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-[var(--accent-purple-light)] after:transition-all hover:text-[var(--text-primary)] hover:after:w-full ${
+                  pathname === item.href ? 'text-[var(--text-primary)]' : ''
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <Link href={ctaItem.href} className="primary-btn">
+            {ctaItem.label}
+          </Link>
+        </div>
       </div>
     </header>
   );
