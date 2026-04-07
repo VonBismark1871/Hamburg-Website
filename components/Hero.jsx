@@ -19,7 +19,6 @@ export default function Hero() {
   return (
     <section className="section-spacing relative overflow-hidden" aria-labelledby="hero-heading">
       <span className="glow-blob -left-40 -top-40" aria-hidden="true" />
-      <span className="glow-blob -bottom-52 right-[-120px]" style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.16) 0%, transparent 70%)' }} aria-hidden="true" />
       <div className="section-container relative z-10 grid items-center gap-10 lg:grid-cols-2">
         <motion.div {...reveal} className="space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-accent)] bg-[var(--accent-glow-purple)] px-4 py-1.5 text-sm text-[var(--text-primary)]">
@@ -50,7 +49,7 @@ export default function Hero() {
               <span className="h-3 w-3 rounded-full bg-yellow-400" />
               <span className="h-3 w-3 rounded-full bg-green-400" />
             </div>
-            <div className="carousel-track flex w-[200%]" style={{ animation: 'slide 15s linear infinite' }}>
+            <div className="carousel-track flex w-[200%]" style={{ animation: 'slide 24s ease-in-out infinite' }}>
               {[...previews, ...previews].map((p, idx) => (
                 <div key={`${p.key}-${idx}`} className="relative h-[320px] w-full border-r border-[var(--border-subtle)] bg-[var(--bg-surface)]">
                   <Image src={p.image} alt={p.title} fill className="object-cover opacity-90" />
@@ -58,11 +57,10 @@ export default function Hero() {
               ))}
             </div>
           </div>
-          <div className="float-tag absolute -left-8 top-6 rounded-full border border-emerald-400/50 bg-[var(--bg-surface)] px-4 py-2 text-sm text-emerald-300">⚡ PageSpeed 98/100</div>
-          <div className="float-tag absolute -bottom-6 right-0 rounded-full border border-indigo-400/50 bg-[var(--bg-surface)] px-4 py-2 text-sm text-indigo-200">🚀 Livegang in 3–5 Tagen</div>
+          <div className="absolute -left-8 top-6 rounded-full border border-emerald-400/50 bg-[var(--bg-surface)] px-4 py-2 text-sm text-emerald-300">⚡ PageSpeed 98/100</div>
         </motion.div>
       </div>
-      <style jsx>{`@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}`}</style>
+      <style jsx>{`@keyframes slide{0%,14%{transform:translateX(0)}86%,100%{transform:translateX(-50%)}}`}</style>
     </section>
   );
 }
