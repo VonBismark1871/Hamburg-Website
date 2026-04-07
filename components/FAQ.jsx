@@ -8,20 +8,23 @@ export const faqItems = [
 
 export default function FAQ({ items = faqItems }) {
   const [open, setOpen] = useState(0);
+
   return (
-    <section className="section-spacing bg-[var(--bg-surface)]" aria-labelledby="faq-heading">
+    <section className="section-spacing-sm" aria-labelledby="faq-heading">
       <div className="section-container">
-        <p className="section-label">FAQ</p>
-        <h2 id="faq-heading" className="text-3xl">Häufig gestellte Fragen</h2>
-        <div className="mt-8 space-y-3">
+        <div className="section-intro max-w-[820px]">
+          <p className="section-label">FAQ</p>
+          <h2 id="faq-heading" className="display-title page-h2">Häufig gestellte Fragen</h2>
+        </div>
+        <div className="mt-10 max-w-[860px] divide-y divide-[var(--border-subtle)] rounded-[24px] border border-[var(--border-subtle)] bg-[var(--bg-card)] px-8 py-2">
           {items.map((item, idx) => (
-            <article key={item.question} className="card overflow-hidden px-5 py-4">
-              <button className="flex w-full items-center justify-between text-left" onClick={() => setOpen(open === idx ? -1 : idx)}>
-                <span className="text-[var(--text-primary)]">{item.question}</span>
-                <span className={`transition ${open === idx ? 'rotate-180' : ''}`}>⌄</span>
+            <article key={item.question} className="py-6">
+              <button className="flex w-full items-start justify-between gap-4 text-left" onClick={() => setOpen(open === idx ? -1 : idx)}>
+                <span className="text-[24px] font-semibold leading-[1.3] text-[var(--text-primary)]">{item.question}</span>
+                <span className={`mt-2 text-xl text-[var(--text-secondary)] transition duration-200 ${open === idx ? 'rotate-180' : ''}`}>⌄</span>
               </button>
-              <div className="transition-all duration-300" style={{ maxHeight: open === idx ? '220px' : '0px', overflow: 'hidden' }}>
-                <p className="pt-3 text-[var(--text-secondary)]">{item.answerText}</p>
+              <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: open === idx ? '260px' : '0px' }}>
+                <p className="max-w-[72ch] pt-5 text-[17px] leading-[1.7] text-[var(--text-secondary)]">{item.answerText}</p>
               </div>
             </article>
           ))}
