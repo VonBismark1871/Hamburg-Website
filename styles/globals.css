@@ -15,8 +15,8 @@
   --accent-purple: #6366f1;
   --accent-purple-light: #818cf8;
   --accent-green: #34d399;
-  --accent-glow-purple: rgba(99, 102, 241, 0.15);
-  --accent-glow-green: rgba(52, 211, 153, 0.1);
+  --accent-glow-purple: rgba(99, 102, 241, 0.1);
+  --accent-glow-green: rgba(52, 211, 153, 0.07);
 }
 
 html {
@@ -79,12 +79,11 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s;
 }
 
 .card:hover {
   border-color: var(--border-accent);
-  transform: translateY(-3px);
 }
 
 .section-label {
@@ -111,13 +110,6 @@ h1, h2, h3, h4, h5, h6 {
   height: 500px;
   border-radius: 999px;
   background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
-}
-
-.float-tag { animation: float 4s ease-in-out infinite; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse-dot {
