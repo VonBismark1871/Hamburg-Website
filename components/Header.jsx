@@ -23,8 +23,10 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[15px] font-medium tracking-[0.01em] transition-colors duration-200 ${
-                  pathname === item.href ? 'text-[rgba(21,21,21,0.96)]' : 'text-[rgba(21,21,21,0.72)] hover:text-[rgba(21,21,21,0.96)]'
+                className={`rounded-full px-3 py-1.5 text-[15px] font-medium tracking-[0.01em] transition-all duration-200 ${
+                  pathname === item.href
+                    ? 'border border-[rgba(21,21,21,0.14)] bg-[rgba(255,255,255,0.72)] text-[rgba(21,21,21,0.97)]'
+                    : 'text-[rgba(21,21,21,0.72)] hover:text-[rgba(21,21,21,0.96)]'
                 }`}
               >
                 {item.label}
