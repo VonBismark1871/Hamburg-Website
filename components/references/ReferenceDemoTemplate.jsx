@@ -56,22 +56,22 @@ export default function ReferenceDemoTemplate({ title, description, path, busine
           </header>
 
           <section className="mt-10 grid gap-6 lg:grid-cols-3" aria-label="Projektinhalte">
-            <article className={`rounded-2xl border p-6 lg:col-span-2 ${styles.panel}`}>
+            <article className={`rounded-[20px] border p-6 lg:col-span-2 ${styles.panel}`}>
               <h2 className="text-2xl font-semibold">{business}</h2>
               <p className={`mt-3 ${styles.muted}`}>
                 Diese Demo zeigt eine mögliche Struktur für eine moderne Unternehmenswebsite. Inhalte, Farben und Bildwelt können individuell auf Ihr Unternehmen angepasst werden.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/kontakt" className={`rounded-lg px-5 py-2.5 text-sm font-semibold transition ${styles.primary}`}>
+                <Link href="/kontakt" className={`rounded-[12px] px-5 py-2.5 text-sm font-semibold transition ${styles.primary}`}>
                   Projekt anfragen
                 </Link>
-                <Link href="/preise" className={`rounded-lg border px-5 py-2.5 text-sm font-semibold transition ${styles.secondary}`}>
+                <Link href="/preise" className={`rounded-[12px] border px-5 py-2.5 text-sm font-semibold transition ${styles.secondary}`}>
                   Preise ansehen
                 </Link>
               </div>
             </article>
 
-            <aside className={`rounded-2xl border p-6 ${styles.panel}`}>
+            <aside className={`rounded-[20px] border p-6 ${styles.panel}`}>
               <h2 className="text-lg font-semibold">Highlights</h2>
               <ul className={`mt-4 space-y-2 text-sm ${styles.muted}`}>
                 {highlights.map((highlight) => (

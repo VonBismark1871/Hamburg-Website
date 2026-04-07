@@ -12,7 +12,7 @@ const toneClasses = {
 
 export default function ReferenceCard({ project }) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-slate-200 bg-[var(--bg-card)] shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+    <article className="group overflow-hidden rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
       <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${toneClasses[project.tone] || toneClasses.calm}`}>
         <Image
           src={project.image}
@@ -34,7 +34,7 @@ export default function ReferenceCard({ project }) {
         </ul>
         <Link
           href={`/referenzen/${project.slug}`}
-          className="mt-5 inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
+          className="mt-5 inline-flex rounded-[12px] border border-slate-300 px-4 py-2 text-sm font-semibold text-slateBlue transition hover:border-accent hover:text-accent"
         >
           Demo ansehen
         </Link>

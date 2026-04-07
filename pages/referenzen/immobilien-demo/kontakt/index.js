@@ -21,13 +21,13 @@ export default function ImmobilienKontaktPage() {
             Diese Seite ist Teil des Referenzprojekts. Ein echter Maklerbetrieb könnte hier ein Anfrageformular,
             Terminbuchung und Rückrufservice integrieren.
           </p>
-          <div className="mt-8 rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
+          <div className="mt-8 rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
             <p className="font-semibold">Elbquartier Immobilien</p>
             <p className="mt-2 text-sm text-stone-700">Telefon: 040 9876 2301 · E-Mail: beratung@elbquartier-immobilien.de</p>
             <div className="mt-5">
               <Link
                 href="/referenzen/immobilien-demo/objekte"
-                className="inline-flex rounded-md bg-stone-900 px-5 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
+                className="inline-flex rounded-[12px] bg-stone-900 px-5 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
               >
                 Zu den Objekten
               </Link>

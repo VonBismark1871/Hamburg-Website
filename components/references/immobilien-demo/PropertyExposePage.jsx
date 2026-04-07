@@ -12,7 +12,7 @@ export default function PropertyExposePage({ path, content }) {
       <Header />
       <main className="bg-[#f6f3ee] pb-20 text-stone-900">
         <section className="section-container pt-10" aria-labelledby="expose-heading">
-          <figure className="overflow-hidden rounded-[2rem]">
+          <figure className="overflow-hidden rounded-[32px]">
             <Image src={content.heroImage} alt={content.heroAlt} width={2000} height={1250} priority className="h-[540px] w-full object-cover" />
           </figure>
 
@@ -24,7 +24,7 @@ export default function PropertyExposePage({ path, content }) {
               </h1>
               <p className="mt-5 max-w-3xl text-stone-700">{content.intro}</p>
 
-              <dl className="mt-8 grid gap-4 rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6 sm:grid-cols-2">
+              <dl className="mt-8 grid gap-4 rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6 sm:grid-cols-2">
                 {content.facts.map(([label, value]) => (
                   <div key={label}>
                     <dt className="text-sm text-stone-500">{label}</dt>
@@ -43,7 +43,7 @@ export default function PropertyExposePage({ path, content }) {
           </h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             {content.gallery.map((image) => (
-              <figure key={image.src + image.alt} className="overflow-hidden rounded-2xl border border-stone-300">
+              <figure key={image.src + image.alt} className="overflow-hidden rounded-[20px] border border-stone-300">
                 <Image src={image.src} alt={image.alt} width={1400} height={1000} className="h-64 w-full object-cover" />
               </figure>
             ))}
@@ -52,13 +52,13 @@ export default function PropertyExposePage({ path, content }) {
 
         <section className="section-container pt-14" aria-labelledby="beschreibung-heading">
           <div className="grid gap-5">
-            <article className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
+            <article className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
               <h2 id="beschreibung-heading" className="text-2xl font-semibold">
                 Objektbeschreibung
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-700">{content.description}</p>
             </article>
-            <article className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
+            <article className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
               <h2 className="text-2xl font-semibold">Ausstattung</h2>
               <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-stone-700">
                 {content.features.map((feature) => (
@@ -66,11 +66,11 @@ export default function PropertyExposePage({ path, content }) {
                 ))}
               </ul>
             </article>
-            <article className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
+            <article className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
               <h2 className="text-2xl font-semibold">Lage</h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-700">{content.location}</p>
             </article>
-            <article className="rounded-2xl border border-stone-300 bg-[var(--bg-card)] p-6">
+            <article className="rounded-[20px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
               <h2 className="text-2xl font-semibold">Sonstiges</h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-700">{content.misc}</p>
             </article>
@@ -78,7 +78,7 @@ export default function PropertyExposePage({ path, content }) {
         </section>
 
         <section className="section-container pt-14" aria-labelledby="standort-heading">
-          <div className="rounded-2xl border border-stone-300 bg-[#ebe6de] p-6">
+          <div className="rounded-[20px] bg-[#ebe6de] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-6">
             <h2 id="standort-heading" className="text-2xl font-semibold">
               Standort in Hamburg
             </h2>
@@ -87,13 +87,13 @@ export default function PropertyExposePage({ path, content }) {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/referenzen/immobilien-demo/objekte"
-              className="inline-flex rounded-md border border-stone-900 px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
+              className="inline-flex rounded-[12px] border border-stone-900 px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-900 hover:text-stone-100"
             >
               Weitere Objekte ansehen
             </Link>
             <Link
               href="/referenzen/immobilien-demo/kontakt"
-              className="inline-flex rounded-md bg-stone-900 px-5 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
+              className="inline-flex rounded-[12px] bg-stone-900 px-5 py-3 text-sm font-semibold text-stone-100 transition hover:bg-stone-800"
             >
               Besichtigung vereinbaren
             </Link>
