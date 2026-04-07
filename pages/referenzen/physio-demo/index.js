@@ -28,7 +28,7 @@ export default function PhysioDemoHomePage() {
         <p className="text-sm font-medium text-[#5d7673]">Referenzprojekt für moderne Physiotherapiepraxen</p>
 
         <div className="mt-4 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <article className="relative overflow-hidden rounded-3xl">
+          <article className="relative overflow-hidden rounded-[32px]">
             <Image
               src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=2000&q=80"
               alt="Physiotherapeutin behandelt einen Patienten in einer ruhigen Praxis in Hamburg"
@@ -59,12 +59,12 @@ export default function PhysioDemoHomePage() {
             </div>
           </article>
 
-          <aside className="rounded-3xl border border-[#d4e2dd] bg-[var(--bg-card)] p-7">
+          <aside className="rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-7">
             <h2 className="text-2xl font-semibold text-[#254542]">Ihr Weg zur passenden Behandlung</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#4d6c69]">
               Wir schauen nicht nur auf den aktuellen Schmerzpunkt, sondern auf Bewegungsmuster, Belastungen im Alltag und Ihre persönlichen Ziele.
             </p>
-            <div className="mt-6 rounded-2xl bg-[#edf5f2] p-4 text-sm text-[#355754]">
+            <div className="mt-6 rounded-[20px] bg-[#edf5f2] p-4 text-sm text-[#355754]">
               <p className="font-semibold">Öffnungszeiten</p>
               <ul className="mt-2 space-y-1">
                 {practiceInfo.hours.map((entry) => (
@@ -72,7 +72,7 @@ export default function PhysioDemoHomePage() {
                 ))}
               </ul>
             </div>
-            <div className="mt-5 rounded-2xl border border-[#d6e3df] p-4 text-sm">
+            <div className="mt-5 rounded-[20px] border border-[#d6e3df] p-4 text-sm">
               <p className="font-semibold text-[#234441]">Direkter Kontakt</p>
               <p className="mt-2 text-[#4d6c69]">Tel. {practiceInfo.phone}</p>
               <p className="text-[#4d6c69]">{practiceInfo.email}</p>
@@ -82,9 +82,9 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-10">
-        <div className="grid gap-3 rounded-2xl bg-[#dcebe6] p-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 rounded-[20px] bg-[#dcebe6] p-5 sm:grid-cols-2 lg:grid-cols-4">
           {trustPoints.map((point) => (
-            <p key={point} className="rounded-xl bg-[var(--bg-card)] px-4 py-3 text-sm font-medium text-[#315652]">
+            <p key={point} className="rounded-[20px] bg-[var(--bg-card)] px-4 py-3 text-sm font-medium text-[#315652]">
               {point}
             </p>
           ))}
@@ -116,18 +116,18 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <div className="grid gap-6 rounded-3xl bg-[var(--bg-card)] p-7 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-6 rounded-[32px] bg-[var(--bg-card)] p-7 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="text-3xl font-semibold text-[#244240]">Warum Patientinnen und Patienten uns wählen</h2>
             <ul className="mt-5 space-y-3">
               {reasons.map((reason) => (
-                <li key={reason} className="rounded-xl bg-[#edf6f3] px-4 py-3 text-sm text-[#365a57]">
+                <li key={reason} className="rounded-[20px] bg-[#edf6f3] px-4 py-3 text-sm text-[#365a57]">
                   {reason}
                 </li>
               ))}
             </ul>
           </div>
-          <figure className="overflow-hidden rounded-2xl">
+          <figure className="overflow-hidden rounded-[20px]">
             <Image
               src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=1600&q=80"
               alt="Physiotherapeut begleitet eine Patientin bei gezielten Rückenübungen im Trainingsbereich"
@@ -155,7 +155,7 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <div className="rounded-3xl bg-[#2a5b55] p-8 text-[#f0f7f5]">
+        <div className="rounded-[32px] bg-[#2a5b55] p-8 text-[#f0f7f5]">
           <h2 className="text-3xl font-semibold">Jetzt Termin anfragen</h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#d8ebe7]">
             Ob akute Beschwerden oder längerfristige Therapie – Anfragen können unkompliziert gestellt werden.
@@ -172,7 +172,7 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-16">
-        <div className="grid gap-6 rounded-3xl border border-[#cadbd6] bg-[var(--bg-card)] p-7 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-6 rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-7 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 className="text-2xl font-semibold text-[#244240]">Kontakt, Öffnungszeiten & Lage</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#4d6c69]">{practiceInfo.address}</p>

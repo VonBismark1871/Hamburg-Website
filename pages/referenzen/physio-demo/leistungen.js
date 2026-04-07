@@ -23,13 +23,13 @@ export default function PhysioDemoLeistungenPage() {
             <TreatmentCard key={service.title} service={service} showCta />
           ))}
         </div>
-        <p className="mt-8 rounded-2xl bg-[#e7f1ee] p-4 text-sm text-[#355855]">
+        <p className="mt-8 rounded-[20px] bg-[#e7f1ee] p-4 text-sm text-[#355855]">
           Die genaue Behandlung wird individuell nach Beschwerdebild und therapeutischer Einschätzung abgestimmt.
         </p>
       </section>
 
       <section className="section-container pb-16">
-        <div className="rounded-3xl border border-[#cfded9] bg-[var(--bg-card)] p-7">
+        <div className="rounded-[32px] bg-[var(--bg-card)] shadow-[0_16px_40px_-30px_rgba(15,23,42,0.35)] p-7">
           <h2 className="text-2xl font-semibold text-[#244240]">Unsicher, welche Leistung passt?</h2>
           <p className="mt-3 text-sm text-[#4d6c69]">
             Beschreiben Sie Ihre Beschwerden kurz – wir melden uns mit einer passenden Ersteinschätzung für den weiteren Ablauf.
