@@ -17,12 +17,12 @@ const legalLinks = [
 ];
 
 const FooterLinkColumn = ({ title, links, ariaLabel }) => (
-  <nav aria-label={ariaLabel} className="space-y-3">
-    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/55">{title}</p>
-    <ul className="space-y-2">
+  <nav aria-label={ariaLabel} className="space-y-4">
+    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/78">{title}</p>
+    <ul className="space-y-3">
       {links.map((link) => (
         <li key={link.href}>
-          <Link href={link.href} className="footer-link text-sm">
+          <Link href={link.href} className="footer-link text-base">
             {link.label}
           </Link>
         </li>
@@ -33,16 +33,16 @@ const FooterLinkColumn = ({ title, links, ariaLabel }) => (
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-slateBlue" aria-label="Seitenfuß">
-      <div className="section-container py-12 sm:py-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          <section aria-label="Hamburg Websites">
+    <footer className="border-t border-white/10 bg-[#131313]" aria-label="Seitenfuß">
+      <div className="section-container pb-10 pt-[72px] sm:pb-12">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.9fr_0.9fr]">
+          <section aria-label="Hamburg Websites" className="max-w-sm">
             <LogoLink className="inline-flex" compact />
-            <p className="mt-4 max-w-sm text-sm font-light leading-relaxed text-white/55">
+            <p className="mt-5 text-base leading-relaxed text-white/62">
               Moderne Websites für Unternehmen in Hamburg – klar strukturiert, hochwertig gestaltet und auf Anfragen
               ausgerichtet.
             </p>
-            <ul className="mt-5 space-y-2 text-sm font-light text-white/55">
+            <ul className="mt-6 space-y-2.5 text-base text-white/62">
               <li>
                 <a href="mailto:info@hamburgwebsites.de" className="footer-link">
                   info@hamburgwebsites.de
@@ -56,7 +56,7 @@ export default function Footer() {
           <FooterLinkColumn title="Rechtliches" links={legalLinks} ariaLabel="Footer Rechtliches" />
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-5 text-xs text-white/30">
+        <div className="mt-12 border-t border-white/12 pt-6 text-sm text-white/42">
           <p>© 2026 Hamburg Websites. Alle Rechte vorbehalten.</p>
         </div>
       </div>
