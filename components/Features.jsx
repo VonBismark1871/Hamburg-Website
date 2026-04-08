@@ -8,7 +8,7 @@ function IconBase({ children }) {
       xmlns="http://www.w3.org/2000/svg"
       className="h-5 w-5"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -73,53 +73,49 @@ const features = [
   {
     icon: LayoutIcon,
     title: 'Premium Auftritt',
-    text: 'Ein klares Design stärkt Vertrauen und Professionalität.'
+    text: 'Ein hochwertiges Design stärkt Vertrauen und Professionalität.'
   }
 ];
 
 export default function Features() {
   return (
     <section className="section-container section-spacing" id="features" aria-labelledby="features-heading">
-      <div className="rounded-3xl bg-slate-50/80 p-6 sm:p-8 lg:p-10">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.45 }}
-          className="max-w-3xl"
-        >
-          <p className="section-label">Leistungen</p>
-          <h2 id="features-heading" className="text-3xl leading-tight text-slate-900 sm:text-4xl">
-            Was eine moderne Website leisten sollte
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-            Klar aufgebaut, schnell geladen und auf Anfragen ausgerichtet – damit Besucher zu Kunden werden.
-          </p>
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.42 }}
+        className="section-intro"
+      >
+        <p className="section-label">Leistungen</p>
+        <h2 id="features-heading" className="mt-4 text-[40px] leading-[1.05] tracking-[-0.015em] text-[color:var(--color-ink)] sm:text-[52px]">
+          Was eine moderne Website leisten sollte
+        </h2>
+        <p className="mt-5 text-lg leading-[1.6] text-[color:var(--color-ink-2)]">
+          Klar aufgebaut, schnell geladen und auf Anfragen ausgerichtet – damit Besucher zu Kunden werden.
+        </p>
+      </motion.div>
 
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature, i) => {
-            const Icon = feature.icon;
-            return (
-              <motion.article
-                key={feature.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="card"
-              >
-                <span
-                  className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700"
-                >
-                  <Icon />
-                </span>
-                <h3 className="text-lg font-semibold text-slate-900">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{feature.text}</p>
-              </motion.article>
-            );
-          })}
-        </div>
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {features.map((feature, i) => {
+          const Icon = feature.icon;
+          return (
+            <motion.article
+              key={feature.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.36, delay: i * 0.06 }}
+              className="min-h-[220px] rounded-[20px] border border-[color:var(--color-line)] bg-[color:var(--color-bg-card)] p-7 transition duration-200 ease-out hover:-translate-y-[1px] hover:border-[rgba(21,21,21,0.14)]"
+            >
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] border border-[color:var(--color-line)] bg-[color:var(--color-bg-card-soft)] text-[color:var(--color-ink)]">
+                <Icon />
+              </span>
+              <h3 className="mt-[22px] text-[20px] font-semibold leading-tight text-[color:var(--color-ink)]">{feature.title}</h3>
+              <p className="mt-3 max-w-[30ch] text-base leading-[1.6] text-[color:var(--color-ink-2)]">{feature.text}</p>
+            </motion.article>
+          );
+        })}
       </div>
     </section>
   );
