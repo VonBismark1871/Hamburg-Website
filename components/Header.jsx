@@ -29,8 +29,8 @@ export default function Header() {
                   ? 'inline-flex h-[42px] items-center rounded-full border border-[rgba(21,21,21,0.1)] bg-white/75 px-5 text-[15px] font-semibold text-[rgba(21,21,21,0.9)] hover:border-[rgba(21,21,21,0.18)] hover:bg-white'
                   : `text-[15px] font-medium ${
                       pathname === item.href
-                        ? 'text-[rgba(21,21,21,0.96)]'
-                        : 'text-[rgba(21,21,21,0.72)] hover:text-[rgba(21,21,21,0.96)]'
+                        ? 'rounded-full border border-[rgba(45,91,255,0.26)] bg-[rgba(45,91,255,0.10)] px-3.5 py-2 text-[rgba(21,21,21,0.98)]'
+                        : 'px-1 text-[rgba(21,21,21,0.72)] hover:text-[rgba(21,21,21,0.96)]'
                     }`
               }`}
             >
@@ -48,7 +48,7 @@ export default function Header() {
               href={item.href}
               className={`text-sm transition ${
                 pathname === item.href
-                  ? 'font-medium text-[rgba(21,21,21,0.96)]'
+                  ? 'rounded-full border border-[rgba(45,91,255,0.26)] bg-[rgba(45,91,255,0.10)] px-2.5 py-1 font-medium text-[rgba(21,21,21,0.96)]'
                   : 'font-normal text-[rgba(21,21,21,0.72)] hover:text-[rgba(21,21,21,0.96)]'
               }`}
             >
