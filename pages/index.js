@@ -13,200 +13,185 @@ const serviceItems = [
   { name: 'Mehrseitige Website', priceFromEur: 1000 }
 ];
 
+const standards = [
+  {
+    title: 'Klarer Anspruch',
+    text: 'Jede Sektion bekommt eine Aufgabe: Vertrauen aufbauen, Leistung erklären oder Kontakt auslösen.'
+  },
+  {
+    title: 'Starke Referenzen',
+    text: 'Demos und Branchenbeispiele zeigen, wie ein moderner Auftritt für echte lokale Unternehmen wirken kann.'
+  },
+  {
+    title: 'Saubere Technik',
+    text: 'Responsive Umsetzung, schnelle Ladezeiten und ein Fundament, das später nicht bei jeder Änderung bricht.'
+  }
+];
+
 const processSteps = [
-  { title: 'Anfrage', text: 'Kurze Infos zu Ihrem Unternehmen und Ihrem Ziel.' },
-  { title: 'Demo', text: 'Sie erhalten eine kostenlose Vorschau als erste Richtung.' },
-  { title: 'Abstimmung', text: 'Wir schärfen Inhalte, Struktur und Design gemeinsam.' },
-  { title: 'Livegang', text: 'Nach Freigabe veröffentlichen wir Ihre Website.' }
+  { title: 'Anfrage', text: 'Sie schicken kurz Branche, Ziel und vorhandene Website oder Idee.' },
+  { title: 'Demo', text: 'Sie erhalten eine erste visuelle Richtung statt einer abstrakten Agenturpräsentation.' },
+  { title: 'Schärfung', text: 'Struktur, Texte, Bilder und Kontaktpunkte werden gemeinsam verdichtet.' },
+  { title: 'Livegang', text: 'Nach Freigabe geht die Website online und bleibt sauber erweiterbar.' }
 ];
 
 const pricingPreview = [
-  { title: 'Demo-Vorschau', price: '0 €', text: 'Unverbindlicher erster Entwurf.' },
-  { title: 'Onepager', price: 'ab 650 €', text: 'Klar strukturierte Website auf einer Seite.' },
-  { title: 'Mehrseitige Website', price: 'ab 1.000 €', text: 'Für Unternehmen mit mehreren Inhalten.' }
+  { title: 'Demo-Vorschau', price: '0 €', text: 'Unverbindlicher erster Entwurf für die Richtung.' },
+  { title: 'Onepager', price: 'ab 650 €', text: 'Kompakte Website mit starker Startseite und klarer Anfrageführung.' },
+  { title: 'Mehrseitige Website', price: 'ab 1.000 €', text: 'Für Unternehmen mit Leistungen, Referenzen, FAQ und Unterseiten.' }
 ];
 
 const homepageFaqPreview = [
   {
-    question: 'Wie lange dauert die Erstellung einer Website?',
+    question: 'Wie schnell sehe ich eine erste Richtung?',
     answer:
-      'In vielen Fällen kann eine erste Version innerhalb weniger Tage erstellt werden. Der genaue Zeitrahmen hängt vom Umfang des Projekts ab.'
+      'In vielen Fällen kann eine erste Demo kurzfristig vorbereitet werden. Der genaue Zeitrahmen hängt von Umfang und vorhandenen Inhalten ab.'
   },
   {
-    question: 'Ist die erste Demo wirklich kostenlos?',
+    question: 'Ist die Demo wirklich kostenlos?',
     answer:
-      'Ja. Eine erste Demo zeigt, wie Struktur und Design Ihrer Website aussehen könnten, bevor eine vollständige Umsetzung beauftragt wird.'
+      'Ja. Die Demo dient als konkrete Entscheidungsgrundlage, bevor aus der Idee ein vollständiges Website-Projekt wird.'
   },
   {
-    question: 'Kann eine bestehende Website überarbeitet werden?',
+    question: 'Kann eine bestehende Website modernisiert werden?',
     answer:
-      'Ja. Bestehende Websites können modernisiert, strukturell verbessert oder technisch neu umgesetzt werden.'
+      'Ja. Ein Relaunch kann Design, Struktur, Texte, Performance und Anfrageführung verbessern, ohne unnötig alles aufzublähen.'
   },
   {
-    question: 'Übernehmen Sie auch Hosting oder Pflege?',
+    question: 'Passt das nur für Hamburg?',
     answer:
-      'Auf Wunsch können Hosting sowie kleinere inhaltliche Anpassungen im Rahmen einer laufenden Websitepflege übernommen werden.'
-  },
-  {
-    question: 'Wie läuft ein typisches Projekt ab?',
-    answer:
-      'Der Ablauf umfasst in der Regel eine Anfrage, eine Demo-Vorschau, eine kurze Abstimmung und anschließend die Umsetzung der Website.'
+      'Der Fokus liegt auf Hamburg und lokalen Unternehmen. Die Struktur funktioniert aber auch für Unternehmen aus anderen Städten.'
   }
 ];
-
-const introTags = ['Dienstleister', 'Praxen', 'Studios', 'Lokale Unternehmen', 'Kleine Betriebe'];
 
 export default function HomePage() {
   return (
     <>
       <SEOHead
         title="Hamburg Websites"
-        description="Hamburg Websites – Moderne Webseiten für Hamburger Unternehmen mit klarer Struktur, lokaler SEO-Basis und überzeugender Nutzerführung."
+        description="Hamburg Websites - moderne Webseiten für Hamburger Unternehmen mit klarer Struktur, lokaler SEO-Basis und überzeugender Nutzerführung."
         path="/"
         schema={[organizationSchema(), localBusinessSchema(), serviceSchema(serviceItems)]}
       />
       <Header />
       <main>
         <Hero />
-
-        <section className="section-container pt-6" aria-labelledby="local-business-heading">
-          <div className="max-w-3xl px-6 sm:px-8 lg:px-10">
-            <p className="section-label">Leistungen</p>
-            <h2 id="local-business-heading" className="text-2xl text-slateBlue sm:text-3xl">
-              Für Unternehmen in Hamburg
-            </h2>
-            <p className="mt-3 text-slate-600">
-              Wir entwickeln moderne Websites für lokale Unternehmen, die online professionell auftreten und neue Kunden
-              erreichen möchten.
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2" aria-label="Geeignet für folgende Unternehmenstypen">
-              {introTags.map((tag) => (
-                <li key={tag} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600">
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
         <Features />
 
-        <section className="section-container pt-2" aria-labelledby="references-intro-heading">
-          <div className="max-w-3xl">
-            <p className="section-label">Referenzen</p>
-            <h2 id="references-intro-heading" className="text-2xl text-slateBlue sm:text-3xl">
-              Beispiele moderner Unternehmenswebsites
-            </h2>
-            <p className="mt-3 text-slate-600">
-              Die folgenden Beispiele zeigen, wie eine strukturierte und moderne Website für verschiedene Unternehmen
-              aussehen kann.
-            </p>
+        <section className="section-container section-spacing" aria-labelledby="standards-heading">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div>
+              <p className="section-label">Klare Ansprüche</p>
+              <h2 id="standards-heading" className="text-3xl leading-tight text-slate-950 sm:text-5xl">
+                Modern heißt nicht laut. Modern heißt verständlich, schnell und überzeugend.
+              </h2>
+            </div>
+            <div className="grid gap-4">
+              {standards.map((item, index) => (
+                <article key={item.title} className="standard-row">
+                  <span className="standard-index">{String(index + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-950">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{item.text}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         <Portfolio />
 
-        <section className="section-container section-spacing" aria-labelledby="process-preview-heading">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8 lg:p-10">
-            <p className="section-label">Ablauf</p>
-            <h2 id="process-preview-heading" className="text-3xl text-slateBlue">
-              So läuft die Zusammenarbeit ab
-            </h2>
-            <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="process-band section-spacing" aria-labelledby="process-preview-heading">
+          <div className="section-container">
+            <div className="max-w-3xl">
+              <p className="section-label text-white/50">Ablauf</p>
+              <h2 id="process-preview-heading" className="text-3xl leading-tight text-white sm:text-5xl">
+                Von der ersten Idee zur Website ohne Agentur-Nebel.
+              </h2>
+              <p className="mt-5 text-base leading-8 text-white/70">
+                Der Prozess bleibt bewusst kurz, sichtbar und nachvollziehbar. Sie sehen früh, wohin die Reise geht.
+              </p>
+            </div>
+
+            <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {processSteps.map((step, index) => (
-                <li key={step.title} className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">Schritt {index + 1}</p>
-                  <h3 className="mt-2 text-lg font-semibold text-slateBlue">{step.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{step.text}</p>
+                <li key={step.title} className="process-step">
+                  <p className="text-xs font-semibold uppercase text-cyan-200">Schritt {index + 1}</p>
+                  <h3 className="mt-3 text-xl font-semibold text-white">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/60">{step.text}</p>
                 </li>
               ))}
             </ol>
-            <Link
-              href="/ablauf"
-              className="mt-6 inline-flex text-sm font-semibold text-accent underline-offset-4 transition hover:underline"
-            >
+
+            <Link href="/ablauf" className="mt-8 inline-flex text-sm font-semibold text-cyan-200 underline-offset-4 hover:underline">
               Ablauf ansehen
             </Link>
           </div>
         </section>
 
         <section className="section-container section-spacing" aria-labelledby="pricing-preview-heading">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8 lg:p-10">
+          <div className="max-w-3xl">
             <p className="section-label">Preise</p>
-            <h2 id="pricing-preview-heading" className="text-3xl text-slateBlue">
-              Preise im Überblick
+            <h2 id="pricing-preview-heading" className="text-3xl leading-tight text-slate-950 sm:text-5xl">
+              Transparente Einstiegspunkte, bevor das Projekt groß wird.
             </h2>
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {pricingPreview.map((item) => (
-                <article key={item.title} className="rounded-2xl border border-slate-200 bg-slate-50/70 p-6">
-                  <h3 className="text-lg font-semibold text-slateBlue">{item.title}</h3>
-                  <p className="mt-3 text-3xl font-bold text-slateBlue">{item.price}</p>
-                  <p className="mt-2 text-sm text-slate-600">{item.text}</p>
-                </article>
-              ))}
-            </div>
-            <p className="mt-5 text-sm text-slate-500">Weitere Pakete und laufende Betreuung auf der Preisübersicht.</p>
-            <Link
-              href="/preise"
-              className="mt-5 inline-flex text-sm font-semibold text-accent underline-offset-4 transition hover:underline"
-            >
+          </div>
+          <div className="mt-9 grid gap-4 md:grid-cols-3">
+            {pricingPreview.map((item) => (
+              <article key={item.title} className="price-preview-card">
+                <h3 className="text-lg font-semibold text-slate-950">{item.title}</h3>
+                <p className="mt-5 text-4xl font-semibold text-slate-950">{item.price}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-5">
+            <Link href="/preise" className="primary-btn inline-flex">
               Alle Preise ansehen
             </Link>
+            <p className="text-sm text-slate-500">Weitere Pakete und laufende Betreuung auf Anfrage.</p>
           </div>
         </section>
 
-        <section className="section-container section-spacing pt-2" aria-labelledby="faq-preview-heading">
-          <div className="max-w-4xl">
-            <p className="section-label">FAQ</p>
-            <h2 id="faq-preview-heading" className="text-2xl text-slateBlue sm:text-3xl">
-              Häufige Fragen
-            </h2>
-            <div className="mt-6 space-y-4">
+        <section className="section-container section-spacing pt-4" aria-labelledby="faq-preview-heading">
+          <div className="grid gap-9 lg:grid-cols-[0.75fr_1.25fr]">
+            <div>
+              <p className="section-label">FAQ</p>
+              <h2 id="faq-preview-heading" className="text-3xl leading-tight text-slate-950 sm:text-4xl">
+                Fragen, die vor dem Start wichtig sind.
+              </h2>
+              <Link href="/faq" className="mt-6 inline-flex text-sm font-semibold text-slate-700 underline-offset-4 hover:underline">
+                Alle Fragen ansehen
+              </Link>
+            </div>
+            <div className="divide-y divide-slate-950/10">
               {homepageFaqPreview.map((item) => (
-                <article key={item.question} className="border-b border-slate-200 pb-4 last:border-b-0 last:pb-0">
-                  <h3 className="text-base font-semibold text-slateBlue">{item.question}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{item.answer}</p>
+                <article key={item.question} className="py-5 first:pt-0">
+                  <h3 className="text-base font-semibold text-slate-950">{item.question}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">{item.answer}</p>
                 </article>
               ))}
             </div>
-            <Link
-              href="/faq"
-              className="mt-6 inline-flex text-sm font-semibold text-accent underline-offset-4 transition hover:underline"
-            >
-              Alle Fragen ansehen
-            </Link>
           </div>
         </section>
 
-        <section className="section-container pt-2" aria-labelledby="final-bridge-heading">
-          <div className="max-w-3xl">
-            <p className="section-label">Zusammenarbeit</p>
-            <h2 id="final-bridge-heading" className="text-2xl text-slateBlue sm:text-3xl">
-              Klarer Ablauf, nachvollziehbare Preise
-            </h2>
-            <p className="mt-3 text-slate-600">
-              Von der ersten Demo bis zur veröffentlichten Website bleibt jeder Schritt transparent und übersichtlich.
-            </p>
-          </div>
-        </section>
-
-        <section className="section-container section-spacing pt-2" aria-labelledby="final-cta-heading">
-          <div className="section-dark rounded-2xl border border-slate-800 p-8 text-white sm:p-10">
-            <h2 id="final-cta-heading" className="text-3xl text-white">
-              Bereit für Ihre neue Website?
-            </h2>
-            <p className="mt-4 max-w-2xl text-slate-200">
-              Fordern Sie eine kostenlose Demo-Vorschau an oder lassen Sie Ihr Projekt unverbindlich einschätzen.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="primary-btn">
+        <section className="section-container section-spacing pt-4" aria-labelledby="final-cta-heading">
+          <div className="final-cta">
+            <div>
+              <h2 id="final-cta-heading" className="max-w-2xl text-3xl leading-tight text-white sm:text-5xl">
+                Bereit für eine Website, die hochwertig wirkt und klar verkauft?
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
+                Fordern Sie eine kostenlose Demo-Vorschau an oder lassen Sie Ihr Projekt unverbindlich einschätzen.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/kontakt" className="primary-btn primary-btn-hero">
                 Projekt anfragen
               </Link>
-              <Link
-                href="/preise"
-                className="secondary-btn text-white"
-              >
-                Preise ansehen
+              <Link href="/referenzen" className="secondary-btn secondary-btn-hero">
+                Referenzen ansehen
               </Link>
             </div>
           </div>
