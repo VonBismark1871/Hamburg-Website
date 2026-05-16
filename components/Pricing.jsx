@@ -4,18 +4,17 @@ import PackagePreviewPopover from './pricing/PackagePreviewPopover';
 
 const projectPricingCards = [
   {
-    title: 'Kostenlose Demo-Vorschau',
+    title: 'Konzept-Vorschau',
     price: '0 €',
-    description:
-      'Ein unverbindlicher erster Entwurf, um Stil, Aufbau und Richtung Ihrer zukünftigen Website sichtbar zu machen.',
-    bullets: ['Erste visuelle Projektrichtung', 'Vorschau auf Aufbau und Stil', 'Unverbindliche Einschätzung']
+    description: 'Ein erster visueller und struktureller Vorschlag, damit Sie Stil, Umfang und Richtung konkret bewerten können.',
+    bullets: ['Erste Seitenrichtung', 'Empfehlung zum Startumfang', 'Unverbindliche Preisrange'],
+    note: 'Kein fertiger Launch, sondern ein hochwertiger Einstieg in die Entscheidung.'
   },
   {
-    title: 'Website-Visitenkarte',
+    title: 'Starter Präsenz',
     price: 'ab 400 €',
-    description:
-      'Sehr kompakte Webpräsenz für grundlegende Online-Sichtbarkeit mit Kontaktinformationen und professionellem Ersteindruck.',
-    bullets: ['Seitenstruktur für 1 Seite', 'Kontakt-CTA', 'SEO-Basics', '1 Korrekturschleife', '7 Tage Prüfungsphase'],
+    description: 'Kompakter professioneller Auftritt für Unternehmen, die schnell sauber online sichtbar sein müssen.',
+    bullets: ['Eine fokussierte Seite', 'Kontakt-CTA', 'SEO-Basics', 'Responsive Umsetzung', '1 Korrekturschleife'],
     preview: {
       description: 'Kompakte Basis-Präsenz mit kurzer Vorstellung, Kontaktdaten und einfacher Struktur.',
       bullets: ['1 Seite', 'Grundlegende Informationen', 'Kontaktmöglichkeit'],
@@ -23,19 +22,12 @@ const projectPricingCards = [
     }
   },
   {
-    title: 'Onepager',
+    title: 'Business Onepager',
     price: 'ab 650 €',
-    description:
-      'Strukturierte, conversion-orientierte Einzelseite mit klarer Inhaltshierarchie und gezielter Nutzerführung.',
-    bullets: [
-      'Sektionen auf 1 Landingpage',
-      'Kontaktformular',
-      'Performance-Basics',
-      '1 strukturierte Landingpage',
-      '2 Korrekturschleifen',
-      'Technische Veröffentlichung',
-      '7 Tage Prüfungsphase'
-    ],
+    description: 'Conversion-orientierte Einzelseite mit klarer Story, Leistungen, Vertrauen und Anfrageführung.',
+    bullets: ['Strategische Sektionen', 'Kontaktformular', 'Performance-Basics', '2 Korrekturschleifen', 'Technischer Livegang'],
+    featured: true,
+    badge: 'Empfohlen',
     preview: {
       description: 'Strukturierte Ein-Seiten-Website mit mehr Inhalten, klarer Nutzerführung und stärkerem Fokus auf Anfragen.',
       bullets: ['1 längere Seite', 'Leistungen / Vorteile / Kontakt', 'Conversion-orientiert'],
@@ -43,13 +35,11 @@ const projectPricingCards = [
     }
   },
   {
-    title: 'Mehrseitige Website',
+    title: 'Studio Website',
     price: 'ab 1.000 €',
-    description: 'Für Unternehmen mit mehreren Inhalten, Unterseiten und klarer Informationsstruktur.',
-    bullets: ['5–8 Seitenplan', 'Interne Verlinkung', 'Übergabe / Ownership', '2 Korrekturschleifen', '7 Tage Prüfungsphase'],
-    note: 'Abhängig von Seitenanzahl und Umfang',
-    featured: true,
-    badge: 'Beliebt',
+    description: 'Mehrseitige Website für Unternehmen mit Leistungen, FAQ, Referenzen, Landingpages oder komplexerer Beratung.',
+    bullets: ['5-8 Seitenplan', 'Interne Verlinkung', 'SEO-Struktur', '2 Korrekturschleifen', 'Übergabe / Ownership'],
+    note: 'Der sinnvolle Umfang wird vor Projektstart sauber abgegrenzt.',
     preview: {
       description: 'Website mit mehreren Unterseiten für umfangreichere Inhalte, bessere Navigation und detailliertere Informationen.',
       bullets: ['mehrere Unterseiten', 'klarere Informationsstruktur', 'geeignet für größere Projekte'],
@@ -57,12 +47,11 @@ const projectPricingCards = [
     }
   },
   {
-    title: 'Website mit Adminbereich',
+    title: 'Growth / CMS',
     price: 'ab 1.500 €',
-    description: 'Geeignet für Projekte, bei denen Inhalte später eigenständig verwaltet werden sollen.',
-    bullets: ['Mehrseitige Website', 'Adminbereich / CMS', '2–3 Korrekturschleifen', 'Strukturierte Inhaltsverwaltung', '7 Tage Prüfungsphase'],
-    badge: 'Professioneller Standard',
-    badgeStyle: 'premium',
+    description: 'Für Seiten, die Inhalte später flexibel pflegen, erweitern oder stärker als digitale Infrastruktur nutzen sollen.',
+    bullets: ['Mehrseitige Website', 'Adminbereich / CMS', 'Strukturierte Inhaltsverwaltung', '2-3 Korrekturschleifen', 'Erweiterbar geplant'],
+    badge: 'Ausbaustufe',
     preview: {
       description: 'Website mit bearbeitbaren Inhalten und eigenständiger Pflege über einen Adminbereich.',
       bullets: ['Inhalte selbst ändern', 'Bilder und Texte aktualisieren', 'langfristig flexibel nutzbar'],
@@ -72,8 +61,7 @@ const projectPricingCards = [
   {
     title: 'Individuelle Funktionen',
     price: 'Nach Absprache',
-    description:
-      'Zusätzliche Funktionen wie Buchungssysteme, Schnittstellen oder individuelle Prozesse werden projektbezogen kalkuliert.',
+    description: 'Buchungssysteme, Schnittstellen, spezielle Formulare oder individuelle Prozesse werden projektbezogen kalkuliert.',
     bullets: ['Buchungssysteme', 'Erweiterte Formulare', 'Individuelle Integrationen', 'Projektbezogene Kalkulation']
   }
 ];
@@ -81,40 +69,39 @@ const projectPricingCards = [
 const includedItems = [
   'Responsive Umsetzung',
   'Grundlegende SEO-Struktur',
-  'Kontaktformular',
+  'Kontaktformular oder klare Kontaktführung',
   'Technische Einrichtung',
-  'Performance-Optimierung',
+  'Performance-orientierter Aufbau',
   'Veröffentlichung / Livegang',
   'Vereinbarte Korrekturschleifen',
   '7 Tage Prüfungsphase nach Fertigstellung'
+];
+
+const technicalValue = [
+  {
+    title: 'Schneller Code',
+    text: 'Statische Auslieferung, schlanke Komponenten und bewusst wenige Abhängigkeiten halten Seiten schnell.'
+  },
+  {
+    title: 'SEO-fähige Struktur',
+    text: 'Titles, Descriptions, Canonicals, Schema und klare Überschriften werden nicht nachträglich angeklebt.'
+  },
+  {
+    title: 'Pflegbar statt verbaut',
+    text: 'Komponenten und Inhalte werden so getrennt, dass spätere Anpassungen nicht jedes Mal ein Mini-Relaunch werden.'
+  }
 ];
 
 const carePlans = [
   {
     title: 'Websitepflege',
     price: 'ab 39 € / Monat',
-    description: 'Für kleinere laufende Anpassungen und inhaltliche Pflege bestehender Seiten.',
-    bullets: [
-      'Kleinere Textänderungen',
-      'Austausch von Bildern',
-      'Aktualisierung von Öffnungszeiten',
-      'Anpassung von Kontaktdaten',
-      'Laufende kleine Inhaltsänderungen'
-    ]
+    bullets: ['Kleinere Textänderungen', 'Bildtausch', 'Öffnungszeiten', 'Kontaktdaten', 'Kleine Inhaltsänderungen']
   },
   {
-    title: 'Websitepflege & Hosting',
+    title: 'Pflege & Hosting',
     price: 'ab 59 € / Monat',
-    description:
-      'Für Unternehmen, die Hosting und kleinere laufende Änderungen in einer betreuten Lösung bündeln möchten.',
-    bullets: [
-      'Hosting',
-      'Technische Betreuung',
-      'Kleinere Textänderungen',
-      'Austausch von Bildern',
-      'Laufende Inhaltsanpassungen',
-      'Unterstützung bei Rückfragen'
-    ]
+    bullets: ['Hosting', 'Technische Betreuung', 'Kleine Inhaltsänderungen', 'Support bei Rückfragen', 'Stabile Veröffentlichung']
   }
 ];
 
@@ -124,19 +111,17 @@ function PricingCard({ card, index }) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.45, delay: index * 0.06 }}
+      transition={{ duration: 0.45, delay: index * 0.05 }}
       className={`price-card card relative overflow-visible ${card.featured ? 'featured' : ''}`}
     >
-            {card.badge ? (
-        <span className={`mb-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${card.featured ? 'price-card-badge' : card.badgeStyle === 'premium' ? 'border border-slate-300 bg-slate-100 text-slate-700' : 'border border-accent/30 bg-accent/10 text-accent'}`}>{card.badge}</span>
-      ) : null}
-      <h3 className="text-xl text-slateBlue">{card.title}</h3>
-      <p className={`mt-3 text-accent ${card.featured ? 'text-4xl font-extrabold' : 'text-3xl font-bold'}`}>{card.price}</p>
-      <p className="mt-3 text-slate-600">{card.description}</p>
+      {card.badge ? <span className="price-pill">{card.badge}</span> : null}
+      <h3 className="text-xl font-semibold text-slate-950">{card.title}</h3>
+      <p className="mt-4 text-4xl font-semibold text-slate-950">{card.price}</p>
+      <p className="mt-4 text-sm leading-7 text-slate-600">{card.description}</p>
       <ul className="mt-5 space-y-2 text-sm text-slate-700">
         {card.bullets.map((item) => (
           <li key={item} className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" aria-hidden="true" />
             <span>{item}</span>
           </li>
         ))}
@@ -149,31 +134,7 @@ function PricingCard({ card, index }) {
           type={card.preview.type}
         />
       ) : null}
-      {card.note ? <p className="mt-4 text-xs font-medium text-slate-500">{card.note}</p> : null}
-    </motion.article>
-  );
-}
-
-function ServiceCard({ card, index }) {
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.45, delay: index * 0.08 }}
-      className="card"
-    >
-      <h4 className="text-lg text-slateBlue">{card.title}</h4>
-      <p className="mt-2 text-2xl font-bold text-accent">{card.price}</p>
-      <p className="mt-3 text-slate-600">{card.description}</p>
-      <ul className="mt-5 space-y-2 text-sm text-slate-700">
-        {card.bullets.map((item) => (
-          <li key={item} className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
+      {card.note ? <p className="mt-5 text-xs font-semibold leading-5 text-slate-500">{card.note}</p> : null}
     </motion.article>
   );
 }
@@ -183,25 +144,16 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
 
   return (
     <section className="section-container section-spacing" id={sectionId} aria-labelledby="pricing-heading">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.45 }}
-      >
-        <p className="section-label">Unsere Pakete</p>
-        <Heading id="pricing-heading" className="text-3xl text-slateBlue">
-          Richtwerte für typische Webprojekte
+      <div className="max-w-4xl">
+        <p className="section-label">Pakete</p>
+        <Heading id="pricing-heading" className="text-3xl text-slate-950 sm:text-5xl">
+          Einstieg bezahlbar, Auftritt trotzdem hochwertig.
         </Heading>
-        <p className="mt-5 max-w-4xl text-lg leading-relaxed text-slate-600">
-          Die folgenden Preisrahmen dienen als belastbare Orientierung für typische Projektumfänge. Vor Projektstart
-          erhalten Sie eine nachvollziehbare Preisrange inklusive der Faktoren, die den Endpreis tatsächlich
-          beeinflussen.
+        <p className="mt-5 text-lg leading-8 text-slate-600">
+          Der Preisrahmen bleibt transparent. Entscheidend ist nicht nur die Anzahl der Seiten, sondern wie sauber
+          Struktur, Design, SEO, Performance und spätere Pflege vorbereitet werden.
         </p>
-        <p className="mt-3 max-w-4xl text-base leading-relaxed text-slate-500">
-          So bleibt die Planung realistisch: klare Leistungen, klare Abgrenzung und keine versteckten Paketlogiken.
-        </p>
-      </motion.div>
+      </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projectPricingCards.map((card, index) => (
@@ -209,55 +161,58 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
         ))}
       </div>
 
-      <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-        <p className="section-label">Im Preis enthalten</p>
-        <h3 className="text-2xl text-slateBlue">In den meisten Projekten enthalten</h3>
-        <ul className="mt-6 grid gap-3 text-slate-700 sm:grid-cols-2">
-          {includedItems.map((item) => (
-            <li key={item} className="flex items-start gap-2 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3">
-              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="mt-8 grid gap-6 lg:grid-cols-2">
-        <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-          <h3 className="text-2xl font-bold text-slateBlue">Prüfung und Freigabe</h3>
-          <p className="mt-4 text-slate-600">
-            Nach Fertigstellung erhalten Sie die Website zur Prüfung. Rückmeldungen und Änderungswünsche innerhalb der
-            vereinbarten Korrekturschleifen können in der Regel innerhalb von 7 Tagen eingebracht werden.
-          </p>
-          <p className="mt-3 text-slate-600">Die finale Veröffentlichung erfolgt nach Freigabe der abgestimmten Version.</p>
+      <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <article className="proof-panel">
+          <p className="section-label">Im Preis enthalten</p>
+          <h3 className="text-2xl font-semibold text-slate-950">Die Basis ist kein Extra.</h3>
+          <ul className="mt-4 grid gap-3 text-sm text-slate-700 sm:grid-cols-2 lg:grid-cols-1">
+            {includedItems.map((item) => (
+              <li key={item} className="flex gap-2 rounded-xl border border-slate-950/10 bg-white/70 px-4 py-3">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </article>
 
-        <article className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-soft sm:p-8">
-          <h3 className="text-2xl font-bold text-slateBlue">Zusätzliche Änderungen</h3>
-          <p className="mt-4 text-slate-600">
-            Weitere Änderungswünsche nach Abschluss der vereinbarten Korrekturschleifen oder außerhalb des abgestimmten
-            Projektumfangs werden gesondert berechnet.
-          </p>
-          <p className="mt-4 text-lg font-semibold text-accent">Zusätzliche Anpassungen: ab 65 € / Stunde</p>
-          <p className="mt-3 text-sm text-slate-500">
-            Kleinere inhaltliche Anpassungen unterscheiden sich von strukturellen Erweiterungen oder neuen Funktionen.
-          </p>
-        </article>
-      </div>
-
-      <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-        <h3 className="text-2xl font-bold text-slateBlue">Websitepflege &amp; Hosting</h3>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          {carePlans.map((card, index) => (
-            <ServiceCard key={card.title} card={card} index={index} />
+        <div className="grid gap-4">
+          {technicalValue.map((item) => (
+            <article key={item.title} className="standard-row">
+              <span className="standard-index">{item.title.slice(0, 2)}</span>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-950">{item.title}</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-600">{item.text}</p>
+              </div>
+            </article>
           ))}
         </div>
-        <p className="mt-6 text-sm text-slate-500">
-          Kleinere Änderungen umfassen z. B. den Austausch von Texten, Bildern, Öffnungszeiten oder Kontaktdaten.
-          Größere strukturelle Änderungen, neue Seiten oder zusätzliche Funktionen werden separat kalkuliert.
-        </p>
       </div>
 
+      <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        {carePlans.map((plan) => (
+          <article key={plan.title} className="card">
+            <h3 className="text-2xl font-semibold text-slate-950">{plan.title}</h3>
+            <p className="mt-3 text-3xl font-semibold text-slate-950">{plan.price}</p>
+            <ul className="mt-5 grid gap-2 text-sm text-slate-700">
+              {plan.bullets.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-10 flex flex-wrap gap-4">
+        <Link href="/kontakt" className="primary-btn">
+          Projekt einschätzen lassen
+        </Link>
+        <Link href="/referenzen" className="secondary-btn text-slate-950">
+          Konzept-Galerie ansehen
+        </Link>
+      </div>
     </section>
   );
 }

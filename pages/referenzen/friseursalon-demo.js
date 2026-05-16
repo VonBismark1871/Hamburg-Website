@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
 import ReferenceProjectCTA from '../../components/ReferenceProjectCTA';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
+import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const services = [
   {
@@ -232,14 +233,16 @@ export default function FriseursalonDemoPage() {
 
           <section className="section-container pb-14" aria-label="Vertrauen und Bewertungen">
             <div className="flex flex-col gap-4 rounded-[1.7rem] border border-[#dfd2c4] bg-[#fff8f0] px-6 py-5 md:flex-row md:items-center md:justify-between">
-              <p className="text-sm font-semibold text-[#4c403a] sm:text-base">★★★★★ 4.8 Bewertung bei Google · 120+ Rezensionen</p>
+              <p className="text-sm font-semibold text-[#4c403a] sm:text-base">Konzept-Proof: Leistungen, Lookbook, Team und Terminlogik</p>
               <ul className="flex flex-wrap gap-3 text-sm text-[#665951]">
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Über 10 Jahre Erfahrung</li>
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Persönliche Beratung</li>
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Zentrale Lage in Hamburg</li>
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Beispielhafte Trust-Signale</li>
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Klare Beratungsstory</li>
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Lokale Kontaktführung</li>
               </ul>
             </div>
           </section>
+
+          <ConceptCaseBlock slug="friseursalon-demo" compact />
 
           <section className="section-container pb-16" id="leistungen" aria-labelledby="services-heading">
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
@@ -359,7 +362,7 @@ export default function FriseursalonDemoPage() {
           </section>
 
           <section className="section-container pb-16" aria-labelledby="testimonials-heading">
-            <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Kundenstimmen</h2>
+            <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Beispielhafte Kundenstimmen</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
                 <blockquote key={item.by} className="rounded-3xl border border-[#dfd3c7] bg-[#fffdfa] p-6">

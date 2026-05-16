@@ -23,7 +23,7 @@ export default function AutoserviceDemoLayout({ title, description, path, childr
         <header className="border-y border-[#c5ccd6] bg-[#111926] text-[#e9eef6]">
           <div className="section-container flex flex-wrap items-center justify-between gap-4 py-5">
             <div>
-              <p className="text-xs uppercase tracking-[0.18em] text-[#95a3b8]">Referenzprojekt · Hamburg Websites</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-[#95a3b8]">Demo-Konzept · Hamburg Websites</p>
               <p className="mt-1 text-xl font-semibold">Elbwerk Kfz-Service</p>
             </div>
             <nav className="flex flex-wrap gap-2 text-sm font-medium">

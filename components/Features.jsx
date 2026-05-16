@@ -1,159 +1,68 @@
 import { motion } from 'framer-motion';
 
-function IconBase({ children }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {children}
-    </svg>
-  );
-}
-
-function LayoutIcon() {
-  return (
-    <IconBase>
-      <rect x="3" y="4" width="18" height="16" rx="2" />
-      <path d="M7 8h10" />
-      <path d="M7 13h6" />
-      <path d="M7 17h8" />
-    </IconBase>
-  );
-}
-
-function SparkIcon() {
-  return (
-    <IconBase>
-      <path d="M12 3v4" />
-      <path d="M12 17v4" />
-      <path d="M3 12h4" />
-      <path d="M17 12h4" />
-      <path d="m5.6 5.6 2.8 2.8" />
-      <path d="m15.6 15.6 2.8 2.8" />
-      <path d="m18.4 5.6-2.8 2.8" />
-      <path d="m8.4 15.6-2.8 2.8" />
-    </IconBase>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <IconBase>
-      <circle cx="11" cy="11" r="7" />
-      <path d="m21 21-4.3-4.3" />
-    </IconBase>
-  );
-}
-
-function SpeedIcon() {
-  return (
-    <IconBase>
-      <path d="M4 14a8 8 0 1 1 16 0" />
-      <path d="M12 14l4-5" />
-      <path d="M4 19h16" />
-    </IconBase>
-  );
-}
-
-function PenIcon() {
-  return (
-    <IconBase>
-      <path d="m12 20 8-8-4-4-8 8-2 6 6-2Z" />
-      <path d="m14 6 4 4" />
-    </IconBase>
-  );
-}
-
-function ShieldIcon() {
-  return (
-    <IconBase>
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
-      <path d="m9 12 2 2 4-5" />
-    </IconBase>
-  );
-}
-
-const services = [
+const studioSystem = [
   {
-    icon: LayoutIcon,
-    title: 'Webdesign & Relaunch',
-    text: 'Ein Auftritt, der sofort hochwertig wirkt und Ihr Angebot ohne Umwege erklärt.'
+    title: 'Strategie zuerst',
+    text: 'Angebot, Zielgruppe, Seitenstruktur und CTA-Logik werden geklärt, bevor Layouts hübsch gemacht werden.'
   },
   {
-    icon: SparkIcon,
-    title: 'Landingpages',
-    text: 'Fokussierte Seiten für Kampagnen, Angebote oder neue Leistungen mit klarer Anfrageführung.'
+    title: 'Design mit Branchengefühl',
+    text: 'Restaurant, Praxis, Werkstatt oder Immobilienbüro brauchen unterschiedliche Dramaturgie, nicht dieselbe Karte mit anderer Farbe.'
   },
   {
-    icon: SearchIcon,
-    title: 'Lokale SEO-Struktur',
-    text: 'Saubere Seitenarchitektur, lokale Signale und Inhalte, die zu Hamburg und Ihrer Branche passen.'
+    title: 'Technischer Standard',
+    text: 'Next.js, statischer Export, saubere Komponenten, SEO-Metadaten und schnelle Seiten bilden die Grundlage.'
   },
   {
-    icon: SpeedIcon,
-    title: 'Performance',
-    text: 'Schnelle Ladezeiten, stabile Darstellung und ein technisches Fundament für langfristige Pflege.'
-  },
-  {
-    icon: PenIcon,
-    title: 'Content-Schärfung',
-    text: 'Texte, Sektionen und Botschaften werden so verdichtet, dass Besucher schneller entscheiden können.'
-  },
-  {
-    icon: ShieldIcon,
-    title: 'Pflege & Sicherheit',
-    text: 'Auf Wunsch mit laufender Betreuung, kleinen Anpassungen und verlässlichen Updates nach dem Launch.'
+    title: 'Launch und Pflege',
+    text: 'Veröffentlichung, Hosting, kleine Änderungen und spätere Erweiterungen bleiben nachvollziehbar statt chaotisch.'
   }
 ];
+
+const qualitySignals = ['Core Web Vitals im Blick', 'Lokale SEO-Struktur', 'Saubere Übergabe', 'Responsive QA'];
 
 export default function Features() {
   return (
     <section className="section-container section-spacing" id="features" aria-labelledby="features-heading">
-      <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+      <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.45 }}
-          className="lg:sticky lg:top-28"
         >
-          <p className="section-label">Dienstleistungen</p>
+          <p className="section-label">Studio-System</p>
           <h2 id="features-heading" className="text-3xl leading-tight text-slate-950 sm:text-5xl">
-            Alles, was aus einer Website ein echtes Werkzeug macht.
+            Nicht nur eine Website. Ein sauberer Verkaufs- und Technikrahmen.
           </h2>
-          <p className="mt-5 max-w-md text-base leading-8 text-slate-600">
-            Nicht nur hübscher Anstrich. Struktur, Vertrauen, Geschwindigkeit und Kontaktführung greifen zusammen.
+          <p className="mt-5 text-base leading-8 text-slate-600">
+            Hamburg Websites verbindet Boutique-Design mit pragmatischer Umsetzung: schnell genug für kleine Betriebe,
+            hochwertig genug für einen professionellen Studio-Eindruck.
           </p>
+          <div className="mt-7 flex flex-wrap gap-2">
+            {qualitySignals.map((signal) => (
+              <span key={signal} className="reference-chip">
+                {signal}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.article
-                key={service.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="service-card group"
-              >
-                <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[#07110f] text-lime-200 transition group-hover:bg-cyan-300 group-hover:text-[#07110f]">
-                  <Icon />
-                </span>
-                <h3 className="text-lg font-semibold text-slate-950">{service.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{service.text}</p>
-              </motion.article>
-            );
-          })}
+        <div className="grid gap-4 md:grid-cols-2">
+          {studioSystem.map((feature, i) => (
+            <motion.article
+              key={feature.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              className="service-card"
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-600">0{i + 1}</p>
+              <h3 className="mt-5 text-xl font-semibold text-slate-950">{feature.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{feature.text}</p>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

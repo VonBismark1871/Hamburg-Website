@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
 import ReferenceProjectCTA from '../../components/ReferenceProjectCTA';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
+import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const services = [
   {
@@ -182,10 +183,12 @@ export default function ZahnarztDemoPage() {
           <section className="section-container pb-14" aria-label="Google Bewertung">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-[#d4e2e7] bg-white px-6 py-4 text-sm text-[#2d4a56] sm:px-7">
               <span className="text-lg tracking-wide text-[#f2b01e]" aria-hidden="true">★★★★★</span>
-              <p className="font-medium">4.8 Bewertung bei Google · 120+ Rezensionen</p>
-              <p className="text-[#5c7781]">Viele zufriedene Patientinnen und Patienten aus Hamburg.</p>
+              <p className="font-medium">Konzept-Proof: Vertrauen, Leistungen und Terminführung</p>
+              <p className="text-[#5c7781]">Demo-Inhalte zeigen mögliche Praxisstruktur, keine echten Bewertungen.</p>
             </div>
           </section>
+
+          <ConceptCaseBlock slug="zahnarzt-demo" compact />
 
           <section className="section-container pb-16" id="leistungen" aria-labelledby="services-heading">
             <header className="max-w-3xl">
@@ -242,7 +245,7 @@ export default function ZahnarztDemoPage() {
 
           <section className="section-container pb-16" aria-labelledby="testimonials-heading">
             <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
-              Patientenstimmen
+              Beispielhafte Patientenstimmen
             </h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
