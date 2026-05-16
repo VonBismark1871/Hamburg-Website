@@ -275,6 +275,143 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.reference-card {
+  overflow: hidden;
+  border: 1px solid rgba(7, 17, 15, 0.1);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 24px 72px rgba(7, 17, 15, 0.08);
+  backdrop-filter: blur(14px);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.reference-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 184, 217, 0.32);
+  box-shadow: 0 32px 90px rgba(7, 17, 15, 0.12);
+}
+
+.reference-card-image {
+  height: 230px;
+  overflow: hidden;
+  background: #eef4f2;
+}
+
+.reference-card-body {
+  padding: 24px;
+}
+
+.reference-format,
+.reference-direction,
+.reference-chip,
+.price-pill {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(7, 17, 15, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  color: #34423e;
+}
+
+.reference-format,
+.price-pill {
+  border-color: rgba(0, 184, 217, 0.34);
+  background: rgba(223, 248, 255, 0.8);
+  color: #06728a;
+}
+
+.reference-chip {
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.concept-case {
+  display: grid;
+  gap: 28px;
+  border: 1px solid rgba(7, 17, 15, 0.1);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.7)),
+    radial-gradient(circle at top right, rgba(0, 184, 217, 0.14), transparent 26rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: 0 24px 80px rgba(7, 17, 15, 0.08);
+}
+
+.concept-case-intro {
+  max-width: 760px;
+}
+
+.case-mini-list {
+  border: 1px solid rgba(7, 17, 15, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 20px;
+}
+
+.case-mini-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #66736f;
+}
+
+.contact-shell {
+  display: grid;
+  gap: 32px;
+  border: 1px solid rgba(7, 17, 15, 0.1);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: 0 24px 80px rgba(7, 17, 15, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.contact-input {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(7, 17, 15, 0.16);
+  background: rgba(255, 255, 255, 0.82);
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #07110f;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.contact-input:focus {
+  border-color: rgba(0, 184, 217, 0.7);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 184, 217, 0.16);
+}
+
+.optional-details {
+  border: 1px solid rgba(7, 17, 15, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  padding: 16px;
+}
+
+.optional-details summary {
+  cursor: pointer;
+  font-weight: 800;
+  color: #07110f;
+}
+
+.contact-aside {
+  height: fit-content;
+  border: 1px solid rgba(7, 17, 15, 0.1);
+  border-radius: 24px;
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: 0 18px 50px rgba(7, 17, 15, 0.06);
+}
+
 .feature-item {
   border-left: 2px solid var(--color-accent);
   border-radius: 0 12px 12px 0;
@@ -373,6 +510,12 @@ summary:focus-visible {
 
   .final-cta {
     border-radius: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-shell {
+    grid-template-columns: minmax(0, 1fr) 340px;
   }
 }
 

@@ -8,33 +8,17 @@ const fadeUp = {
 };
 
 const proofItems = [
-  'Kostenlose Demo-Richtung',
-  'Klare Preisrange vor Start',
-  'Direkter Ansprechpartner'
+  'Kostenlose Konzept-Vorschau',
+  'SEO, Speed und saubere Codebasis',
+  'Direkte Betreuung ohne Agentur-Nebel'
 ];
 
-const previewCards = [
-  {
-    title: 'Restaurant',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    metric: 'Reservierung',
-    accent: 'bg-cyan-300'
-  },
-  {
-    title: 'Barbershop',
-    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80',
-    metric: 'Terminbuchung',
-    accent: 'bg-lime-300'
-  },
-  {
-    title: 'Autoservice',
-    image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80',
-    metric: 'Anfrage',
-    accent: 'bg-orange-300'
-  }
+const deliveryNotes = [
+  { label: 'Strategy', value: 'Struktur vor Design' },
+  { label: 'Design', value: 'Branchenlogik statt Template' },
+  { label: 'Code', value: 'Wartbar, schnell, statisch' },
+  { label: 'Care', value: 'Hosting und Pflege möglich' }
 ];
-
-const standards = ['schnell', 'klar', 'lokal', 'stark'];
 
 function CheckIcon() {
   return (
@@ -57,74 +41,46 @@ function HeroPreview() {
       <motion.div
         animate={shouldReduceMotion ? undefined : { y: [0, -10, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-        className="relative overflow-hidden rounded-[28px] border border-white/20 bg-white/[0.08] shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+        className="relative overflow-hidden rounded-[26px] border border-white/20 bg-white/[0.08] shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-xl"
       >
         <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.06] px-5 py-4">
           <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
           <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
           <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
           <div className="ml-3 min-w-0 flex-1 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs text-white/60">
-            hamburg-websites.de/live-preview
+            hamburg-websites.de/concept-preview
           </div>
         </div>
 
-        <div className="grid gap-4 p-4 sm:grid-cols-[1.15fr_0.85fr] sm:p-5">
-          <div className="relative min-h-[340px] overflow-hidden rounded-3xl border border-white/10 bg-[#07110f]">
+        <div className="grid gap-4 p-4 sm:p-5">
+          <div className="relative min-h-[340px] overflow-hidden rounded-[22px] border border-white/10 bg-[#07110f]">
             <Image
               src="https://images.unsplash.com/photo-1519452575417-564c1401ecc0?auto=format&fit=crop&w=1200&q=80"
-              alt="Hamburg Hafen bei Nacht als Website-Hintergrund"
+              alt="Hamburg Hafen bei Nacht als atmosphärische Website-Vorschau"
               fill
-              className="object-cover opacity-75"
+              className="object-cover opacity-72"
               priority
               sizes="(max-width: 768px) 100vw, 44vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#07110f] via-[#07110f]/25 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-5">
-              <p className="text-xs font-semibold uppercase text-cyan-200">Hamburg Websites</p>
-              <p className="mt-2 max-w-[14rem] text-2xl font-semibold leading-tight text-white">
-                Mehr Vertrauen im ersten Blick.
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07110f] via-[#07110f]/30 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200">Concept Preview</p>
+              <p className="mt-3 max-w-[18rem] text-3xl font-semibold leading-tight text-white">
+                Eine Website, die wie ein Studio-Projekt wirkt.
               </p>
-              <div className="mt-4 flex gap-2">
-                {standards.map((item) => (
-                  <span key={item} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/80">
-                    {item}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
 
-          <div className="grid gap-4">
-            {previewCards.map((card, index) => (
-              <motion.article
-                key={card.title}
-                initial={{ opacity: 0, x: 14 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.45, delay: 0.35 + index * 0.1 }}
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.09] p-3"
-              >
-                <div className="flex gap-3">
-                  <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl">
-                    <Image
-                      src={card.image}
-                      alt={`${card.title} Website Referenzbild`}
-                      fill
-                      className="object-cover transition duration-500 group-hover:scale-105"
-                      sizes="120px"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <span className={`mb-3 block h-1 w-10 rounded-full ${card.accent}`} />
-                    <h3 className="text-sm font-semibold text-white">{card.title}</h3>
-                    <p className="mt-1 text-xs text-white/60">Fokus: {card.metric}</p>
-                  </div>
-                </div>
-              </motion.article>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {deliveryNotes.map((note) => (
+              <article key={note.label} className="rounded-2xl border border-white/10 bg-white/[0.09] p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200">{note.label}</p>
+                <p className="mt-2 text-sm leading-6 text-white/75">{note.value}</p>
+              </article>
             ))}
           </div>
         </div>
       </motion.div>
-
     </motion.div>
   );
 }
@@ -145,7 +101,7 @@ export default function Hero() {
             transition={{ duration: 0.55, delay: 0.06 }}
             className="max-w-[12ch] text-5xl leading-[0.95] text-white sm:text-6xl lg:text-7xl"
           >
-            Websites für Hamburg, die Vertrauen schaffen.
+            Boutique-Websites für lokale Unternehmen.
           </motion.h1>
 
           <motion.p
@@ -155,8 +111,8 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.16 }}
             className="max-w-xl text-base leading-8 text-white/70 sm:text-lg"
           >
-            Moderne Webauftritte für lokale Unternehmen: klare Struktur, starke Bildsprache, schnelle Technik und eine
-            Nutzerführung, die aus Besuchern echte Anfragen macht.
+            Premium-Auftritt, schnelle erste Richtung und eine technische Basis, die später nicht im Weg steht:
+            Strategie, Design, SEO, Performance und wartbarer Code aus einer Hand.
           </motion.p>
 
           <motion.div
@@ -167,10 +123,10 @@ export default function Hero() {
             className="flex flex-wrap gap-4"
           >
             <Link href="/kontakt" className="primary-btn primary-btn-hero">
-              Kostenlose Demo anfragen
+              Konzept-Vorschau anfragen
             </Link>
             <Link href="/referenzen" className="secondary-btn secondary-btn-hero">
-              Referenzen ansehen
+              Konzept-Galerie ansehen
             </Link>
           </motion.div>
 

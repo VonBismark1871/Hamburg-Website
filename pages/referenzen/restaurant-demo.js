@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SEOHead from '../../components/SEOHead';
 import Header from '../../components/Header';
 import ReferenceBackButton from '../../components/references/ReferenceBackButton';
+import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const chefRecommendations = [
   {
@@ -157,8 +158,8 @@ function TrustBlock() {
         <span className="tracking-[0.12em] text-[#b27141]" aria-hidden="true">
           ★★★★★
         </span>
-        <p className="font-medium">4.7 bei Google · 180 Bewertungen</p>
-        <p className="text-[#6b5e4f]">Beliebt bei Gästen aus ganz Hamburg.</p>
+        <p className="font-medium">Konzept-Fokus: Reservierung, Speisekarte und Atmosphäre</p>
+        <p className="text-[#6b5e4f]">Demo-Inhalte zeigen mögliche Struktur und Tonalität, keine echten Bewertungen.</p>
       </div>
     </section>
   );
@@ -302,6 +303,7 @@ export default function RestaurantDemoPage() {
         <main>
           <RestaurantHero />
           <TrustBlock />
+          <ConceptCaseBlock slug="restaurant-demo" compact />
           <KitchenStory />
           <MenuPreview />
           <AtmosphereGallery />

@@ -148,7 +148,7 @@ export default function AutoServiceSalesCasePage() {
               <h2 id="cta-heading" className="text-2xl font-bold text-slateBlue">Passende nächste Schritte</h2>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500">
-                  Kostenlose Demo anfragen
+                  Konzept-Vorschau anfragen
                 </Link>
                 <Link
                   href="/kontakt"

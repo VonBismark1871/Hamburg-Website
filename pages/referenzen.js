@@ -5,65 +5,64 @@ import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
 import { referenceProjects } from '../data/references';
 
-const toneClasses = {
-  warm: 'from-amber-100 via-orange-50 to-amber-50',
-  dark: 'from-slate-800 via-slate-900 to-zinc-900',
-  clean: 'from-cyan-50 via-sky-50 to-white',
-  calm: 'from-emerald-50 via-teal-50 to-white',
-  contrast: 'from-slate-200 via-white to-slate-100',
-  premium: 'from-zinc-100 via-stone-50 to-white'
-};
-
 const portfolioSections = [
   {
-    id: 'mehrseitige-websites',
-    title: 'Mehrseitige Websites',
+    id: 'multi-page',
+    title: 'Mehrseitige Studio-Konzepte',
     description:
-      'Beispiele für umfangreichere Websites mit mehreren Seiten, detaillierten Leistungsbereichen und erweiterten Inhalten.',
-    siteType: 'Mehrseitig',
+      'Für Unternehmen mit erklärungsbedürftigen Leistungen, lokalen Landingpages, Objektseiten oder mehreren Kontaktwegen.',
     projects: ['physio-demo', 'autoservice-demo', 'immobilien-demo']
   },
   {
-    id: 'einfache-websites',
-    title: 'Einfache Websites',
+    id: 'onepager',
+    title: 'Kompakte Premium-Onepager',
     description:
-      'Beispiele für kompakte Unternehmenswebsites mit klarer Struktur und schneller Nutzerführung. Ideal für kleinere Betriebe oder lokale Dienstleistungen.',
-    siteType: 'Onepager',
+      'Für schnelle Markteintritte, Relaunches und kleinere Betriebe, die trotzdem hochwertig und klar wirken müssen.',
     projects: ['restaurant-demo', 'friseursalon-demo', 'zahnarzt-demo']
   }
 ];
 
-function ReferenceCard({ project, siteType }) {
+function ReferenceCard({ project }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
-      <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${toneClasses[project.tone] || toneClasses.calm}`}>
-        <Image
-          src={project.image}
-          alt={`${project.title} Vorschau`}
-          width={900}
-          height={560}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-        />
-      </div>
-      <div className="flex flex-1 flex-col p-6">
-        <span className="inline-flex w-fit rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-xs font-semibold tracking-wide text-accent">
-          {siteType}
-        </span>
-        <h3 className="mt-3 text-xl font-semibold text-slateBlue">{project.title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">{project.description}</p>
-        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Projekt-Highlights">
-          {project.tags.map((tag) => (
-            <li key={tag} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">
-              {tag}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-4 text-xs font-medium uppercase tracking-wider text-slate-500">{siteType === 'Onepager' ? 'Onepager' : 'Mehrseitige Website'}</p>
-        <Link
-          href={`/referenzen/${project.slug}`}
-          className="mt-5 inline-flex secondary-btn text-sm text-slateBlue"
-        >
-          Demo ansehen
+    <article className="reference-card group">
+      <Link href={`/referenzen/${project.slug}`} className="block" aria-label={`${project.title} ansehen`}>
+        <div className="reference-card-image">
+          <Image
+            src={project.image}
+            alt={`${project.title} Vorschau`}
+            width={920}
+            height={620}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
+          />
+        </div>
+      </Link>
+      <div className="reference-card-body">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="reference-format">{project.format}</span>
+          <span className="reference-direction">{project.visualDirection}</span>
+        </div>
+        <h3 className="mt-4 text-2xl font-semibold text-slate-950">{project.title}</h3>
+        <p className="mt-3 text-sm leading-7 text-slate-600">{project.description}</p>
+
+        <dl className="mt-5 grid gap-4 border-t border-slate-950/10 pt-5">
+          <div>
+            <dt className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Ziel</dt>
+            <dd className="mt-2 text-sm leading-6 text-slate-700">{project.conceptFocus}</dd>
+          </div>
+          <div>
+            <dt className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">System</dt>
+            <dd className="mt-2 flex flex-wrap gap-2">
+              {project.technicalFocus.slice(0, 3).map((item) => (
+                <span key={item} className="reference-chip">
+                  {item}
+                </span>
+              ))}
+            </dd>
+          </div>
+        </dl>
+
+        <Link href={`/referenzen/${project.slug}`} className="mt-6 inline-flex text-sm font-semibold text-slate-950 underline-offset-4 hover:underline">
+          Konzept ansehen
         </Link>
       </div>
     </article>
@@ -74,49 +73,61 @@ export default function ReferenzenPage() {
   return (
     <>
       <SEOHead
-        title="Referenzen – Hamburg Websites"
-        description="Beispiele moderner Websites für Restaurants, Friseursalons, Praxen, Werkstätten, Immobilien und weitere Unternehmen."
+        title="Konzept-Referenzen - Hamburg Websites"
+        description="Demo-Konzepte moderner Websites für Restaurants, Salons, Praxen, Werkstätten, Immobilien und lokale Unternehmen."
         path="/referenzen"
       />
       <Header />
       <main>
-        <section className="section-container section-spacing pb-8" aria-labelledby="referenzen-heading">
-          <h1 id="referenzen-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
-            <span className="h1-accent-italic">Referenzen</span> und Beispiel-Websites
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg text-slate-600">
-            Diese Beispiele zeigen nicht nur Design, sondern vor allem klare Seitenstrukturen für konkrete Ziele wie
-            Kontaktanfragen, Terminwünsche oder Leistungsanfragen.
-          </p>
-          <p className="mt-3 max-w-3xl text-sm text-slate-500">
-            Jede Demo ist auf typische Entscheidungswege in der jeweiligen Branche ausgerichtet und wird für Ihr
-            Projekt individuell angepasst.
-          </p>
-          <p className="mt-2 max-w-3xl text-sm text-slate-500">
-            Alle gezeigten Referenzen sind als Demo-Beispiele gekennzeichnet und stellen keine verifizierten Kundenprojekte dar.
-          </p>
+        <section className="section-container section-spacing pb-10" aria-labelledby="referenzen-heading">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <div>
+              <h1 id="referenzen-heading" className="max-w-4xl text-5xl leading-[0.96] tracking-tight text-slate-950 sm:text-7xl">
+                Konzept-Galerie für Websites, die nach Studio aussehen.
+              </h1>
+            </div>
+            <div className="max-w-2xl lg:pb-2">
+              <p className="text-lg leading-8 text-slate-600">
+                Diese Arbeiten sind bewusst als Demo-Konzepte gekennzeichnet. Sie zeigen, wie Hamburg Websites Design,
+                Nutzerführung, SEO-Struktur und technische Pflegefähigkeit für verschiedene Branchen denkt.
+              </p>
+              <p className="mt-5 rounded-2xl border border-slate-950/10 bg-white/80 p-5 text-sm leading-7 text-slate-600">
+                Keine künstlichen Kundenlogos, keine erfundenen Erfolgszahlen. Stattdessen: konkrete Struktur, sichtbare
+                Designrichtung und nachvollziehbare technische Entscheidungen.
+              </p>
+            </div>
+          </div>
         </section>
 
-        <div className="section-container pb-16">
+        <section className="section-container pb-12" aria-label="Studio Kriterien">
+          <div className="grid gap-4 md:grid-cols-3">
+            {['Conversion-Logik', 'Technische Basis', 'Individuelle Bildsprache'].map((item) => (
+              <div key={item} className="proof-panel">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">Case Standard</p>
+                <p className="text-xl font-semibold text-slate-950">{item}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="section-container pb-20">
           {portfolioSections.map((section, index) => {
             const projects = section.projects
               .map((slug) => referenceProjects.find((project) => project.slug === slug))
               .filter(Boolean);
 
             return (
-              <section
-                key={section.id}
-                aria-labelledby={`${section.id}-heading`}
-                className={`${index === 0 ? '' : 'mt-16 pt-14'}`}
-              >
-                <p className="section-label">{section.siteType === 'Onepager' ? 'Einfache Websites' : 'Mehrseitige Websites'}</p>
-                <h2 id={`${section.id}-heading`} className="text-2xl text-slateBlue sm:text-3xl">
-                  {section.title}
-                </h2>
-                <p className="mt-3 max-w-3xl text-slate-600">{section.description}</p>
-                <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              <section key={section.id} aria-labelledby={`${section.id}-heading`} className={index === 0 ? '' : 'mt-20'}>
+                <div className="mb-8 max-w-3xl">
+                  <p className="section-label">{index === 0 ? 'Komplexere Projekte' : 'Schneller Einstieg'}</p>
+                  <h2 id={`${section.id}-heading`} className="text-3xl text-slate-950 sm:text-5xl">
+                    {section.title}
+                  </h2>
+                  <p className="mt-4 text-base leading-8 text-slate-600">{section.description}</p>
+                </div>
+                <div className="grid gap-7 lg:grid-cols-3">
                   {projects.map((project) => (
-                    <ReferenceCard key={project.slug} project={project} siteType={section.siteType} />
+                    <ReferenceCard key={project.slug} project={project} />
                   ))}
                 </div>
               </section>
@@ -124,22 +135,19 @@ export default function ReferenzenPage() {
           })}
         </div>
 
-        <section className="section-container pb-16" aria-labelledby="referenzen-cta-heading">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8 sm:p-10">
-            <h2 id="referenzen-cta-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
-              Ihre Branche ist nicht dabei?
+        <section className="section-container pb-20" aria-labelledby="referenzen-cta-heading">
+          <div className="final-cta">
+            <h2 id="referenzen-cta-heading" className="max-w-3xl text-3xl leading-tight text-white sm:text-5xl">
+              Ihre Branche ist nicht dabei? Dann bauen wir die erste Richtung als Konzept.
             </h2>
-            <p className="mt-4 max-w-2xl text-slate-600">
-              Wir entwickeln Websites für viele weitere Branchen – individuell, klar strukturiert und passend zu Ihrem Unternehmen.
+            <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
+              Die kostenlose Konzept-Vorschau zeigt früh, ob Stil, Struktur und Investition zusammenpassen.
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="primary-btn">
-                Projekt anfragen
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/kontakt" className="primary-btn primary-btn-hero">
+                Konzept anfragen
               </Link>
-              <Link
-                href="/preise"
-                className="secondary-btn text-slateBlue"
-              >
+              <Link href="/preise" className="secondary-btn secondary-btn-hero">
                 Preise ansehen
               </Link>
             </div>

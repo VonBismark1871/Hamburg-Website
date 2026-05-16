@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PhysioDemoLayout from '../../../components/references/physio-demo/PhysioDemoLayout';
+import ConceptCaseBlock from '../../../components/references/ConceptCaseBlock';
 import {
   ComplaintCards,
   PhysioTestimonials,
@@ -81,6 +82,8 @@ export default function PhysioDemoHomePage() {
         </div>
       </section>
 
+      <ConceptCaseBlock slug="physio-demo" compact />
+
       <section className="section-container pb-10">
         <div className="grid gap-3 rounded-2xl bg-[#dcebe6] p-5 sm:grid-cols-2 lg:grid-cols-4">
           {trustPoints.map((point) => (
@@ -148,7 +151,7 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <h2 className="text-3xl font-semibold text-[#244240]">Patientenstimmen</h2>
+        <h2 className="text-3xl font-semibold text-[#244240]">Beispielhafte Patientenstimmen</h2>
         <div className="mt-5">
           <PhysioTestimonials testimonials={testimonials} />
         </div>

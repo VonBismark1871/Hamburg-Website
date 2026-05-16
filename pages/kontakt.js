@@ -8,23 +8,23 @@ export default function KontaktPage() {
   return (
     <>
       <SEOHead
-        title="Kontakt – Website erstellen lassen in Hamburg"
-        description="Kontaktieren Sie Hamburg Websites für eine kostenlose Demo-Webseite und ein unverbindliches Erstgespräch zur Website-Erstellung in Hamburg."
+        title="Kontakt - Konzept-Vorschau für Ihre Website"
+        description="Kontaktieren Sie Hamburg Websites für eine kostenlose Konzept-Vorschau, Preisrange und Einschätzung zu Design, SEO, Performance und Website-Struktur."
         path="/kontakt"
       />
       <Header />
       <main>
         <section className="section-container section-spacing pb-6" aria-labelledby="kontakt-heading">
           <h1 id="kontakt-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
-            <span className="h1-accent-italic">Kontakt</span> – Website erstellen lassen in Hamburg
+            <span className="h1-accent-italic">Kontakt</span> für Ihre Konzept-Vorschau
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-slate-600">
-            Nutzen Sie das Formular für Ihre Anfrage. Wir melden uns zeitnah mit einem konkreten Vorschlag für den
-            nächsten Schritt.
+            Schicken Sie die wichtigsten Eckdaten. Sie erhalten eine Einschätzung, welcher Umfang sinnvoll ist und wie
+            hochwertig der Auftritt ohne unnötige Komplexität starten kann.
           </p>
         </section>
 
-        <Contact headingTag="h2" title="Schreiben Sie uns Ihr Website-Projekt" />
+        <Contact headingTag="h2" title="Erzählen Sie kurz, was hochwertiger wirken soll." />
 
         <section className="section-container pb-16" aria-labelledby="kontakt-links-heading">
           <p className="section-label">Weitere Links</p>

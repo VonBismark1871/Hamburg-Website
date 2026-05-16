@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AutoserviceDemoLayout from '../../../components/references/autoservice-demo/AutoserviceDemoLayout';
+import ConceptCaseBlock from '../../../components/references/ConceptCaseBlock';
 import {
   quickTrustPoints,
   reasons,
@@ -77,6 +78,8 @@ export default function AutoserviceDemoHomePage() {
         </div>
       </section>
 
+      <ConceptCaseBlock slug="autoservice-demo" compact />
+
       <section className="section-container pb-10">
         <div className="grid gap-3 rounded-2xl bg-[#172131] p-5 sm:grid-cols-2 lg:grid-cols-4">
           {quickTrustPoints.map((point) => (
@@ -129,7 +132,7 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <h2 className="text-3xl font-semibold text-[#111926]">Kundenstimmen</h2>
+        <h2 className="text-3xl font-semibold text-[#111926]">Beispielhafte Kundenstimmen</h2>
         <div className="mt-5 grid gap-4 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
             <blockquote key={testimonial.name} className="rounded-2xl border border-[#ccd4df] bg-white p-5">
