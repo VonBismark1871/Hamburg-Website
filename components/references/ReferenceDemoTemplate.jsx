@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SEOHead from '../SEOHead';
 import ReferenceBackButton from './ReferenceBackButton';
+import { asArray } from './safeArray';
 
 const palette = {
   dark: {
@@ -42,6 +43,7 @@ const palette = {
 
 export default function ReferenceDemoTemplate({ title, description, path, business, highlights, tone = 'clean' }) {
   const styles = palette[tone] || palette.clean;
+  const safeHighlights = asArray(highlights);
 
   return (
     <>
@@ -74,7 +76,7 @@ export default function ReferenceDemoTemplate({ title, description, path, busine
             <aside className={`rounded-2xl border p-6 ${styles.panel}`}>
               <h2 className="text-lg font-semibold">Highlights</h2>
               <ul className={`mt-4 space-y-2 text-sm ${styles.muted}`}>
-                {highlights.map((highlight) => (
+                {safeHighlights.map((highlight) => (
                   <li key={highlight}>• {highlight}</li>
                 ))}
               </ul>
