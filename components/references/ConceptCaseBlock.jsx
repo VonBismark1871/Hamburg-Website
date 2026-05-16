@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import { getReferenceBySlug } from '../../data/references';
+import { asArray } from './safeArray';
 
 function MiniList({ title, items }) {
+  const safeItems = asArray(items);
+
   return (
     <div className="case-mini-list">
       <p className="case-mini-title">{title}</p>
       <ul className="mt-3 space-y-2">
-        {items.map((item) => (
+        {safeItems.map((item) => (
           <li key={item} className="flex gap-2 text-sm leading-6 text-slate-600">
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" aria-hidden="true" />
             <span>{item}</span>
