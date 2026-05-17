@@ -1,9 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-
-const VIEWPORT_MARGIN = 12;
-const POPOVER_WIDTH = 288;
-const DESKTOP_GAP = 10;
-const MOBILE_GAP = 8;
+import { useId, useState } from 'react';
 
 function VisitenkarteMockup() {
   return (
@@ -102,109 +97,46 @@ function getMockupByType(type) {
 
 export default function PackagePreviewPopover({ title, description, bullets, type = 'visitenkarte' }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [position, setPosition] = useState({ top: 0, left: 0, placement: 'bottom' });
-  const containerRef = useRef(null);
-  const buttonRef = useRef(null);
-  const popoverRef = useRef(null);
-
-  useLayoutEffect(() => {
-    if (!isOpen) return;
-
-    function updatePosition() {
-      const triggerRect = buttonRef.current?.getBoundingClientRect();
-      const popoverRect = popoverRef.current?.getBoundingClientRect();
-      if (!triggerRect || !popoverRect) return;
-
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      const isMobile = viewportWidth < 640;
-      const gap = isMobile ? MOBILE_GAP : DESKTOP_GAP;
-      const safeWidth = Math.min(POPOVER_WIDTH, viewportWidth - VIEWPORT_MARGIN * 2);
-      const availableBelow = viewportHeight - triggerRect.bottom - VIEWPORT_MARGIN;
-      const availableAbove = triggerRect.top - VIEWPORT_MARGIN;
-      const placement = availableBelow >= popoverRect.height + gap || availableBelow >= availableAbove ? 'bottom' : 'top';
-
-      let left = triggerRect.left;
-      const maxLeft = viewportWidth - safeWidth - VIEWPORT_MARGIN;
-      if (left > maxLeft) left = maxLeft;
-      if (left < VIEWPORT_MARGIN) left = VIEWPORT_MARGIN;
-
-      let top = placement === 'bottom' ? triggerRect.bottom + gap : triggerRect.top - popoverRect.height - gap;
-      const maxTop = viewportHeight - popoverRect.height - VIEWPORT_MARGIN;
-      if (top > maxTop) top = Math.max(VIEWPORT_MARGIN, maxTop);
-      if (top < VIEWPORT_MARGIN) top = VIEWPORT_MARGIN;
-
-      setPosition({ top, left, placement });
-    }
-
-    updatePosition();
-    window.addEventListener('resize', updatePosition);
-    window.addEventListener('scroll', updatePosition, true);
-
-    return () => {
-      window.removeEventListener('resize', updatePosition);
-      window.removeEventListener('scroll', updatePosition, true);
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (!isOpen) return undefined;
-
-    function onDocumentClick(event) {
-      if (containerRef.current && !containerRef.current.contains(event.target)) setIsOpen(false);
-    }
-
-    function onEsc(event) {
-      if (event.key === 'Escape') setIsOpen(false);
-    }
-
-    document.addEventListener('pointerdown', onDocumentClick);
-    document.addEventListener('keydown', onEsc);
-    return () => {
-      document.removeEventListener('pointerdown', onDocumentClick);
-      document.removeEventListener('keydown', onEsc);
-    };
-  }, [isOpen]);
+  const previewId = useId();
 
   return (
-    <div
-      ref={containerRef}
-      className="mt-5 inline-flex"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
+    <div className="mt-5">
       <button
-        ref={buttonRef}
         type="button"
-        className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-500 transition hover:border-accent/40 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
+        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 transition hover:border-accent/40 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
+        aria-controls={previewId}
       >
         Beispiel anzeigen
+        <span className={`text-[10px] transition ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true">
+          v
+        </span>
       </button>
 
       <div
-        ref={popoverRef}
-        className={`fixed z-40 w-[min(18rem,calc(100vw-1.5rem))] rounded-xl border border-slate-200 bg-white p-3 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.5)] transition duration-150 ${
-          isOpen
-            ? `pointer-events-auto visible opacity-100 ${position.placement === 'bottom' ? 'translate-y-0' : 'translate-y-0'}`
-            : 'pointer-events-none invisible -translate-y-1 opacity-0'
+        id={previewId}
+        className={`grid transition-[grid-template-rows,opacity,margin] duration-200 ${
+          isOpen ? 'mt-4 grid-rows-[1fr] opacity-100' : 'mt-0 grid-rows-[0fr] opacity-0'
         }`}
-        style={{ top: `${position.top}px`, left: `${position.left}px` }}
       >
-        <div className="mb-3">{getMockupByType(type)}</div>
-        <p className="text-xs leading-relaxed text-slate-600">{description}</p>
-        {bullets?.length ? (
-          <ul className="mt-2 space-y-1 text-xs text-slate-600">
-            {bullets.map((bullet) => (
-              <li key={bullet} className="flex items-start gap-1.5">
-                <span className="mt-1 h-1 w-1 rounded-full bg-accent" aria-hidden="true" />
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        <span className="sr-only">Vorschau für {title}</span>
+        <div className="min-h-0 overflow-hidden">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-3">
+            <div className="mb-3">{getMockupByType(type)}</div>
+            <p className="text-xs leading-relaxed text-slate-600">{description}</p>
+            {bullets?.length ? (
+              <ul className="mt-2 space-y-1 text-xs text-slate-600">
+                {bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-1.5">
+                    <span className="mt-1 h-1 w-1 rounded-full bg-accent" aria-hidden="true" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            <span className="sr-only">Vorschau fuer {title}</span>
+          </div>
+        </div>
       </div>
     </div>
   );

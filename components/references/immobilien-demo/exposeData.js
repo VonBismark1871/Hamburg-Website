@@ -1,6 +1,6 @@
 export const exposeData = {
   'penthouse-hamburg': {
-    seoTitle: 'Exklusives Penthouse in Hamburg-Winterhude – Demo Exposé',
+    seoTitle: 'Exklusives Penthouse in Hamburg-Winterhude',
     seoDescription:
       'Penthouse-Exposé mit Dachterrasse, Elbblick und hochwertiger Ausstattung in Hamburg-Winterhude.',
     heroImage:
@@ -48,11 +48,11 @@ export const exposeData = {
     location:
       'Die Immobilie liegt in einer ruhigen Seitenstraße in Winterhude. Stadtpark, Alsterkanäle, Feinkostläden und Restaurants sind in wenigen Minuten erreichbar. Die Anbindung Richtung Innenstadt und Flughafen ist hervorragend.',
     misc:
-      'Zwei Tiefgaragenstellplätze, ein separater Abstellraum auf der Etage sowie ein klimatisierter Weinschrank sind im Angebot enthalten. Das Exposé ist ein hochwertiger Demo-Inhalt.',
+      'Zwei Tiefgaragenstellplätze, ein separater Abstellraum auf der Etage sowie ein klimatisierter Weinschrank sind im Angebot enthalten.',
     locationSummary: 'Stadtparknähe · kurze Wege zur Alster · hervorragende Infrastruktur'
   },
   'altbau-eppendorf': {
-    seoTitle: 'Sanierte Altbauwohnung in Eppendorf – Demo Exposé',
+    seoTitle: 'Sanierte Altbauwohnung in Eppendorf',
     seoDescription: 'Altbauwohnung in Eppendorf mit Stuckdetails, Balkon und hochwertiger Sanierung.',
     heroImage:
       'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=2000&q=80',
@@ -83,7 +83,7 @@ export const exposeData = {
     locationSummary: 'Eppendorfer Baum · Alsternähe · gewachsene Nachbarschaft'
   },
   'stadthaus-blankenese': {
-    seoTitle: 'Stadthaus in Blankenese mit Garten – Demo Exposé',
+    seoTitle: 'Stadthaus in Blankenese mit Garten',
     seoDescription: 'Großzügiges Stadthaus in Blankenese mit Familiengrundriss, Garten und Elbnähe.',
     heroImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80',
     heroAlt: 'Stadthaus mit Garten in Blankenese',
@@ -104,7 +104,7 @@ export const exposeData = {
     locationSummary: 'Elbnähe · ruhige Wohnlage · gute Schul- und Kita-Struktur'
   },
   'neubau-hafencity': {
-    seoTitle: 'Neubauwohnung mit Wasserblick in der HafenCity – Demo Exposé',
+    seoTitle: 'Neubauwohnung mit Wasserblick in der HafenCity',
     seoDescription: 'Moderne Neubauwohnung in der HafenCity mit Loggia, Concierge und Blick aufs Wasser.',
     heroImage: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80',
     heroAlt: 'Neubauwohnung mit moderner Architektur und Wasserblick in der HafenCity',
@@ -125,7 +125,7 @@ export const exposeData = {
     locationSummary: 'Maritime Lage · moderne Infrastruktur · urbanes Umfeld'
   },
   'familienhaus-volksdorf': {
-    seoTitle: 'Familienhaus in Volksdorf mit Garten – Demo Exposé',
+    seoTitle: 'Familienhaus in Volksdorf mit Garten',
     seoDescription: 'Einfamilienhaus in Volksdorf mit Garten, Garage und familiengerechtem Grundriss.',
     heroImage: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=2000&q=80',
     heroAlt: 'Familienhaus mit Garten in ruhiger Lage in Volksdorf',
@@ -146,7 +146,7 @@ export const exposeData = {
     locationSummary: 'Ruhige Wohnstraße · grüne Umgebung · familienorientierte Infrastruktur'
   },
   'anlage-altona': {
-    seoTitle: 'Kapitalanlage in Altona mit Mietvertrag – Demo Exposé',
+    seoTitle: 'Kapitalanlage in Altona mit Mietvertrag',
     seoDescription: 'Etagenwohnung in Altona als Kapitalanlage mit langfristigem Mietvertrag und stabiler Einnahme.',
     heroImage: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=2000&q=80',
     heroAlt: 'Etagenwohnung in Altona als Kapitalanlage',

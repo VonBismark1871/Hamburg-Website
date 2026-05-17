@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function ReferenceBackButton({ href = '/referenzen', label = 'Zurück zu Hamburg Websites' }) {
+export default function ReferenceBackButton({ href = '/referenzen', label = 'Zur Übersicht' }) {
   return (
     <Link
       href={href}
@@ -9,7 +9,7 @@ export default function ReferenceBackButton({ href = '/referenzen', label = 'Zur
     >
       <span aria-hidden="true">←</span>
       <span className="hidden sm:inline">{label}</span>
-      <span className="sm:hidden">Zurück</span>
+      <span className="sm:hidden">Übersicht</span>
     </Link>
   );
 }
