@@ -22,7 +22,7 @@ export default function PhysioDemoLayout({ title, description, path, children })
           <div className="section-container py-6">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-[#5f7774]">Referenzprojekt · Hamburg Websites</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-[#5f7774]">Physiotherapie in Hamburg</p>
                 <p className="mt-1 text-2xl font-semibold text-[#284a46]">Praxis Elbbalance Physiotherapie</p>
               </div>
               <nav className="flex flex-wrap gap-2 text-sm">

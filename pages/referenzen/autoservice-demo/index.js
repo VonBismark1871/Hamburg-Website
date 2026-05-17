@@ -13,12 +13,12 @@ import {
 export default function AutoserviceDemoHomePage() {
   return (
     <AutoserviceDemoLayout
-      title="Auto Service Demo | Hamburg Websites Referenz"
-      description="Praxisnahe Mehrseiten-Demo für eine moderne Kfz-Werkstatt in Hamburg mit Fokus auf Leistungen und Terminanfragen."
+      title="Elbwerk Kfz-Service Hamburg"
+      description="Kfz-Werkstatt in Hamburg mit Leistungen, Inspektion, Diagnose und Terminanfragen."
       path="/referenzen/autoservice-demo"
     >
       <section className="section-container py-10">
-        <p className="text-sm font-medium text-[#4d5d73]">So könnte eine Website für Ihre Autowerkstatt aussehen.</p>
+        <p className="text-sm font-medium text-[#4d5d73]">Elbwerk Kfz-Service · Ausschläger Weg Hamburg</p>
 
         <div className="mt-4 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
           <article className="relative overflow-hidden rounded-3xl bg-[#0f1724]">
@@ -132,7 +132,7 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <h2 className="text-3xl font-semibold text-[#111926]">Beispielhafte Kundenstimmen</h2>
+        <h2 className="text-3xl font-semibold text-[#111926]">Kundenstimmen</h2>
         <div className="mt-5 grid gap-4 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
             <blockquote key={testimonial.name} className="rounded-2xl border border-[#ccd4df] bg-white p-5">

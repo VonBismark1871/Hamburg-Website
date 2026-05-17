@@ -21,12 +21,12 @@ import {
 export default function PhysioDemoHomePage() {
   return (
     <PhysioDemoLayout
-      title="Physiotherapie Website Demo – Hamburg Websites"
-      description="Beispiel einer modernen Physiotherapie-Website mit Leistungen, Terminbereich und Kontaktseite."
+      title="Praxis Elbbalance Physiotherapie Hamburg"
+      description="Physiotherapie in Hamburg mit Behandlungen, Beschwerdeseiten, Terminbereich und Kontakt."
       path="/referenzen/physio-demo"
     >
       <section className="section-container py-10">
-        <p className="text-sm font-medium text-[#5d7673]">Referenzprojekt für moderne Physiotherapiepraxen</p>
+        <p className="text-sm font-medium text-[#5d7673]">Elbbalance Physiotherapie · Hamburg-Eimsbüttel</p>
 
         <div className="mt-4 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <article className="relative overflow-hidden rounded-3xl">
@@ -151,7 +151,7 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <h2 className="text-3xl font-semibold text-[#244240]">Beispielhafte Patientenstimmen</h2>
+        <h2 className="text-3xl font-semibold text-[#244240]">Patientenstimmen</h2>
         <div className="mt-5">
           <PhysioTestimonials testimonials={testimonials} />
         </div>

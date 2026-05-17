@@ -121,8 +121,8 @@ export default function ZahnarztDemoPage() {
   return (
     <>
       <SEOHead
-        title="Zahnarztpraxis Website Demo – Hamburg Websites"
-        description="Beispiel einer modernen Zahnarztpraxis-Website mit Leistungen, Team, Terminbereich und Kontakt."
+        title="Praxis ElbDent Hamburg"
+        description="Zahnarztpraxis ElbDent in Hamburg mit Leistungen, Team, Terminbereich und Kontakt."
         path="/referenzen/zahnarzt-demo"
       />
       <Header />
@@ -130,9 +130,9 @@ export default function ZahnarztDemoPage() {
         <ReferenceStickyBackButton />
 
         <main>
-          <section className="section-container pt-8" aria-label="Demo Hinweis">
+          <section className="section-container pt-8" aria-label="Praxis Hinweis">
             <p className="inline-flex items-center rounded-md border border-[#c7d8df] bg-white px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#4f6974]">
-              Referenzprojekt für moderne Zahnarztpraxen
+              Praxis ElbDent · Moderne Zahnmedizin in Hamburg-Eppendorf
             </p>
           </section>
 
@@ -184,7 +184,7 @@ export default function ZahnarztDemoPage() {
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-[#d4e2e7] bg-white px-6 py-4 text-sm text-[#2d4a56] sm:px-7">
               <span className="text-lg tracking-wide text-[#f2b01e]" aria-hidden="true">★★★★★</span>
               <p className="font-medium">Konzept-Proof: Vertrauen, Leistungen und Terminführung</p>
-              <p className="text-[#5c7781]">Demo-Inhalte zeigen mögliche Praxisstruktur, keine echten Bewertungen.</p>
+              <p className="text-[#5c7781]">Patientenorientierte Informationen vor dem ersten Termin.</p>
             </div>
           </section>
 
@@ -305,7 +305,7 @@ export default function ZahnarztDemoPage() {
                 <h3 className="text-lg font-semibold text-[#1c3a45]">Praxis ElbDent</h3>
                 <p className="mt-3 text-sm text-[#49646f]">Musterstraße 27, 20095 Hamburg</p>
                 <p className="mt-2 text-sm text-[#49646f]">Telefon: 040 / 123 45 67</p>
-                <p className="mt-2 text-sm text-[#49646f]">E-Mail: kontakt@elb-dent-demo.de</p>
+                <p className="mt-2 text-sm text-[#49646f]">E-Mail: kontakt@elb-dent.de</p>
                 <dl className="mt-6 space-y-2 text-sm text-[#3f5c67]">
                   {openingHours.map((item) => (
                     <div key={item.day} className="flex justify-between gap-4 border-b border-[#edf3f5] pb-2">
@@ -339,8 +339,8 @@ export default function ZahnarztDemoPage() {
           </section>
 
           <ReferenceProjectCTA
-            title="Sie möchten eine ähnliche Website für Ihre Praxis?"
-            text="Wir entwickeln individuelle Praxis-Websites mit klarer Struktur, vertrauensvoller Gestaltung und intuitiver Terminführung."
+            title="Neue Patientinnen und Patienten willkommen"
+            text="Senden Sie Ihre Terminanfrage oder rufen Sie direkt in der Praxis an."
           />
         </main>
       </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function ReferenceBackButton({ href = '/referenzen', label = 'Zurück zu Hamburg Websites' }) {
+export default function ReferenceBackButton({ href = '/referenzen', label = 'Zurück zur Übersicht' }) {
   return (
     <Link
       href={href}

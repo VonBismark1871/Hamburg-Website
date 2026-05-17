@@ -11,7 +11,7 @@ const contactCards = [
 export default function AutoserviceContactPage() {
   return (
     <AutoserviceDemoLayout
-      title="Kontakt & Termin | Auto Service Demo"
+      title="Kontakt & Termin | Elbwerk Kfz-Service"
       description="Kontakt- und Terminseite einer Kfz-Werkstatt mit Werkstattdaten, Karte und Anfrageformular."
       path="/referenzen/autoservice-demo/kontakt"
     >

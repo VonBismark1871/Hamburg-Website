@@ -168,8 +168,8 @@ export default function FriseursalonDemoPage() {
   return (
     <>
       <SEOHead
-        title="Friseursalon Demo in Hamburg – Moderne Salon-Website"
-        description="Friseursalon-Demo mit Leistungen, Preisen, Team, Galerie, Termin-CTA und Kontaktbereich für eine realistische Salon-Website."
+        title="Friseursalon Elbhaar Hamburg"
+        description="Friseursalon Elbhaar mit Leistungen, Preisen, Team, Galerie, Terminbuchung und Kontaktbereich."
         path="/referenzen/friseursalon-demo"
       />
       <Header />
@@ -177,9 +177,9 @@ export default function FriseursalonDemoPage() {
         <ReferenceStickyBackButton />
 
         <main>
-          <section className="section-container pt-8" aria-label="Demo Hinweis">
+          <section className="section-container pt-8" aria-label="Salon Hinweis">
             <p className="inline-flex rounded-full border border-[#dccfc2] bg-[#fffaf3] px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#776a61]">
-              Demo-Projekt · So könnte eine moderne Friseursalon-Website aussehen
+              Elbhaar Studio · Schnitte, Coloration und Pflege in Hamburg-Eimsbüttel
             </p>
           </section>
 
@@ -380,7 +380,7 @@ export default function FriseursalonDemoPage() {
                 <h3 className="text-lg font-semibold">Friseursalon Elbhaar</h3>
                 <p className="mt-3 text-[#5f554f]">Isestraße 44, 20144 Hamburg</p>
                 <p className="mt-2 text-[#5f554f]">Telefon: 040 / 389 74 112</p>
-                <p className="mt-2 text-[#5f554f]">E-Mail: termin@elbhaar-demo.de</p>
+                <p className="mt-2 text-[#5f554f]">E-Mail: termin@elbhaar-studio.de</p>
                 <dl className="mt-6 space-y-2 text-sm text-[#6b6059]">
                   <div className="flex justify-between gap-4">
                     <dt>Mo–Fr</dt>
@@ -418,8 +418,8 @@ export default function FriseursalonDemoPage() {
           </section>
 
           <ReferenceProjectCTA
-            title="Sie möchten eine ähnliche Website für Ihren Friseursalon?"
-            text="Wir gestalten individuelle Salon-Websites mit klarer Struktur, starker Bildsprache und überzeugender Terminführung."
+            title="Bereit für Ihren neuen Look?"
+            text="Buchen Sie Beratung, Schnitt oder Coloration direkt im Studio."
           />
         </main>
       </div>

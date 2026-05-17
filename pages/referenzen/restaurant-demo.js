@@ -97,7 +97,7 @@ const menuCategories = [
 function RestaurantHero() {
   return (
     <section id="start" className="section-container pb-12 pt-8 sm:pt-10" aria-labelledby="hero-heading">
-      <p className="text-sm text-[#6a5e50]">Beispiel einer möglichen Restaurant-Website</p>
+      <p className="text-sm text-[#6a5e50]">Hafenblick Bistro · Hamburg Neustadt</p>
       <div className="mt-4 grid gap-5 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
         <figure className="relative overflow-hidden rounded-[2rem] shadow-[0_24px_70px_-40px_rgba(33,22,13,0.8)]">
           <Image
@@ -159,7 +159,7 @@ function TrustBlock() {
           ★★★★★
         </span>
         <p className="font-medium">Konzept-Fokus: Reservierung, Speisekarte und Atmosphäre</p>
-        <p className="text-[#6b5e4f]">Demo-Inhalte zeigen mögliche Struktur und Tonalität, keine echten Bewertungen.</p>
+        <p className="text-[#6b5e4f]">Aktuelle Eindrücke aus Küche, Gastraum und Abendservice.</p>
       </div>
     </section>
   );
@@ -291,8 +291,8 @@ export default function RestaurantDemoPage() {
   return (
     <>
       <SEOHead
-        title="Restaurant Website Demo – Hamburg Websites"
-        description="Beispiel einer modernen Restaurant-Website mit Speisekarte, Galerie und Reservierungsfunktion."
+        title="Hafenblick Bistro Hamburg"
+        description="Modernes Bistro in Hamburg mit Speisekarte, Galerie, Reservierung und warmem Abendambiente."
         path="/referenzen/restaurant-demo"
       />
 
@@ -368,13 +368,13 @@ export default function RestaurantDemoPage() {
 
           <section className="section-container pb-14">
             <div className="rounded-2xl bg-[#efe4d6] p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
-              <p className="text-[#433a31]">Sie möchten eine ähnliche Website für Ihr Restaurant?</p>
+              <p className="text-[#433a31]">Reservierungen, Menüfragen und private Abende</p>
               <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
                 <Link href="/kontakt" className="rounded-md bg-[#2e2a27] px-5 py-2.5 text-sm font-semibold text-[#f6eee2]">
-                  Eigene Demo anfragen
+                  Anfrage senden
                 </Link>
                 <Link href="/#preise" className="rounded-md border border-[#3e3530] px-5 py-2.5 text-sm font-semibold text-[#3e3530]">
-                  Preise ansehen
+                  Menü ansehen
                 </Link>
               </div>
             </div>

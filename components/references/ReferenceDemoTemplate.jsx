@@ -66,7 +66,7 @@ export default function ReferenceDemoTemplate({ title, description, path, busine
                   Projekt anfragen
                 </Link>
                 <Link href="/preise" className={`rounded-lg border px-5 py-2.5 text-sm font-semibold transition ${styles.secondary}`}>
-                  Preise ansehen
+                  Details ansehen
                 </Link>
               </div>
             </article>

@@ -5,8 +5,8 @@ import { inspectionChecklist } from '../../../components/references/autoservice-
 export default function AutoserviceInspectionPage() {
   return (
     <AutoserviceDemoLayout
-      title="Inspektion | Auto Service Demo"
-      description="Beispiel einer Leistungsdetailseite für eine Fahrzeuginspektion in einer Hamburger Werkstatt."
+      title="Inspektion | Elbwerk Kfz-Service"
+      description="Leistungsdetailseite für Fahrzeuginspektion, Checkliste und Terminweg in der Werkstatt."
       path="/referenzen/autoservice-demo/inspektion"
     >
       <section className="section-container py-12">

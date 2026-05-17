@@ -1,6 +1,6 @@
 export default function FilterChips({ filters }) {
   return (
-    <div className="flex flex-wrap gap-3" aria-label="Objektfilter (Demo)">
+    <div className="flex flex-wrap gap-3" aria-label="Objektfilter">
       {filters.map((filter, index) => (
         <span
           key={filter}

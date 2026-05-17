@@ -7,8 +7,8 @@ export default function ImmobilienKontaktPage() {
   return (
     <>
       <SEOHead
-        title="Kontakt für Immobilienanfragen – Demo"
-        description="Kontaktseite für das Immobilienmakler-Demo von Hamburg Websites."
+        title="Kontakt für Immobilienanfragen – Elbquartier Immobilien"
+        description="Kontaktseite von Elbquartier Immobilien für Objektanfragen, Bewertungen und Besichtigungen."
         path="/referenzen/immobilien-demo/kontakt"
       />
       <Header />
@@ -18,8 +18,8 @@ export default function ImmobilienKontaktPage() {
             Beratung & Bewertung anfragen
           </h1>
           <p className="mt-4 text-stone-700">
-            Diese Seite ist Teil des Referenzprojekts. Ein echter Maklerbetrieb könnte hier ein Anfrageformular,
-            Terminbuchung und Rückrufservice integrieren.
+            Für Verkauf, Bewertung oder Besichtigung: Senden Sie eine Anfrage und das Team meldet sich mit einer
+            fundierten Ersteinschätzung zurück.
           </p>
           <div className="mt-8 rounded-2xl border border-stone-300 bg-white p-6">
             <p className="font-semibold">Elbquartier Immobilien</p>

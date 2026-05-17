@@ -10,8 +10,8 @@ export default function ImmobilienObjektePage() {
   return (
     <>
       <SEOHead
-        title="Aktuelle Immobilienangebote – Demo"
-        description="Beispiel einer Objektübersicht für eine moderne Immobilienmakler-Website."
+        title="Aktuelle Immobilienangebote – Elbquartier Immobilien"
+        description="Objektübersicht von Elbquartier Immobilien mit kuratierten Angeboten in Hamburg."
         path="/referenzen/immobilien-demo/objekte"
       />
       <Header />
