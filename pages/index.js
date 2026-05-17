@@ -8,59 +8,59 @@ import SEOHead from '../components/SEOHead';
 import { localBusinessSchema, organizationSchema, serviceSchema } from '../lib/seo';
 
 const serviceItems = [
-  { name: 'Starter Präsenz', priceFromEur: 400 },
-  { name: 'Business Onepager', priceFromEur: 650 },
-  { name: 'Studio Website', priceFromEur: 1000 }
+  { name: 'Website-Visitenkarte', priceFromEur: 400 },
+  { name: 'Onepager', priceFromEur: 650 },
+  { name: 'Mehrseitige Website', priceFromEur: 1000 }
 ];
 
-const technicalStandards = [
+const standards = [
   {
-    title: 'Performance',
-    text: 'Schlanke Seiten, statische Auslieferung und bewusste Bildgrößen statt unnötiger Plugin-Last.'
+    title: 'Klarer Anspruch',
+    text: 'Jede Sektion bekommt eine Aufgabe: Vertrauen aufbauen, Leistung erklären oder Kontakt auslösen.'
   },
   {
-    title: 'SEO Grundlage',
-    text: 'Saubere Titles, Descriptions, Canonicals, lokale Struktur und klare Überschriften von Anfang an.'
+    title: 'Starke Referenzen',
+    text: 'Demos zeigen verschiedene Branchen, Budgets und Stilrichtungen statt nur eine einzige Website-Schablone.'
   },
   {
-    title: 'Wartbarkeit',
-    text: 'Wiederverwendbare Komponenten und klare Inhaltsbereiche, damit spätere Änderungen nicht chaotisch werden.'
+    title: 'Saubere Technik',
+    text: 'Responsive Umsetzung, schnelle Ladezeiten und ein Fundament, das später nicht bei jeder Änderung bricht.'
   }
 ];
 
 const processSteps = [
-  { title: 'Anfrage', text: 'Branche, Ziel, bestehende Website und gewünschter Start werden kurz eingeordnet.' },
-  { title: 'Konzept', text: 'Sie erhalten eine kostenlose Richtung für Stil, Struktur und sinnvollen Umfang.' },
-  { title: 'Ausbau', text: 'Design, Inhalte, SEO, Formular, Performance und responsive Verhalten werden sauber umgesetzt.' },
-  { title: 'Livegang', text: 'Nach Freigabe geht die Website online und kann weiter gepflegt oder erweitert werden.' }
+  { title: 'Anfrage', text: 'Sie schicken kurz Branche, Ziel und vorhandene Website oder Idee.' },
+  { title: 'Demo', text: 'Sie erhalten eine erste visuelle Richtung statt einer abstrakten Agenturpräsentation.' },
+  { title: 'Schärfung', text: 'Struktur, Texte, Bilder und Kontaktpunkte werden gemeinsam verdichtet.' },
+  { title: 'Livegang', text: 'Nach Freigabe geht die Website online und bleibt sauber erweiterbar.' }
 ];
 
 const pricingPreview = [
-  { title: 'Konzept-Vorschau', price: '0 €', text: 'Erste Richtung für Stil, Struktur und Preisrange.' },
-  { title: 'Business Onepager', price: 'ab 650 €', text: 'Hochwertige Einzelseite mit klarer Anfrageführung.' },
-  { title: 'Studio Website', price: 'ab 1.000 €', text: 'Mehrseitiger Auftritt mit Struktur, SEO und Ausbaupotenzial.' }
+  { title: 'Demo-Vorschau', price: '0 €', text: 'Unverbindlicher erster Entwurf für die Richtung.' },
+  { title: 'Onepager', price: 'ab 650 €', text: 'Kompakte Website mit starker Startseite und klarer Anfrageführung.' },
+  { title: 'Mehrseitige Website', price: 'ab 1.000 €', text: 'Für Unternehmen mit Leistungen, Referenzen, FAQ und Unterseiten.' }
 ];
 
 const homepageFaqPreview = [
   {
-    question: 'Ist die Konzept-Vorschau ein fertiger MVP?',
+    question: 'Wie schnell sehe ich eine erste Richtung?',
     answer:
-      'Nein. Sie ist eine konkrete Entscheidungsgrundlage: visuelle Richtung, sinnvoller Umfang und Preisrange, bevor ein vollständiges Projekt startet.'
+      'In vielen Fällen kann eine erste Demo kurzfristig vorbereitet werden. Der genaue Zeitrahmen hängt von Umfang und vorhandenen Inhalten ab.'
   },
   {
-    question: 'Kann der Einstieg trotzdem günstig bleiben?',
+    question: 'Ist die Demo wirklich kostenlos?',
     answer:
-      'Ja. Starter und Onepager bleiben bewusst schlank. Der hochwertige Eindruck entsteht durch klare Struktur, gutes Design und saubere Umsetzung.'
+      'Ja. Die Demo dient als konkrete Entscheidungsgrundlage, bevor aus der Idee ein vollständiges Website-Projekt wird.'
   },
   {
-    question: 'Was unterscheidet das von einem Baukasten?',
+    question: 'Kann eine bestehende Website modernisiert werden?',
     answer:
-      'Die Website wird nicht aus generischen Sektionen zusammengesetzt. Angebot, Nutzerführung, technische Struktur und spätere Pflege werden projektbezogen gedacht.'
+      'Ja. Ein Relaunch kann Design, Struktur, Texte, Performance und Anfrageführung verbessern, ohne unnötig alles aufzublähen.'
   },
   {
-    question: 'Übernehmen Sie auch Pflege und Hosting?',
+    question: 'Passt das nur für Hamburg?',
     answer:
-      'Auf Wunsch können Hosting, technische Betreuung und kleinere laufende Inhaltsänderungen in einem Pflegepaket übernommen werden.'
+      'Der Fokus liegt auf Hamburg und lokalen Unternehmen. Die Struktur funktioniert aber auch für Unternehmen aus anderen Städten.'
   }
 ];
 
@@ -69,7 +69,7 @@ export default function HomePage() {
     <>
       <SEOHead
         title="Hamburg Websites"
-        description="Hamburg Websites erstellt hochwertige, schnelle und SEO-fähige Websites für lokale Unternehmen in Hamburg - von kostenloser Konzept-Vorschau bis mehrseitiger Studio-Website."
+        description="Hamburg Websites - moderne Webseiten für unterschiedliche Ziele, Budgets und Stilrichtungen mit klarer Struktur und überzeugender Nutzerführung."
         path="/"
         schema={[organizationSchema(), localBusinessSchema(), serviceSchema(serviceItems)]}
       />
@@ -78,22 +78,16 @@ export default function HomePage() {
         <Hero />
         <Features />
 
-        <Portfolio />
-
-        <section className="section-container section-spacing" aria-labelledby="technical-heading">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <section className="section-container section-spacing" aria-labelledby="standards-heading">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div>
-              <p className="section-label">Technischer Standard</p>
-              <h2 id="technical-heading" className="text-3xl leading-tight text-slate-950 sm:text-5xl">
-                Premium darf nicht nur im Screenshot gut aussehen.
+              <p className="section-label">Klare Ansprüche</p>
+              <h2 id="standards-heading" className="text-3xl leading-tight text-slate-950 sm:text-5xl">
+                Modern heißt nicht immer groß. Modern heißt passend, verständlich und erweiterbar.
               </h2>
-              <p className="mt-5 text-base leading-8 text-slate-600">
-                Ein professioneller Webauftritt braucht auch unter der Oberfläche Ordnung: Ladezeit, SEO, klare
-                Komponenten, saubere Formulare und eine Struktur, die später erweiterbar bleibt.
-              </p>
             </div>
             <div className="grid gap-4">
-              {technicalStandards.map((item, index) => (
+              {standards.map((item, index) => (
                 <article key={item.title} className="standard-row">
                   <span className="standard-index">{String(index + 1).padStart(2, '0')}</span>
                   <div>
@@ -106,23 +100,24 @@ export default function HomePage() {
           </div>
         </section>
 
+        <Portfolio />
+
         <section className="process-band section-spacing" aria-labelledby="process-preview-heading">
           <div className="section-container">
             <div className="max-w-3xl">
               <p className="section-label text-white/50">Ablauf</p>
               <h2 id="process-preview-heading" className="text-3xl leading-tight text-white sm:text-5xl">
-                Kurzer Einstieg, klare Entscheidungen, sauberer Ausbau.
+                Von der ersten Idee zur Website ohne Agentur-Nebel.
               </h2>
               <p className="mt-5 text-base leading-8 text-white/70">
-                Der Prozess ist bewusst sichtbar. Sie sollen früh verstehen, was sinnvoll ist, was es kostet und wie die
-                Website später weitergeführt werden kann.
+                Der Prozess bleibt bewusst kurz, sichtbar und nachvollziehbar. Sie sehen früh, wohin die Reise geht.
               </p>
             </div>
 
             <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {processSteps.map((step, index) => (
                 <li key={step.title} className="process-step">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200">Schritt {index + 1}</p>
+                  <p className="text-xs font-semibold uppercase text-cyan-200">Schritt {index + 1}</p>
                   <h3 className="mt-3 text-xl font-semibold text-white">{step.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-white/60">{step.text}</p>
                 </li>
@@ -139,7 +134,7 @@ export default function HomePage() {
           <div className="max-w-3xl">
             <p className="section-label">Preise</p>
             <h2 id="pricing-preview-heading" className="text-3xl leading-tight text-slate-950 sm:text-5xl">
-              Transparente Einstiegspunkte ohne billigen Eindruck.
+              Transparente Einstiegspunkte für kleine und größere Vorhaben.
             </h2>
           </div>
           <div className="mt-9 grid gap-4 md:grid-cols-3">
@@ -155,7 +150,7 @@ export default function HomePage() {
             <Link href="/preise" className="primary-btn inline-flex">
               Alle Preise ansehen
             </Link>
-            <p className="text-sm text-slate-500">Pflege, Hosting und individuelle Funktionen können ergänzt werden.</p>
+            <p className="text-sm text-slate-500">Weitere Pakete und laufende Betreuung auf Anfrage.</p>
           </div>
         </section>
 
@@ -184,11 +179,11 @@ export default function HomePage() {
         <section className="section-container section-spacing pt-4" aria-labelledby="final-cta-heading">
           <div className="final-cta">
             <div>
-              <h2 id="final-cta-heading" className="max-w-3xl text-3xl leading-tight text-white sm:text-5xl">
-                Bereit für eine Website, die hochwertig wirkt und klar verkauft?
+              <h2 id="final-cta-heading" className="max-w-2xl text-3xl leading-tight text-white sm:text-5xl">
+              Bereit für eine Website, die zu Angebot, Stil und Budget passt?
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
-                Fordern Sie eine kostenlose Konzept-Vorschau an oder lassen Sie Ihr Projekt unverbindlich einschätzen.
+                Fordern Sie eine kostenlose Demo-Vorschau an oder lassen Sie Ihr Projekt unverbindlich einschätzen.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-4">

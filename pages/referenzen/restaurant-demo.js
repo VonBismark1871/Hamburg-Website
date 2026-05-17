@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SEOHead from '../../components/SEOHead';
-import Header from '../../components/Header';
 import ReferenceBackButton from '../../components/references/ReferenceBackButton';
 
 const chefRecommendations = [
@@ -295,7 +294,6 @@ export default function RestaurantDemoPage() {
         path="/referenzen/restaurant-demo"
       />
 
-      <Header />
       <div className="min-h-screen bg-[#f3ece2] text-[#2a2420]">
         <ReferenceBackButton />
 

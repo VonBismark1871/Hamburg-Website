@@ -63,7 +63,8 @@ export default function AutoServiceSalesCasePage() {
               Auto Service Website (Demo) – Sales Case Study
             </h1>
             <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Dieses Projekt ist ein <strong>konzeptionelles Demo-Beispiel</strong> für eine mögliche Website einer Kfz-Werkstatt in Hamburg.
+              Dieses Projekt zeigt ein konzeptionelles Beispiel für eine Kfz-Werkstatt in Hamburg: kompakt, lokal und
+              auf konkrete Serviceanfragen ausgerichtet.
               Es zeigt Ansatz, Struktur und Conversion-Logik – <strong>ohne reale Kundendaten, ohne Referenzlogos und ohne garantierte Ergebnisse</strong>.
             </p>
 
@@ -148,7 +149,7 @@ export default function AutoServiceSalesCasePage() {
               <h2 id="cta-heading" className="text-2xl font-bold text-slateBlue">Passende nächste Schritte</h2>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link href="/kontakt" className="rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500">
-                  Konzept-Vorschau anfragen
+                  Kostenlose Demo anfragen
                 </Link>
                 <Link
                   href="/kontakt"

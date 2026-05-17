@@ -3,8 +3,8 @@ import ReferenceDemoTemplate from '../../components/references/ReferenceDemoTemp
 export default function BarbershopDemoPage() {
   return (
     <ReferenceDemoTemplate
-      title="Friseursalon Website"
-      description="Moderne Salon-Website mit Terminbuchung, Leistungsübersicht und stilvoller Bildsprache."
+      title="Barber Studio St. Pauli"
+      description="Barbershop in Hamburg mit Terminbuchung, Leistungsübersicht und stilvoller Bildsprache."
       path="/referenzen/barbershop-demo"
       business="Friseursalon Studio"
       tone="dark"

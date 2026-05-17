@@ -8,7 +8,7 @@ export default function FaqPage() {
   return (
     <>
       <SEOHead
-        title="FAQ – Website erstellen lassen in Hamburg"
+        title="FAQ – Website-Projekte in Hamburg"
         description="Antworten auf häufige Fragen zur Website-Erstellung in Hamburg: Dauer, Kosten, Hosting und Ablauf der Zusammenarbeit."
         path="/faq"
         schema={faqSchema(faqItems)}

@@ -8,7 +8,7 @@ export default function ReferenceStickyBackButton() {
         className="inline-flex items-center gap-2 rounded-full border border-slate-300/80 bg-white/90 px-4 py-2 text-xs font-semibold tracking-[0.08em] text-slate-700 shadow-lg shadow-slate-300/50 backdrop-blur transition hover:border-slate-400 hover:bg-white"
       >
         <span aria-hidden="true">←</span>
-        Zur Referenzübersicht
+        Zur Übersicht
       </Link>
     </div>
   );

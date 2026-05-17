@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import SEOHead from '../../../../components/SEOHead';
-import Header from '../../../../components/Header';
 import ReferenceStickyBackButton from '../../../../components/ReferenceStickyBackButton';
 
 export default function ImmobilienKontaktPage() {
@@ -11,7 +10,6 @@ export default function ImmobilienKontaktPage() {
         description="Kontaktseite von Elbquartier Immobilien für Objektanfragen, Bewertungen und Besichtigungen."
         path="/referenzen/immobilien-demo/kontakt"
       />
-      <Header />
       <main className="bg-[#f6f3ee] pb-20 pt-10 text-stone-900">
         <section className="section-container max-w-4xl" aria-labelledby="kontakt-heading">
           <h1 id="kontakt-heading" className="text-4xl font-semibold sm:text-5xl">

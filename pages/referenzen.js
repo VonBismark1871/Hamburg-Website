@@ -5,6 +5,15 @@ import SEOHead from '../components/SEOHead';
 import ReferenceCard from '../components/references/ReferenceCard';
 import { referenceProjects } from '../data/references';
 
+const toneClasses = {
+  warm: 'from-amber-100 via-orange-50 to-amber-50',
+  dark: 'from-stone-800 via-zinc-900 to-neutral-950',
+  clean: 'from-cyan-50 via-sky-50 to-white',
+  calm: 'from-emerald-50 via-teal-50 to-white',
+  contrast: 'from-slate-200 via-white to-slate-100',
+  premium: 'from-zinc-100 via-stone-50 to-white'
+};
+
 const portfolioSections = [
   {
     id: 'onepager',
@@ -90,19 +99,19 @@ export default function ReferenzenPage() {
           })}
         </div>
 
-        <section className="section-container pb-20" aria-labelledby="referenzen-cta-heading">
-          <div className="final-cta">
-            <h2 id="referenzen-cta-heading" className="max-w-3xl text-3xl leading-tight text-white sm:text-5xl">
-              Ihre Branche ist nicht dabei? Dann bauen wir die erste Richtung als Konzept.
+        <section className="section-container pb-16" aria-labelledby="referenzen-cta-heading">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8 sm:p-10">
+            <h2 id="referenzen-cta-heading" className="text-2xl font-bold text-slateBlue sm:text-3xl">
+              Nicht jede Website muss gleich groß sein.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
               Die Konzept-Vorschau zeigt früh, ob Stil, Struktur und Investition zusammenpassen.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="primary-btn primary-btn-hero">
-                Konzept anfragen
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link href="/kontakt" className="primary-btn">
+                Projekt anfragen
               </Link>
-              <Link href="/preise" className="secondary-btn secondary-btn-hero">
+              <Link href="/preise" className="secondary-btn text-slateBlue">
                 Preise ansehen
               </Link>
             </div>

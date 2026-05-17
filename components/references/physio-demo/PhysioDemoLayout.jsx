@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import SEOHead from '../../SEOHead';
 import ReferenceStickyBackButton from '../../ReferenceStickyBackButton';
-import Header from '../../Header';
 
 const navItems = [
   { href: '/referenzen/physio-demo', label: 'Startseite' },
@@ -15,7 +14,6 @@ export default function PhysioDemoLayout({ title, description, path, children })
     <>
       <SEOHead title={title} description={description} path={path} noIndex />
       <div className="min-h-screen bg-[#f3f7f5] text-[#1f3231]">
-        <Header />
         <ReferenceStickyBackButton />
 
         <header className="border-b border-[#d8e4df] bg-[#f7fbf9]/95 backdrop-blur">

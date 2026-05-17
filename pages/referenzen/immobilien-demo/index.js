@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SEOHead from '../../../components/SEOHead';
-import Header from '../../../components/Header';
 import ReferenceStickyBackButton from '../../../components/ReferenceStickyBackButton';
 import PropertyCard from '../../../components/references/immobilien-demo/PropertyCard';
 import { featuredPropertyIds, properties, propertyImage } from '../../../components/references/immobilien-demo/properties';
@@ -29,7 +28,6 @@ export default function ImmobilienDemoHomePage() {
         description="Immobilienmakler in Hamburg mit Objektübersicht, Exposé, Bewertung und Kontakt."
         path="/referenzen/immobilien-demo"
       />
-      <Header />
       <main className="bg-[#f6f3ee] text-stone-900">
         <section className="section-container pb-12 pt-10">
           <div className="mt-5 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
@@ -141,7 +139,7 @@ export default function ImmobilienDemoHomePage() {
 
         <section className="section-container pb-16" aria-labelledby="stimmen">
           <h2 id="stimmen" className="text-3xl font-semibold sm:text-4xl">
-            Beispielhafte Stimmen von Verkäufer- und Käuferseite
+            Stimmen von Verkäufer- und Käuferseite
           </h2>
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {testimonials.map((testimonial) => (

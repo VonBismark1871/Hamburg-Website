@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
-import ReferenceProjectCTA from '../../components/ReferenceProjectCTA';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
 
 const services = [
@@ -124,7 +121,6 @@ export default function ZahnarztDemoPage() {
         description="Zahnarztpraxis ElbDent in Hamburg mit Leistungen, Team, Terminbereich und Kontakt."
         path="/referenzen/zahnarzt-demo"
       />
-      <Header />
       <div className="min-h-screen bg-[#f4f8f9] text-[#1f2f36]">
         <ReferenceStickyBackButton />
 
@@ -242,7 +238,7 @@ export default function ZahnarztDemoPage() {
 
           <section className="section-container pb-16" aria-labelledby="testimonials-heading">
             <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
-              Beispielhafte Patientenstimmen
+              Patientenstimmen
             </h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
@@ -345,7 +341,6 @@ export default function ZahnarztDemoPage() {
           />
         </main>
       </div>
-      <Footer />
     </>
   );
 }
