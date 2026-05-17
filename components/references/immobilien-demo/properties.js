@@ -1,5 +1,36 @@
 export const propertyFilters = ['Kauf', 'Hamburg', 'Exklusiv', 'Familiengeeignet', 'Kapitalanlage'];
 
+export const propertyImageSets = {
+  'penthouse-hamburg': {
+    base: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d',
+    alt: 'Lichtdurchflutetes Penthouse-Wohnzimmer mit warmem Naturstein und grossen Fensterfronten'
+  },
+  'altbau-eppendorf': {
+    base: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85',
+    alt: 'Eleganter Altbau-Wohnraum mit hohen Decken, Parkett und ruhiger Farbwelt'
+  },
+  'stadthaus-blankenese': {
+    base: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+    alt: 'Familienfreundliches Stadthaus mit heller Fassade, Terrasse und gepflegtem Garten'
+  },
+  'neubau-hafencity': {
+    base: 'https://images.unsplash.com/photo-1600607688969-a5bfcd646154',
+    alt: 'Moderne Neubauwohnung mit bodentiefen Fenstern und klarer Architektur'
+  },
+  'familienhaus-volksdorf': {
+    base: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6',
+    alt: 'Freistehendes Familienhaus mit Garten und ruhiger Wohnstrasse'
+  },
+  'anlage-altona': {
+    base: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e',
+    alt: 'Helle Etagenwohnung mit kompaktem Grundriss und neutraler Einrichtung'
+  }
+};
+
+export function propertyImage(id, width = 1600, quality = 82) {
+  return `${propertyImageSets[id].base}?auto=format&fit=crop&w=${width}&q=${quality}`;
+}
+
 export const properties = [
   {
     id: 'penthouse-hamburg',
@@ -12,9 +43,8 @@ export const properties = [
     price: '2.390.000 €',
     label: 'Exklusiv',
     angle: 'Designorientiertes Wohnen über den Dächern mit privater Terrasse.',
-    image:
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'Lichtdurchflutetes Penthouse-Wohnzimmer mit Blick über Hamburg-Winterhude',
+    image: propertyImage('penthouse-hamburg'),
+    imageAlt: propertyImageSets['penthouse-hamburg'].alt,
     href: '/referenzen/immobilien-demo/objekte/penthouse-hamburg'
   },
   {
@@ -27,10 +57,9 @@ export const properties = [
     extra: 'Stuckdetails · Balkon zum Innenhof',
     price: '1.180.000 €',
     label: 'Altbau',
-    angle: 'Historischer Charakter trifft auf zeitgemäße Sanierung im Herzen Eppendorfs.',
-    image:
-      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'Eleganter Altbau-Wohnbereich mit Stuckdecke und Fischgrätparkett',
+    angle: 'Historischer Charakter trifft auf zeitgemässe Sanierung im Herzen Eppendorfs.',
+    image: propertyImage('altbau-eppendorf'),
+    imageAlt: propertyImageSets['altbau-eppendorf'].alt,
     href: '/referenzen/immobilien-demo/objekte/altbau-eppendorf'
   },
   {
@@ -43,10 +72,9 @@ export const properties = [
     extra: 'Sonnengarten · Grundstück 420 m²',
     price: '2.150.000 €',
     label: 'Familiengeeignet',
-    angle: 'Großzügiges Familienlayout mit Garten und kurzen Wegen zur Elbe.',
-    image:
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'Stadthaus in Blankenese mit gepflegtem Garten und Terrasse',
+    angle: 'Grosszügiges Familienlayout mit Garten und kurzen Wegen zur Elbe.',
+    image: propertyImage('stadthaus-blankenese'),
+    imageAlt: propertyImageSets['stadthaus-blankenese'].alt,
     href: '/referenzen/immobilien-demo/objekte/stadthaus-blankenese'
   },
   {
@@ -60,9 +88,8 @@ export const properties = [
     price: '1.050.000 €',
     label: 'Neubau',
     angle: 'Urbaner Komfort in moderner Architektur mit maritimer Perspektive.',
-    image:
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'Moderne Neubauwohnung mit bodentiefen Fenstern und Blick auf den Hafen',
+    image: propertyImage('neubau-hafencity'),
+    imageAlt: propertyImageSets['neubau-hafencity'].alt,
     href: '/referenzen/immobilien-demo/objekte/neubau-hafencity'
   },
   {
@@ -76,9 +103,8 @@ export const properties = [
     price: '1.290.000 €',
     label: 'Familienhaus',
     angle: 'Viel Platz für den Alltag mit Kindern in gewachsener Nachbarschaft.',
-    image:
-      'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'Gemütliches Familienhaus mit Garten in ruhiger Wohnstraße in Volksdorf',
+    image: propertyImage('familienhaus-volksdorf'),
+    imageAlt: propertyImageSets['familienhaus-volksdorf'].alt,
     href: '/referenzen/immobilien-demo/objekte/familienhaus-volksdorf'
   },
   {
@@ -92,9 +118,8 @@ export const properties = [
     price: '695.000 €',
     label: 'Kapitalanlage',
     angle: 'Solides Investment mit stabiler Mieteinnahme und guter Vermietbarkeit.',
-    image:
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'Helle Etagenwohnung als Kapitalanlage in zentraler Lage von Altona',
+    image: propertyImage('anlage-altona'),
+    imageAlt: propertyImageSets['anlage-altona'].alt,
     href: '/referenzen/immobilien-demo/objekte/anlage-altona'
   }
 ];
