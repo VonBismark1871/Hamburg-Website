@@ -36,7 +36,7 @@ export default function RedesignBeispiel1Page() {
   return (
     <>
       <SEOHead
-        title="Beispiel-Redesign (kein Kunde) | Hamburg Websites"
+        title="Beispiel-Redesign für lokale Dienstleister"
         description="Ehrliches Vorher/Nachher-Beispiel einer Website-Überarbeitung: klare Struktur, bessere Nutzerführung, Conversion-Fokus und solide SEO-Basis."
         path="/referenzen/redesign-beispiel-1"
       />

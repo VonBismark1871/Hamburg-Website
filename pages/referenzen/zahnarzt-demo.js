@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
-import ReferenceProjectCTA from '../../components/ReferenceProjectCTA';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
-import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const services = [
   {
@@ -121,21 +117,14 @@ export default function ZahnarztDemoPage() {
   return (
     <>
       <SEOHead
-        title="Zahnarztpraxis Website Demo – Hamburg Websites"
-        description="Beispiel einer modernen Zahnarztpraxis-Website mit Leistungen, Team, Terminbereich und Kontakt."
+        title="Praxis ElbDent Hamburg"
+        description="Zahnarztpraxis ElbDent in Hamburg mit Leistungen, Team, Terminbereich und Kontakt."
         path="/referenzen/zahnarzt-demo"
       />
-      <Header />
       <div className="min-h-screen bg-[#f4f8f9] text-[#1f2f36]">
         <ReferenceStickyBackButton />
 
         <main>
-          <section className="section-container pt-8" aria-label="Demo Hinweis">
-            <p className="inline-flex items-center rounded-md border border-[#c7d8df] bg-white px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#4f6974]">
-              Referenzprojekt für moderne Zahnarztpraxen
-            </p>
-          </section>
-
           <section className="section-container pb-8 pt-8" id="start" aria-labelledby="hero-heading">
             <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <article className="rounded-3xl bg-white p-8 shadow-[0_20px_60px_rgba(11,49,64,0.08)] sm:p-10">
@@ -183,12 +172,10 @@ export default function ZahnarztDemoPage() {
           <section className="section-container pb-14" aria-label="Google Bewertung">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-[#d4e2e7] bg-white px-6 py-4 text-sm text-[#2d4a56] sm:px-7">
               <span className="text-lg tracking-wide text-[#f2b01e]" aria-hidden="true">★★★★★</span>
-              <p className="font-medium">Konzept-Proof: Vertrauen, Leistungen und Terminführung</p>
-              <p className="text-[#5c7781]">Demo-Inhalte zeigen mögliche Praxisstruktur, keine echten Bewertungen.</p>
+              <p className="font-medium">4.8 Bewertung bei Google · 120+ Rezensionen</p>
+              <p className="text-[#5c7781]">Viele zufriedene Patientinnen und Patienten aus Hamburg.</p>
             </div>
           </section>
-
-          <ConceptCaseBlock slug="zahnarzt-demo" compact />
 
           <section className="section-container pb-16" id="leistungen" aria-labelledby="services-heading">
             <header className="max-w-3xl">
@@ -245,7 +232,7 @@ export default function ZahnarztDemoPage() {
 
           <section className="section-container pb-16" aria-labelledby="testimonials-heading">
             <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
-              Beispielhafte Patientenstimmen
+              Patientenstimmen
             </h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
@@ -338,13 +325,16 @@ export default function ZahnarztDemoPage() {
             </div>
           </section>
 
-          <ReferenceProjectCTA
-            title="Sie möchten eine ähnliche Website für Ihre Praxis?"
-            text="Wir entwickeln individuelle Praxis-Websites mit klarer Struktur, vertrauensvoller Gestaltung und intuitiver Terminführung."
-          />
+          <section className="section-container pb-14" aria-label="Terminabschluss">
+            <div className="rounded-3xl border border-[#d4e2e7] bg-white p-7 sm:flex sm:items-center sm:justify-between sm:gap-6">
+              <p className="text-[#49646f]">Neue Patientinnen und Patienten können telefonisch oder per E-Mail einen Termin anfragen.</p>
+              <Link href="#kontakt" className="mt-4 inline-flex rounded-md bg-[#1f5f78] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#184a5d] sm:mt-0">
+                Kontakt ansehen
+              </Link>
+            </div>
+          </section>
         </main>
       </div>
-      <Footer />
     </>
   );
 }

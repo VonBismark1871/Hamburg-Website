@@ -1,0 +1,29 @@
+Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"). Use Document instead. 
+See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
+Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"). Use Document instead. 
+See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"). Use Document instead. 
+See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ⨯ ./data/references.js
+Error: Failed to read source code from C:\Users\Andre\Documents\Codex\2026-05-16\github-plugin-github-openai-curated-build\Hamburg-Website-main11\data\references.js
+
+Caused by:
+    Не удается найти указанный файл. (os error 2)
+
+Import trace for requested module:
+./data/references.js
+./components/Portfolio.jsx
+ ⨯ ./data/references.js
+Error: Failed to read source code from C:\Users\Andre\Documents\Codex\2026-05-16\github-plugin-github-openai-curated-build\Hamburg-Website-main11\data\references.js
+
+Caused by:
+    Не удается найти указанный файл. (os error 2)
+
+Import trace for requested module:
+./data/references.js
+./components/Portfolio.jsx
+./pages/index.js

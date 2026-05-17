@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PhysioDemoLayout from '../../../components/references/physio-demo/PhysioDemoLayout';
-import ConceptCaseBlock from '../../../components/references/ConceptCaseBlock';
 import {
   ComplaintCards,
   PhysioTestimonials,
@@ -21,14 +20,12 @@ import {
 export default function PhysioDemoHomePage() {
   return (
     <PhysioDemoLayout
-      title="Physiotherapie Website Demo – Hamburg Websites"
-      description="Beispiel einer modernen Physiotherapie-Website mit Leistungen, Terminbereich und Kontaktseite."
+      title="Praxis Elbbalance Physiotherapie"
+      description="Physiotherapiepraxis in Hamburg mit Leistungen, Beschwerdebildern, Terminbereich und Kontakt."
       path="/referenzen/physio-demo"
     >
       <section className="section-container py-10">
-        <p className="text-sm font-medium text-[#5d7673]">Referenzprojekt für moderne Physiotherapiepraxen</p>
-
-        <div className="mt-4 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <article className="relative overflow-hidden rounded-3xl">
             <Image
               src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=2000&q=80"
@@ -81,8 +78,6 @@ export default function PhysioDemoHomePage() {
           </aside>
         </div>
       </section>
-
-      <ConceptCaseBlock slug="physio-demo" compact />
 
       <section className="section-container pb-10">
         <div className="grid gap-3 rounded-2xl bg-[#dcebe6] p-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -151,7 +146,7 @@ export default function PhysioDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <h2 className="text-3xl font-semibold text-[#244240]">Beispielhafte Patientenstimmen</h2>
+        <h2 className="text-3xl font-semibold text-[#244240]">Patientenstimmen</h2>
         <div className="mt-5">
           <PhysioTestimonials testimonials={testimonials} />
         </div>

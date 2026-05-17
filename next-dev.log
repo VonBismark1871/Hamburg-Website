@@ -1,0 +1,58 @@
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.2s
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 4.1s (328 modules)
+ GET /_next/static/webpack/85480a60bb93c160.webpack.hot-update.json 404 in 4716ms
+ ○ Compiling / ...
+ ✓ Compiled / in 6.4s (743 modules)
+ GET /_next/static/webpack/85480a60bb93c160.webpack.hot-update.json 404 in 846ms
+ GET / 200 in 7483ms
+ GET / 200 in 37ms
+ GET / 200 in 36ms
+ GET / 200 in 52ms
+ GET / 200 in 37ms
+ GET / 200 in 36ms
+ ✓ Compiled in 1039ms (598 modules)
+ ✓ Compiled in 514ms (598 modules)
+ ✓ Compiled in 457ms (741 modules)
+ ✓ Compiled in 387ms (598 modules)
+ ✓ Compiled in 346ms (598 modules)
+ ✓ Compiled in 659ms (741 modules)
+ ✓ Compiled in 524ms (741 modules)
+ ✓ Compiled in 377ms (741 modules)
+ ✓ Compiled in 389ms (741 modules)
+ ✓ Compiled in 266ms (598 modules)
+ ✓ Compiled in 666ms (741 modules)
+ ✓ Compiled in 244ms (598 modules)
+ ✓ Compiled in 226ms (598 modules)
+ ✓ Compiled in 313ms (598 modules)
+ ✓ Compiled in 234ms (598 modules)
+ ✓ Compiled in 239ms (598 modules)
+ ✓ Compiled in 250ms (598 modules)
+ ✓ Compiled in 241ms (598 modules)
+ ✓ Compiled in 281ms (598 modules)
+ ✓ Compiled in 258ms (598 modules)
+ ✓ Compiled in 251ms (598 modules)
+ ✓ Compiled in 231ms (598 modules)
+ ✓ Compiled in 304ms (598 modules)
+ ✓ Compiled in 306ms (598 modules)
+ ✓ Compiled in 380ms (598 modules)
+ ✓ Compiled in 436ms (598 modules)
+ ✓ Compiled in 467ms (598 modules)
+ ✓ Compiled in 291ms (598 modules)
+ ✓ Compiled in 254ms (598 modules)
+ ✓ Compiled in 238ms (598 modules)
+ ✓ Compiled in 232ms (598 modules)
+ ✓ Compiled in 237ms (598 modules)
+ ✓ Compiled in 222ms (598 modules)
+ ✓ Compiled in 302ms (598 modules)
+ ✓ Compiled in 235ms (598 modules)
+ ✓ Compiled in 235ms (598 modules)
+ ✓ Compiled in 248ms (598 modules)
+ ✓ Compiled in 214ms (598 modules)
+ ✓ Compiled in 205ms (741 modules)
+ ✓ Compiled in 278ms (598 modules)
+ ✓ Compiled in 226ms (598 modules)

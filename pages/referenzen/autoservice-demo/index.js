@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AutoserviceDemoLayout from '../../../components/references/autoservice-demo/AutoserviceDemoLayout';
-import ConceptCaseBlock from '../../../components/references/ConceptCaseBlock';
 import {
   quickTrustPoints,
   reasons,
@@ -13,14 +12,12 @@ import {
 export default function AutoserviceDemoHomePage() {
   return (
     <AutoserviceDemoLayout
-      title="Auto Service Demo | Hamburg Websites Referenz"
-      description="Praxisnahe Mehrseiten-Demo für eine moderne Kfz-Werkstatt in Hamburg mit Fokus auf Leistungen und Terminanfragen."
+      title="Elbwerk Kfz-Service Hamburg"
+      description="Kfz-Werkstatt in Hamburg mit Leistungen, Inspektion, Kontakt und Terminanfragen."
       path="/referenzen/autoservice-demo"
     >
       <section className="section-container py-10">
-        <p className="text-sm font-medium text-[#4d5d73]">So könnte eine Website für Ihre Autowerkstatt aussehen.</p>
-
-        <div className="mt-4 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+        <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
           <article className="relative overflow-hidden rounded-3xl bg-[#0f1724]">
             <Image
               src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=2000&q=80"
@@ -78,8 +75,6 @@ export default function AutoserviceDemoHomePage() {
         </div>
       </section>
 
-      <ConceptCaseBlock slug="autoservice-demo" compact />
-
       <section className="section-container pb-10">
         <div className="grid gap-3 rounded-2xl bg-[#172131] p-5 sm:grid-cols-2 lg:grid-cols-4">
           {quickTrustPoints.map((point) => (
@@ -132,7 +127,7 @@ export default function AutoserviceDemoHomePage() {
       </section>
 
       <section className="section-container pb-12">
-        <h2 className="text-3xl font-semibold text-[#111926]">Beispielhafte Kundenstimmen</h2>
+        <h2 className="text-3xl font-semibold text-[#111926]">Kundenstimmen</h2>
         <div className="mt-5 grid gap-4 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
             <blockquote key={testimonial.name} className="rounded-2xl border border-[#ccd4df] bg-white p-5">
