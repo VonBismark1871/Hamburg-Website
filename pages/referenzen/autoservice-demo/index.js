@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AutoserviceDemoLayout from '../../../components/references/autoservice-demo/AutoserviceDemoLayout';
-import ConceptCaseBlock from '../../../components/references/ConceptCaseBlock';
 import {
   quickTrustPoints,
   reasons,
@@ -77,8 +76,6 @@ export default function AutoserviceDemoHomePage() {
           </aside>
         </div>
       </section>
-
-      <ConceptCaseBlock slug="autoservice-demo" compact />
 
       <section className="section-container pb-10">
         <div className="grid gap-3 rounded-2xl bg-[#172131] p-5 sm:grid-cols-2 lg:grid-cols-4">

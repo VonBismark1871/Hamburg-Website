@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PhysioDemoLayout from '../../../components/references/physio-demo/PhysioDemoLayout';
-import ConceptCaseBlock from '../../../components/references/ConceptCaseBlock';
 import {
   ComplaintCards,
   PhysioTestimonials,
@@ -81,8 +80,6 @@ export default function PhysioDemoHomePage() {
           </aside>
         </div>
       </section>
-
-      <ConceptCaseBlock slug="physio-demo" compact />
 
       <section className="section-container pb-10">
         <div className="grid gap-3 rounded-2xl bg-[#dcebe6] p-5 sm:grid-cols-2 lg:grid-cols-4">

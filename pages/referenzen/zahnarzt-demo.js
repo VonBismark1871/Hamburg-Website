@@ -6,7 +6,6 @@ import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
 import ReferenceProjectCTA from '../../components/ReferenceProjectCTA';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
-import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const services = [
   {
@@ -188,8 +187,6 @@ export default function ZahnarztDemoPage() {
             </div>
           </section>
 
-          <ConceptCaseBlock slug="zahnarzt-demo" compact />
-
           <section className="section-container pb-16" id="leistungen" aria-labelledby="services-heading">
             <header className="max-w-3xl">
               <h2 id="services-heading" className="text-3xl font-semibold tracking-tight text-[#17303a] sm:text-4xl">
@@ -341,6 +338,10 @@ export default function ZahnarztDemoPage() {
           <ReferenceProjectCTA
             title="Neue Patientinnen und Patienten willkommen"
             text="Senden Sie Ihre Terminanfrage oder rufen Sie direkt in der Praxis an."
+            primaryLabel="Termin anfragen"
+            primaryHref="#termin"
+            secondaryLabel="Leistungen ansehen"
+            secondaryHref="#leistungen"
           />
         </main>
       </div>

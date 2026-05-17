@@ -3,7 +3,6 @@ import Link from 'next/link';
 import SEOHead from '../../../components/SEOHead';
 import Header from '../../../components/Header';
 import ReferenceStickyBackButton from '../../../components/ReferenceStickyBackButton';
-import ConceptCaseBlock from '../../../components/references/ConceptCaseBlock';
 import PropertyCard from '../../../components/references/immobilien-demo/PropertyCard';
 import { featuredPropertyIds, properties, propertyImage } from '../../../components/references/immobilien-demo/properties';
 
@@ -86,8 +85,6 @@ export default function ImmobilienDemoHomePage() {
             </aside>
           </div>
         </section>
-
-        <ConceptCaseBlock slug="immobilien-demo" compact />
 
         <section className="section-container pb-16" aria-labelledby="featured-objects">
           <div className="mb-7 flex items-end justify-between gap-4">

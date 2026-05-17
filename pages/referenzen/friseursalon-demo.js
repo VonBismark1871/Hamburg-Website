@@ -6,7 +6,6 @@ import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
 import ReferenceProjectCTA from '../../components/ReferenceProjectCTA';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
-import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const services = [
   {
@@ -242,8 +241,6 @@ export default function FriseursalonDemoPage() {
             </div>
           </section>
 
-          <ConceptCaseBlock slug="friseursalon-demo" compact />
-
           <section className="section-container pb-16" id="leistungen" aria-labelledby="services-heading">
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
               <div className="rounded-[2rem] border border-[#e2d6ca] bg-[#fff9f2] p-7 sm:p-9">
@@ -420,6 +417,10 @@ export default function FriseursalonDemoPage() {
           <ReferenceProjectCTA
             title="Bereit für Ihren neuen Look?"
             text="Buchen Sie Beratung, Schnitt oder Coloration direkt im Studio."
+            primaryLabel="Termin buchen"
+            primaryHref="#termin"
+            secondaryLabel="Leistungen ansehen"
+            secondaryHref="#leistungen"
           />
         </main>
       </div>

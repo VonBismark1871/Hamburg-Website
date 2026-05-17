@@ -3,7 +3,6 @@ import Link from 'next/link';
 import SEOHead from '../../components/SEOHead';
 import Header from '../../components/Header';
 import ReferenceBackButton from '../../components/references/ReferenceBackButton';
-import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const chefRecommendations = [
   {
@@ -303,7 +302,6 @@ export default function RestaurantDemoPage() {
         <main>
           <RestaurantHero />
           <TrustBlock />
-          <ConceptCaseBlock slug="restaurant-demo" compact />
           <KitchenStory />
           <MenuPreview />
           <AtmosphereGallery />
@@ -370,10 +368,10 @@ export default function RestaurantDemoPage() {
             <div className="rounded-2xl bg-[#efe4d6] p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
               <p className="text-[#433a31]">Reservierungen, Menüfragen und private Abende</p>
               <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
-                <Link href="/kontakt" className="rounded-md bg-[#2e2a27] px-5 py-2.5 text-sm font-semibold text-[#f6eee2]">
-                  Anfrage senden
+                <Link href="#reservierung" className="rounded-md bg-[#2e2a27] px-5 py-2.5 text-sm font-semibold text-[#f6eee2]">
+                  Tisch reservieren
                 </Link>
-                <Link href="/#preise" className="rounded-md border border-[#3e3530] px-5 py-2.5 text-sm font-semibold text-[#3e3530]">
+                <Link href="#speisekarte" className="rounded-md border border-[#3e3530] px-5 py-2.5 text-sm font-semibold text-[#3e3530]">
                   Menü ansehen
                 </Link>
               </div>
