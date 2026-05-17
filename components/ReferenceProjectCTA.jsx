@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function ReferenceProjectCTA({ title, text, primaryLabel = 'Projekt anfragen', primaryHref = '/kontakt', secondaryLabel = 'Umfang ansehen', secondaryHref = '/preise', className = '' }) {
+export default function ReferenceProjectCTA({ title, text, primaryLabel = 'Anfrage senden', primaryHref = '/kontakt', secondaryLabel = 'Details ansehen', secondaryHref = '/preise', className = '' }) {
   return (
     <section className={`section-container pb-14 ${className}`.trim()} aria-labelledby="reference-cta-heading">
       <div className="rounded-3xl border border-[#d8d3cb] bg-[#f8f5f1] px-6 py-8 sm:px-8 sm:py-10">

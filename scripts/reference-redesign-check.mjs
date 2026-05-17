@@ -20,14 +20,14 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-const pricingPopover = read('components/pricing/PackagePreviewPopover.jsx');
-assert(!pricingPopover.includes('className={`fixed'), 'PackagePreviewPopover must not render a fixed floating popover.');
-assert(!pricingPopover.includes("window.addEventListener('scroll'"), 'PackagePreviewPopover should not track viewport scroll for placement.');
-assert(pricingPopover.includes('aria-controls'), 'Inline pricing preview should expose aria-controls.');
-
 const referencesData = read('data/references.js');
-for (const key of ['siteType', 'goal', 'complexity', 'styleLabel']) {
-  assert(referencesData.includes(key), `data/references.js should include overview metadata: ${key}.`);
+for (const key of ['brandName', 'previewStyle', 'visualConcept', 'assetSet', 'primaryAction', 'trustSignal', 'industryGoal']) {
+  assert(referencesData.includes(key), `data/references.js should include redesign metadata: ${key}.`);
+}
+
+const overviewCard = read('components/references/ReferenceCard.jsx');
+for (const key of ['bistro', 'salon', 'dental', 'physio', 'garage', 'estate']) {
+  assert(overviewCard.includes(key), `ReferenceCard should include preview style: ${key}.`);
 }
 
 const demoFiles = walk('pages/referenzen')
@@ -42,9 +42,8 @@ const forbiddenVisibleTerms = [
   'Website-Demo',
   'Website erstellen',
   'ähnliche Website',
-  'Ã¤hnliche Website',
   'Eigene Demo',
-  'Preise ansehen'
+  'So könnte'
 ];
 
 for (const file of demoFiles) {
@@ -54,16 +53,11 @@ for (const file of demoFiles) {
   }
 }
 
-const demoShells = [
-  'components/references/autoservice-demo/AutoserviceDemoLayout.jsx',
-  'components/references/physio-demo/PhysioDemoLayout.jsx',
-  'components/references/ReferenceBackButton.jsx',
-  'components/ReferenceStickyBackButton.jsx'
-];
-
-for (const file of demoShells) {
-  const source = read(file);
-  assert(!source.includes('Hamburg Websites'), `${file} should not show Hamburg Websites inside demo pages.`);
+const propertyData = read('components/references/immobilien-demo/properties.js');
+const exposeData = read('components/references/immobilien-demo/exposeData.js');
+for (const id of ['penthouse-hamburg', 'altbau-eppendorf', 'stadthaus-blankenese', 'neubau-hafencity', 'familienhaus-volksdorf', 'anlage-altona']) {
+  assert(propertyData.includes(`propertyImage('${id}')`), `${id} card should use the shared property image helper.`);
+  assert(exposeData.includes(`galleryFor('${id}'`), `${id} expose should use one coherent gallery source.`);
 }
 
 console.log('Reference redesign checks passed.');

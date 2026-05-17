@@ -125,6 +125,12 @@ export default function ZahnarztDemoPage() {
         <ReferenceStickyBackButton />
 
         <main>
+          <section className="section-container pt-8" aria-label="Praxis Hinweis">
+            <p className="inline-flex items-center rounded-md border border-[#c7d8df] bg-white px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#4f6974]">
+              Praxis ElbDent · Moderne Zahnmedizin in Hamburg-Eppendorf
+            </p>
+          </section>
+
           <section className="section-container pb-8 pt-8" id="start" aria-labelledby="hero-heading">
             <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <article className="rounded-3xl bg-white p-8 shadow-[0_20px_60px_rgba(11,49,64,0.08)] sm:p-10">
@@ -172,8 +178,8 @@ export default function ZahnarztDemoPage() {
           <section className="section-container pb-14" aria-label="Google Bewertung">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-[#d4e2e7] bg-white px-6 py-4 text-sm text-[#2d4a56] sm:px-7">
               <span className="text-lg tracking-wide text-[#f2b01e]" aria-hidden="true">★★★★★</span>
-              <p className="font-medium">4.8 Bewertung bei Google · 120+ Rezensionen</p>
-              <p className="text-[#5c7781]">Viele zufriedene Patientinnen und Patienten aus Hamburg.</p>
+              <p className="font-medium">Konzept-Proof: Vertrauen, Leistungen und Terminführung</p>
+              <p className="text-[#5c7781]">Patientenorientierte Informationen vor dem ersten Termin.</p>
             </div>
           </section>
 
@@ -292,7 +298,7 @@ export default function ZahnarztDemoPage() {
                 <h3 className="text-lg font-semibold text-[#1c3a45]">Praxis ElbDent</h3>
                 <p className="mt-3 text-sm text-[#49646f]">Musterstraße 27, 20095 Hamburg</p>
                 <p className="mt-2 text-sm text-[#49646f]">Telefon: 040 / 123 45 67</p>
-                <p className="mt-2 text-sm text-[#49646f]">E-Mail: kontakt@elb-dent-demo.de</p>
+                <p className="mt-2 text-sm text-[#49646f]">E-Mail: kontakt@elb-dent.de</p>
                 <dl className="mt-6 space-y-2 text-sm text-[#3f5c67]">
                   {openingHours.map((item) => (
                     <div key={item.day} className="flex justify-between gap-4 border-b border-[#edf3f5] pb-2">
@@ -325,14 +331,14 @@ export default function ZahnarztDemoPage() {
             </div>
           </section>
 
-          <section className="section-container pb-14" aria-label="Terminabschluss">
-            <div className="rounded-3xl border border-[#d4e2e7] bg-white p-7 sm:flex sm:items-center sm:justify-between sm:gap-6">
-              <p className="text-[#49646f]">Neue Patientinnen und Patienten können telefonisch oder per E-Mail einen Termin anfragen.</p>
-              <Link href="#kontakt" className="mt-4 inline-flex rounded-md bg-[#1f5f78] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#184a5d] sm:mt-0">
-                Kontakt ansehen
-              </Link>
-            </div>
-          </section>
+          <ReferenceProjectCTA
+            title="Neue Patientinnen und Patienten willkommen"
+            text="Senden Sie Ihre Terminanfrage oder rufen Sie direkt in der Praxis an."
+            primaryLabel="Termin anfragen"
+            primaryHref="#termin"
+            secondaryLabel="Leistungen ansehen"
+            secondaryHref="#leistungen"
+          />
         </main>
       </div>
     </>

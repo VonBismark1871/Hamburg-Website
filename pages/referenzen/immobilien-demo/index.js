@@ -3,7 +3,7 @@ import Link from 'next/link';
 import SEOHead from '../../../components/SEOHead';
 import ReferenceStickyBackButton from '../../../components/ReferenceStickyBackButton';
 import PropertyCard from '../../../components/references/immobilien-demo/PropertyCard';
-import { featuredPropertyIds, properties } from '../../../components/references/immobilien-demo/properties';
+import { featuredPropertyIds, properties, propertyImage } from '../../../components/references/immobilien-demo/properties';
 
 const featuredProperties = properties.filter((property) => featuredPropertyIds.includes(property.id));
 
@@ -25,16 +25,16 @@ export default function ImmobilienDemoHomePage() {
     <>
       <SEOHead
         title="Elbquartier Immobilien Hamburg"
-        description="Immobilienmakler in Hamburg mit Objektübersicht, Exposés, Bewertung und Kontakt."
+        description="Immobilienmakler in Hamburg mit Objektübersicht, Exposé, Bewertung und Kontakt."
         path="/referenzen/immobilien-demo"
       />
       <main className="bg-[#f6f3ee] text-stone-900">
         <section className="section-container pb-12 pt-10">
-          <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+          <div className="mt-5 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
             <div className="relative overflow-hidden rounded-[2rem]">
               <Image
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=80"
-                alt="Exklusive Dachterrasse mit Blick über Hamburg"
+                src={propertyImage('penthouse-hamburg', 1800)}
+                alt="Lichtdurchflutetes Penthouse als Leitobjekt von Elbquartier Immobilien"
                 width={1800}
                 height={1200}
                 priority

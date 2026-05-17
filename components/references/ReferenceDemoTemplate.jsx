@@ -65,8 +65,8 @@ export default function ReferenceDemoTemplate({ title, description, path, busine
                 <Link href="/kontakt" className={`rounded-lg px-5 py-2.5 text-sm font-semibold transition ${styles.primary}`}>
                   Termin anfragen
                 </Link>
-                <Link href="#kontakt" className={`rounded-lg border px-5 py-2.5 text-sm font-semibold transition ${styles.secondary}`}>
-                  Kontakt ansehen
+                <Link href="/preise" className={`rounded-lg border px-5 py-2.5 text-sm font-semibold transition ${styles.secondary}`}>
+                  Details ansehen
                 </Link>
               </div>
             </article>

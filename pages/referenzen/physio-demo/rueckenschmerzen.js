@@ -4,8 +4,8 @@ import PhysioDemoLayout from '../../../components/references/physio-demo/PhysioD
 export default function RueckenschmerzenDetailPage() {
   return (
     <PhysioDemoLayout
-      title="Physiotherapie bei Rückenschmerzen – Physiotherapie Demo"
-      description="Beispiel einer Behandlungsdetailseite für Rückenschmerzen in einer Physiotherapiepraxis."
+      title="Physiotherapie bei Rückenschmerzen – Praxis Elbbalance"
+      description="Behandlungsdetailseite der Praxis Elbbalance für Rückenschmerzen und Alltagsschmerzen."
       path="/referenzen/physio-demo/rueckenschmerzen"
     >
       <section className="section-container py-12">

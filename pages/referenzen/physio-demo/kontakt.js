@@ -5,8 +5,8 @@ import { practiceInfo } from '../../../components/references/physio-demo/physioD
 export default function PhysioDemoKontaktPage() {
   return (
     <PhysioDemoLayout
-      title="Kontakt & Termin – Physiotherapie Demo"
-      description="Beispiel einer Kontakt- und Terminseite für eine moderne Physiotherapiepraxis-Website."
+      title="Kontakt & Termin – Praxis Elbbalance Physiotherapie"
+      description="Kontakt- und Terminseite der Praxis Elbbalance Physiotherapie in Hamburg."
       path="/referenzen/physio-demo/kontakt"
     >
       <section className="section-container py-12">

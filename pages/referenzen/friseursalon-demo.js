@@ -165,13 +165,19 @@ export default function FriseursalonDemoPage() {
     <>
       <SEOHead
         title="Friseursalon Elbhaar Hamburg"
-        description="Friseursalon Elbhaar in Hamburg mit Leistungen, Preisen, Team, Galerie, Termin und Kontakt."
+        description="Friseursalon Elbhaar mit Leistungen, Preisen, Team, Galerie, Terminbuchung und Kontaktbereich."
         path="/referenzen/friseursalon-demo"
       />
       <div className="relative min-h-screen bg-[#f7f2eb] text-[#2f2927]">
         <ReferenceStickyBackButton />
 
         <main>
+          <section className="section-container pt-8" aria-label="Salon Hinweis">
+            <p className="inline-flex rounded-full border border-[#dccfc2] bg-[#fffaf3] px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#776a61]">
+              Elbhaar Studio · Schnitte, Coloration und Pflege in Hamburg-Eimsbüttel
+            </p>
+          </section>
+
           <section className="section-container pb-10 pt-8" id="start" aria-labelledby="hero-heading">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
               <article className="rounded-[2rem] border border-[#dfd2c4] bg-[#fffdfa] p-7 sm:p-10">
@@ -367,7 +373,7 @@ export default function FriseursalonDemoPage() {
                 <h3 className="text-lg font-semibold">Friseursalon Elbhaar</h3>
                 <p className="mt-3 text-[#5f554f]">Isestraße 44, 20144 Hamburg</p>
                 <p className="mt-2 text-[#5f554f]">Telefon: 040 / 389 74 112</p>
-                <p className="mt-2 text-[#5f554f]">E-Mail: termin@elbhaar-demo.de</p>
+                <p className="mt-2 text-[#5f554f]">E-Mail: termin@elbhaar-studio.de</p>
                 <dl className="mt-6 space-y-2 text-sm text-[#6b6059]">
                   <div className="flex justify-between gap-4">
                     <dt>Mo–Fr</dt>
@@ -404,14 +410,14 @@ export default function FriseursalonDemoPage() {
             </div>
           </section>
 
-          <section className="section-container pb-14" aria-label="Terminabschluss">
-            <div className="rounded-[2rem] border border-[#ded1c3] bg-[#fffdfa] p-7 sm:flex sm:items-center sm:justify-between sm:gap-6">
-              <p className="text-[#5f554f]">Termine werden telefonisch oder per E-Mail bestätigt.</p>
-              <Link href="#kontakt" className="mt-4 inline-flex rounded-full bg-[#332d2a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1f1b1a] sm:mt-0">
-                Kontakt ansehen
-              </Link>
-            </div>
-          </section>
+          <ReferenceProjectCTA
+            title="Bereit für Ihren neuen Look?"
+            text="Buchen Sie Beratung, Schnitt oder Coloration direkt im Studio."
+            primaryLabel="Termin buchen"
+            primaryHref="#termin"
+            secondaryLabel="Leistungen ansehen"
+            secondaryHref="#leistungen"
+          />
         </main>
       </div>
     </>
