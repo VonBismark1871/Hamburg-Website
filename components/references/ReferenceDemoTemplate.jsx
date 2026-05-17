@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import SEOHead from '../SEOHead';
 import ReferenceBackButton from './ReferenceBackButton';
-import { asArray } from './safeArray';
 
 const palette = {
   dark: {
@@ -43,16 +42,15 @@ const palette = {
 
 export default function ReferenceDemoTemplate({ title, description, path, business, highlights, tone = 'clean' }) {
   const styles = palette[tone] || palette.clean;
-  const safeHighlights = asArray(highlights);
 
   return (
     <>
-      <SEOHead title={`${title} – Demo`} description={description} path={path} />
+      <SEOHead title={title} description={description} path={path} />
       <div className={`min-h-screen ${styles.page}`}>
         <ReferenceBackButton />
         <main className="section-container py-16 sm:py-20">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em]">Beispielprojekt</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em]">{business}</p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">{title}</h1>
             <p className={`mt-5 text-lg ${styles.muted}`}>{description}</p>
           </header>
@@ -61,14 +59,14 @@ export default function ReferenceDemoTemplate({ title, description, path, busine
             <article className={`rounded-2xl border p-6 lg:col-span-2 ${styles.panel}`}>
               <h2 className="text-2xl font-semibold">{business}</h2>
               <p className={`mt-3 ${styles.muted}`}>
-                Diese Demo zeigt eine mögliche Struktur für eine moderne Unternehmenswebsite. Inhalte, Farben und Bildwelt können individuell auf Ihr Unternehmen angepasst werden.
+                Wir verbinden präzise Leistungen, ruhige Beratung und eine klare Terminführung für Kundinnen und Kunden.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/kontakt" className={`rounded-lg px-5 py-2.5 text-sm font-semibold transition ${styles.primary}`}>
-                  Projekt anfragen
+                  Termin anfragen
                 </Link>
-                <Link href="/preise" className={`rounded-lg border px-5 py-2.5 text-sm font-semibold transition ${styles.secondary}`}>
-                  Preise ansehen
+                <Link href="#kontakt" className={`rounded-lg border px-5 py-2.5 text-sm font-semibold transition ${styles.secondary}`}>
+                  Kontakt ansehen
                 </Link>
               </div>
             </article>
@@ -76,7 +74,7 @@ export default function ReferenceDemoTemplate({ title, description, path, busine
             <aside className={`rounded-2xl border p-6 ${styles.panel}`}>
               <h2 className="text-lg font-semibold">Highlights</h2>
               <ul className={`mt-4 space-y-2 text-sm ${styles.muted}`}>
-                {safeHighlights.map((highlight) => (
+                {highlights.map((highlight) => (
                   <li key={highlight}>• {highlight}</li>
                 ))}
               </ul>

@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SEOHead from '../../../components/SEOHead';
-import Header from '../../../components/Header';
 import ReferenceStickyBackButton from '../../../components/ReferenceStickyBackButton';
-import ConceptCaseBlock from '../../../components/references/ConceptCaseBlock';
 import PropertyCard from '../../../components/references/immobilien-demo/PropertyCard';
 import { featuredPropertyIds, properties } from '../../../components/references/immobilien-demo/properties';
 
@@ -26,17 +24,13 @@ export default function ImmobilienDemoHomePage() {
   return (
     <>
       <SEOHead
-        title="Immobilienmakler Website Demo – Hamburg Websites"
-        description="Beispiel einer modernen Immobilienmakler-Website mit Objektübersicht, Exposé und Anfragebereich."
+        title="Elbquartier Immobilien Hamburg"
+        description="Immobilienmakler in Hamburg mit Objektübersicht, Exposés, Bewertung und Kontakt."
         path="/referenzen/immobilien-demo"
       />
-      <Header />
       <main className="bg-[#f6f3ee] text-stone-900">
         <section className="section-container pb-12 pt-10">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-stone-500">
-            Beispiel einer möglichen Immobilienmakler-Website
-          </p>
-          <div className="mt-5 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+          <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
             <div className="relative overflow-hidden rounded-[2rem]">
               <Image
                 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=80"
@@ -89,8 +83,6 @@ export default function ImmobilienDemoHomePage() {
             </aside>
           </div>
         </section>
-
-        <ConceptCaseBlock slug="immobilien-demo" compact />
 
         <section className="section-container pb-16" aria-labelledby="featured-objects">
           <div className="mb-7 flex items-end justify-between gap-4">
@@ -147,7 +139,7 @@ export default function ImmobilienDemoHomePage() {
 
         <section className="section-container pb-16" aria-labelledby="stimmen">
           <h2 id="stimmen" className="text-3xl font-semibold sm:text-4xl">
-            Beispielhafte Stimmen von Verkäufer- und Käuferseite
+            Stimmen von Verkäufer- und Käuferseite
           </h2>
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {testimonials.map((testimonial) => (

@@ -11,7 +11,7 @@ export default function AboutSection({ headingTag = 'h2', title = 'Über uns', c
             {title}
           </Heading>
           <p className="mt-3 text-slate-600">
-            Hamburg Websites unterstützt lokale Unternehmen mit einem klar strukturierten, verlässlichen Webauftritt.
+            Hamburg Websites unterstützt Unternehmen mit Webauftritten, die zu Ziel, Umfang und Budget passen.
           </p>
           {cta ? (
             <Link href={cta.href} className="mt-4 inline-flex text-sm font-semibold text-indigo-700 transition hover:text-indigo-600">
@@ -26,9 +26,9 @@ export default function AboutSection({ headingTag = 'h2', title = 'Über uns', c
           </p>
         </div>
         <div>
-          <h3 className="font-semibold text-slateBlue">Fokus auf lokale Sichtbarkeit</h3>
+          <h3 className="font-semibold text-slateBlue">Passender Umfang</h3>
           <p className="mt-2 text-slate-600">
-            Inhalte und Seitentitel werden auf relevante Suchanfragen in Hamburg abgestimmt.
+            Vom schlanken Einstieg bis zu erweiterten Seiten wird nur umgesetzt, was wirklich hilft.
           </p>
         </div>
       </div>

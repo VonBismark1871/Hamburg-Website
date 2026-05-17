@@ -8,23 +8,23 @@ export default function KontaktPage() {
   return (
     <>
       <SEOHead
-        title="Kontakt - Konzept-Vorschau für Ihre Website"
-        description="Kontaktieren Sie Hamburg Websites für eine kostenlose Konzept-Vorschau, Preisrange und Einschätzung zu Design, SEO, Performance und Website-Struktur."
+        title="Kontakt – Website-Projekt in Hamburg besprechen"
+        description="Kontaktieren Sie Hamburg Websites für eine kostenlose Demo-Richtung und ein unverbindliches Erstgespräch zu Umfang, Stil und Budget."
         path="/kontakt"
       />
       <Header />
       <main>
         <section className="section-container section-spacing pb-6" aria-labelledby="kontakt-heading">
           <h1 id="kontakt-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
-            <span className="h1-accent-italic">Kontakt</span> für Ihre Konzept-Vorschau
+            <span className="h1-accent-italic">Kontakt</span> – Website-Projekt besprechen
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-slate-600">
-            Schicken Sie die wichtigsten Eckdaten. Sie erhalten eine Einschätzung, welcher Umfang sinnvoll ist und wie
-            hochwertig der Auftritt ohne unnötige Komplexität starten kann.
+            Nutzen Sie das Formular für Ihre Anfrage. Wir melden uns zeitnah mit einem konkreten Vorschlag für den
+            nächsten Schritt.
           </p>
         </section>
 
-        <Contact headingTag="h2" title="Erzählen Sie kurz, was hochwertiger wirken soll." />
+        <Contact headingTag="h2" title="Schreiben Sie uns Ihr Website-Projekt" />
 
         <section className="section-container pb-16" aria-labelledby="kontakt-links-heading">
           <p className="section-label">Weitere Links</p>

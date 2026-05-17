@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SEOHead from '../../components/SEOHead';
-import Header from '../../components/Header';
 import ReferenceBackButton from '../../components/references/ReferenceBackButton';
-import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const chefRecommendations = [
   {
@@ -97,7 +95,6 @@ const menuCategories = [
 function RestaurantHero() {
   return (
     <section id="start" className="section-container pb-12 pt-8 sm:pt-10" aria-labelledby="hero-heading">
-      <p className="text-sm text-[#6a5e50]">Beispiel einer möglichen Restaurant-Website</p>
       <div className="mt-4 grid gap-5 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
         <figure className="relative overflow-hidden rounded-[2rem] shadow-[0_24px_70px_-40px_rgba(33,22,13,0.8)]">
           <Image
@@ -158,8 +155,8 @@ function TrustBlock() {
         <span className="tracking-[0.12em] text-[#b27141]" aria-hidden="true">
           ★★★★★
         </span>
-        <p className="font-medium">Konzept-Fokus: Reservierung, Speisekarte und Atmosphäre</p>
-        <p className="text-[#6b5e4f]">Demo-Inhalte zeigen mögliche Struktur und Tonalität, keine echten Bewertungen.</p>
+        <p className="font-medium">4.7 bei Google · 180 Bewertungen</p>
+        <p className="text-[#6b5e4f]">Beliebt bei Gästen aus ganz Hamburg.</p>
       </div>
     </section>
   );
@@ -291,19 +288,17 @@ export default function RestaurantDemoPage() {
   return (
     <>
       <SEOHead
-        title="Restaurant Website Demo – Hamburg Websites"
-        description="Beispiel einer modernen Restaurant-Website mit Speisekarte, Galerie und Reservierungsfunktion."
+        title="Restaurant Hafenblick Hamburg"
+        description="Restaurant Hafenblick in Hamburg mit Speisekarte, Galerie, Öffnungszeiten und Reservierung."
         path="/referenzen/restaurant-demo"
       />
 
-      <Header />
       <div className="min-h-screen bg-[#f3ece2] text-[#2a2420]">
         <ReferenceBackButton />
 
         <main>
           <RestaurantHero />
           <TrustBlock />
-          <ConceptCaseBlock slug="restaurant-demo" compact />
           <KitchenStory />
           <MenuPreview />
           <AtmosphereGallery />
@@ -368,15 +363,10 @@ export default function RestaurantDemoPage() {
 
           <section className="section-container pb-14">
             <div className="rounded-2xl bg-[#efe4d6] p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
-              <p className="text-[#433a31]">Sie möchten eine ähnliche Website für Ihr Restaurant?</p>
-              <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
-                <Link href="/kontakt" className="rounded-md bg-[#2e2a27] px-5 py-2.5 text-sm font-semibold text-[#f6eee2]">
-                  Eigene Demo anfragen
-                </Link>
-                <Link href="/#preise" className="rounded-md border border-[#3e3530] px-5 py-2.5 text-sm font-semibold text-[#3e3530]">
-                  Preise ansehen
-                </Link>
-              </div>
+              <p className="text-[#433a31]">Reservierungen nehmen wir telefonisch oder per E-Mail entgegen.</p>
+              <Link href="mailto:reservierung@hafenblick-demo.de" className="mt-4 inline-flex rounded-md bg-[#2e2a27] px-5 py-2.5 text-sm font-semibold text-[#f6eee2] sm:mt-0">
+                Tisch anfragen
+              </Link>
             </div>
           </section>
         </main>

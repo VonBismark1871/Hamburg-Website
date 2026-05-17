@@ -1,49 +1,45 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
 import SEOHead from '../../components/SEOHead';
-import ReferenceProjectCTA from '../../components/ReferenceProjectCTA';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
-import ConceptCaseBlock from '../../components/references/ConceptCaseBlock';
 
 const services = [
   {
     title: 'Damenhaarschnitt',
     text: 'Präziser Schnitt inklusive individueller Typberatung und passendem Finish.',
     price: 'ab 48€',
-    icon: '✂️'
+    icon: 'Cut'
   },
   {
     title: 'Herrenhaarschnitt',
     text: 'Moderne Looks mit sauberen Konturen und unkompliziertem Styling für jeden Tag.',
     price: 'ab 29€',
-    icon: '🧔'
+    icon: 'Men'
   },
   {
     title: 'Föhnen & Styling',
     text: 'Mehr Volumen, Bewegung und Halt – perfekt für Alltag, Business oder Events.',
     price: 'ab 35€',
-    icon: '💨'
+    icon: 'Styling'
   },
   {
     title: 'Coloration',
     text: 'Schonende Farbbehandlungen mit natürlichem Glanz und harmonischen Nuancen.',
     price: 'ab 75€',
-    icon: '🎨'
+    icon: 'Color'
   },
   {
     title: 'Balayage / Strähnen',
     text: 'Sanfte Farbverläufe und gezielte Highlights für einen modernen, lebendigen Look.',
     price: 'ab 120€',
-    icon: '✨'
+    icon: 'Balayage'
   },
   {
     title: 'Pflege & Beratung',
     text: 'Tiefenpflege und professionelle Empfehlungen für gesundes Haar zuhause.',
     price: 'ab 25€',
-    icon: '🫶'
+    icon: 'Care'
   }
 ];
 
@@ -112,17 +108,17 @@ const reasons = [
 
 const popularServices = [
   {
-    icon: '✂️',
+    icon: 'Cut',
     title: 'Haarschnitt',
     text: 'Präzise Schnitte für Damen und Herren.'
   },
   {
-    icon: '🎨',
+    icon: 'Color',
     title: 'Coloration',
     text: 'Moderne Farbtechniken für natürliche Ergebnisse.'
   },
   {
-    icon: '✨',
+    icon: 'Balayage',
     title: 'Balayage',
     text: 'Sanfte Highlights für lebendige Haarfarben.'
   }
@@ -168,21 +164,14 @@ export default function FriseursalonDemoPage() {
   return (
     <>
       <SEOHead
-        title="Friseursalon Demo in Hamburg – Moderne Salon-Website"
-        description="Friseursalon-Demo mit Leistungen, Preisen, Team, Galerie, Termin-CTA und Kontaktbereich für eine realistische Salon-Website."
+        title="Friseursalon Elbhaar Hamburg"
+        description="Friseursalon Elbhaar in Hamburg mit Leistungen, Preisen, Team, Galerie, Termin und Kontakt."
         path="/referenzen/friseursalon-demo"
       />
-      <Header />
       <div className="relative min-h-screen bg-[#f7f2eb] text-[#2f2927]">
         <ReferenceStickyBackButton />
 
         <main>
-          <section className="section-container pt-8" aria-label="Demo Hinweis">
-            <p className="inline-flex rounded-full border border-[#dccfc2] bg-[#fffaf3] px-4 py-2 text-xs font-medium tracking-[0.08em] text-[#776a61]">
-              Demo-Projekt · So könnte eine moderne Friseursalon-Website aussehen
-            </p>
-          </section>
-
           <section className="section-container pb-10 pt-8" id="start" aria-labelledby="hero-heading">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
               <article className="rounded-[2rem] border border-[#dfd2c4] bg-[#fffdfa] p-7 sm:p-10">
@@ -223,7 +212,7 @@ export default function FriseursalonDemoPage() {
                   key={service.title}
                   className="rounded-[1.7rem] border border-[#e1d6c9] bg-[#fffdfa] p-6 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-22px_rgba(53,40,33,0.55)]"
                 >
-                  <p className="text-2xl" aria-hidden="true">{service.icon}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8b7d73]" aria-hidden="true">{service.icon}</p>
                   <h3 className="mt-4 text-xl font-semibold text-[#3b312d]">{service.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#655951]">{service.text}</p>
                 </article>
@@ -233,16 +222,14 @@ export default function FriseursalonDemoPage() {
 
           <section className="section-container pb-14" aria-label="Vertrauen und Bewertungen">
             <div className="flex flex-col gap-4 rounded-[1.7rem] border border-[#dfd2c4] bg-[#fff8f0] px-6 py-5 md:flex-row md:items-center md:justify-between">
-              <p className="text-sm font-semibold text-[#4c403a] sm:text-base">Konzept-Proof: Leistungen, Lookbook, Team und Terminlogik</p>
+              <p className="text-sm font-semibold text-[#4c403a] sm:text-base">★★★★★ 4.8 Bewertung bei Google · 120+ Rezensionen</p>
               <ul className="flex flex-wrap gap-3 text-sm text-[#665951]">
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Beispielhafte Trust-Signale</li>
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Klare Beratungsstory</li>
-                <li className="rounded-full bg-white px-3 py-1.5">✦ Lokale Kontaktführung</li>
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Über 10 Jahre Erfahrung</li>
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Persönliche Beratung</li>
+                <li className="rounded-full bg-white px-3 py-1.5">✦ Zentrale Lage in Hamburg</li>
               </ul>
             </div>
           </section>
-
-          <ConceptCaseBlock slug="friseursalon-demo" compact />
 
           <section className="section-container pb-16" id="leistungen" aria-labelledby="services-heading">
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
@@ -258,7 +245,7 @@ export default function FriseursalonDemoPage() {
                     <li key={service.title} className="p-4 sm:p-5">
                       <div className="flex items-start justify-between gap-4">
                         <h3 className="text-base font-semibold sm:text-lg">
-                          <span className="mr-2" aria-hidden="true">{service.icon}</span>
+                          <span className="mr-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#8b7d73]" aria-hidden="true">{service.icon}</span>
                           {service.title}
                         </h3>
                         <p className="rounded-full bg-[#332d2a] px-3 py-1 text-xs font-semibold text-[#f7f1e9] sm:text-sm">{service.price}</p>
@@ -362,7 +349,7 @@ export default function FriseursalonDemoPage() {
           </section>
 
           <section className="section-container pb-16" aria-labelledby="testimonials-heading">
-            <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Beispielhafte Kundenstimmen</h2>
+            <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">Kundenstimmen</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {testimonials.map((item) => (
                 <blockquote key={item.by} className="rounded-3xl border border-[#dfd3c7] bg-[#fffdfa] p-6">
@@ -417,13 +404,16 @@ export default function FriseursalonDemoPage() {
             </div>
           </section>
 
-          <ReferenceProjectCTA
-            title="Sie möchten eine ähnliche Website für Ihren Friseursalon?"
-            text="Wir gestalten individuelle Salon-Websites mit klarer Struktur, starker Bildsprache und überzeugender Terminführung."
-          />
+          <section className="section-container pb-14" aria-label="Terminabschluss">
+            <div className="rounded-[2rem] border border-[#ded1c3] bg-[#fffdfa] p-7 sm:flex sm:items-center sm:justify-between sm:gap-6">
+              <p className="text-[#5f554f]">Termine werden telefonisch oder per E-Mail bestätigt.</p>
+              <Link href="#kontakt" className="mt-4 inline-flex rounded-full bg-[#332d2a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1f1b1a] sm:mt-0">
+                Kontakt ansehen
+              </Link>
+            </div>
+          </section>
         </main>
       </div>
-      <Footer />
     </>
   );
 }

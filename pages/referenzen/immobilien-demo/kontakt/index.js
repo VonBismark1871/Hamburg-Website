@@ -1,25 +1,23 @@
 import Link from 'next/link';
 import SEOHead from '../../../../components/SEOHead';
-import Header from '../../../../components/Header';
 import ReferenceStickyBackButton from '../../../../components/ReferenceStickyBackButton';
 
 export default function ImmobilienKontaktPage() {
   return (
     <>
       <SEOHead
-        title="Kontakt für Immobilienanfragen – Demo"
-        description="Kontaktseite für das Immobilienmakler-Demo von Hamburg Websites."
+        title="Kontakt für Immobilienanfragen"
+        description="Kontaktseite von Elbquartier Immobilien für Bewertung, Besichtigung und Beratung."
         path="/referenzen/immobilien-demo/kontakt"
       />
-      <Header />
       <main className="bg-[#f6f3ee] pb-20 pt-10 text-stone-900">
         <section className="section-container max-w-4xl" aria-labelledby="kontakt-heading">
           <h1 id="kontakt-heading" className="text-4xl font-semibold sm:text-5xl">
             Beratung & Bewertung anfragen
           </h1>
           <p className="mt-4 text-stone-700">
-            Diese Seite ist Teil des Referenzprojekts. Ein echter Maklerbetrieb könnte hier ein Anfrageformular,
-            Terminbuchung und Rückrufservice integrieren.
+            Senden Sie uns eine kurze Nachricht zur Immobilie, zur gewünschten Besichtigung oder zur Bewertung Ihres
+            Objekts. Wir melden uns persönlich zurück.
           </p>
           <div className="mt-8 rounded-2xl border border-stone-300 bg-white p-6">
             <p className="font-semibold">Elbquartier Immobilien</p>

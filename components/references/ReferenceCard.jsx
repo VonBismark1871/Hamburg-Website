@@ -23,6 +23,14 @@ export default function ReferenceCard({ project }) {
         />
       </div>
       <div className="p-6">
+        <div className="mb-3 flex flex-wrap gap-2">
+          <span className="rounded-full border border-cyan-100 bg-cyan-50 px-3 py-1 text-xs font-semibold text-accent">
+            {project.siteType}
+          </span>
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600">
+            {project.complexity}
+          </span>
+        </div>
         <h3 className="text-xl font-semibold text-slateBlue">{project.title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">{project.description}</p>
         <ul className="mt-4 flex flex-wrap gap-2" aria-label="Projekt-Highlights">
