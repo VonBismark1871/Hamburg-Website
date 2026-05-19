@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { AnimatePresence, motion } from 'framer-motion';
 import '../styles/globals.css';
 
 export default function App({ Component, pageProps }) {
@@ -20,7 +21,7 @@ export default function App({ Component, pageProps }) {
     );
 
     document
-      .querySelectorAll('.card, .feature-item, .step, .price-card, .faq-item, .team-item, .promise-item')
+      .querySelectorAll('.card, .feature-item, .step, .price-card, .faq-item, .team-item, .promise-item, [data-reveal]')
       .forEach((element, index) => {
         element.style.transitionDelay = `${(index % 4) * 0.07}s`;
         observer.observe(element);
@@ -36,14 +37,24 @@ export default function App({ Component, pageProps }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap"
           rel="stylesheet"
         />
         <link rel="icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
         <link rel="shortcut icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
         <link rel="apple-touch-icon" href="/brand/hw-approved-icon-transparent-v1.png" />
       </Head>
-      <Component {...pageProps} />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={router.asPath}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 }

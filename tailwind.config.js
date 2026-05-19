@@ -5,46 +5,31 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#0d3b44',
-          light: '#145566',
-          dark: '#072229'
+          DEFAULT: 'hsl(193 85% 16%)',
+          light: 'hsl(193 69% 21%)',
+          dark: 'hsl(193 95% 10%)'
         },
         accent: {
-          DEFAULT: '#00c2a8',
-          hover: '#00a892',
-          light: 'rgba(0, 194, 168, 0.12)'
+          DEFAULT: 'hsl(172 100% 38%)',
+          hover: 'hsl(172 100% 33%)'
         },
-        coral: {
-          DEFAULT: '#ff6b6b',
-          light: 'rgba(255, 107, 107, 0.12)'
-        },
-        ink: {
-          DEFAULT: '#0d1f23',
-          secondary: '#3d5a61',
-          muted: '#6b8a93',
-          light: '#94a8ae'
-        },
-        bg: {
-          base: '#fafbfc',
-          card: '#ffffff',
-          dark: '#0a1f24',
-          muted: '#f4f6f8'
-        },
-        line: {
-          DEFAULT: '#e2e8ec',
-          dark: 'rgba(255, 255, 255, 0.1)'
-        },
-        slateBlue: '#0d3b44'
+        background: 'hsl(210 20% 98%)',
+        foreground: 'hsl(193 41% 10%)',
+        muted: 'hsl(203 25% 44%)',
+        border: 'hsl(210 14% 89%)',
+        slateBlue: 'hsl(193 85% 16%)'
       },
       fontFamily: {
-        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
         serif: ['DM Serif Display', 'Georgia', 'serif']
       },
       borderRadius: {
         sm: '0.5rem',
-        md: '0.875rem',
-        lg: '1.25rem',
-        xl: '1.75rem'
+        md: '0.75rem',
+        lg: '1rem',
+        xl: '1.25rem',
+        '2xl': '1.5rem',
+        '3xl': '2rem'
       },
       boxShadow: {
         soft: '0 4px 20px rgba(13, 59, 68, 0.06)',

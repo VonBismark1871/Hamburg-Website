@@ -1,4 +1,8 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const faqItems = [
   {
@@ -14,7 +18,7 @@ export const faqItems = [
       <>
         Die meisten Projekte bewegen sich je nach Umfang zwischen etwa 400 € und 1.500 €. Eine genauere Übersicht über
         typische Projektbudgets finden Sie auf unserer{' '}
-        <Link href="/preise" className="font-medium text-accent underline-offset-4 hover:underline">
+        <Link href="/preise" className="font-semibold text-primary hover:underline underline-offset-4">
           Preisübersicht
         </Link>
         .
@@ -39,7 +43,7 @@ export const faqItems = [
       <>
         Nach der Veröffentlichung können Sie Ihre Website selbst verwalten oder optional eine laufende Betreuung
         buchen. Mehr Informationen dazu finden Sie im Bereich{' '}
-        <Link href="/preise" className="font-medium text-accent underline-offset-4 hover:underline">
+        <Link href="/preise" className="font-semibold text-primary hover:underline underline-offset-4">
           Websitepflege und Hosting
         </Link>
         .
@@ -68,6 +72,62 @@ export const faqItems = [
   }
 ];
 
+const FAQItem = ({ question, answer, answerText, isOpen, onClick, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+    >
+      <button
+        onClick={onClick}
+        className={`w-full text-left transition-all duration-300 ${
+          isOpen 
+            ? 'bg-primary rounded-2xl shadow-lg shadow-primary/10' 
+            : 'bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-md'
+        }`}
+      >
+        <div className="p-6">
+          <div className="flex items-center justify-between gap-4">
+            <span className={`text-lg font-semibold transition-colors ${isOpen ? 'text-white' : 'text-foreground'}`}>
+              {question}
+            </span>
+            <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+              isOpen ? 'bg-white/20' : 'bg-primary/5'
+            }`}>
+              <svg 
+                className={`w-5 h-5 transition-all duration-300 ${isOpen ? 'text-white rotate-180' : 'text-primary'}`}
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+          
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <p className="mt-4 text-white/90 leading-relaxed">
+                  {answer ?? answerText}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </button>
+    </motion.div>
+  );
+};
+
 export default function FAQ({
   headingTag = 'h2',
   title = 'Häufig gestellte Fragen',
@@ -76,58 +136,90 @@ export default function FAQ({
   items = faqItems,
   showFinalCta = true
 }) {
+  const [openIndex, setOpenIndex] = useState(0);
   const Heading = headingTag;
 
   return (
-    <section className="section-container section-spacing" id={sectionId} aria-labelledby="faq-heading">
-      <p className="section-label">FAQ</p>
-      <Heading id="faq-heading" className="text-3xl text-slateBlue">
-        {title}
-      </Heading>
-      <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">{intro}</p>
-
-      <div className="mt-8 space-y-3">
-        {items.map((item) => (
-          <details
-            key={item.question}
-            className="faq-item group card px-6 py-5"
-          >
-            <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
-              <h3 className="text-lg font-semibold text-slateBlue">{item.question}</h3>
-              <svg
-                className="mt-1 h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 group-open:rotate-180"
-                viewBox="0 0 20 20"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
-            </summary>
-            <p className="mt-4 pr-8 leading-relaxed text-slate-600">{item.answer ?? item.answerText}</p>
-          </details>
-        ))}
-      </div>
-
-      {showFinalCta ? (
-        <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
-          <h3 className="text-2xl font-bold text-slateBlue">Haben Sie noch Fragen?</h3>
-          <p className="mt-3 max-w-3xl text-slate-600">
-            Wenn Ihre Frage hier nicht beantwortet wurde, können Sie uns gerne direkt kontaktieren. Wir geben Ihnen
-            eine klare Einschätzung für Ihr Projekt.
+    <section className="py-24 bg-muted/30" id={sectionId} aria-labelledby="faq-heading">
+      <div className="container-custom">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+            FAQ
+          </span>
+          <Heading id="faq-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            {title.includes('Fragen') ? (
+              <>Häufig gestellte <span className="text-gradient">Fragen</span></>
+            ) : (
+              title
+            )}
+          </Heading>
+          <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+            {intro}
           </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link href="/kontakt" className="primary-btn">
-              Projekt anfragen
-            </Link>
-            <Link
-              href="/preise"
-              className="secondary-btn text-slateBlue"
-            >
-              Preise ansehen
-            </Link>
-          </div>
+        </motion.div>
+
+        <div className="max-w-3xl mx-auto space-y-4">
+          {items.map((item, index) => (
+            <FAQItem
+              key={item.question}
+              index={index}
+              question={item.question}
+              answer={item.answer}
+              answerText={item.answerText}
+              isOpen={openIndex === index}
+              onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+            />
+          ))}
         </div>
-      ) : null}
+
+        {showFinalCta && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-16 max-w-3xl mx-auto"
+          >
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary-dark p-8 md:p-12">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  Haben Sie noch Fragen?
+                </h3>
+                <p className="text-white/80 text-lg mb-8 max-w-xl">
+                  Wenn Ihre Frage hier nicht beantwortet wurde, können Sie uns gerne direkt kontaktieren. 
+                  Wir geben Ihnen eine klare Einschätzung für Ihr Projekt.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link 
+                    href="/kontakt" 
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary font-semibold rounded-xl hover:bg-gray-100 transition-colors"
+                  >
+                    Projekt anfragen
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                  <Link
+                    href="/preise"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors border border-white/20"
+                  >
+                    Preise ansehen
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </div>
     </section>
   );
 }

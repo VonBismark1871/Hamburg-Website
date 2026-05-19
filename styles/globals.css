@@ -2,422 +2,255 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   CSS VARIABLES - Design Tokens
+   ============================================ */
+
 :root {
-  /* Primary palette - Modern dark teal with warm accents */
-  --color-primary: #0d3b44;
-  --color-primary-light: #145566;
-  --color-primary-dark: #072229;
+  /* Primary - Deep Professional Teal */
+  --primary: 193 85% 16%;
+  --primary-light: 193 69% 21%;
+  --primary-dark: 193 95% 10%;
   
-  /* Accent - Vibrant teal for CTAs */
-  --color-accent: #00c2a8;
-  --color-accent-hover: #00a892;
-  --color-accent-light: rgba(0, 194, 168, 0.12);
+  /* Accent - Vibrant Teal */
+  --accent: 172 100% 38%;
+  --accent-hover: 172 100% 33%;
   
-  /* Secondary accent - Warm coral for highlights */
-  --color-coral: #ff6b6b;
-  --color-coral-light: rgba(255, 107, 107, 0.12);
+  /* Background */
+  --background: 210 20% 98%;
+  --foreground: 193 41% 10%;
+  --muted: 203 25% 44%;
+  --muted-foreground: 203 20% 50%;
   
-  /* Backgrounds */
-  --color-bg-base: #fafbfc;
-  --color-bg-card: #ffffff;
-  --color-bg-dark: #0a1f24;
-  --color-bg-muted: #f4f6f8;
+  /* Card */
+  --card: 0 0% 100%;
+  --card-foreground: 193 41% 10%;
   
-  /* Text colors */
-  --color-ink: #0d1f23;
-  --color-ink-secondary: #3d5a61;
-  --color-ink-muted: #6b8a93;
-  --color-ink-light: #94a8ae;
+  /* Border */
+  --border: 210 14% 89%;
   
-  /* Borders and lines */
-  --color-line: #e2e8ec;
-  --color-line-dark: rgba(255, 255, 255, 0.1);
-  
-  /* Typography */
-  --font-serif: 'DM Serif Display', Georgia, serif;
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-  
-  /* Spacing */
-  --section-gap: clamp(4rem, 8vw, 7rem);
-  
-  /* Border radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.875rem;
-  --radius-lg: 1.25rem;
-  --radius-xl: 1.75rem;
-  --radius-full: 9999px;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-sans);
-  background: var(--color-bg-base);
-  color: var(--color-ink);
-  @apply antialiased;
+  /* Radius */
+  --radius: 0.75rem;
 }
 
 /* ============================================
-   LAYOUT UTILITIES
+   BASE STYLES
    ============================================ */
 
-.section-container {
-  @apply mx-auto max-w-7xl px-5 sm:px-6 lg:px-8;
+html {
+  scroll-behavior: smooth;
+  @apply bg-background;
 }
 
-.section-spacing {
-  padding-top: var(--section-gap);
-  padding-bottom: var(--section-gap);
+body {
+  @apply antialiased text-foreground;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ============================================
+   DESIGN SYSTEM UTILITIES
+   ============================================ */
+
+@layer utilities {
+  .container-custom {
+    @apply mx-auto max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  
+  .bg-primary {
+    background-color: hsl(var(--primary));
+  }
+  
+  .bg-primary-dark {
+    background-color: hsl(var(--primary-dark));
+  }
+  
+  .bg-accent {
+    background-color: hsl(var(--accent));
+  }
+  
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+  
+  .text-muted {
+    color: hsl(var(--muted));
+  }
+  
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+  
+  .text-accent {
+    color: hsl(var(--accent));
+  }
+  
+  .border-border {
+    border-color: hsl(var(--border));
+  }
 }
 
 /* ============================================
    TYPOGRAPHY
    ============================================ */
 
-h1, h2 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  color: var(--color-ink);
+@layer base {
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
 }
 
-h3, h4, h5, h6, p, a, span, li, button, input, textarea, select, label {
-  font-family: var(--font-sans);
+/* ============================================
+   LEGACY SUPPORT CLASSES
+   ============================================ */
+
+.section-container {
+  @apply container-custom;
 }
 
-h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.12;
-  letter-spacing: -0.015em;
-}
-
-h3 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  line-height: 1.3;
-  font-weight: 600;
-}
-
-.h1-accent-italic {
-  font-style: italic;
-  color: var(--color-accent);
+.section-spacing {
+  @apply py-16 md:py-24;
 }
 
 .section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-accent);
+  @apply inline-flex items-center gap-2 mb-4 text-xs font-bold tracking-widest uppercase text-accent;
 }
 
 .section-label::before {
   content: '';
-  display: inline-block;
-  width: 1.5rem;
-  height: 2px;
-  background: var(--color-accent);
-  border-radius: 1px;
+  @apply inline-block w-6 h-0.5 bg-accent rounded;
+}
+
+.h1-accent-italic {
+  @apply italic text-accent;
 }
 
 /* ============================================
-   BUTTONS
+   BUTTON STYLES
    ============================================ */
 
 .primary-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: var(--radius-full);
-  padding: 0.875rem 1.75rem;
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  background: var(--color-accent);
-  color: var(--color-bg-dark);
-  box-shadow: 0 4px 14px rgba(0, 194, 168, 0.25);
-}
-
-.primary-btn:hover {
-  transform: translateY(-2px);
-  background: var(--color-accent-hover);
-  box-shadow: 0 8px 25px rgba(0, 194, 168, 0.35);
-}
-
-.primary-btn:active {
-  transform: translateY(0);
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 
+         bg-gradient-to-r from-primary to-primary-dark text-white 
+         font-semibold rounded-xl transition-all duration-300 
+         hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5;
 }
 
 .primary-btn-dark {
-  background: var(--color-primary);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(13, 59, 68, 0.25);
-}
-
-.primary-btn-dark:hover {
-  background: var(--color-primary-light);
-  box-shadow: 0 8px 25px rgba(13, 59, 68, 0.35);
-}
-
-.primary-btn-hero {
-  padding: 1rem 2rem;
-  font-size: 0.9375rem;
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 
+         bg-primary text-white font-semibold rounded-xl transition-all duration-300 
+         hover:bg-primary-dark hover:shadow-lg;
 }
 
 .secondary-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: var(--radius-full);
-  padding: 0.8125rem 1.5rem;
-  background: transparent;
-  border: 1.5px solid var(--color-line);
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--color-ink);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.secondary-btn:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  background: var(--color-accent-light);
-}
-
-.secondary-btn-hero {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.secondary-btn-hero:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.45);
-  color: #fff;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+         bg-transparent border-2 border-gray-200 text-foreground 
+         font-semibold rounded-xl transition-all duration-300 
+         hover:border-primary/30 hover:bg-primary/5;
 }
 
 /* ============================================
-   CARDS & PANELS
+   CARD STYLES
    ============================================ */
 
 .card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply bg-white rounded-2xl border border-gray-100 p-6 
+         transition-all duration-300 hover:shadow-xl hover:border-primary/20;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 194, 168, 0.3);
-  box-shadow: 0 20px 50px rgba(13, 59, 68, 0.08);
+.shadow-soft {
+  box-shadow: 0 4px 20px rgba(13, 59, 68, 0.06);
 }
 
-.service-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-xl);
-  padding: 2rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-6px);
-  border-color: transparent;
-  box-shadow: 0 25px 60px rgba(13, 59, 68, 0.12);
-}
-
-.service-card:hover::before {
-  transform: scaleX(1);
-}
-
-.price-preview-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-xl);
-  padding: 2rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.price-preview-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 194, 168, 0.3);
-  box-shadow: 0 20px 50px rgba(13, 59, 68, 0.08);
-}
-
-.proof-panel {
-  display: grid;
-  gap: 1rem;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-}
-
-.standard-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.25rem;
-  align-items: start;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.standard-row:hover {
-  border-color: rgba(0, 194, 168, 0.3);
-  box-shadow: 0 10px 30px rgba(13, 59, 68, 0.06);
-}
-
-.standard-index {
-  display: inline-flex;
-  width: 3rem;
-  height: 3rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-  background: var(--color-primary);
-  color: var(--color-accent);
-  font-size: 0.875rem;
-  font-weight: 700;
+.shadow-large {
+  box-shadow: 0 20px 60px rgba(13, 59, 68, 0.12);
 }
 
 /* ============================================
-   HERO & DARK SECTIONS
+   KLARE ANSPRÜCHE CARDS
+   ============================================ */
+
+.anspruch-card {
+  @apply bg-white rounded-2xl border border-gray-100 p-6 
+         transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+.anspruch-icon {
+  @apply inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 transition-transform duration-300;
+}
+
+.anspruch-card:hover .anspruch-icon {
+  @apply scale-110;
+}
+
+/* Icon Color Variants */
+.anspruch-icon--teal {
+  @apply bg-gradient-to-br from-teal-100 to-teal-200 text-teal-700;
+}
+
+.anspruch-icon--coral {
+  @apply bg-gradient-to-br from-rose-100 to-rose-200 text-rose-600;
+}
+
+.anspruch-icon--amber {
+  @apply bg-gradient-to-br from-amber-100 to-amber-200 text-amber-700;
+}
+
+.anspruch-icon--purple {
+  @apply bg-gradient-to-br from-violet-100 to-violet-200 text-violet-600;
+}
+
+.anspruch-icon--green {
+  @apply bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-600;
+}
+
+.anspruch-icon--blue {
+  @apply bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600;
+}
+
+/* ============================================
+   HERO SECTION STYLES
    ============================================ */
 
 .hero,
-.section-dark,
-.process-band,
-.final-cta {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--color-bg-dark) 0%, var(--color-primary-dark) 100%);
-}
-
-.hero::before,
-.section-dark::before,
-.process-band::before,
-.final-cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero > *,
-.section-dark > *,
-.process-band > *,
-.final-cta > * {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 194, 168, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 194, 168, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 75%);
-  pointer-events: none;
-}
-
-.hero-glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.15;
-  pointer-events: none;
-}
-
-.hero-glow-one {
-  width: 600px;
-  height: 600px;
-  top: -200px;
-  right: 5%;
-  background: var(--color-accent);
-  animation: glow-pulse 10s ease-in-out infinite;
-}
-
-.hero-glow-two {
-  width: 500px;
-  height: 500px;
-  bottom: -150px;
-  left: 10%;
-  background: var(--color-coral);
-  animation: glow-pulse 12s ease-in-out infinite reverse;
+.section-dark {
+  @apply relative overflow-hidden;
+  background: linear-gradient(135deg, hsl(var(--primary-dark)) 0%, hsl(var(--primary)) 100%);
 }
 
 /* ============================================
-   PROCESS SECTION
+   PRICE CARDS
    ============================================ */
 
-.process-band {
-  color: #fff;
+.price-card {
+  @apply bg-white rounded-3xl border border-gray-100 p-8 
+         transition-all duration-300 hover:shadow-xl;
 }
 
-.process-step {
-  min-height: 200px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-xl);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 1.75rem;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+.price-card.featured {
+  @apply border-2 border-primary relative;
+  background: linear-gradient(180deg, rgba(13, 59, 68, 0.02) 0%, white 100%);
 }
 
-.process-step:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(0, 194, 168, 0.3);
-  transform: translateY(-4px);
-}
-
-/* ============================================
-   FINAL CTA
-   ============================================ */
-
-.final-cta {
-  border-radius: var(--radius-xl);
-  padding: clamp(2.5rem, 6vw, 4rem);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.price-card-badge {
+  @apply absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 
+         bg-gradient-to-r from-primary to-primary-dark text-white 
+         text-xs font-bold uppercase tracking-wide rounded-full;
 }
 
 /* ============================================
@@ -425,54 +258,8 @@ h3 {
    ============================================ */
 
 .feature-item {
-  border-left: 3px solid var(--color-accent);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  padding: 1.25rem 1.5rem;
-  background: var(--color-bg-card);
-  transition: all 0.3s ease;
-}
-
-.feature-item:hover {
-  border-left-color: var(--color-primary);
-  background: var(--color-bg-muted);
-}
-
-/* ============================================
-   PRICING CARDS
-   ============================================ */
-
-.price-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-xl);
-  padding: 2rem;
-  transition: all 0.3s ease;
-}
-
-.price-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 50px rgba(13, 59, 68, 0.08);
-}
-
-.price-card.featured {
-  border: 2px solid var(--color-accent);
-  position: relative;
-  background: linear-gradient(180deg, rgba(0, 194, 168, 0.03) 0%, var(--color-bg-card) 100%);
-}
-
-.price-card-badge {
-  position: absolute;
-  top: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: var(--radius-full);
-  background: var(--color-accent);
-  color: var(--color-bg-dark);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  padding: 0.375rem 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  @apply border-l-4 border-primary rounded-r-xl pl-5 pr-4 py-4 
+         bg-white transition-all duration-300 hover:bg-gray-50;
 }
 
 /* ============================================
@@ -480,87 +267,73 @@ h3 {
    ============================================ */
 
 .reference-format {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.375rem 0.75rem;
-  background: var(--color-accent-light);
-  color: var(--color-primary);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-radius: var(--radius-full);
+  @apply inline-flex items-center px-3 py-1 bg-primary/10 text-primary 
+         text-xs font-bold uppercase tracking-wider rounded-full;
 }
 
 .reference-direction {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.375rem 0.75rem;
-  background: var(--color-bg-muted);
-  color: var(--color-ink-secondary);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border-radius: var(--radius-full);
+  @apply inline-flex items-center px-3 py-1 bg-accent/10 text-accent 
+         text-xs font-semibold uppercase tracking-wide rounded-full;
 }
 
 .reference-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.625rem;
-  background: var(--color-bg-muted);
-  color: var(--color-ink-secondary);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
+  @apply inline-flex items-center px-2.5 py-1 bg-gray-100 text-foreground 
+         text-xs font-medium rounded-lg;
 }
 
 /* ============================================
-   HERO WATERMARK
+   FAQ STYLES
    ============================================ */
 
-.hero-watermark {
-  position: absolute;
-  right: -20px;
-  bottom: -40px;
-  font-family: var(--font-serif);
-  font-size: 180px;
-  color: rgba(255, 255, 255, 0.015);
-  pointer-events: none;
-  user-select: none;
+.faq-item summary {
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
 }
 
 /* ============================================
-   ANIMATIONS
+   PROCESS/TIMELINE
    ============================================ */
 
-.card,
-.feature-item,
-.step,
-.price-card,
-.faq-item,
-.team-item,
-.promise-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+.proof-panel {
+  @apply grid gap-4 bg-white border border-gray-100 rounded-2xl p-6;
 }
 
-.is-visible {
-  opacity: 1;
-  transform: none;
+.step-badge {
+  @apply inline-flex w-10 h-10 items-center justify-center 
+         rounded-full border-2 border-gray-300 bg-white 
+         text-sm font-bold text-foreground transition-all duration-300;
 }
 
-@keyframes glow-pulse {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.12;
-  }
-  50% {
-    transform: translate3d(15px, -10px, 0) scale(1.05);
-    opacity: 0.2;
-  }
+.step-badge:hover,
+.timeline-step:hover .step-badge {
+  @apply border-primary text-primary shadow-lg shadow-primary/10;
+}
+
+/* ============================================
+   CHIPS & BADGES
+   ============================================ */
+
+.chip {
+  @apply inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full;
+}
+
+.chip-sie {
+  @apply bg-green-100 text-green-700;
+}
+
+.chip-hw {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.chip-team {
+  @apply bg-gray-200 text-gray-800;
+}
+
+.chip-time {
+  @apply bg-amber-100 text-amber-700;
 }
 
 /* ============================================
@@ -568,13 +341,7 @@ h3 {
    ============================================ */
 
 .footer-link {
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.5);
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover {
-  color: var(--color-accent);
+  @apply text-white/50 hover:text-accent transition-colors duration-200;
 }
 
 /* ============================================
@@ -587,84 +354,29 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  @apply outline-2 outline-offset-2 outline-primary;
 }
 
 /* ============================================
-   FAQ ITEM
+   REVEAL ANIMATIONS
    ============================================ */
 
-.faq-item summary {
-  list-style: none;
+.card,
+.feature-item,
+.step,
+.price-card,
+.faq-item,
+.team-item,
+.promise-item,
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.faq-item summary::-webkit-details-marker {
-  display: none;
-}
-
-/* ============================================
-   KLARE ANSPRÜCHE CARDS (Inspired by references)
-   ============================================ */
-
-.anspruch-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-xl);
-  padding: 1.75rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.anspruch-card:hover {
-  transform: translateY(-4px);
-  border-color: transparent;
-  box-shadow: 0 20px 50px rgba(13, 59, 68, 0.1);
-}
-
-.anspruch-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: var(--radius-md);
-  margin-bottom: 1.25rem;
-  transition: transform 0.3s ease;
-}
-
-.anspruch-card:hover .anspruch-icon {
-  transform: scale(1.1);
-}
-
-.anspruch-icon--teal {
-  background: linear-gradient(135deg, #e0f7f4 0%, #b3ece4 100%);
-  color: var(--color-primary);
-}
-
-.anspruch-icon--coral {
-  background: linear-gradient(135deg, #ffe5e5 0%, #ffcccc 100%);
-  color: var(--color-coral);
-}
-
-.anspruch-icon--amber {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  color: #b45309;
-}
-
-.anspruch-icon--purple {
-  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
-  color: #7c3aed;
-}
-
-.anspruch-icon--green {
-  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-  color: #059669;
-}
-
-.anspruch-icon--blue {
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  color: #2563eb;
+.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ============================================
@@ -672,16 +384,8 @@ summary:focus-visible {
    ============================================ */
 
 @media (max-width: 640px) {
-  .standard-row {
-    grid-template-columns: 1fr;
-  }
-  
-  .final-cta {
-    border-radius: var(--radius-lg);
-  }
-  
   .section-label::before {
-    width: 1rem;
+    @apply w-4;
   }
 }
 
