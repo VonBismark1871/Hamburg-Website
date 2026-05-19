@@ -6,9 +6,15 @@ export default function Logo({ className = '', compact = false }) {
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-     <img src="/brand/hw-approved-icon-transparent-v1.png" alt="" aria-hidden="true" className={`${iconSize} shrink-0`} />
+      <img 
+        src="/brand/hw-approved-icon-transparent-v1.png" 
+        alt="" 
+        aria-hidden="true" 
+        className={`${iconSize} shrink-0`} 
+      />
       <span className={`font-serif font-normal leading-none tracking-[-0.01em] ${textSize}`}>
-        <span className="text-slate-900">Hamburg</span> <span className="text-accent">Websites</span>
+        <span className="text-ink">Hamburg</span>{' '}
+        <span className="text-accent">Websites</span>
       </span>
     </span>
   );
@@ -16,7 +22,11 @@ export default function Logo({ className = '', compact = false }) {
 
 export function LogoLink({ href = '/', className = '', compact = false }) {
   return (
-    <Link href={href} className={`inline-flex items-center ${className}`} aria-label="Hamburg Websites Startseite">
+    <Link 
+      href={href} 
+      className={`inline-flex items-center transition-opacity hover:opacity-80 ${className}`} 
+      aria-label="Hamburg Websites Startseite"
+    >
       <Logo compact={compact} />
     </Link>
   );
