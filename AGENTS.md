@@ -8,6 +8,7 @@ This file is the durable project guidance for Codex and other agentic coding too
 - Stack: Next.js 14, React 18, Tailwind CSS, Netlify deployment, local Inter font assets, SEO helpers in `lib/seo.js` and `components/SEOHead.jsx`.
 - Important directories: `pages/`, `components/`, `components/references/`, `data/`, `lib/`, `styles/`, `public/`, `scripts/`, `docs/`.
 - Existing process docs: `docs/process/codex-pr-rules.md`, `docs/seo/canonical-and-preview-noindex.md`, `docs/performance/release-checklist.md`.
+- Strategy source: consult `SITE_STRATEGY.md` before changing user-facing positioning, navigation, service architecture, SEO structure, trust signals, pricing logic, or CTAs.
 
 ## Operating Principles
 

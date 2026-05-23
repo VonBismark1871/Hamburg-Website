@@ -28,6 +28,7 @@ If a package manager or script changes, trust `package.json` and the lockfile ov
 ## Documentation Map
 
 - `AGENTS.md` - durable project instructions for Codex and agentic coding tools.
+- `SITE_STRATEGY.md` - durable product, SEO, UX, design, trust, and growth strategy.
 - `PROJECT_BRIEF.md` - product goals, audience, content principles, and definition of done.
 - `ARCHITECTURE.md` - architecture and dependency guidance.
 - `DEVELOPMENT.md` - local development and implementation workflow.
