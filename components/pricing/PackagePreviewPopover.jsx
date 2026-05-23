@@ -134,7 +134,7 @@ export default function PackagePreviewPopover({ title, description, bullets, typ
                 ))}
               </ul>
             ) : null}
-            <span className="sr-only">Vorschau fuer {title}</span>
+            <span className="sr-only">Vorschau für {title}</span>
           </div>
         </div>
       </div>

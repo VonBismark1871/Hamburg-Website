@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import PhysioDemoLayout from '../../../components/references/physio-demo/PhysioDemoLayout';
 
-export default function RueckenschmerzenDetailPage() {
+export default function BackPainDetailPage() {
   return (
     <PhysioDemoLayout
       title="Physiotherapie bei Rückenschmerzen – Praxis Elbbalance"

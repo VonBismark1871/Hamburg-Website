@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 
@@ -7,145 +6,119 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 }
 };
 
-const proofItems = [
-  'Kostenlose Demo-Richtung',
-  'Klare Preisrange vor Start',
-  'Vom Einstieg bis zum Ausbau'
-];
+const proofItems = ['Direkter Ansprechpartner', 'Transparente Preise', 'Website, SEO und Automatisierung'];
 
-const previewCards = [
-  {
-    title: 'Restaurant',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    metric: 'Reservierung',
-    accent: 'bg-cyan-300'
-  },
-  {
-    title: 'Barbershop',
-    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80',
-    metric: 'Terminbuchung',
-    accent: 'bg-lime-300'
-  },
-  {
-    title: 'Autoservice',
-    image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80',
-    metric: 'Anfrage',
-    accent: 'bg-orange-300'
-  }
-];
+const projectServices = ['Website', 'SEO', 'Automatisierung'];
 
-const standards = ['schnell', 'klar', 'lokal', 'stark'];
-
-function CheckIcon() {
+function PersonIcon() {
   return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
-      <path d="M4 10.2 8.1 14 16 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }
+
+function PriceIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+      <path d="M4 7.5V5h16v2.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M6 12h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M8 17h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <rect x="4" y="5" width="16" height="14" rx="3" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
+function StackIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+      <path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="m4 12 8 4.5 8-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="m4 16.5 8 4.5 8-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+const proofIcons = [PersonIcon, PriceIcon, StackIcon];
 
 function HeroPreview() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20, rotate: -1 }}
-      animate={{ opacity: 1, y: 0, rotate: 0 }}
-      transition={{ duration: 0.75, delay: 0.2 }}
-      className="relative mx-auto w-full max-w-2xl"
+      initial={{ opacity: 0, y: 22 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.18 }}
+      className="hero-preview-wrap"
     >
       <motion.div
-        animate={shouldReduceMotion ? undefined : { y: [0, -10, 0] }}
+        animate={shouldReduceMotion ? undefined : { y: [0, -6, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-        className="relative overflow-hidden rounded-[28px] border border-white/20 bg-white/[0.08] shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+        className="hero-product-shell"
       >
-        <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.06] px-5 py-4">
-          <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
-          <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
-          <div className="ml-3 min-w-0 flex-1 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs text-white/60">
-            hamburg-websites.de/live-preview
+        <div className="hero-product-window">
+          <div className="hero-window-bar">
+            <span className="bg-red-400" />
+            <span className="bg-amber-300" />
+            <span className="bg-emerald-400" />
+            <p>projekt-dashboard.de</p>
           </div>
-        </div>
 
-        <div className="grid gap-4 p-4 sm:grid-cols-[1.15fr_0.85fr] sm:p-5">
-          <div className="relative min-h-[340px] overflow-hidden rounded-3xl border border-white/10 bg-[#07110f]">
-            <Image
-              src="https://images.unsplash.com/photo-1519452575417-564c1401ecc0?auto=format&fit=crop&w=1200&q=80"
-              alt="Hamburg Hafen bei Nacht als Website-Hintergrund"
-              fill
-              className="object-cover opacity-75"
-              priority
-              sizes="(max-width: 768px) 100vw, 44vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#07110f] via-[#07110f]/25 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-5">
-              <p className="text-xs font-semibold uppercase text-cyan-200">Hamburg Websites</p>
-              <p className="mt-2 max-w-[14rem] text-2xl font-semibold leading-tight text-white">
-                Mehr Vertrauen im ersten Blick.
-              </p>
-              <div className="mt-4 flex gap-2">
-                {standards.map((item) => (
-                  <span key={item} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/80">
-                    {item}
-                  </span>
-                ))}
+          <div className="hero-product-body">
+            <div className="hero-product-main">
+              <p className="hero-product-label">Projektseite</p>
+              <h2>Ein Auftritt, der Angebot und Anfrageweg klar macht.</h2>
+              <div className="hero-product-preview">
+                <div>
+                  <span />
+                  <strong>Leistung klar erklären</strong>
+                  <p>Struktur, Inhalte und CTA sind auf schnelle Entscheidung ausgelegt.</p>
+                </div>
+                <div>
+                  <span />
+                  <strong>Sichtbarkeit vorbereiten</strong>
+                  <p>Saubere Seitenarchitektur und lokale Suchintentionen von Beginn an.</p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="grid gap-4">
-            {previewCards.map((card, index) => (
-              <motion.article
-                key={card.title}
-                initial={{ opacity: 0, x: 14 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.45, delay: 0.35 + index * 0.1 }}
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.09] p-3"
-              >
-                <div className="flex gap-3">
-                  <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl">
-                    <Image
-                      src={card.image}
-                      alt={`${card.title} Website Referenzbild`}
-                      fill
-                      className="object-cover transition duration-500 group-hover:scale-105"
-                      sizes="120px"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <span className={`mb-3 block h-1 w-10 rounded-full ${card.accent}`} />
-                    <h3 className="text-sm font-semibold text-white">{card.title}</h3>
-                    <p className="mt-1 text-xs text-white/60">Fokus: {card.metric}</p>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+            <aside className="hero-status-card" aria-label="Projektstatus">
+              <p className="hero-status-label">Aktueller Fokus</p>
+              <strong>Website Relaunch</strong>
+              <span className="hero-status-pill">Anfrage vorbereitet</span>
+              <ul>
+                <li>Kontaktweg sichtbar</li>
+                <li>SEO-Basis geplant</li>
+                <li>Ausbau optional</li>
+              </ul>
+            </aside>
           </div>
         </div>
-      </motion.div>
 
+        <div className="hero-service-strip" aria-label="Leistungsbereiche">
+          {projectServices.map((service) => (
+            <span key={service}>{service}</span>
+          ))}
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
 
 export default function Hero() {
   return (
-    <section className="hero min-h-[calc(100vh-76px)] py-16 text-white sm:py-20 lg:py-24">
-      <div className="hero-grid" aria-hidden="true" />
-      <div className="hero-glow hero-glow-one" aria-hidden="true" />
-      <div className="hero-glow hero-glow-two" aria-hidden="true" />
-
-      <div className="section-container grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr]">
-        <div className="relative z-10 max-w-2xl space-y-7">
+    <section className="hero py-12 sm:py-14 lg:py-16">
+      <div className="section-container grid items-center gap-12 lg:grid-cols-[0.86fr_1.14fr]">
+        <div className="relative z-10 max-w-2xl space-y-6">
           <motion.h1
             initial="hidden"
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.55, delay: 0.06 }}
-            className="max-w-[12ch] text-5xl leading-[0.95] text-white sm:text-6xl lg:text-7xl"
+            className="max-w-[11ch] text-4xl font-black leading-[0.98] text-slate-950 sm:text-5xl lg:text-6xl"
           >
-            Websites für Hamburg, die zu Ziel und Budget passen.
+            Websites und digitale Lösungen, die verständlich verkaufen.
           </motion.h1>
 
           <motion.p
@@ -153,10 +126,10 @@ export default function Hero() {
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.5, delay: 0.16 }}
-            className="max-w-xl text-base leading-8 text-white/70 sm:text-lg"
+            className="max-w-xl text-base leading-7 text-slate-600 sm:text-lg"
           >
-            Vom kompakten lokalen Auftritt bis zur individuellen Website mit Funktionen: klare Struktur, passende
-            Gestaltung, schnelle Technik und eine Nutzerführung, die Besucher sinnvoll weiterbringt.
+            Ich entwickle klare Websites, lokale Sichtbarkeit, Automatisierungen und kleine Tools für Unternehmen, die
+            pragmatisch digitaler arbeiten wollen.
           </motion.p>
 
           <motion.div
@@ -166,11 +139,11 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.26 }}
             className="flex flex-wrap gap-4"
           >
-            <Link href="/kontakt" className="primary-btn primary-btn-hero">
+            <Link href="/kontakt" className="primary-btn">
               Kostenlose Demo anfragen
             </Link>
-            <Link href="/referenzen" className="secondary-btn secondary-btn-hero">
-              Referenzen ansehen
+            <Link href="/kontakt#audit" className="secondary-btn">
+              Digital-Audit starten
             </Link>
           </motion.div>
 
@@ -179,17 +152,20 @@ export default function Hero() {
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.5, delay: 0.36 }}
-            className="grid gap-3 text-sm text-white/70 sm:grid-cols-3"
-            aria-label="Vorteile"
+            className="grid gap-4 pt-2 text-sm font-semibold text-slate-800 sm:grid-cols-3"
+            aria-label="Vertrauenssignale"
           >
-            {proofItems.map((item) => (
-              <li key={item} className="flex items-start gap-2">
-                <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-lime-300 text-[#07110f]">
-                  <CheckIcon />
-                </span>
-                <span>{item}</span>
-              </li>
-            ))}
+            {proofItems.map((item, index) => {
+              const Icon = proofIcons[index];
+              return (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-950/10 bg-white text-blue-700 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
+                    <Icon />
+                  </span>
+                  <span className="pt-1.5 leading-5">{item}</span>
+                </li>
+              );
+            })}
           </motion.ul>
         </div>
 
