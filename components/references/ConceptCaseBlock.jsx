@@ -37,8 +37,8 @@ export default function ConceptCaseBlock({ slug, compact = false }) {
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">{project.conceptFocus}</p>
           <p className="mt-4 rounded-xl border border-slate-950/10 bg-white/70 px-4 py-3 text-sm leading-6 text-slate-600">
-            Dieses Beispiel ist ein Demo-Konzept von Hamburg Websites. Es zeigt Design, Informationsarchitektur und
-            technische Denkweise, aber keine verifizierte Kundenreferenz.
+            Dieser Case zeigt die geplante Informationsarchitektur, Bildlogik und technische Denkweise der jeweiligen
+            Branche. Die Inhalte sind als eigenständiges Branchenkonzept aufgebaut.
           </p>
           {!compact ? (
             <Link href="/kontakt" className="mt-6 inline-flex text-sm font-semibold text-slate-900 underline-offset-4 hover:underline">

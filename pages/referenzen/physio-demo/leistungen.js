@@ -6,8 +6,8 @@ import { services } from '../../../components/references/physio-demo/physioData'
 export default function PhysioDemoLeistungenPage() {
   return (
     <PhysioDemoLayout
-      title="Leistungen – Physiotherapie Demo"
-      description="Beispiel einer Leistungsseite für eine moderne Physiotherapiepraxis-Website."
+      title="Leistungen – Praxis Elbbalance Physiotherapie"
+      description="Leistungsseite der Praxis Elbbalance mit Behandlungen, Beschwerden und Terminwegen."
       path="/referenzen/physio-demo/leistungen"
     >
       <section className="section-container py-12">

@@ -13,11 +13,13 @@ export default function AutoserviceDemoHomePage() {
   return (
     <AutoserviceDemoLayout
       title="Elbwerk Kfz-Service Hamburg"
-      description="Kfz-Werkstatt in Hamburg mit Leistungen, Inspektion, Kontakt und Terminanfragen."
+      description="Kfz-Werkstatt in Hamburg mit Leistungen, Inspektion, Diagnose und Terminanfragen."
       path="/referenzen/autoservice-demo"
     >
       <section className="section-container py-10">
-        <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+        <p className="text-sm font-medium text-[#4d5d73]">Elbwerk Kfz-Service · Ausschläger Weg Hamburg</p>
+
+        <div className="mt-4 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
           <article className="relative overflow-hidden rounded-3xl bg-[#0f1724]">
             <Image
               src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=2000&q=80"

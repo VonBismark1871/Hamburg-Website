@@ -9,8 +9,8 @@ export default function ImmobilienObjektePage() {
   return (
     <>
       <SEOHead
-        title="Aktuelle Immobilienangebote"
-        description="Objektübersicht von Elbquartier Immobilien mit Wohnungen, Häusern und Kapitalanlagen in Hamburg."
+        title="Aktuelle Immobilienangebote – Elbquartier Immobilien"
+        description="Objektübersicht von Elbquartier Immobilien mit kuratierten Angeboten in Hamburg."
         path="/referenzen/immobilien-demo/objekte"
       />
       <main className="bg-[#f6f3ee] pb-20 pt-10 text-stone-900">

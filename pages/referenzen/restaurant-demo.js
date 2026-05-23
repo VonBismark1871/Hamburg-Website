@@ -95,6 +95,7 @@ const menuCategories = [
 function RestaurantHero() {
   return (
     <section id="start" className="section-container pb-12 pt-8 sm:pt-10" aria-labelledby="hero-heading">
+      <p className="text-sm text-[#6a5e50]">Hafenblick Bistro · Hamburg Neustadt</p>
       <div className="mt-4 grid gap-5 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
         <figure className="relative overflow-hidden rounded-[2rem] shadow-[0_24px_70px_-40px_rgba(33,22,13,0.8)]">
           <Image
@@ -155,8 +156,8 @@ function TrustBlock() {
         <span className="tracking-[0.12em] text-[#b27141]" aria-hidden="true">
           ★★★★★
         </span>
-        <p className="font-medium">4.7 bei Google · 180 Bewertungen</p>
-        <p className="text-[#6b5e4f]">Beliebt bei Gästen aus ganz Hamburg.</p>
+        <p className="font-medium">Konzept-Fokus: Reservierung, Speisekarte und Atmosphäre</p>
+        <p className="text-[#6b5e4f]">Aktuelle Eindrücke aus Küche, Gastraum und Abendservice.</p>
       </div>
     </section>
   );
@@ -288,8 +289,8 @@ export default function RestaurantDemoPage() {
   return (
     <>
       <SEOHead
-        title="Restaurant Hafenblick Hamburg"
-        description="Restaurant Hafenblick in Hamburg mit Speisekarte, Galerie, Öffnungszeiten und Reservierung."
+        title="Hafenblick Bistro Hamburg"
+        description="Modernes Bistro in Hamburg mit Speisekarte, Galerie, Reservierung und warmem Abendambiente."
         path="/referenzen/restaurant-demo"
       />
 
@@ -363,10 +364,15 @@ export default function RestaurantDemoPage() {
 
           <section className="section-container pb-14">
             <div className="rounded-2xl bg-[#efe4d6] p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
-              <p className="text-[#433a31]">Reservierungen nehmen wir telefonisch oder per E-Mail entgegen.</p>
-              <Link href="mailto:reservierung@hafenblick-demo.de" className="mt-4 inline-flex rounded-md bg-[#2e2a27] px-5 py-2.5 text-sm font-semibold text-[#f6eee2] sm:mt-0">
-                Tisch anfragen
-              </Link>
+              <p className="text-[#433a31]">Reservierungen, Menüfragen und private Abende</p>
+              <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
+                <Link href="#reservierung" className="rounded-md bg-[#2e2a27] px-5 py-2.5 text-sm font-semibold text-[#f6eee2]">
+                  Tisch reservieren
+                </Link>
+                <Link href="#speisekarte" className="rounded-md border border-[#3e3530] px-5 py-2.5 text-sm font-semibold text-[#3e3530]">
+                  Menü ansehen
+                </Link>
+              </div>
             </div>
           </section>
         </main>

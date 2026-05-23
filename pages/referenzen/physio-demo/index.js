@@ -20,12 +20,14 @@ import {
 export default function PhysioDemoHomePage() {
   return (
     <PhysioDemoLayout
-      title="Praxis Elbbalance Physiotherapie"
-      description="Physiotherapiepraxis in Hamburg mit Leistungen, Beschwerdebildern, Terminbereich und Kontakt."
+      title="Praxis Elbbalance Physiotherapie Hamburg"
+      description="Physiotherapie in Hamburg mit Behandlungen, Beschwerdeseiten, Terminbereich und Kontakt."
       path="/referenzen/physio-demo"
     >
       <section className="section-container py-10">
-        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <p className="text-sm font-medium text-[#5d7673]">Elbbalance Physiotherapie · Hamburg-Eimsbüttel</p>
+
+        <div className="mt-4 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <article className="relative overflow-hidden rounded-3xl">
             <Image
               src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=2000&q=80"

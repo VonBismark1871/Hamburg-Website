@@ -7,7 +7,7 @@ const serviceIcons = ['🛠️', '🧴', '🛑', '🛞', '💻', '❄️', '📋
 export default function AutoserviceServicesPage() {
   return (
     <AutoserviceDemoLayout
-      title="Leistungen | Auto Service Demo"
+      title="Leistungen | Elbwerk Kfz-Service"
       description="Leistungsübersicht einer modernen Kfz-Werkstatt in Hamburg mit klaren Beschreibungen und Anfrageoptionen."
       path="/referenzen/autoservice-demo/leistungen"
     >
