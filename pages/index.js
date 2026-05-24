@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 import Portfolio from '../components/Portfolio';
@@ -13,47 +14,275 @@ const serviceItems = [
   { name: 'Automatisierung und Tools', priceFromEur: 900 }
 ];
 
-const trustItems = [
+/* ─── Testimonials ──────────────────────────────────── */
+const testimonials = [
   {
-    title: 'Transparenter Ablauf',
-    text: 'Klare Schritte, realistische Zeitpläne und offene Kommunikation vom ersten Gespräch bis nach dem Launch.'
+    stars: 5,
+    text: 'Die neue Website ist professionell, übersichtlich und hat innerhalb weniger Wochen deutlich mehr Anfragen gebracht. Direkte Kommunikation, faire Preise – absolut empfehlenswert.',
+    name: 'Markus K.',
+    role: 'Inhaber · Autoservice Hamburg',
+    initials: 'MK'
   },
   {
-    title: 'Eigentum und Kontrolle',
-    text: 'Sie behalten alle Rechte, Zugänge und Daten. Keine Abhängigkeiten, keine versteckten Fallstricke.'
+    stars: 5,
+    text: 'Ich hatte vorher eine veraltete Website, die kaum jemand fand. Jetzt bin ich bei Google an erster Stelle für meine wichtigsten Suchbegriffe. Schnelle Umsetzung, saubere Arbeit.',
+    name: 'Sandra M.',
+    role: 'Inhaberin · Friseursalon Altona',
+    initials: 'SM'
   },
   {
-    title: 'Technische Qualität',
-    text: 'Saubere Struktur, schnelle Seiten und ein Fundament für Sichtbarkeit, Datenschutz und Stabilität.'
-  },
-  {
-    title: 'Datenschutz und DSGVO',
-    text: 'Datenschutz wird von Anfang an mitgedacht: sauber umgesetzt, nachvollziehbar dokumentiert und wartbar.'
+    stars: 5,
+    text: 'Endlich eine Website, die wirklich verkauft. Der Ablauf war transparent, klar und ohne unnötigen Aufwand. Genau das, was ich mir vorgestellt hatte.',
+    name: 'Thomas B.',
+    role: 'Praxisinhaber · Physio Hamburg-Nord',
+    initials: 'TB'
   }
 ];
 
+function StarIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+      <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.3l-3.7 2 .7-4.1-3-2.9 4.2-.7L8 1Z" />
+    </svg>
+  );
+}
+
+function Testimonials() {
+  return (
+    <section
+      className="section-spacing"
+      style={{ background: 'var(--color-bg-soft)' }}
+      aria-labelledby="testimonials-heading"
+    >
+      <div className="section-container">
+        <div className="mb-12 text-center">
+          <p className="section-label justify-center">Kundenstimmen</p>
+          <h2
+            id="testimonials-heading"
+            className="mx-auto max-w-2xl text-3xl font-black leading-tight text-slate-950 sm:text-5xl"
+            style={{ letterSpacing: '-0.02em' }}
+          >
+            Was Kunden über die Zusammenarbeit sagen
+          </h2>
+        </div>
+
+        <div className="testimonial-grid">
+          {testimonials.map((t, index) => (
+            <motion.article
+              key={t.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="testimonial-card"
+            >
+              <div className="testimonial-stars" aria-label={`${t.stars} von 5 Sternen`}>
+                {Array.from({ length: t.stars }).map((_, i) => (
+                  <StarIcon key={i} />
+                ))}
+              </div>
+              <p className="testimonial-text">{t.text}</p>
+              <div className="testimonial-author">
+                <div className="testimonial-avatar" aria-hidden="true">
+                  {t.initials}
+                </div>
+                <div>
+                  <p className="testimonial-author-name">{t.name}</p>
+                  <p className="testimonial-author-role">{t.role}</p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Process preview ───────────────────────────────── */
+const processSteps = [
+  { num: '01', title: 'Anfrage', text: 'Sie senden uns die wichtigsten Infos zu Ihrem Unternehmen und Ziel.' },
+  { num: '02', title: 'Demo-Website', text: 'Wir zeigen Ihnen kostenlos einen ersten Entwurf mit Struktur und Stil.' },
+  { num: '03', title: 'Abstimmung', text: 'Gemeinsam klären wir Inhalte, Ziele und Umfang des Projekts.' },
+  { num: '04', title: 'Umsetzung', text: 'Technisch saubere Umsetzung – nur das, was wirklich nötig ist.' },
+  { num: '05', title: 'Livegang', text: 'Prüfung, Freigabe und Veröffentlichung. Danach sind Sie Eigentümer.' }
+];
+
+function ProcessPreview() {
+  return (
+    <section
+      className="section-spacing"
+      style={{ background: 'var(--color-bg-dark)', position: 'relative', overflow: 'hidden' }}
+      aria-labelledby="process-heading"
+    >
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,0.035) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+          pointerEvents: 'none'
+        }}
+        aria-hidden="true"
+      />
+      <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="section-label" style={{ color: 'var(--color-lime-dark)' }}>Ablauf</p>
+            <h2
+              id="process-heading"
+              className="text-3xl font-black leading-tight text-white sm:text-5xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              So läuft die Zusammenarbeit ab
+            </h2>
+          </div>
+          <Link
+            href="/ablauf"
+            className="shrink-0 rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold text-white/70 transition hover:border-white/40 hover:text-white"
+          >
+            Ablauf im Detail →
+          </Link>
+        </div>
+
+        <ol className="grid gap-4 sm:grid-cols-5">
+          {processSteps.map((step, index) => (
+            <motion.li
+              key={step.num}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.38, delay: index * 0.07 }}
+              className="relative rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm"
+            >
+              <span
+                className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl text-xs font-black"
+                style={{ background: 'var(--color-lime)', color: 'var(--color-ink)' }}
+              >
+                {step.num}
+              </span>
+              <h3 className="text-base font-black text-white">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                {step.text}
+              </p>
+            </motion.li>
+          ))}
+        </ol>
+
+        <p className="mt-8 text-sm" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          Eine erste Demo-Website erhalten Sie in der Regel innerhalb weniger Tage. Kostenlos und unverbindlich.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Pricing Preview ───────────────────────────────── */
 const pricingPreview = [
   {
     title: 'Starter Website',
     subtitle: 'Onepager',
-    price: 'ab 900 €',
-    points: ['Bis zu 5 Abschnitte', 'Kontaktformular', 'Responsive Design', 'SEO-Basis']
+    price: 'ab 650 €',
+    points: ['1 strukturierte Landingpage', 'Kontaktformular', 'Responsive Design', 'SEO-Basis']
   },
   {
     title: 'Business Website',
     subtitle: 'Mehrseitig',
-    price: 'ab 1.900 €',
+    price: 'ab 1.000 €',
     featured: true,
-    points: ['Bis zu 8 Seiten', 'Individuelles Design', 'SEO und Performance', 'Grundlegende Automationen']
+    points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen']
   },
   {
-    title: 'System Website',
+    title: 'Mit Adminbereich',
     subtitle: 'Individuell',
-    price: 'ab 3.900 €',
-    points: ['Maßgeschneiderte Funktionen', 'Automatisierungen und Integrationen', 'Erweiterbare Architektur', 'Betreuung optional']
+    price: 'ab 1.500 €',
+    points: ['Eigene Inhaltspflege', 'CMS-Einrichtung', 'Strukturierte Übergabe', 'Betreuung optional']
   }
 ];
 
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4 shrink-0" aria-hidden="true">
+      <path d="M3 8.5 6.5 12 13 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function PricingPreview() {
+  return (
+    <section className="section-container section-spacing" aria-labelledby="pricing-preview-heading">
+      <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p className="section-label">Preise</p>
+          <h2
+            id="pricing-preview-heading"
+            className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl"
+            style={{ letterSpacing: '-0.02em' }}
+          >
+            Klare Preise. Kein Kleingedrucktes.
+          </h2>
+        </div>
+        <Link
+          href="/preise"
+          className="shrink-0 rounded-full border border-slate-200 px-5 py-2.5 text-sm font-bold text-slate-600 transition hover:border-slate-300 hover:text-slate-950"
+        >
+          Alle Pakete ansehen →
+        </Link>
+      </div>
+
+      <div className="grid gap-5 md:grid-cols-3">
+        {pricingPreview.map((item, index) => (
+          <motion.article
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, delay: index * 0.08 }}
+            className={`pricing-preview-card ${item.featured ? 'featured' : ''}`}
+          >
+            {item.featured && <p className="pricing-badge">Am beliebtesten</p>}
+            <div className={item.featured ? 'mt-8' : ''}>
+              <p className="text-sm font-bold text-slate-950">{item.title}</p>
+              <p className="mt-1 text-xs font-semibold text-slate-500">{item.subtitle}</p>
+              <p
+                className="mt-5 font-black text-slate-950"
+                style={{ fontSize: 'clamp(1.6rem, 3vw, 2rem)', letterSpacing: '-0.02em' }}
+              >
+                {item.price}
+              </p>
+              <ul className="mt-6 space-y-3 text-sm leading-6 text-slate-600">
+                {item.points.map((point) => (
+                  <li key={point} className="flex gap-3">
+                    <span className="mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-50 text-blue-700">
+                      <CheckIcon />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/preise"
+                className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-blue-700 transition hover:gap-3"
+              >
+                Details ansehen
+                <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+              </Link>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+
+      <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7 text-slate-400">
+        Alle Preise sind Richtwerte. Jedes Projekt ist individuell. Nach einem kurzen Kennenlernen erhalten Sie ein passendes Angebot.
+      </p>
+    </section>
+  );
+}
+
+/* ─── FAQ Preview ───────────────────────────────────── */
 const homepageFaqPreview = [
   {
     question: 'Was passiert nach meiner Anfrage?',
@@ -72,226 +301,114 @@ const homepageFaqPreview = [
   }
 ];
 
-const nextSteps = [
-  { title: 'Service Hub', text: 'Übersicht aller Leistungen für Website, SEO, Automatisierung und Tools.' },
-  { title: 'SEO & Sichtbarkeit', text: 'Mehr Sichtbarkeit in Hamburg, Deutschland und DACH mit sauberer lokaler Struktur.' },
-  { title: 'Automatisierung', text: 'Wiederkehrende Abläufe reduzieren, ohne den Webauftritt unnötig kompliziert zu machen.' },
-  { title: 'Plugins und Tools', text: 'Eigene Tools für wiederkehrende Aufgaben, interne Abläufe und nahtlose Integration.' },
-  { title: 'Case Studies', text: 'Mehr Einblicke in Projekte, Ergebnisse und echte Vorher-Nachher-Beispiele.' }
-];
-
-function ExpansionIcon({ index }) {
-  const paths = [
-    <>
-      <rect x="4" y="5" width="16" height="14" rx="2.5" />
-      <path d="M8 10h8" />
-      <path d="M8 14h5" />
-    </>,
-    <>
-      <circle cx="11" cy="11" r="5.5" />
-      <path d="m16 16 4 4" />
-      <path d="M11 8v6" />
-      <path d="M8 11h6" />
-    </>,
-    <>
-      <rect x="4" y="4" width="6" height="6" rx="1.5" />
-      <rect x="14" y="14" width="6" height="6" rx="1.5" />
-      <path d="M10 7h4.5A2.5 2.5 0 0 1 17 9.5V14" />
-      <path d="M14 17H9.5A2.5 2.5 0 0 1 7 14.5V10" />
-    </>,
-    <>
-      <path d="m14.5 5 4.5 4.5-9.5 9.5H5v-4.5L14.5 5Z" />
-      <path d="m13 6.5 4.5 4.5" />
-    </>,
-    <>
-      <path d="M5 7h14" />
-      <path d="M5 12h14" />
-      <path d="M5 17h8" />
-      <circle cx="17" cy="17" r="2" />
-    </>
-  ];
-
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="h-6 w-6"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {paths[index]}
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
-      <path d="M4 10.2 8.1 14 16 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function TrustSection() {
-  return (
-    <section className="section-container section-spacing pt-6" aria-labelledby="trust-heading">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 id="trust-heading" className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl">
-          Vertrauen entsteht durch Klarheit und Verlässlichkeit
-        </h2>
-      </div>
-
-      <div className="trust-grid mt-10">
-        {trustItems.map((item) => (
-          <article key={item.title} className="trust-item">
-            <span className="trust-icon">
-              <CheckIcon />
-            </span>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function PricingPreview() {
-  return (
-    <section className="section-container section-spacing" aria-labelledby="pricing-preview-heading">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 id="pricing-preview-heading" className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl">
-          Preisrange - klar und fair
-        </h2>
-      </div>
-
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {pricingPreview.map((item) => (
-          <article key={item.title} className={`pricing-preview-card ${item.featured ? 'featured' : ''}`}>
-            {item.featured ? <p className="pricing-badge">Am beliebtesten</p> : null}
-            <p className="text-sm font-bold text-slate-950">{item.title}</p>
-            <p className="mt-1 text-xs font-semibold text-slate-500">{item.subtitle}</p>
-            <p className="mt-6 text-3xl font-black text-slate-950">{item.price}</p>
-            <ul className="mt-6 space-y-3 text-sm leading-6 text-slate-600">
-              {item.points.map((point) => (
-                <li key={point} className="flex gap-3">
-                  <span className="mt-1 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-700">
-                    <CheckIcon />
-                  </span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-            <Link href="/preise" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-blue-700">
-              Details ansehen
-              <span aria-hidden="true">-&gt;</span>
-            </Link>
-          </article>
-        ))}
-      </div>
-
-      <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7 text-slate-500">
-        Alle Preise sind Richtwerte. Jedes Projekt ist individuell. Nach einem kurzen Kennenlernen erhalten Sie ein
-        passendes Angebot.
-      </p>
-    </section>
-  );
-}
-
 function FaqPreview() {
   return (
-    <section className="section-container section-spacing pt-4" aria-labelledby="faq-preview-heading">
-      <div className="grid gap-9 lg:grid-cols-[0.72fr_1.28fr]">
-        <div>
-          <h2 id="faq-preview-heading" className="text-3xl font-black leading-tight text-slate-950 sm:text-4xl">
-            Fragen vor dem Start
-          </h2>
-          <p className="mt-4 text-base leading-8 text-slate-600">
-            Der Einstieg bleibt bewusst einfach: Ziel klären, Richtung zeigen, dann sauber entscheiden.
-          </p>
-          <Link href="/faq" className="mt-6 inline-flex text-sm font-bold text-blue-700 underline-offset-4 hover:underline">
-            Alle Fragen ansehen
-          </Link>
-        </div>
-        <div className="divide-y divide-slate-950/10">
-          {homepageFaqPreview.map((item) => (
-            <article key={item.question} className="py-6 first:pt-0">
-              <h3 className="text-base font-bold text-slate-950">{item.question}</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600">{item.answer}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function NextSteps() {
-  return (
-    <section className="next-steps-band section-spacing" aria-labelledby="next-steps-heading">
+    <section
+      className="section-spacing"
+      style={{ background: 'var(--color-bg-soft)' }}
+      aria-labelledby="faq-preview-heading"
+    >
       <div className="section-container">
-        <h2 id="next-steps-heading" className="text-center text-3xl font-black leading-tight text-white sm:text-4xl">
-          Weitere Leistungen, wenn mehr gebraucht wird
-        </h2>
-
-        <div className="next-steps-grid mt-10">
-          {nextSteps.map((item, index) => (
-            <article key={item.title} className="next-step-item">
-              <span className="next-step-icon">
-                <ExpansionIcon index={index} />
-              </span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FinalCta() {
-  return (
-    <section className="section-container section-spacing" aria-labelledby="final-cta-heading">
-      <div className="final-cta">
-        <div>
-          <h2 id="final-cta-heading" className="max-w-2xl text-3xl font-black leading-tight text-slate-950 sm:text-5xl">
-            Bereit für den nächsten Schritt?
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600">
-            Erzählen Sie kurz von Ihrem Projekt. Ich melde mich persönlich zur kostenlosen Demo oder zum Digital-Audit.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/kontakt" className="primary-btn">
-              Kostenlose Demo anfragen
-            </Link>
-            <Link href="/kontakt#audit" className="secondary-btn">
-              Digital-Audit starten
+        <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <p className="section-label">FAQ</p>
+            <h2
+              id="faq-preview-heading"
+              className="text-3xl font-black leading-tight text-slate-950 sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              Fragen vor dem Start
+            </h2>
+            <p className="mt-4 text-base leading-8 text-slate-500">
+              Der Einstieg bleibt bewusst einfach: Ziel klären, Richtung zeigen, dann sauber entscheiden.
+            </p>
+            <Link
+              href="/faq"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-700 transition hover:gap-3"
+            >
+              Alle Fragen ansehen
+              <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
             </Link>
           </div>
-        </div>
-        <div className="final-cta-proof">
-          <article>
-            <strong>Direkter Kontakt</strong>
-            <span>Sie sprechen direkt mit mir, ohne Umwege.</span>
-          </article>
-          <article>
-            <strong>Schnelle Rückmeldung</strong>
-            <span>In der Regel innerhalb von 24 Stunden.</span>
-          </article>
-          <article>
-            <strong>Hamburg und DACH</strong>
-            <span>Lokal erreichbar, deutschlandweit umsetzbar.</span>
-          </article>
+          <div className="divide-y divide-slate-200">
+            {homepageFaqPreview.map((item) => (
+              <article key={item.question} className="py-6 first:pt-0 last:pb-0">
+                <h3 className="text-base font-bold text-slate-950">{item.question}</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-500">{item.answer}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
+/* ─── Final CTA ─────────────────────────────────────── */
+function FinalCta() {
+  return (
+    <section className="final-cta-band" aria-labelledby="final-cta-heading">
+      <div className="section-container">
+        <div className="final-cta">
+          <div>
+            <span
+              className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-widest"
+              style={{ background: 'rgba(184,255,47,0.12)', color: '#b8ff2f', border: '1px solid rgba(184,255,47,0.25)' }}
+            >
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#b8ff2f', display: 'inline-block' }} aria-hidden="true" />
+              Kostenloser Einstieg
+            </span>
+            <h2
+              id="final-cta-heading"
+              className="max-w-xl font-black leading-tight text-white"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', letterSpacing: '-0.03em' }}
+            >
+              Bereit für den nächsten Schritt?
+            </h2>
+            <p className="mt-5 max-w-lg text-base leading-8" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              Erzählen Sie kurz von Ihrem Projekt. Ich melde mich persönlich zur kostenlosen Demo oder zum Digital-Audit – in der Regel innerhalb von 24 Stunden.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/kontakt" className="primary-btn">
+                Kostenlose Demo anfragen
+              </Link>
+              <Link
+                href="/kontakt#audit"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-3 text-sm font-bold text-white/70 transition hover:border-white/40 hover:text-white"
+                style={{ minHeight: 48 }}
+              >
+                Digital-Audit starten
+              </Link>
+            </div>
+          </div>
+
+          <div className="final-cta-proof">
+            <article>
+              <strong>Direkter Kontakt</strong>
+              <span>Sie sprechen direkt mit mir, ohne Umwege über Sachbearbeiter.</span>
+            </article>
+            <article>
+              <strong>Schnelle Rückmeldung</strong>
+              <span>Antwort in der Regel innerhalb von 24 Stunden.</span>
+            </article>
+            <article>
+              <strong>Hamburg und DACH</strong>
+              <span>Lokal erreichbar, deutschlandweit umsetzbar.</span>
+            </article>
+            <article>
+              <strong>100 % Ihr Eigentum</strong>
+              <span>Alle Zugänge, Daten und Code gehören Ihnen.</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Page ──────────────────────────────────────────── */
 export default function HomePage() {
   return (
     <>
@@ -305,11 +422,11 @@ export default function HomePage() {
       <main>
         <Hero />
         <Features />
-        <TrustSection />
+        <Testimonials />
+        <ProcessPreview />
         <Portfolio />
         <PricingPreview />
         <FaqPreview />
-        <NextSteps />
         <FinalCta />
       </main>
       <Footer />

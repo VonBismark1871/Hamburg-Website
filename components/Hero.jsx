@@ -2,104 +2,73 @@ import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 }
 };
 
-const proofItems = ['Direkter Ansprechpartner', 'Transparente Preise', 'Website, SEO und Automatisierung'];
+const heroStats = [
+  { value: '30+', label: 'Projekte umgesetzt' },
+  { value: '24h', label: 'Antwortzeit' },
+  { value: '100%', label: 'Inhaber-Eigentum' },
+  { value: '5 ★', label: 'Kundenbewertungen' }
+];
 
-const projectServices = ['Website', 'SEO', 'Automatisierung'];
+const metrics = [
+  { label: 'Neue Anfragen / Monat', value: '+180%', badge: 'up', badgeLabel: '↑' },
+  { label: 'Google-Ranking', value: 'Position #1', badge: 'neutral', badgeLabel: '◉' },
+  { label: 'Ladezeit', value: '0.9s', badge: 'up', badgeLabel: '⚡' }
+];
 
-function PersonIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
-      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
+const serviceTags = ['Website', 'SEO', 'Automatisierung'];
 
-function PriceIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
-      <path d="M4 7.5V5h16v2.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M6 12h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M8 17h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <rect x="4" y="5" width="16" height="14" rx="3" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function StackIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
-      <path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      <path d="m4 12 8 4.5 8-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="m4 16.5 8 4.5 8-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-const proofIcons = [PersonIcon, PriceIcon, StackIcon];
-
-function HeroPreview() {
-  const shouldReduceMotion = useReducedMotion();
-
+function ResultCard({ shouldReduceMotion }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 22 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.18 }}
-      className="hero-preview-wrap"
+      initial={{ opacity: 0, x: 30 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, delay: 0.3 }}
     >
       <motion.div
-        animate={shouldReduceMotion ? undefined : { y: [0, -6, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-        className="hero-product-shell"
+        animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        className="hero-result-card"
       >
-        <div className="hero-product-window">
-          <div className="hero-window-bar">
-            <span className="bg-red-400" />
-            <span className="bg-amber-300" />
-            <span className="bg-emerald-400" />
-            <p>projekt-dashboard.de</p>
-          </div>
-
-          <div className="hero-product-body">
-            <div className="hero-product-main">
-              <p className="hero-product-label">Projektseite</p>
-              <h2>Ein Auftritt, der Angebot und Anfrageweg klar macht.</h2>
-              <div className="hero-product-preview">
-                <div>
-                  <span />
-                  <strong>Leistung klar erklären</strong>
-                  <p>Struktur, Inhalte und CTA sind auf schnelle Entscheidung ausgelegt.</p>
-                </div>
-                <div>
-                  <span />
-                  <strong>Sichtbarkeit vorbereiten</strong>
-                  <p>Saubere Seitenarchitektur und lokale Suchintentionen von Beginn an.</p>
-                </div>
-              </div>
-            </div>
-
-            <aside className="hero-status-card" aria-label="Projektstatus">
-              <p className="hero-status-label">Aktueller Fokus</p>
-              <strong>Website Relaunch</strong>
-              <span className="hero-status-pill">Anfrage vorbereitet</span>
-              <ul>
-                <li>Kontaktweg sichtbar</li>
-                <li>SEO-Basis geplant</li>
-                <li>Ausbau optional</li>
-              </ul>
-            </aside>
-          </div>
+        <div className="hero-result-header">
+          <div className="hero-result-header-dot" />
+          <span>Projekt-Ergebnis</span>
         </div>
 
-        <div className="hero-service-strip" aria-label="Leistungsbereiche">
-          {projectServices.map((service) => (
-            <span key={service}>{service}</span>
+        <div className="hero-result-project">
+          <div>
+            <p className="hero-result-project-name">Autoservice Hamburg</p>
+            <p className="hero-result-project-type">KFZ-Werkstatt · Hamburg-Wandsbek</p>
+          </div>
+          <span className="hero-live-pill">Live</span>
+        </div>
+
+        <div className="hero-metrics">
+          {metrics.map((m) => (
+            <div key={m.label} className="hero-metric-row">
+              <span className="hero-metric-label">{m.label}</span>
+              <span className="hero-metric-value">
+                {m.value}
+                <span className={`hero-metric-badge ${m.badge}`}>{m.badgeLabel}</span>
+              </span>
+            </div>
           ))}
+        </div>
+
+        <div className="hero-service-tags">
+          {serviceTags.map((tag) => (
+            <span key={tag} className="hero-service-tag">
+              {tag}
+            </span>
+          ))}
+          <span
+            style={{ marginLeft: 'auto', color: 'rgba(255,255,255,0.3)', fontSize: 11, alignSelf: 'center' }}
+          >
+            Beispielprojekt
+          </span>
         </div>
       </motion.div>
     </motion.div>
@@ -107,29 +76,57 @@ function HeroPreview() {
 }
 
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section className="hero py-12 sm:py-14 lg:py-16">
-      <div className="section-container grid items-center gap-12 lg:grid-cols-[0.86fr_1.14fr]">
-        <div className="relative z-10 max-w-2xl space-y-6">
+    <section className="hero" aria-label="Startseite Hero">
+      <div className="section-container grid items-center gap-14 py-20 sm:py-24 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:py-28">
+        {/* Left – copy */}
+        <div className="relative z-10 space-y-7 max-w-2xl">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ duration: 0.45, delay: 0.04 }}
+          >
+            <div className="hero-badge">
+              <span className="hero-badge-dot" aria-hidden="true" />
+              Hamburg Websites · Lokal verankert, digital stark
+            </div>
+          </motion.div>
+
           <motion.h1
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            transition={{ duration: 0.55, delay: 0.06 }}
-            className="max-w-[11ch] text-4xl font-black leading-[0.98] text-slate-950 sm:text-5xl lg:text-6xl"
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="font-black leading-[1.0] text-slate-950"
+            style={{ letterSpacing: '-0.03em' }}
           >
-            Websites und digitale Lösungen, die verständlich verkaufen.
+            Websites,{' '}
+            <span
+              style={{
+                display: 'inline-block',
+                background: 'linear-gradient(135deg, #b8ff2f, #9de800)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
+              die Kunden
+            </span>
+            <br />
+            gewinnen.
           </motion.h1>
 
           <motion.p
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            transition={{ duration: 0.5, delay: 0.16 }}
-            className="max-w-xl text-base leading-7 text-slate-600 sm:text-lg"
+            transition={{ duration: 0.5, delay: 0.18 }}
+            className="max-w-lg text-lg leading-8 text-slate-500"
           >
-            Ich entwickle klare Websites, lokale Sichtbarkeit, Automatisierungen und kleine Tools für Unternehmen, die
-            pragmatisch digitaler arbeiten wollen.
+            Klares Design. Schnelle Seiten. Lokales SEO. Ich entwickle Websites für Hamburger Unternehmen – mit Struktur und Überzeugungskraft, die Anfragen bringt.
           </motion.p>
 
           <motion.div
@@ -142,8 +139,8 @@ export default function Hero() {
             <Link href="/kontakt" className="primary-btn">
               Kostenlose Demo anfragen
             </Link>
-            <Link href="/kontakt#audit" className="secondary-btn">
-              Digital-Audit starten
+            <Link href="/referenzen" className="secondary-btn">
+              Referenzen ansehen
             </Link>
           </motion.div>
 
@@ -151,26 +148,46 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            transition={{ duration: 0.5, delay: 0.36 }}
-            className="grid gap-4 pt-2 text-sm font-semibold text-slate-800 sm:grid-cols-3"
-            aria-label="Vertrauenssignale"
+            transition={{ duration: 0.5, delay: 0.34 }}
+            className="flex flex-wrap gap-x-6 gap-y-3 pt-2 text-sm font-semibold text-slate-600"
           >
-            {proofItems.map((item, index) => {
-              const Icon = proofIcons[index];
-              return (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-950/10 bg-white text-blue-700 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
-                    <Icon />
-                  </span>
-                  <span className="pt-1.5 leading-5">{item}</span>
-                </li>
-              );
-            })}
+            {['Direkter Ansprechpartner', 'Transparente Preise', 'Kein Agentur-Aufschlag'].map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  className="h-4 w-4 shrink-0"
+                  aria-hidden="true"
+                >
+                  <circle cx="8" cy="8" r="7.5" stroke="#b8ff2f" strokeWidth="1.5" />
+                  <path d="M5 8.2 7 10l4-4" stroke="#3a5a00" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {item}
+              </li>
+            ))}
           </motion.ul>
         </div>
 
-        <HeroPreview />
+        {/* Right – result card */}
+        <div className="relative z-10 flex items-center justify-center lg:justify-end">
+          <ResultCard shouldReduceMotion={shouldReduceMotion} />
+        </div>
       </div>
+
+      {/* Stats strip */}
+      <motion.div
+        className="hero-stats-strip"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
+        {heroStats.map((stat) => (
+          <div key={stat.label} className="hero-stat-item">
+            <span className="hero-stat-value">{stat.value}</span>
+            <span className="hero-stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </motion.div>
     </section>
   );
 }
