@@ -1,16 +1,66 @@
+import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import SEOHead from '../../components/SEOHead';
 import ReferenceBackButton from '../../components/references/ReferenceBackButton';
 
-const chefRecommendations = [
+const palette = {
+  ink: '#14100b',
+  deeper: '#0e0b07',
+  panel: '#1f1810',
+  panel2: '#251d14',
+  gold: '#c9a36a',
+  goldBright: '#e6c690',
+  cream: '#f4e9d6',
+  muted: '#b09a7e',
+  mutedDim: '#8a755c',
+  line: 'rgba(201,163,106,0.16)',
+  lineStrong: 'rgba(201,163,106,0.32)'
+};
+
+const displayFont = "'Playfair Display', Georgia, 'Times New Roman', serif";
+const accentFont = "'Cormorant Garamond', Georgia, serif";
+const bodyFont = "'DM Sans', system-ui, sans-serif";
+
+const ease = [0.22, 1, 0.36, 1];
+
+const navLinks = [
+  { href: '#kueche', label: 'Küche' },
+  { href: '#empfehlungen', label: 'Empfehlungen' },
+  { href: '#speisekarte', label: 'Speisekarte' },
+  { href: '#galerie', label: 'Galerie' },
+  { href: '#reservierung', label: 'Reservierung' }
+];
+
+const pillars = [
+  { label: 'Saisonal', text: 'Karten, die dem Markt folgen — nicht umgekehrt.' },
+  { label: 'Regional', text: 'Produkte von Höfen und Fischern aus dem Hamburger Umland.' },
+  { label: 'Handgemacht', text: 'Pasta, Fonds und Desserts entstehen täglich frisch im Haus.' }
+];
+
+const signatures = [
   {
     name: 'Rinderfilet mit Trüffeljus',
-    price: '29 €'
+    description: 'Zart gebratenes Filet, geröstete Rosmarinkartoffeln und ein dunkler Trüffeljus.',
+    price: '29 €',
+    tag: 'Empfehlung des Hauses',
+    image: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80'
   },
   {
-    name: 'Hausgemachte Tagliatelle mit Burrata',
-    price: '18 €'
+    name: 'Tagliatelle mit Burrata',
+    description: 'Frische hausgemachte Tagliatelle, cremige Burrata, sonnengereifte Tomaten und Basilikumöl.',
+    price: '18 €',
+    tag: 'Vegetarisch',
+    image: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    name: 'Grauburgunder & Vorspeisen',
+    description: 'Eine Auswahl der Saison, begleitet von einem trockenen, mineralischen Weißwein.',
+    price: '24 €',
+    tag: 'Zum Teilen',
+    image: 'https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80'
   }
 ];
 
@@ -18,270 +68,493 @@ const menuCategories = [
   {
     category: 'Vorspeisen',
     items: [
-      {
-        name: 'Burrata mit Tomaten und Basilikum',
-        description: 'Cremige Burrata, bunte Tomaten, kaltgepresstes Olivenöl und Basilikum.',
-        price: '12 €'
-      },
-      {
-        name: 'Rindercarpaccio mit Parmesan',
-        description: 'Hauchdünn geschnittenes Rindfleisch mit Rucola, Zitrone und gehobeltem Parmesan.',
-        price: '14 €'
-      },
-      {
-        name: 'Gebratene Garnelen mit Kräutern',
-        description: 'In Knoblauch und Petersilie geschwenkte Garnelen mit leichter Zitronennote.',
-        price: '15 €'
-      }
+      { name: 'Burrata mit Tomaten und Basilikum', description: 'Cremige Burrata, bunte Tomaten, kaltgepresstes Olivenöl, Basilikum.', price: '12 €' },
+      { name: 'Rindercarpaccio mit Parmesan', description: 'Hauchdünnes Rindfleisch, Rucola, Zitrone und gehobelter Parmesan.', price: '14 €' },
+      { name: 'Gebratene Garnelen mit Kräutern', description: 'In Knoblauch und Petersilie geschwenkt, mit leichter Zitronennote.', price: '15 €' }
     ]
   },
   {
     category: 'Hauptgerichte',
     items: [
-      {
-        name: 'Gebratenes Lachsfilet mit Gemüse',
-        description: 'Auf der Haut gebratenes Lachsfilet mit saisonalem Marktgemüse und Kräuterbutter.',
-        price: '24 €'
-      },
-      {
-        name: 'Rinderfilet mit Rosmarinkartoffeln',
-        description: 'Zartes Rinderfilet, geröstete Rosmarinkartoffeln und dunkler Jus.',
-        price: '29 €'
-      },
-      {
-        name: 'Hausgemachte Pasta mit Trüffel',
-        description: 'Frische Pasta mit cremiger Trüffelsauce, Parmesan und schwarzem Pfeffer.',
-        price: '19 €'
-      }
+      { name: 'Gebratenes Lachsfilet mit Gemüse', description: 'Auf der Haut gebraten, saisonales Marktgemüse, Kräuterbutter.', price: '24 €' },
+      { name: 'Rinderfilet mit Rosmarinkartoffeln', description: 'Zartes Rinderfilet, geröstete Rosmarinkartoffeln, dunkler Jus.', price: '29 €' },
+      { name: 'Hausgemachte Pasta mit Trüffel', description: 'Frische Pasta, cremige Trüffelsauce, Parmesan, schwarzer Pfeffer.', price: '19 €' }
     ]
   },
   {
     category: 'Desserts',
     items: [
-      {
-        name: 'Tiramisu',
-        description: 'Klassisch geschichtet mit Espresso, Mascarpone und feinem Kakaopulver.',
-        price: '9 €'
-      },
-      {
-        name: 'Zitronentarte',
-        description: 'Mürber Boden, frische Zitronencreme und leicht karamellisierte Meringue.',
-        price: '8 €'
-      },
-      {
-        name: 'Schokoladenmousse',
-        description: 'Luftige Mousse aus dunkler Schokolade mit marinierten Beeren.',
-        price: '9 €'
-      }
+      { name: 'Tiramisu', description: 'Klassisch geschichtet mit Espresso, Mascarpone und Kakao.', price: '9 €' },
+      { name: 'Zitronentarte', description: 'Mürber Boden, frische Zitronencreme, karamellisierte Meringue.', price: '8 €' },
+      { name: 'Schokoladenmousse', description: 'Luftige Mousse aus dunkler Schokolade mit marinierten Beeren.', price: '9 €' }
     ]
   },
   {
-    category: 'Getränke',
+    category: 'Weine & Getränke',
     items: [
-      {
-        name: 'Hausgemachte Limonade',
-        description: 'Zitrone, Minze und Soda, frisch serviert auf Eis.',
-        price: '6 €'
-      },
-      {
-        name: 'Grauburgunder, trocken (0,2 l)',
-        description: 'Fruchtig-mineralischer Weißwein, passend zu Fisch und Vorspeisen.',
-        price: '8 €'
-      }
+      { name: 'Grauburgunder, trocken (0,2 l)', description: 'Fruchtig-mineralisch, passend zu Fisch und Vorspeisen.', price: '8 €' },
+      { name: 'Hausgemachte Limonade', description: 'Zitrone, Minze und Soda, frisch serviert auf Eis.', price: '6 €' }
     ]
   }
 ];
 
-function RestaurantHero() {
+const gallery = [
+  { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80', alt: 'Warm beleuchteter Esstisch mit Weingläsern im Abendlicht', span: 'lg:col-span-2 lg:row-span-2', h: 'h-[280px] lg:h-full' },
+  { src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80', alt: 'Gedeckter Tisch mit mehreren Tellern', span: '', h: 'h-[200px] lg:h-[244px]' },
+  { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80', alt: 'Modern angerichtetes Gericht auf hellem Teller', span: '', h: 'h-[200px] lg:h-[244px]' },
+  { src: 'https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=1000&q=80', alt: 'Stimmungsvolles Restaurant-Interieur', span: 'lg:col-span-2', h: 'h-[200px] lg:h-[244px]' }
+];
+
+function Reveal({ children, delay = 0, y = 28, className }) {
   return (
-    <section id="start" className="section-container pb-12 pt-8 sm:pt-10" aria-labelledby="hero-heading">
-      <p className="text-sm text-[#6a5e50]">Hafenblick Bistro · Hamburg Neustadt</p>
-      <div className="mt-4 grid gap-5 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
-        <figure className="relative overflow-hidden rounded-[2rem] shadow-[0_24px_70px_-40px_rgba(33,22,13,0.8)]">
-          <Image
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1900&q=80"
-            alt="Fein angerichtete Gerichte und Weingläser auf einem warm beleuchteten Restauranttisch"
-            width={1800}
-            height={1300}
-            className="h-[560px] w-full object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#201a16]/80 via-[#201a16]/30 to-transparent" />
-          <div className="absolute bottom-0 p-8 text-[#f7efe4] sm:p-10">
-            <h1 id="hero-heading" className="max-w-xl text-4xl font-semibold leading-tight sm:text-5xl">
-              Modernes Restaurant in Hamburg
-            </h1>
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-[#f1e5d7] sm:text-lg">
-              Frische Küche, stilvolles Ambiente und entspannte Abende im Herzen Hamburgs.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href="#reservierung"
-                className="inline-flex rounded-md bg-[#c67b4a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#b36b3c]"
-              >
-                Jetzt reservieren
-              </Link>
-              <Link
-                href="#speisekarte"
-                className="inline-flex rounded-md border border-[#f1ddc7] bg-transparent px-6 py-3 text-sm font-semibold text-[#f7efe4] transition hover:bg-[#f7efe4]/15"
-              >
-                Speisekarte ansehen
-              </Link>
-            </div>
-          </div>
-        </figure>
-        <aside className="grid gap-5 rounded-[2rem] bg-[#efe5d7] p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold text-[#2a2420]">Abende mit Geschmack und Atmosphäre</h2>
-          <p className="text-[#4d4339]">
-            Im Hafenblick trifft moderne Küche auf aufmerksamen Service. Unser Gastraum ist ruhig, warm beleuchtet und
-            ideal für Dinner zu zweit oder gesellige Runden.
-          </p>
-          <Image
-            src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80"
-            alt="Chef finalisiert ein detailreich angerichtetes Hauptgericht in der Restaurantküche"
-            width={1200}
-            height={900}
-            className="h-56 w-full rounded-2xl object-cover"
-          />
-        </aside>
-      </div>
-    </section>
+    <motion.div
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.75, delay, ease }}
+      className={className}
+    >
+      {children}
+    </motion.div>
   );
 }
 
-function TrustBlock() {
+function Kicker({ children }) {
   return (
-    <section className="section-container pb-14" aria-label="Bewertungen">
-      <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-[#d9c7b4] bg-[#f8f1e7] px-5 py-3 text-sm text-[#4f453b] sm:gap-4">
-        <span className="tracking-[0.12em] text-[#b27141]" aria-hidden="true">
-          ★★★★★
-        </span>
-        <p className="font-medium">Konzept-Fokus: Reservierung, Speisekarte und Atmosphäre</p>
-        <p className="text-[#6b5e4f]">Aktuelle Eindrücke aus Küche, Gastraum und Abendservice.</p>
-      </div>
-    </section>
+    <span className="inline-flex items-center gap-3 text-xs font-semibold uppercase" style={{ color: palette.gold, letterSpacing: '0.32em' }}>
+      <span style={{ width: 28, height: 1, background: palette.lineStrong }} aria-hidden="true" />
+      {children}
+    </span>
   );
 }
 
-function KitchenStory() {
+function TopNav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <section className="section-container pb-16" aria-labelledby="kitchen-heading">
-      <div className="grid gap-6 rounded-[2rem] bg-[#efe3d4] p-7 lg:grid-cols-[1fr_1.1fr] lg:items-center sm:p-10">
-        <figure className="overflow-hidden rounded-[1.5rem]">
-          <Image
-            src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1400&q=80"
-            alt="Mehrere Teller mit modern angerichteten Speisen auf einem Restauranttisch"
-            width={1400}
-            height={1000}
-            className="h-72 w-full object-cover"
-          />
-        </figure>
-        <div>
-          <h2 id="kitchen-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-            Unsere Küche
-          </h2>
-          <p className="mt-4 text-[#4f453b]">
-            Unsere Küche verbindet moderne europäische Gerichte mit frischen Zutaten aus der Region. Im Mittelpunkt
-            stehen klare Aromen, saisonale Produkte und eine Atmosphäre, in der man entspannt genießen kann.
-          </p>
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease }}
+      className="fixed inset-x-0 top-0 z-50 transition-colors duration-500"
+      style={{
+        background: scrolled ? 'rgba(14,11,7,0.82)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(14px)' : 'none',
+        borderBottom: `1px solid ${scrolled ? palette.line : 'transparent'}`
+      }}
+    >
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+        <Link href="#start" className="flex flex-col leading-none">
+          <span className="text-lg font-semibold tracking-wide" style={{ fontFamily: displayFont, color: palette.cream }}>Hafenblick</span>
+          <span className="text-[10px] uppercase" style={{ letterSpacing: '0.34em', color: palette.gold }}>Bistro · Hamburg</span>
+        </Link>
 
-          <div className="mt-6 rounded-2xl border border-[#d7c1ab] bg-[#f7efe4] p-5">
-            <h3 className="text-xl font-semibold text-[#2f2721]">Unser Küchenchef</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#544a40]">
-              Mit einer klaren, saisonalen Handschrift bringt unser Küchenchef moderne europäische Gerichte und frische
-              Produkte aus der Region auf den Teller.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function MenuPreview() {
-  return (
-    <section id="speisekarte" className="section-container pb-16" aria-labelledby="menu-heading">
-      <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
-        <h2 id="menu-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-          Speisekarte
-        </h2>
-        <p className="max-w-lg text-sm text-[#635749]">Eine Auswahl aus unserer aktuellen Abendkarte.</p>
-      </div>
-
-      <article className="mb-6 rounded-[1.4rem] border border-[#d8c7b4] bg-[#f7eee2] p-6">
-        <h3 className="text-xl font-semibold text-[#2f2721]">Empfehlung des Küchenchefs</h3>
-        <ul className="mt-4 space-y-3">
-          {chefRecommendations.map((dish) => (
-            <li key={dish.name} className="flex items-start justify-between gap-3 border-b border-[#dac8b6]/70 pb-3 last:border-b-0 last:pb-0">
-              <p className="font-medium text-[#2f2721]">{dish.name}</p>
-              <p className="whitespace-nowrap text-sm font-semibold text-[#7e5132]">{dish.price}</p>
-            </li>
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm transition-colors"
+              style={{ color: palette.muted }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = palette.cream)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = palette.muted)}
+            >
+              {link.label}
+            </Link>
           ))}
-        </ul>
-      </article>
+          <Link href="#reservierung" className="rounded-full px-5 py-2.5 text-sm font-semibold transition hover:-translate-y-0.5" style={{ background: palette.gold, color: palette.deeper }}>
+            Reservieren
+          </Link>
+        </div>
 
-      <div className="grid gap-5 lg:grid-cols-2">
-        {menuCategories.map((section) => (
-          <article key={section.category} className="rounded-[1.5rem] bg-[#f8f1e7] p-6">
-            <h3 className="text-2xl font-semibold text-[#2f2721]">{section.category}</h3>
-            <ul className="mt-4 space-y-4">
-              {section.items.map((dish) => (
-                <li key={dish.name} className="border-b border-[#d8c7b4]/70 pb-4 last:border-b-0 last:pb-0">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="font-medium text-[#2f2721]">{dish.name}</p>
-                    <p className="whitespace-nowrap text-sm font-semibold text-[#7e5132]">{dish.price}</p>
-                  </div>
-                  <p className="mt-1 text-sm leading-relaxed text-[#544a40]">{dish.description}</p>
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="flex h-10 w-10 items-center justify-center rounded-full md:hidden"
+          style={{ border: `1px solid ${palette.lineStrong}`, color: palette.cream }}
+          aria-label="Menü öffnen"
+          aria-expanded={open}
+        >
+          <span className="text-lg">{open ? '✕' : '☰'}</span>
+        </button>
+      </nav>
+
+      {open ? (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          className="md:hidden"
+          style={{ background: 'rgba(14,11,7,0.96)', borderTop: `1px solid ${palette.line}` }}
+        >
+          <div className="flex flex-col gap-1 px-5 py-4">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 text-sm" style={{ color: palette.cream }}>
+                {link.label}
+              </Link>
+            ))}
+            <Link href="#reservierung" onClick={() => setOpen(false)} className="mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold" style={{ background: palette.gold, color: palette.deeper }}>
+              Tisch reservieren
+            </Link>
+          </div>
+        </motion.div>
+      ) : null}
+    </motion.header>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="start" className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '640px', height: '100svh' }}>
+      <motion.div initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 1.8, ease }} className="absolute inset-0">
+        <Image
+          src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=2000&q=80"
+          alt="Stimmungsvoll beleuchteter Gastraum des Hafenblick Bistro am Abend"
+          fill
+          priority
+          className="object-cover"
+        />
+      </motion.div>
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(14,11,7,0.96) 4%, rgba(14,11,7,0.45) 45%, rgba(14,11,7,0.72) 100%)' }} />
+      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 40%, transparent 30%, rgba(14,11,7,0.55) 100%)' }} />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
+        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease }}>
+          <Kicker>Restaurant · Hamburg Neustadt</Kicker>
+        </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.45, ease }}
+          className="mt-6 text-5xl leading-[1.05] sm:text-7xl"
+          style={{ fontFamily: displayFont, color: palette.cream, fontWeight: 600 }}
+        >
+          Wo der Abend
+          <br />
+          <span style={{ fontStyle: 'italic', color: palette.goldBright }}>Geschmack</span> bekommt
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.6, ease }}
+          className="mx-auto mt-6 max-w-xl leading-relaxed"
+          style={{ color: palette.muted, fontFamily: accentFont, fontSize: '1.3rem' }}
+        >
+          Frische, saisonale Küche, ausgesuchte Weine und ein warm beleuchteter Gastraum im Herzen Hamburgs.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.75, ease }}
+          className="mt-9 flex flex-wrap items-center justify-center gap-4"
+        >
+          <Link href="#reservierung" className="rounded-full px-8 py-4 text-sm font-semibold uppercase transition hover:-translate-y-0.5" style={{ background: palette.gold, color: palette.deeper, letterSpacing: '0.1em' }}>
+            Tisch reservieren
+          </Link>
+          <Link href="#speisekarte" className="rounded-full px-8 py-4 text-sm font-semibold uppercase transition hover:-translate-y-0.5" style={{ border: `1px solid ${palette.lineStrong}`, color: palette.cream, letterSpacing: '0.1em' }}>
+            Speisekarte
+          </Link>
+        </motion.div>
       </div>
 
-      <p className="mt-5 text-sm text-[#635749]">Saisonale Gerichte wechseln regelmäßig je nach Marktangebot.</p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ opacity: { delay: 1.2, duration: 0.8 }, y: { delay: 1.2, duration: 2, repeat: Infinity, ease: 'easeInOut' } }}
+        className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2 text-xs uppercase"
+        style={{ color: palette.muted, letterSpacing: '0.3em' }}
+      >
+        Scrollen
+      </motion.div>
     </section>
   );
 }
 
-function AtmosphereGallery() {
+function Philosophy() {
   return (
-    <section id="galerie" className="section-container pb-12" aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-        Eindrücke aus dem Restaurant
-      </h2>
-      <div className="mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-        <figure className="overflow-hidden rounded-[1.8rem]">
-          <Image
-            src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=80"
-            alt="Ansprechend angerichtete Hauptspeise mit Beilagen auf einem Restauranttisch"
-            width={1800}
-            height={1200}
-            className="h-[520px] w-full object-cover"
-          />
-        </figure>
-        <div className="grid gap-4">
-          <figure className="overflow-hidden rounded-[1.6rem]">
+    <section id="kueche" className="px-5 py-24 sm:px-8 sm:py-32" style={{ scrollMarginTop: 80 }}>
+      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <Reveal>
+          <figure className="relative overflow-hidden rounded-[2rem]">
             <Image
-              src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80"
-              alt="Gedeckter Esstisch mit mehreren Tellern und Weingläsern im Abendlicht"
+              src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80"
+              alt="Küchenchef finalisiert ein detailreich angerichtetes Gericht"
               width={1200}
-              height={900}
-              className="h-[252px] w-full object-cover"
+              height={1400}
+              className="h-[420px] w-full object-cover sm:h-[540px]"
             />
+            <figcaption className="absolute bottom-5 left-5 rounded-full px-4 py-2 text-xs uppercase" style={{ background: 'rgba(14,11,7,0.7)', color: palette.gold, letterSpacing: '0.2em', backdropFilter: 'blur(8px)' }}>
+              Unsere Küche · täglich frisch
+            </figcaption>
           </figure>
-          <figure className="overflow-hidden rounded-[1.6rem]">
-            <Image
-              src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80"
-              alt="Servierter Rotwein neben kleinen Vorspeisentellern in stilvollem Ambiente"
-              width={1200}
-              height={900}
-              className="h-[252px] w-full object-cover"
-            />
-          </figure>
+        </Reveal>
+
+        <div>
+          <Reveal>
+            <Kicker>Die Philosophie</Kicker>
+            <h2 className="mt-5 text-4xl leading-tight sm:text-5xl" style={{ fontFamily: displayFont, color: palette.cream, fontWeight: 600 }}>
+              Klare Aromen, ehrliche Produkte
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed" style={{ color: palette.muted }}>
+              Im Hafenblick verbinden wir moderne europäische Küche mit Zutaten aus der Region. Was auf den Teller kommt,
+              entscheidet die Saison — und die Handschrift unseres Küchenchefs.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl sm:grid-cols-3" style={{ background: palette.line }}>
+            {pillars.map((pillar, i) => (
+              <Reveal key={pillar.label} delay={0.1 + i * 0.1}>
+                <div className="h-full p-6" style={{ background: palette.panel }}>
+                  <p className="text-2xl" style={{ fontFamily: displayFont, color: palette.goldBright }}>{pillar.label}</p>
+                  <p className="mt-3 text-sm leading-relaxed" style={{ color: palette.mutedDim }}>{pillar.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function Signatures() {
+  return (
+    <section id="empfehlungen" className="px-5 py-20 sm:px-8 sm:py-28" style={{ background: palette.deeper, scrollMarginTop: 80 }}>
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="text-center">
+          <div className="flex justify-center">
+            <Kicker>Signature Dishes</Kicker>
+          </div>
+          <h2 className="mt-5 text-4xl sm:text-5xl" style={{ fontFamily: displayFont, color: palette.cream, fontWeight: 600 }}>
+            Empfehlungen des Hauses
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl" style={{ color: palette.muted, fontFamily: accentFont, fontSize: '1.25rem' }}>
+            Gerichte, für die unsere Gäste wiederkommen — sorgfältig komponiert und schön angerichtet.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 grid gap-7 md:grid-cols-3">
+          {signatures.map((dish, i) => (
+            <Reveal key={dish.name} delay={i * 0.12}>
+              <motion.article
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.4, ease }}
+                className="group h-full overflow-hidden rounded-[1.6rem]"
+                style={{ background: palette.panel, border: `1px solid ${palette.line}` }}
+              >
+                <div className="relative h-60 overflow-hidden">
+                  <Image src={dish.image} alt={dish.name} width={1000} height={750} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <span className="absolute left-4 top-4 rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase" style={{ background: 'rgba(14,11,7,0.78)', color: palette.gold, letterSpacing: '0.16em', backdropFilter: 'blur(6px)' }}>
+                    {dish.tag}
+                  </span>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="text-xl" style={{ fontFamily: displayFont, color: palette.cream }}>{dish.name}</h3>
+                    <span className="whitespace-nowrap text-lg font-semibold" style={{ color: palette.goldBright }}>{dish.price}</span>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed" style={{ color: palette.mutedDim }}>{dish.description}</p>
+                </div>
+              </motion.article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Menu() {
+  return (
+    <section id="speisekarte" className="px-5 py-24 sm:px-8 sm:py-32" style={{ scrollMarginTop: 80 }}>
+      <div className="mx-auto max-w-5xl">
+        <Reveal className="text-center">
+          <div className="flex justify-center">
+            <Kicker>À la carte</Kicker>
+          </div>
+          <h2 className="mt-5 text-4xl sm:text-5xl" style={{ fontFamily: displayFont, color: palette.cream, fontWeight: 600 }}>
+            Speisekarte
+          </h2>
+          <p className="mt-4 text-sm" style={{ color: palette.mutedDim }}>
+            Eine Auswahl aus unserer aktuellen Abendkarte. Saisonale Gerichte wechseln je nach Marktangebot.
+          </p>
+        </Reveal>
+
+        <div className="mt-16 grid gap-x-16 gap-y-14 md:grid-cols-2">
+          {menuCategories.map((section, i) => (
+            <Reveal key={section.category} delay={(i % 2) * 0.1}>
+              <div>
+                <h3 className="pb-4 text-sm font-semibold uppercase" style={{ color: palette.gold, letterSpacing: '0.28em', borderBottom: `1px solid ${palette.line}` }}>
+                  {section.category}
+                </h3>
+                <ul className="mt-6 space-y-7">
+                  {section.items.map((dish) => (
+                    <li key={dish.name}>
+                      <div className="flex items-baseline gap-3">
+                        <span style={{ fontFamily: accentFont, fontWeight: 600, fontSize: '1.4rem', color: palette.cream }}>{dish.name}</span>
+                        <span className="min-w-[18px] flex-1 translate-y-[-3px]" style={{ borderBottom: `1px dotted ${palette.lineStrong}` }} aria-hidden="true" />
+                        <span className="whitespace-nowrap text-base font-semibold" style={{ color: palette.goldBright }}>{dish.price}</span>
+                      </div>
+                      <p className="mt-1.5 text-sm leading-relaxed" style={{ color: palette.mutedDim }}>{dish.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Ambiance() {
+  return (
+    <section className="relative overflow-hidden px-5 py-28 sm:px-8 sm:py-36">
+      <div className="absolute inset-0">
+        <Image src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80" alt="Warmes Restaurant-Interieur im Abendlicht" fill className="object-cover" />
+        <div className="absolute inset-0" style={{ background: 'rgba(14,11,7,0.8)' }} />
+      </div>
+      <Reveal className="relative z-10 mx-auto max-w-3xl text-center">
+        <p className="text-3xl leading-relaxed sm:text-4xl" style={{ fontFamily: displayFont, fontStyle: 'italic', color: palette.cream, fontWeight: 500 }}>
+          „Ein Abend im Hafenblick ist kein schnelles Essen — es ist ein Platz, an dem man bleiben möchte.“
+        </p>
+        <p className="mt-6 text-xs uppercase" style={{ color: palette.gold, letterSpacing: '0.3em' }}>
+          Gastraum · Bar · Terrasse
+        </p>
+      </Reveal>
+    </section>
+  );
+}
+
+function Gallery() {
+  return (
+    <section id="galerie" className="px-5 py-24 sm:px-8 sm:py-32" style={{ scrollMarginTop: 80 }}>
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <Kicker>Eindrücke</Kicker>
+          <h2 className="mt-5 text-4xl sm:text-5xl" style={{ fontFamily: displayFont, color: palette.cream, fontWeight: 600 }}>
+            Aus dem Restaurant
+          </h2>
+        </Reveal>
+
+        <div className="mt-12 grid auto-rows-fr grid-cols-2 gap-4 lg:grid-cols-4">
+          {gallery.map((img, i) => (
+            <Reveal key={img.src} delay={i * 0.08} className={img.span}>
+              <figure className="group h-full overflow-hidden rounded-[1.4rem]">
+                <div className={`relative ${img.h}`}>
+                  <Image src={img.src} alt={img.alt} fill className="object-cover transition-transform duration-[1100ms] group-hover:scale-110" />
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'linear-gradient(to top, rgba(14,11,7,0.6), transparent)' }} />
+                </div>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Reservation() {
+  return (
+    <section id="reservierung" className="px-5 py-24 sm:px-8 sm:py-32" style={{ background: palette.deeper, scrollMarginTop: 80 }}>
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
+        <div>
+          <Reveal>
+            <Kicker>Reservierung</Kicker>
+            <h2 className="mt-5 text-4xl leading-tight sm:text-5xl" style={{ fontFamily: displayFont, color: palette.cream, fontWeight: 600 }}>
+              Reservieren Sie Ihren Tisch
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed" style={{ color: palette.muted }}>
+              Ob Dinner zu zweit oder ein Abend mit Freunden — wir halten Ihren Platz gerne bereit.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <dl className="mt-10 space-y-6">
+              <div>
+                <dt className="text-xs uppercase" style={{ color: palette.gold, letterSpacing: '0.24em' }}>Öffnungszeiten</dt>
+                <dd className="mt-2 text-sm leading-7" style={{ color: palette.muted }}>Mo–Fr · 12:00–15:00 &amp; 17:30–23:00<br />Sa &amp; So · 13:00–23:00</dd>
+              </div>
+              <div>
+                <dt className="text-xs uppercase" style={{ color: palette.gold, letterSpacing: '0.24em' }}>Adresse</dt>
+                <dd className="mt-2 text-sm leading-7" style={{ color: palette.muted }}>Hafenstraße 42 · 20459 Hamburg</dd>
+              </div>
+              <div>
+                <dt className="text-xs uppercase" style={{ color: palette.gold, letterSpacing: '0.24em' }}>Kontakt</dt>
+                <dd className="mt-2 text-sm leading-7" style={{ color: palette.muted }}>040 / 123 45 67<br />reservierung@hafenblick-demo.de</dd>
+              </div>
+            </dl>
+          </Reveal>
+        </div>
+
+        <Reveal delay={0.15}>
+          <form className="rounded-[1.8rem] p-7 sm:p-9" style={{ background: palette.panel, border: `1px solid ${palette.line}` }} onSubmit={(e) => e.preventDefault()}>
+            <p className="text-xl" style={{ fontFamily: displayFont, color: palette.cream }}>Tischanfrage</p>
+            <p className="mt-1 text-xs" style={{ color: palette.mutedDim }}>Demo-Formular · ohne Datenübertragung</p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <Field label="Name"><input type="text" placeholder="Ihr Name" style={inputStyle} className="reservation-input" /></Field>
+              <Field label="Personen"><input type="number" min="1" defaultValue="2" style={inputStyle} className="reservation-input" /></Field>
+              <Field label="Datum"><input type="date" style={inputStyle} className="reservation-input" /></Field>
+              <Field label="Uhrzeit"><input type="time" defaultValue="19:30" style={inputStyle} className="reservation-input" /></Field>
+            </div>
+            <div className="mt-4">
+              <Field label="Anmerkung"><textarea rows={2} placeholder="Allergien, Anlass, Wünsche …" style={inputStyle} className="reservation-input" /></Field>
+            </div>
+
+            <button type="submit" className="mt-6 w-full rounded-full py-4 text-sm font-semibold uppercase transition hover:-translate-y-0.5" style={{ background: palette.gold, color: palette.deeper, letterSpacing: '0.12em' }}>
+              Reservierung anfragen
+            </button>
+            <p className="mt-4 text-center text-xs" style={{ color: palette.mutedDim }}>
+              Lieber telefonisch?{' '}
+              <Link href="tel:+49401234567" className="underline underline-offset-4" style={{ color: palette.gold }}>040 / 123 45 67</Link>
+            </p>
+          </form>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const inputStyle = {
+  width: '100%',
+  borderRadius: '0.75rem',
+  background: palette.deeper,
+  border: `1px solid ${palette.line}`,
+  color: palette.cream,
+  padding: '0.75rem 0.9rem',
+  fontSize: '0.9rem',
+  fontFamily: bodyFont
+};
+
+function Field({ label, children }) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-xs uppercase" style={{ color: palette.mutedDim, letterSpacing: '0.16em' }}>{label}</span>
+      {children}
+    </label>
+  );
+}
+
+function Foot() {
+  return (
+    <footer className="px-5 py-12 sm:px-8" style={{ borderTop: `1px solid ${palette.line}` }}>
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+        <div>
+          <p className="text-lg" style={{ fontFamily: displayFont, color: palette.cream }}>Hafenblick Bistro</p>
+          <p className="mt-1 text-xs uppercase" style={{ color: palette.gold, letterSpacing: '0.24em' }}>Hamburg Neustadt</p>
+        </div>
+        <p className="text-xs" style={{ color: palette.mutedDim }}>Demo-Konzept von Hamburg Websites · ohne erfundene Kundenergebnisse</p>
+      </div>
+    </footer>
   );
 }
 
@@ -290,93 +563,40 @@ export default function RestaurantDemoPage() {
     <>
       <SEOHead
         title="Hafenblick Bistro Hamburg"
-        description="Modernes Bistro in Hamburg mit Speisekarte, Galerie, Reservierung und warmem Abendambiente."
+        description="Cinematic Bistro-Onepager in Hamburg: saisonale Küche, Signature-Gerichte, Speisekarte, Galerie und Reservierung in warmer Abendstimmung."
         path="/referenzen/restaurant-demo"
       />
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
 
-      <div className="min-h-screen bg-[#f3ece2] text-[#2a2420]">
+      <div style={{ background: palette.ink, color: palette.cream, fontFamily: bodyFont, scrollBehavior: 'smooth' }}>
         <ReferenceBackButton />
-
+        <TopNav />
         <main>
-          <RestaurantHero />
-          <TrustBlock />
-          <KitchenStory />
-          <MenuPreview />
-          <AtmosphereGallery />
-
-          <section className="section-container pb-12" aria-label="Atmosphäre Hinweis">
-            <p className="rounded-2xl bg-[#efe4d6] px-6 py-4 text-[#4f453b]">
-              Genießen Sie moderne Küche in entspannter Atmosphäre mit Blick auf den Hafen.
-            </p>
-          </section>
-
-          <section id="reservierung" className="section-container pb-16" aria-labelledby="reservation-heading">
-            <div className="grid gap-5 rounded-[2rem] bg-[#2e2a27] p-8 text-[#f6eee2] shadow-[0_24px_60px_-36px_rgba(0,0,0,0.8)] lg:grid-cols-[1fr_auto] lg:items-center">
-              <div>
-                <h2 id="reservation-heading" className="text-3xl font-semibold sm:text-4xl">
-                  Reservieren Sie Ihren Tisch
-                </h2>
-                <p className="mt-3 max-w-xl text-[#dfd1c0]">
-                  Ob Dinner zu zweit oder ein gemeinsamer Abend mit Freunden – wir freuen uns auf Ihre Reservierung.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3 lg:justify-end">
-                <Link
-                  href="mailto:reservierung@hafenblick-demo.de"
-                  className="inline-flex h-fit rounded-md bg-[#c67b4a] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#b36b3c]"
-                >
-                  Jetzt reservieren
-                </Link>
-                <Link
-                  href="tel:+49401234567"
-                  className="inline-flex h-fit rounded-md border border-[#d9c7b3] px-7 py-3 text-sm font-semibold text-[#f6eee2] transition hover:bg-[#f6eee2]/10"
-                >
-                  Telefonisch reservieren
-                </Link>
-              </div>
-            </div>
-          </section>
-
-          <section id="kontakt" className="section-container pb-16" aria-labelledby="contact-heading">
-            <div className="grid gap-6 border-y border-[#d8c9b7] py-8 lg:grid-cols-2">
-              <div>
-                <h2 id="contact-heading" className="text-3xl font-semibold text-[#2a2420] sm:text-4xl">
-                  Standort & Öffnungszeiten
-                </h2>
-                <p className="mt-4 text-[#4f453b]">Hafenstraße 42, 20459 Hamburg</p>
-                <p className="mt-1 text-[#4f453b]">Mo–Fr: 12:00–15:00 & 17:30–23:00</p>
-                <p className="mt-1 text-[#4f453b]">Sa/So: 13:00–23:00</p>
-              </div>
-              <div className="space-y-3 text-[#4f453b]">
-                <p>Telefon: 040 / 123 45 67</p>
-                <p>E-Mail: reservierung@hafenblick-demo.de</p>
-                <div className="pt-2">
-                  <Link
-                    href="mailto:reservierung@hafenblick-demo.de"
-                    className="text-sm font-semibold text-[#7a4f30] underline underline-offset-4"
-                  >
-                    Reservierung per E-Mail
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="section-container pb-14">
-            <div className="rounded-2xl bg-[#efe4d6] p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
-              <p className="text-[#433a31]">Reservierungen, Menüfragen und private Abende</p>
-              <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
-                <Link href="#reservierung" className="rounded-md bg-[#2e2a27] px-5 py-2.5 text-sm font-semibold text-[#f6eee2]">
-                  Tisch reservieren
-                </Link>
-                <Link href="#speisekarte" className="rounded-md border border-[#3e3530] px-5 py-2.5 text-sm font-semibold text-[#3e3530]">
-                  Menü ansehen
-                </Link>
-              </div>
-            </div>
-          </section>
+          <Hero />
+          <Philosophy />
+          <Signatures />
+          <Menu />
+          <Ambiance />
+          <Gallery />
+          <Reservation />
         </main>
+        <Foot />
       </div>
+
+      <style jsx>{`
+        .reservation-input::placeholder {
+          color: ${palette.mutedDim};
+        }
+        .reservation-input:focus {
+          outline: none;
+          border-color: ${palette.lineStrong};
+        }
+      `}</style>
     </>
   );
 }
