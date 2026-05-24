@@ -4,18 +4,11 @@ import PackagePreviewPopover from './pricing/PackagePreviewPopover';
 
 const projectPricingCards = [
   {
-    title: 'Kostenlose Demo-Vorschau',
-    price: '0 €',
-    description:
-      'Ein unverbindlicher erster Entwurf, um Stil, Aufbau und Richtung Ihrer zukünftigen Website sichtbar zu machen.',
-    bullets: ['Erste visuelle Projektrichtung', 'Vorschau auf Aufbau und Stil', 'Unverbindliche Einschätzung']
-  },
-  {
     title: 'Website-Visitenkarte',
     price: 'ab 400 €',
     description:
       'Sehr kompakte Webpräsenz für einen professionellen Einstieg mit Kontaktinformationen und klarem Ersteindruck.',
-    bullets: ['Seitenstruktur für 1 Seite', 'Kontakt-CTA', 'SEO-Basics', '1 Korrekturschleife', '7 Tage Prüfungsphase'],
+    bullets: ['Seitenstruktur für 1 Seite', 'Kontakt-CTA', 'SEO-Basics', '1 Korrekturschleife'],
     preview: {
       description: 'Kompakte Basis-Präsenz mit kurzer Vorstellung, Kontaktdaten und einfacher Struktur.',
       bullets: ['1 Seite', 'Grundlegende Informationen', 'Kontaktmöglichkeit'],
@@ -31,10 +24,8 @@ const projectPricingCards = [
       'Sektionen auf 1 Landingpage',
       'Kontaktformular',
       'Performance-Basics',
-      '1 strukturierte Landingpage',
       '2 Korrekturschleifen',
-      'Technische Veröffentlichung',
-      '7 Tage Prüfungsphase'
+      'Technische Veröffentlichung'
     ],
     preview: {
       description: 'Strukturierte Ein-Seiten-Website mit mehr Inhalten, klarer Nutzerführung und stärkerem Fokus auf Anfragen.',
@@ -46,7 +37,7 @@ const projectPricingCards = [
     title: 'Mehrseitige Website',
     price: 'ab 1.000 €',
     description: 'Für Unternehmen mit mehreren Angeboten, Zielgruppen, Unterseiten oder stärkerem Informationsbedarf.',
-    bullets: ['5–8 Seitenplan', 'Interne Verlinkung', 'Übergabe / Ownership', '2 Korrekturschleifen', '7 Tage Prüfungsphase'],
+    bullets: ['5–8 Seitenplan', 'Interne Verlinkung', 'Übergabe / Ownership', '2 Korrekturschleifen'],
     note: 'Abhängig von Seitenanzahl und Umfang',
     featured: true,
     badge: 'Beliebt',
@@ -60,7 +51,7 @@ const projectPricingCards = [
     title: 'Website mit Adminbereich',
     price: 'ab 1.500 €',
     description: 'Geeignet für Projekte, bei denen Inhalte später eigenständig verwaltet werden sollen.',
-    bullets: ['Mehrseitige Website', 'Adminbereich / CMS', '2–3 Korrekturschleifen', 'Strukturierte Inhaltsverwaltung', '7 Tage Prüfungsphase'],
+    bullets: ['Mehrseitige Website', 'Adminbereich / CMS', '2–3 Korrekturschleifen', 'Strukturierte Inhaltsverwaltung'],
     badge: 'Professioneller Standard',
     badgeStyle: 'premium',
     preview: {
@@ -229,7 +220,24 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
         </p>
       </motion.div>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        className="mt-10 flex flex-col gap-5 rounded-2xl p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8"
+        style={{
+          background: 'linear-gradient(135deg, rgba(124,58,237,0.16) 0%, rgba(168,85,247,0.06) 100%)',
+          border: '1px solid rgba(168,142,247,0.2)'
+        }}
+      >
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#A855F7' }}>Kostenlos &amp; unverbindlich</p>
+          <h3 className="mt-2 text-xl font-bold" style={{ color: '#ECEAF3' }}>Jedes Projekt startet mit einer kostenlosen Demo</h3>
+          <p className="mt-2 max-w-xl text-sm leading-7" style={{ color: '#9690A8' }}>
+            Sie sehen Stil, Aufbau und Richtung Ihrer zukünftigen Website – bevor Sie sich für ein Paket entscheiden.
+          </p>
+        </div>
+        <Link href="/kontakt" className="primary-btn shrink-0">Kostenlose Demo anfragen</Link>
+      </div>
+
+      <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projectPricingCards.map((card, index) => (
           <PricingCard key={card.title} card={card} index={index} />
         ))}

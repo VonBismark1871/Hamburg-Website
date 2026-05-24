@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
@@ -14,7 +13,7 @@ const principles = [
   {
     number: '2',
     title: 'Direkter Kontakt, kein Ticketsystem',
-    text: 'Sie sprechen mit der Person, die Ihre Website baut. Keine Weiterleitungen, keine Warteschleifen, keine Missverständnisse durch zwischengeschaltete Stellen.'
+    text: 'Sie sprechen mit der Person, die Ihre Website baut – ohne Weiterleitungen, ohne Warteschleifen. Eine Person ist von Anfang bis Livegang verantwortlich.'
   },
   {
     number: '3',
@@ -23,25 +22,21 @@ const principles = [
   },
   {
     number: '4',
-    title: 'Ehrliche Einschätzungen',
+    title: 'Ehrliche Einschätzung',
     text: 'Wenn ein einfacherer Ansatz besser passt, sagen wir das. Kein Upselling, keine Funktionen, die Sie nicht brauchen.'
+  },
+  {
+    number: '5',
+    title: 'Fairer Preis ohne Agentur-Aufschlag',
+    text: 'Sie zahlen für die Leistung, nicht für ein großes Büro. Die Preisrange steht vor dem Projektstart fest.'
   }
-];
-
-const studioBenefits = [
-  { title: 'Volle Aufmerksamkeit', text: 'Ihr Projekt landet nicht in einer Warteschlange zwischen Großkunden.' },
-  { title: 'Schnelle Entscheidungen', text: 'Keine internen Freigabeprozesse. Änderungen werden direkt umgesetzt.' },
-  { title: 'Klare Verantwortung', text: 'Eine Person ist für Ihr Projekt verantwortlich — von Anfang bis Livegang.' },
-  { title: 'Fairer Preis', text: 'Kein Agenturaufschlag. Sie zahlen für die Leistung, nicht für das Büro.' }
 ];
 
 const promises = [
   'Klare Rückmeldungen ohne Fachjargon',
-  'Realistische Zeitrahmen',
-  'Preisrange vor Projektstart',
-  'Saubere technische Umsetzung',
+  'Preisrange vor dem Projektstart',
   'Keine versteckten Kosten',
-  'Antwort innerhalb von 24 Stunden'
+  'Antwort in der Regel innerhalb von 24 Stunden'
 ];
 
 export default function UeberUnsPage() {
@@ -114,7 +109,7 @@ export default function UeberUnsPage() {
         <section className="section-container section-spacing" aria-labelledby="arbeitsweise-heading">
           <p className="section-label">Arbeitsweise</p>
           <h2 id="arbeitsweise-heading" className="text-3xl font-black tracking-tight sm:text-4xl" style={{ color: '#ECEAF3' }}>
-            Arbeitsweise
+            So arbeiten wir
           </h2>
           <ol className="mt-10 space-y-7">
             {principles.map((item, index) => (
@@ -145,29 +140,6 @@ export default function UeberUnsPage() {
           </ol>
         </section>
 
-        <section className="section-container pb-16 sm:pb-20" aria-labelledby="studio-vorteile-heading">
-          <p className="section-label">Warum wir</p>
-          <h2 id="studio-vorteile-heading" className="text-3xl font-black tracking-tight sm:text-4xl" style={{ color: '#ECEAF3' }}>
-            Warum ein kleines Studio?
-          </h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {studioBenefits.map((item, index) => (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.07 }}
-                className="rounded-2xl p-6"
-                style={{ background: '#16131F', border: '1px solid rgba(168,142,247,0.12)' }}
-              >
-                <h3 className="text-xl font-semibold" style={{ color: '#ECEAF3' }}>{item.title}</h3>
-                <p className="mt-3 text-sm leading-7" style={{ color: '#9690A8' }}>{item.text}</p>
-              </motion.article>
-            ))}
-          </div>
-        </section>
-
         <section
           className="py-16 sm:py-20"
           aria-labelledby="einordnung-heading"
@@ -175,9 +147,9 @@ export default function UeberUnsPage() {
         >
           <div className="section-container">
             <p className="section-label">Eine kurze Einordnung</p>
-            <blockquote className="mt-5 max-w-4xl text-2xl italic sm:text-3xl" style={{ color: '#ECEAF3' }}>
-              Hamburg Websites ist bewusst schlank aufgestellt: direkte Abstimmung, klare Entscheidungen und Websites,
-              deren Umfang zum tatsächlichen Bedarf passt.
+            <blockquote id="einordnung-heading" className="mt-5 max-w-4xl text-2xl italic sm:text-3xl" style={{ color: '#ECEAF3' }}>
+              Hamburg Websites ist neu gestartet und bewusst schlank aufgestellt: direkte Abstimmung, klare
+              Entscheidungen — und Qualität, die Sie an echten Demos sehen statt an erfundenen Referenzen.
             </blockquote>
             <p className="mt-6 text-sm" style={{ color: '#6B6480' }}>— Hamburg Websites, gegründet für klare Webprojekte in Hamburg und darüber hinaus</p>
           </div>
