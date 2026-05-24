@@ -18,8 +18,8 @@ const legalLinks = [
 
 const FooterLinkColumn = ({ title, links, ariaLabel }) => (
   <nav aria-label={ariaLabel} className="space-y-3">
-    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/55">{title}</p>
-    <ul className="space-y-2">
+    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-white/40">{title}</p>
+    <ul className="space-y-2.5">
       {links.map((link) => (
         <li key={link.href}>
           <Link href={link.href} className="footer-link text-sm">
@@ -33,22 +33,45 @@ const FooterLinkColumn = ({ title, links, ariaLabel }) => (
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-slateBlue" aria-label="Seitenfuß">
-      <div className="section-container py-12 sm:py-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+    <footer
+      className="border-t border-white/[0.07]"
+      style={{
+        background: 'linear-gradient(180deg, #06111f 0%, #060d1a 100%)'
+      }}
+      aria-label="Seitenfuß"
+    >
+      <div className="section-container py-14 sm:py-16">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           <section aria-label="Hamburg Websites">
             <LogoLink className="inline-flex" compact />
-            <p className="mt-4 max-w-sm text-sm font-light leading-relaxed text-white/55">
-              Moderne Websites für Unternehmen in Hamburg – klar strukturiert, hochwertig gestaltet und auf Anfragen
-              ausgerichtet.
+            <p className="mt-5 max-w-xs text-sm leading-7 text-white/45">
+              Moderne Websites für Unternehmen in Hamburg – klar strukturiert, hochwertig gestaltet und auf Anfragen ausgerichtet.
             </p>
-            <ul className="mt-5 space-y-2 text-sm font-light text-white/55">
+            <ul className="mt-5 space-y-2.5 text-sm text-white/45">
               <li>
-                <a href="mailto:info@hamburgwebsites.de" className="footer-link">
+                <a
+                  href="mailto:info@hamburgwebsites.de"
+                  className="footer-link inline-flex items-center gap-2"
+                >
+                  <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4 opacity-60" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                    <rect x="2" y="5" width="16" height="12" rx="2" />
+                    <path d="m2 7 8 5 8-5" />
+                  </svg>
                   info@hamburgwebsites.de
                 </a>
               </li>
-              <li>Hamburg, Deutschland</li>
+              <li>
+                <a
+                  href="tel:+4916096297897"
+                  className="footer-link inline-flex items-center gap-2"
+                >
+                  <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4 opacity-60" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                    <path d="M6.5 3.5A11.5 11.5 0 0 1 16.5 13.5c0 .83-.67 1.5-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5v-1.22a1.5 1.5 0 0 0-.95-1.4l-1.3-.5a1.5 1.5 0 0 0-1.72.5l-.18.24A9.5 9.5 0 0 1 4.4 7.7l.24-.18a1.5 1.5 0 0 0 .5-1.72l-.5-1.3A1.5 1.5 0 0 0 3.22 3.5H2A1.5 1.5 0 0 0 .5 5c0 .28.02.56.06.83" />
+                  </svg>
+                  +49 160 96297897
+                </a>
+              </li>
+              <li className="text-white/35">Hamburg, Deutschland</li>
             </ul>
           </section>
 
@@ -56,8 +79,24 @@ export default function Footer() {
           <FooterLinkColumn title="Rechtliches" links={legalLinks} ariaLabel="Footer Rechtliches" />
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-5 text-xs text-white/30">
-          <p>© 2026 Hamburg Websites. Alle Rechte vorbehalten.</p>
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/[0.07] pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-white/25">© 2026 Hamburg Websites. Alle Rechte vorbehalten.</p>
+          <p className="text-xs text-white/20">
+            Handgemacht in Hamburg.{' '}
+            <span
+              style={{
+                display: 'inline-block',
+                width: 7,
+                height: 7,
+                borderRadius: '50%',
+                background: '#b8ff2f',
+                boxShadow: '0 0 0 3px rgba(184,255,47,0.2)',
+                verticalAlign: 'middle',
+                marginLeft: 4
+              }}
+              aria-hidden="true"
+            />
+          </p>
         </div>
       </div>
     </footer>

@@ -7,9 +7,9 @@ function IconBase({ children }) {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-7 w-7"
+      className="h-6 w-6"
       stroke="currentColor"
-      strokeWidth="1.8"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -65,63 +65,99 @@ function ToolsIcon() {
 const services = [
   {
     icon: WebsiteIcon,
+    number: '01',
     title: 'Websites',
-    text: 'Klare Unternehmensseiten, Relaunches und Landingpages mit Struktur, Design, SEO-Basis und Anfrageführung.'
+    text: 'Klare Unternehmensseiten, Relaunches und Landingpages mit Struktur, Design, SEO-Basis und Anfrageführung.',
+    highlight: 'Ab 400 €'
   },
   {
     icon: VisibilityIcon,
+    number: '02',
     title: 'SEO & Sichtbarkeit',
-    text: 'Lokale Seitenstruktur, Google-Business-Logik, Inhalte und technische Grundlage für bessere Auffindbarkeit.'
+    text: 'Lokale Seitenstruktur, Google-Business-Logik, Inhalte und technische Grundlage für bessere Auffindbarkeit.',
+    highlight: 'Lokal stark'
   },
   {
     icon: AutomationIcon,
+    number: '03',
     title: 'Automatisierung',
-    text: 'Formulare, Benachrichtigungen, einfache Workflows und interne Abläufe, die wiederkehrende Arbeit reduzieren.'
+    text: 'Formulare, Benachrichtigungen, einfache Workflows und interne Abläufe, die wiederkehrende Arbeit reduzieren.',
+    highlight: 'Zeit sparen'
   },
   {
     icon: ToolsIcon,
+    number: '04',
     title: 'Plugins & Tools',
-    text: 'Kleine Webtools, Admin-Hilfen und Integrationen, wenn Standardfunktionen nicht ausreichen.'
+    text: 'Kleine Webtools, Admin-Hilfen und Integrationen, wenn Standardfunktionen nicht ausreichen.',
+    highlight: 'Maßgeschneidert'
   }
 ];
 
 export default function Features() {
   return (
-    <section className="section-container section-spacing" id="features" aria-labelledby="features-heading">
-      <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+    <section
+      className="section-container section-spacing"
+      id="features"
+      aria-labelledby="features-heading"
+    >
+      <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
         <div>
           <p className="section-label">Leistungen</p>
-          <h2 id="features-heading" className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl">
-            Vier klare Leistungen. Ein sauberer technischer Anspruch.
+          <h2
+            id="features-heading"
+            className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl"
+            style={{ letterSpacing: '-0.02em' }}
+          >
+            Vier klare Leistungen. Ein Anspruch.
           </h2>
         </div>
-        <p className="max-w-2xl text-base leading-8 text-slate-600">
-          Sie können mit einer Website starten oder direkt eine konkrete SEO-, Automatisierungs- oder Tool-Aufgabe
-          lösen. Die Leistungen funktionieren einzeln und lassen sich später sinnvoll verbinden.
+        <p className="max-w-2xl text-base leading-8 text-slate-500">
+          Sie können mit einer Website starten oder direkt eine konkrete SEO-, Automatisierungs- oder Tool-Aufgabe lösen. Die Leistungen funktionieren einzeln und lassen sich später sinnvoll verbinden.
         </p>
       </div>
 
-      <div className="service-showcase mt-10">
+      <div className="service-showcase mt-12">
         {services.map((service, index) => {
           const Icon = service.icon;
-
           return (
             <motion.article
               key={service.title}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="service-tile"
+              transition={{ duration: 0.4, delay: index * 0.07 }}
+              className="service-tile flex flex-col"
             >
-              <span className="service-tile-icon">
-                <Icon />
+              <div className="flex items-start justify-between">
+                <span className="service-tile-icon">
+                  <Icon />
+                </span>
+                <span
+                  className="rounded-full border px-2.5 py-1 text-xs font-bold"
+                  style={{
+                    borderColor: 'rgba(184,255,47,0.4)',
+                    background: 'rgba(184,255,47,0.1)',
+                    color: '#3a5a00'
+                  }}
+                >
+                  {service.highlight}
+                </span>
+              </div>
+
+              <span
+                className="mt-5 text-xs font-black tracking-widest"
+                style={{ color: 'rgba(8,22,43,0.18)' }}
+                aria-hidden="true"
+              >
+                {service.number}
               </span>
               <h3>{service.title}</h3>
-              <p>{service.text}</p>
+              <p className="flex-1">{service.text}</p>
               <Link href="/kontakt" className="service-tile-link">
                 Anfrage besprechen
-                <span aria-hidden="true">-&gt;</span>
+                <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
               </Link>
             </motion.article>
           );
