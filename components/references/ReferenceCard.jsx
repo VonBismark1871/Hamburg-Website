@@ -123,7 +123,7 @@ export default function ReferenceCard({ project }) {
         </dl>
 
         <div className="mt-auto flex items-center justify-between gap-4 pt-5">
-          <p className="text-xs font-semibold leading-5" style={{ color: '#6B6480' }}>{project.trustSignal}</p>
+          <p className="text-xs font-semibold leading-5" style={{ color: '#6B6480' }}>Demo-Konzept · ohne erfundene Ergebnisse</p>
           <Link
             href={`/referenzen/${project.slug}`}
             className="inline-flex shrink-0 rounded-full px-4 py-3 text-xs font-bold text-white transition"

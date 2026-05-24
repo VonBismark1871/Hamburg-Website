@@ -14,83 +14,97 @@ const serviceItems = [
   { name: 'Automatisierung und Tools', priceFromEur: 900 }
 ];
 
-/* ─── Testimonials ──────────────────────────────────── */
-const testimonials = [
-  {
-    stars: 5,
-    text: 'Die neue Website ist professionell, übersichtlich und hat innerhalb weniger Wochen deutlich mehr Anfragen gebracht. Direkte Kommunikation, faire Preise – absolut empfehlenswert.',
-    name: 'Markus K.',
-    role: 'Inhaber · Autoservice Hamburg',
-    initials: 'MK'
-  },
-  {
-    stars: 5,
-    text: 'Ich hatte vorher eine veraltete Website, die kaum jemand fand. Jetzt bin ich bei Google an erster Stelle für meine wichtigsten Suchbegriffe. Schnelle Umsetzung, saubere Arbeit.',
-    name: 'Sandra M.',
-    role: 'Inhaberin · Friseursalon Altona',
-    initials: 'SM'
-  },
-  {
-    stars: 5,
-    text: 'Endlich eine Website, die wirklich verkauft. Der Ablauf war transparent, klar und ohne unnötigen Aufwand. Genau das, was ich mir vorgestellt hatte.',
-    name: 'Thomas B.',
-    role: 'Praxisinhaber · Physio Hamburg-Nord',
-    initials: 'TB'
-  }
-];
-
-function StarIcon() {
+/* ─── Trust strip (honest) ──────────────────────────── */
+function TrustStrip() {
+  const points = ['Kostenlose Demo vorab', 'Direkter Kontakt', '100 % Ihr Eigentum'];
   return (
-    <svg viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4" aria-hidden="true">
-      <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.3l-3.7 2 .7-4.1-3-2.9 4.2-.7L8 1Z" />
-    </svg>
+    <section
+      style={{
+        background: '#0B0A12',
+        borderTop: '1px solid rgba(168,142,247,0.08)',
+        borderBottom: '1px solid rgba(168,142,247,0.08)'
+      }}
+      aria-label="Vertrauen"
+    >
+      <div className="section-container py-8">
+        <div className="flex flex-col items-center gap-5 text-center md:flex-row md:justify-between md:text-left">
+          <p className="max-w-xl text-sm leading-7" style={{ color: '#9690A8' }}>
+            Neu in Hamburg gestartet — statt erfundener Referenzen zeigen wir{' '}
+            <span style={{ color: '#ECEAF3', fontWeight: 600 }}>echte, prüfbare Demo-Websites</span>.
+          </p>
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {points.map((p) => (
+              <li key={p} className="flex items-center gap-2 text-sm font-semibold" style={{ color: '#9690A8' }}>
+                <span
+                  style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg,#7C3AED,#A855F7)' }}
+                  aria-hidden="true"
+                />
+                {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
   );
 }
 
-function Testimonials() {
+/* ─── Warum Hamburg Websites ────────────────────────── */
+const whyPoints = [
+  {
+    title: 'Direkter Ansprechpartner',
+    text: 'Sie sprechen mit der Person, die Ihre Website baut – ohne Sachbearbeiter, ohne Ticketsystem.'
+  },
+  {
+    title: 'Demo vor der Entscheidung',
+    text: 'Sie sehen einen echten Entwurf Ihrer Website, bevor Sie sich entscheiden oder etwas bezahlen.'
+  },
+  {
+    title: '100 % Ihr Eigentum',
+    text: 'Code, Daten und alle Zugänge gehören Ihnen – keine Abhängigkeit, kein Lock-in.'
+  },
+  {
+    title: 'Kein Agentur-Aufschlag',
+    text: 'Faire Preise und eine ehrliche Einschätzung. Wenn ein einfacherer Weg reicht, sage ich das.'
+  }
+];
+
+function WhyMe() {
   return (
-    <section
-      className="section-spacing"
-      style={{ background: '#16131F' }}
-      aria-labelledby="testimonials-heading"
-    >
+    <section className="section-spacing" style={{ background: '#16131F' }} aria-labelledby="why-heading">
       <div className="section-container">
-        <div className="mb-12 text-center">
-          <p className="section-label" style={{ justifyContent: 'center' }}>Kundenstimmen</p>
+        <div className="mb-12 max-w-2xl">
+          <p className="section-label">Warum Hamburg Websites</p>
           <h2
-            id="testimonials-heading"
-            className="mx-auto max-w-2xl text-3xl font-black leading-tight sm:text-5xl"
+            id="why-heading"
+            className="text-3xl font-black leading-tight sm:text-5xl"
             style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
           >
-            Was Kunden über die Zusammenarbeit sagen
+            Klare Bedingungen statt großer Versprechen
           </h2>
+          <p className="mt-4 text-base leading-8" style={{ color: '#9690A8' }}>
+            Direkt, transparent und ohne Risiko beim Einstieg – darauf können Sie sich verlassen.
+          </p>
         </div>
-
-        <div className="testimonial-grid">
-          {testimonials.map((t, index) => (
+        <div className="grid gap-5 sm:grid-cols-2">
+          {whyPoints.map((item, index) => (
             <motion.article
-              key={t.name}
+              key={item.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="testimonial-card"
+              className="rounded-2xl p-7"
+              style={{ border: '1px solid rgba(168,142,247,0.12)', background: 'rgba(255,255,255,0.02)' }}
             >
-              <div className="testimonial-stars" aria-label={`${t.stars} von 5 Sternen`}>
-                {Array.from({ length: t.stars }).map((_, i) => (
-                  <StarIcon key={i} />
-                ))}
-              </div>
-              <p className="testimonial-text">{t.text}</p>
-              <div className="testimonial-author">
-                <div className="testimonial-avatar" aria-hidden="true">
-                  {t.initials}
-                </div>
-                <div>
-                  <p className="testimonial-author-name">{t.name}</p>
-                  <p className="testimonial-author-role">{t.role}</p>
-                </div>
-              </div>
+              <span
+                className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl"
+                style={{ background: 'rgba(124,58,237,0.15)', color: '#A855F7' }}
+              >
+                <CheckIcon />
+              </span>
+              <h3 className="text-lg font-black" style={{ color: '#ECEAF3' }}>{item.title}</h3>
+              <p className="mt-2 text-sm leading-7" style={{ color: '#9690A8' }}>{item.text}</p>
             </motion.article>
           ))}
         </div>
@@ -198,10 +212,10 @@ function ProcessPreview() {
 /* ─── Pricing Preview ───────────────────────────────── */
 const pricingPreview = [
   {
-    title: 'Starter Website',
-    subtitle: 'Onepager',
-    price: 'ab 650 €',
-    points: ['1 strukturierte Landingpage', 'Kontaktformular', 'Responsive Design', 'SEO-Basis']
+    title: 'Website-Visitenkarte',
+    subtitle: 'Einstieg',
+    price: 'ab 400 €',
+    points: ['1 strukturierte Seite', 'Kontakt-CTA', 'Responsive Design', 'SEO-Basics']
   },
   {
     title: 'Business Website',
@@ -425,7 +439,7 @@ function FinalCta() {
             </article>
             <article>
               <strong>Schnelle Rückmeldung</strong>
-              <span>Antwort in der Regel innerhalb von 24 Stunden.</span>
+              <span>Persönliche Antwort, keine automatische Warteschleife.</span>
             </article>
             <article>
               <strong>Hamburg und DACH</strong>
@@ -455,10 +469,11 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <TrustStrip />
         <Features />
-        <Testimonials />
-        <ProcessPreview />
         <Portfolio />
+        <WhyMe />
+        <ProcessPreview />
         <PricingPreview />
         <FaqPreview />
         <FinalCta />

@@ -29,7 +29,7 @@ export default function KontaktPage() {
           </p>
         </section>
 
-        <Contact headingTag="h2" title="Schreiben Sie uns Ihr Website-Projekt" />
+        <Contact headingTag="h2" title="Kostenlose Demo anfragen" />
 
         <section className="section-container pb-16" aria-labelledby="kontakt-links-heading">
           <p className="section-label">Weitere Links</p>

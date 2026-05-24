@@ -7,16 +7,17 @@ const fadeUp = {
 };
 
 const heroStats = [
-  { value: '30+', label: 'Projekte umgesetzt' },
+  { value: 'Kostenlos', label: 'Demo vorab' },
   { value: '24h', label: 'Antwortzeit' },
-  { value: '100%', label: 'Inhaber-Eigentum' },
-  { value: '5 ★', label: 'Kundenbewertungen' }
+  { value: '100%', label: 'Ihr Eigentum' },
+  { value: 'Hamburg', label: '& DACH' }
 ];
 
-const metrics = [
-  { label: 'Neue Anfragen / Monat', value: '+180%', badge: 'up', badgeLabel: '↑' },
-  { label: 'Google-Ranking', value: 'Position #1', badge: 'neutral', badgeLabel: '◉' },
-  { label: 'Ladezeit', value: '0.9s', badge: 'up', badgeLabel: '⚡' }
+const layoutSections = [
+  { name: 'Hero & Angebot', fill: '68%' },
+  { name: 'Leistungen', fill: '90%' },
+  { name: 'Referenzen', fill: '58%' },
+  { name: 'Kontakt & Anfrage', fill: '78%' }
 ];
 
 const serviceTags = ['Website', 'SEO', 'Automatisierung'];
@@ -36,24 +37,56 @@ function ResultCard({ shouldReduceMotion }) {
       >
         <div className="hero-result-header">
           <div className="hero-result-header-dot" />
-          <span>Projekt-Ergebnis</span>
+          <span>Demo-Vorschau</span>
         </div>
 
         <div className="hero-result-project">
           <div>
-            <p className="hero-result-project-name">Autoservice Hamburg</p>
-            <p className="hero-result-project-type">KFZ-Werkstatt · Hamburg-Wandsbek</p>
+            <p className="hero-result-project-name">Beispiel-Onepager</p>
+            <p className="hero-result-project-type">Struktur · Design · Anfrageführung</p>
           </div>
-          <span className="hero-live-pill">Live</span>
+          <span
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              padding: '4px 10px',
+              borderRadius: 999,
+              background: 'rgba(124,58,237,0.16)',
+              color: '#A855F7',
+              border: '1px solid rgba(168,142,247,0.3)'
+            }}
+          >
+            Vorschau
+          </span>
         </div>
 
         <div className="hero-metrics">
-          {metrics.map((m) => (
-            <div key={m.label} className="hero-metric-row">
-              <span className="hero-metric-label">{m.label}</span>
-              <span className="hero-metric-value">
-                {m.value}
-                <span className={`hero-metric-badge ${m.badge}`}>{m.badgeLabel}</span>
+          {layoutSections.map((s) => (
+            <div key={s.name} className="hero-metric-row">
+              <span className="hero-metric-label">{s.name}</span>
+              <span
+                aria-hidden="true"
+                style={{
+                  position: 'relative',
+                  display: 'inline-block',
+                  height: 6,
+                  width: 56,
+                  borderRadius: 999,
+                  background: 'rgba(168,142,247,0.16)',
+                  overflow: 'hidden'
+                }}
+              >
+                <span
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    width: s.fill,
+                    borderRadius: 999,
+                    background: 'linear-gradient(90deg,#7C3AED,#A855F7)'
+                  }}
+                />
               </span>
             </div>
           ))}
@@ -66,7 +99,7 @@ function ResultCard({ shouldReduceMotion }) {
             </span>
           ))}
           <span style={{ marginLeft: 'auto', color: 'rgba(150,144,168,0.5)', fontSize: 11, alignSelf: 'center' }}>
-            Beispielprojekt
+            Beispiel-Layout
           </span>
         </div>
       </motion.div>
