@@ -82,7 +82,16 @@ function PreviewWindow({ project }) {
 
 export default function ReferenceCard({ project }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-slate-200 bg-white shadow-[0_22px_70px_rgba(7,17,15,0.08)] transition hover:-translate-y-1 hover:shadow-[0_32px_90px_rgba(7,17,15,0.13)]">
+    <article
+      className="group flex h-full flex-col overflow-hidden rounded-[1.4rem] transition hover:-translate-y-1"
+      style={{
+        border: '1px solid rgba(168,142,247,0.14)',
+        background: '#16131F',
+        boxShadow: '0 22px 70px rgba(0,0,0,0.35)'
+      }}
+      onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(168,142,247,0.3)'; e.currentTarget.style.boxShadow = '0 32px 90px rgba(124,58,237,0.18)'; }}
+      onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(168,142,247,0.14)'; e.currentTarget.style.boxShadow = '0 22px 70px rgba(0,0,0,0.35)'; }}
+    >
       <Link href={`/referenzen/${project.slug}`} className="block" aria-label={`${project.title} ansehen`}>
         <PreviewWindow project={project} />
       </Link>
@@ -93,16 +102,16 @@ export default function ReferenceCard({ project }) {
           <span className="reference-direction">{project.visualDirection}</span>
         </div>
 
-        <h3 className="mt-4 text-2xl font-semibold leading-tight text-slate-950">{project.title}</h3>
-        <p className="mt-3 text-sm leading-7 text-slate-600">{project.description}</p>
+        <h3 className="mt-4 text-2xl font-semibold leading-tight" style={{ color: '#ECEAF3' }}>{project.title}</h3>
+        <p className="mt-3 text-sm leading-7" style={{ color: '#9690A8' }}>{project.description}</p>
 
-        <dl className="mt-5 grid gap-4 border-y border-slate-950/10 py-5">
+        <dl className="mt-5 grid gap-4 py-5" style={{ borderTop: '1px solid rgba(168,142,247,0.1)', borderBottom: '1px solid rgba(168,142,247,0.1)' }}>
           <div>
-            <dt className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Ziel</dt>
-            <dd className="mt-2 text-sm leading-6 text-slate-700">{project.industryGoal}</dd>
+            <dt className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: '#6B6480' }}>Ziel</dt>
+            <dd className="mt-2 text-sm leading-6" style={{ color: '#9690A8' }}>{project.industryGoal}</dd>
           </div>
           <div>
-            <dt className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">System</dt>
+            <dt className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: '#6B6480' }}>System</dt>
             <dd className="mt-2 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span key={tag} className="reference-chip">
@@ -114,8 +123,12 @@ export default function ReferenceCard({ project }) {
         </dl>
 
         <div className="mt-auto flex items-center justify-between gap-4 pt-5">
-          <p className="text-xs font-semibold leading-5 text-slate-500">{project.trustSignal}</p>
-          <Link href={`/referenzen/${project.slug}`} className="inline-flex shrink-0 rounded-full bg-slate-950 px-4 py-3 text-xs font-bold text-white transition hover:bg-accent hover:text-slate-950">
+          <p className="text-xs font-semibold leading-5" style={{ color: '#6B6480' }}>{project.trustSignal}</p>
+          <Link
+            href={`/referenzen/${project.slug}`}
+            className="inline-flex shrink-0 rounded-full px-4 py-3 text-xs font-bold text-white transition"
+            style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)' }}
+          >
             {project.primaryAction}
           </Link>
         </div>

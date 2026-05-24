@@ -6,9 +6,10 @@ export default function Logo({ className = '', compact = false }) {
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-     <img src="/brand/hw-approved-icon-transparent-v1.png" alt="" aria-hidden="true" className={`${iconSize} shrink-0`} />
-      <span className={`font-serif font-normal leading-none tracking-[-0.01em] ${textSize}`}>
-        <span className="text-slate-900">Hamburg</span> <span className="text-accent">Websites</span>
+      <img src="/brand/hw-approved-icon-transparent-v1.png" alt="" aria-hidden="true" className={`${iconSize} shrink-0`} />
+      <span className={`font-sans font-black leading-none tracking-[-0.02em] ${textSize}`}>
+        <span style={{ color: '#ECEAF3' }}>Hamburg</span>{' '}
+        <span style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Websites</span>
       </span>
     </span>
   );

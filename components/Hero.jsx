@@ -32,6 +32,7 @@ function ResultCard({ shouldReduceMotion }) {
         animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         className="hero-result-card"
+        style={{ width: '100%', maxWidth: 420 }}
       >
         <div className="hero-result-header">
           <div className="hero-result-header-dot" />
@@ -64,9 +65,7 @@ function ResultCard({ shouldReduceMotion }) {
               {tag}
             </span>
           ))}
-          <span
-            style={{ marginLeft: 'auto', color: 'rgba(255,255,255,0.3)', fontSize: 11, alignSelf: 'center' }}
-          >
+          <span style={{ marginLeft: 'auto', color: 'rgba(150,144,168,0.5)', fontSize: 11, alignSelf: 'center' }}>
             Beispielprojekt
           </span>
         </div>
@@ -100,14 +99,14 @@ export default function Hero() {
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="font-black leading-[1.0] text-slate-950"
-            style={{ letterSpacing: '-0.03em' }}
+            className="font-black leading-[1.0]"
+            style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
           >
             Websites,{' '}
             <span
               style={{
                 display: 'inline-block',
-                background: 'linear-gradient(135deg, #b8ff2f, #9de800)',
+                background: 'linear-gradient(135deg, #7C3AED, #A855F7)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
@@ -124,7 +123,8 @@ export default function Hero() {
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.5, delay: 0.18 }}
-            className="max-w-lg text-lg leading-8 text-slate-500"
+            className="max-w-lg text-lg leading-8"
+            style={{ color: '#9690A8' }}
           >
             Klares Design. Schnelle Seiten. Lokales SEO. Ich entwickle Websites für Hamburger Unternehmen – mit Struktur und Überzeugungskraft, die Anfragen bringt.
           </motion.p>
@@ -149,7 +149,8 @@ export default function Hero() {
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.5, delay: 0.34 }}
-            className="flex flex-wrap gap-x-6 gap-y-3 pt-2 text-sm font-semibold text-slate-600"
+            className="flex flex-wrap gap-x-6 gap-y-3 pt-2 text-sm font-semibold"
+            style={{ color: '#9690A8' }}
           >
             {['Direkter Ansprechpartner', 'Transparente Preise', 'Kein Agentur-Aufschlag'].map((item) => (
               <li key={item} className="flex items-center gap-2">
@@ -159,8 +160,8 @@ export default function Hero() {
                   className="h-4 w-4 shrink-0"
                   aria-hidden="true"
                 >
-                  <circle cx="8" cy="8" r="7.5" stroke="#b8ff2f" strokeWidth="1.5" />
-                  <path d="M5 8.2 7 10l4-4" stroke="#3a5a00" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="8" cy="8" r="7.5" stroke="#7C3AED" strokeWidth="1.5" />
+                  <path d="M5 8.2 7 10l4-4" stroke="#A855F7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 {item}
               </li>

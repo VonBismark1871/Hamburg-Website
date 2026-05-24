@@ -18,7 +18,7 @@ const legalLinks = [
 
 const FooterLinkColumn = ({ title, links, ariaLabel }) => (
   <nav aria-label={ariaLabel} className="space-y-3">
-    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-white/40">{title}</p>
+    <p className="text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: 'rgba(150,144,168,0.4)' }}>{title}</p>
     <ul className="space-y-2.5">
       {links.map((link) => (
         <li key={link.href}>
@@ -34,9 +34,10 @@ const FooterLinkColumn = ({ title, links, ariaLabel }) => (
 export default function Footer() {
   return (
     <footer
-      className="border-t border-white/[0.07]"
+      className="border-t"
       style={{
-        background: 'linear-gradient(180deg, #06111f 0%, #060d1a 100%)'
+        borderColor: 'rgba(168,142,247,0.1)',
+        background: 'linear-gradient(180deg, #0e0c19 0%, #0B0A12 100%)'
       }}
       aria-label="Seitenfuß"
     >
@@ -44,10 +45,10 @@ export default function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           <section aria-label="Hamburg Websites">
             <LogoLink className="inline-flex" compact />
-            <p className="mt-5 max-w-xs text-sm leading-7 text-white/45">
+            <p className="mt-5 max-w-xs text-sm leading-7" style={{ color: 'rgba(150,144,168,0.7)' }}>
               Moderne Websites für Unternehmen in Hamburg – klar strukturiert, hochwertig gestaltet und auf Anfragen ausgerichtet.
             </p>
-            <ul className="mt-5 space-y-2.5 text-sm text-white/45">
+            <ul className="mt-5 space-y-2.5 text-sm" style={{ color: 'rgba(150,144,168,0.7)' }}>
               <li>
                 <a
                   href="mailto:info@hamburgwebsites.de"
@@ -71,7 +72,7 @@ export default function Footer() {
                   +49 160 96297897
                 </a>
               </li>
-              <li className="text-white/35">Hamburg, Deutschland</li>
+              <li style={{ color: 'rgba(150,144,168,0.4)' }}>Hamburg, Deutschland</li>
             </ul>
           </section>
 
@@ -79,9 +80,9 @@ export default function Footer() {
           <FooterLinkColumn title="Rechtliches" links={legalLinks} ariaLabel="Footer Rechtliches" />
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/[0.07] pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-white/25">© 2026 Hamburg Websites. Alle Rechte vorbehalten.</p>
-          <p className="text-xs text-white/20">
+        <div className="mt-12 flex flex-col gap-3 pt-6 sm:flex-row sm:items-center sm:justify-between" style={{ borderTop: '1px solid rgba(168,142,247,0.08)' }}>
+          <p className="text-xs" style={{ color: 'rgba(150,144,168,0.3)' }}>© 2026 Hamburg Websites. Alle Rechte vorbehalten.</p>
+          <p className="text-xs" style={{ color: 'rgba(150,144,168,0.22)' }}>
             Handgemacht in Hamburg.{' '}
             <span
               style={{
@@ -89,8 +90,8 @@ export default function Footer() {
                 width: 7,
                 height: 7,
                 borderRadius: '50%',
-                background: '#b8ff2f',
-                boxShadow: '0 0 0 3px rgba(184,255,47,0.2)',
+                background: 'linear-gradient(135deg,#7C3AED,#A855F7)',
+                boxShadow: '0 0 0 3px rgba(124,58,237,0.2)',
                 verticalAlign: 'middle',
                 marginLeft: 4
               }}

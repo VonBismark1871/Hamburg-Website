@@ -15,10 +15,15 @@ export default function KontaktPage() {
       <Header />
       <main>
         <section className="section-container section-spacing pb-6" aria-labelledby="kontakt-heading">
-          <h1 id="kontakt-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
-            <span className="h1-accent-italic">Kontakt</span> – Website-Projekt besprechen
+          <p className="section-label">Kontakt</p>
+          <h1
+            id="kontakt-heading"
+            className="text-4xl font-black tracking-tight sm:text-5xl"
+            style={{ color: '#ECEAF3', letterSpacing: '-0.03em' }}
+          >
+            Website-Projekt besprechen
           </h1>
-          <p className="mt-5 max-w-3xl text-lg text-slate-600">
+          <p className="mt-5 max-w-3xl text-lg" style={{ color: '#9690A8' }}>
             Nutzen Sie das Formular für Ihre Anfrage. Wir melden uns zeitnah mit einem konkreten Vorschlag für den
             nächsten Schritt.
           </p>
@@ -28,16 +33,12 @@ export default function KontaktPage() {
 
         <section className="section-container pb-16" aria-labelledby="kontakt-links-heading">
           <p className="section-label">Weitere Links</p>
-          <h2 id="kontakt-links-heading" className="text-2xl text-slateBlue">
+          <h2 id="kontakt-links-heading" className="text-2xl font-bold" style={{ color: '#ECEAF3' }}>
             Weitere Informationen
           </h2>
           <div className="mt-4 flex flex-wrap gap-4">
-            <Link href="/faq" className="secondary-btn text-slateBlue">
-              FAQ lesen
-            </Link>
-            <Link href="/preise" className="secondary-btn text-slateBlue">
-              Preise ansehen
-            </Link>
+            <Link href="/faq" className="secondary-btn">FAQ lesen</Link>
+            <Link href="/preise" className="secondary-btn">Preise ansehen</Link>
           </div>
         </section>
       </main>
