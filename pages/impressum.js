@@ -3,6 +3,8 @@ import SEOHead from '../components/SEOHead';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const linkStyle = { color: '#A855F7', textDecorationOffset: '4px' };
+
 export default function ImpressumPage() {
   return (
     <>
@@ -14,40 +16,37 @@ export default function ImpressumPage() {
       <Header />
       <main className="section-container section-spacing" aria-labelledby="impressum-heading">
         <article className="mx-auto max-w-4xl space-y-10">
-          <h1 id="impressum-heading" className="text-4xl font-bold tracking-tight text-slateBlue sm:text-5xl">
+          <h1 id="impressum-heading" className="text-4xl font-bold tracking-tight sm:text-5xl" style={{ color: '#ECEAF3', letterSpacing: '-0.02em' }}>
             Impressum
           </h1>
 
-          <section className="space-y-4 text-base leading-8 text-slate-700">
-            <h2 className="text-2xl font-semibold text-slateBlue">Angaben gemäß § 5 TMG</h2>
+          <section className="space-y-4 text-base leading-8" style={{ color: '#9690A8' }}>
+            <h2 className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>Angaben gemäß § 5 TMG</h2>
             <p>
-              Andrii Oleksiienko
-              <br />
-              Stadtbahnstraße 36
-              <br />
-              22393 Hamburg
-              <br />
+              Andrii Oleksiienko<br />
+              Stadtbahnstraße 36<br />
+              22393 Hamburg<br />
               Deutschland
             </p>
           </section>
 
-          <section className="space-y-4 text-base leading-8 text-slate-700">
-            <h2 className="text-2xl font-semibold text-slateBlue">Kontakt</h2>
+          <section className="space-y-4 text-base leading-8" style={{ color: '#9690A8' }}>
+            <h2 className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>Kontakt</h2>
             <p>
               E-Mail:{' '}
-              <a href="mailto:info@hamburgwebsites.de" className="text-accent underline-offset-4 hover:underline">
+              <a href="mailto:info@hamburgwebsites.de" style={linkStyle} className="underline-offset-4 hover:underline">
                 info@hamburgwebsites.de
               </a>
               <br />
               Telefon:{' '}
-              <a href="tel:+4916096297897" className="text-accent underline-offset-4 hover:underline">
+              <a href="tel:+4916096297897" style={linkStyle} className="underline-offset-4 hover:underline">
                 +49 160 96297897
               </a>
             </p>
           </section>
 
-          <section className="space-y-4 text-base leading-8 text-slate-700">
-            <h2 className="text-2xl font-semibold text-slateBlue">
+          <section className="space-y-4 text-base leading-8" style={{ color: '#9690A8' }}>
+            <h2 className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>
               Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG
             </h2>
             <p>DE449549426</p>
@@ -55,13 +54,13 @@ export default function ImpressumPage() {
         </article>
 
         <nav className="mt-10 flex flex-wrap gap-4" aria-label="Weiterführende Links">
-          <Link href="/datenschutz" className="text-accent underline-offset-4 hover:underline">
+          <Link href="/datenschutz" style={linkStyle} className="underline-offset-4 hover:underline">
             Zur Datenschutzerklärung
           </Link>
-          <Link href="/agb" className="text-accent underline-offset-4 hover:underline">
+          <Link href="/agb" style={linkStyle} className="underline-offset-4 hover:underline">
             Zu den AGB
           </Link>
-          <Link href="/" className="text-accent underline-offset-4 hover:underline">
+          <Link href="/" style={linkStyle} className="underline-offset-4 hover:underline">
             Zurück zur Startseite
           </Link>
         </nav>

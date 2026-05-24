@@ -157,20 +157,20 @@ export default function AGBPage() {
       />
       <Header />
       <main className="section-container section-spacing" aria-labelledby="agb-heading">
-        <header className="mx-auto max-w-4xl border-b border-slate-200 pb-8">
-          <h1 id="agb-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
+        <header className="mx-auto max-w-4xl pb-8" style={{ borderBottom: '1px solid rgba(168,142,247,0.12)' }}>
+          <h1 id="agb-heading" className="text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: '#ECEAF3', letterSpacing: '-0.02em' }}>
             Allgemeine Geschäftsbedingungen
           </h1>
-          <p className="mt-6 text-base leading-7 text-slate-600">
+          <p className="mt-6 text-base leading-7" style={{ color: '#9690A8' }}>
             Diese Allgemeinen Geschäftsbedingungen gelten für die Leistungen von Hamburg Websites im Bereich
             Webdesign, Webentwicklung und projektbezogene digitale Dienstleistungen.
           </p>
-          <p className="mt-3 text-base leading-7 font-medium text-slateBlue">
+          <p className="mt-3 text-base leading-7 font-medium" style={{ color: '#ECEAF3' }}>
             Das Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB.
           </p>
 
-          <section className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5 text-slate-700" aria-labelledby="anbieter-heading">
-            <h2 id="anbieter-heading" className="text-lg font-semibold text-slateBlue">
+          <section className="mt-8 rounded-xl p-5" style={{ border: '1px solid rgba(168,142,247,0.12)', background: '#16131F', color: '#9690A8' }} aria-labelledby="anbieter-heading">
+            <h2 id="anbieter-heading" className="text-lg font-semibold" style={{ color: '#ECEAF3' }}>
               Anbieter
             </h2>
             <p className="mt-3 text-sm leading-7">
@@ -181,22 +181,22 @@ export default function AGBPage() {
               22393 Hamburg
               <br />
               E-Mail:{' '}
-              <a href="mailto:info@hamburgwebsites.de" className="text-accent underline-offset-4 hover:underline">
+              <a href="mailto:info@hamburgwebsites.de" style={{ color: '#A855F7' }} className="underline-offset-4 hover:underline">
                 info@hamburgwebsites.de
               </a>
               <br />
               Telefon:{' '}
-              <a href="tel:+4916096297897" className="text-accent underline-offset-4 hover:underline">
+              <a href="tel:+4916096297897" style={{ color: '#A855F7' }} className="underline-offset-4 hover:underline">
                 +49 160 96297897
               </a>
             </p>
           </section>
         </header>
 
-        <article className="mx-auto mt-10 max-w-4xl space-y-8 text-[1.02rem] leading-8 text-slate-700">
+        <article className="mx-auto mt-10 max-w-4xl space-y-8 text-[1.02rem] leading-8" style={{ color: '#9690A8' }}>
           {sections.map((section) => (
             <section key={section.title} className="space-y-3">
-              <h2 className="text-xl font-semibold text-slateBlue sm:text-2xl">{section.title}</h2>
+              <h2 className="text-xl font-semibold sm:text-2xl" style={{ color: '#ECEAF3' }}>{section.title}</h2>
               {section.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -204,14 +204,14 @@ export default function AGBPage() {
           ))}
         </article>
 
-        <nav className="mx-auto mt-12 flex max-w-4xl flex-wrap gap-x-6 gap-y-2 border-t border-slate-200 pt-8" aria-label="Weiterführende Links">
-          <Link href="/impressum" className="text-accent underline-offset-4 hover:underline">
+        <nav className="mx-auto mt-12 flex max-w-4xl flex-wrap gap-x-6 gap-y-2 pt-8" style={{ borderTop: '1px solid rgba(168,142,247,0.12)' }} aria-label="Weiterführende Links">
+          <Link href="/impressum" style={{ color: '#A855F7' }} className="underline-offset-4 hover:underline">
             Impressum
           </Link>
-          <Link href="/datenschutz" className="text-accent underline-offset-4 hover:underline">
+          <Link href="/datenschutz" style={{ color: '#A855F7' }} className="underline-offset-4 hover:underline">
             Datenschutz
           </Link>
-          <Link href="/kontakt" className="text-accent underline-offset-4 hover:underline">
+          <Link href="/kontakt" style={{ color: '#A855F7' }} className="underline-offset-4 hover:underline">
             Kontakt
           </Link>
         </nav>

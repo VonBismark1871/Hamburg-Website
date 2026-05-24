@@ -127,16 +127,38 @@ function PricingCard({ card, index }) {
       transition={{ duration: 0.45, delay: index * 0.06 }}
       className={`price-card card relative overflow-visible ${card.featured ? 'featured' : ''}`}
     >
-            {card.badge ? (
-        <span className={`mb-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${card.featured ? 'price-card-badge' : card.badgeStyle === 'premium' ? 'border border-slate-300 bg-slate-100 text-slate-700' : 'border border-accent/30 bg-accent/10 text-accent'}`}>{card.badge}</span>
+      {card.badge ? (
+        <span
+          className={`mb-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+            card.featured
+              ? 'price-card-badge'
+              : card.badgeStyle === 'premium'
+              ? ''
+              : ''
+          }`}
+          style={
+            card.featured
+              ? {}
+              : card.badgeStyle === 'premium'
+              ? { border: '1px solid rgba(168,142,247,0.2)', background: 'rgba(124,58,237,0.1)', color: '#A855F7' }
+              : { border: '1px solid rgba(168,142,247,0.2)', background: 'rgba(124,58,237,0.1)', color: '#A855F7' }
+          }
+        >
+          {card.badge}
+        </span>
       ) : null}
-      <h3 className="text-xl text-slateBlue">{card.title}</h3>
-      <p className={`mt-3 text-accent ${card.featured ? 'text-4xl font-extrabold' : 'text-3xl font-bold'}`}>{card.price}</p>
-      <p className="mt-3 text-slate-600">{card.description}</p>
-      <ul className="mt-5 space-y-2 text-sm text-slate-700">
+      <h3 className="text-xl font-bold" style={{ color: '#ECEAF3' }}>{card.title}</h3>
+      <p
+        className={`mt-3 font-extrabold ${card.featured ? 'text-4xl' : 'text-3xl'}`}
+        style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+      >
+        {card.price}
+      </p>
+      <p className="mt-3 text-sm leading-7" style={{ color: '#9690A8' }}>{card.description}</p>
+      <ul className="mt-5 space-y-2 text-sm" style={{ color: '#9690A8' }}>
         {card.bullets.map((item) => (
           <li key={item} className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: '#7C3AED' }} aria-hidden="true" />
             <span>{item}</span>
           </li>
         ))}
@@ -149,7 +171,7 @@ function PricingCard({ card, index }) {
           type={card.preview.type}
         />
       ) : null}
-      {card.note ? <p className="mt-4 text-xs font-medium text-slate-500">{card.note}</p> : null}
+      {card.note ? <p className="mt-4 text-xs font-medium" style={{ color: '#6B6480' }}>{card.note}</p> : null}
     </motion.article>
   );
 }
@@ -163,13 +185,18 @@ function ServiceCard({ card, index }) {
       transition={{ duration: 0.45, delay: index * 0.08 }}
       className="card"
     >
-      <h4 className="text-lg text-slateBlue">{card.title}</h4>
-      <p className="mt-2 text-2xl font-bold text-accent">{card.price}</p>
-      <p className="mt-3 text-slate-600">{card.description}</p>
-      <ul className="mt-5 space-y-2 text-sm text-slate-700">
+      <h4 className="text-lg font-bold" style={{ color: '#ECEAF3' }}>{card.title}</h4>
+      <p
+        className="mt-2 text-2xl font-bold"
+        style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+      >
+        {card.price}
+      </p>
+      <p className="mt-3 text-sm leading-7" style={{ color: '#9690A8' }}>{card.description}</p>
+      <ul className="mt-5 space-y-2 text-sm" style={{ color: '#9690A8' }}>
         {card.bullets.map((item) => (
           <li key={item} className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: '#7C3AED' }} aria-hidden="true" />
             <span>{item}</span>
           </li>
         ))}
@@ -190,14 +217,14 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
         transition={{ duration: 0.45 }}
       >
         <p className="section-label">Unsere Pakete</p>
-        <Heading id="pricing-heading" className="text-3xl text-slateBlue">
+        <Heading id="pricing-heading" className="text-3xl font-black" style={{ color: '#ECEAF3', letterSpacing: '-0.02em' }}>
           Richtwerte für unterschiedliche Website-Umfänge
         </Heading>
-        <p className="mt-5 max-w-4xl text-lg leading-relaxed text-slate-600">
+        <p className="mt-5 max-w-4xl text-lg leading-relaxed" style={{ color: '#9690A8' }}>
           Die folgenden Preisrahmen dienen als Orientierung: vom kompakten Einstieg bis zur erweiterten Website mit
           mehreren Bereichen oder Funktionen. Vor Projektstart erhalten Sie eine nachvollziehbare Preisrange.
         </p>
-        <p className="mt-3 max-w-4xl text-base leading-relaxed text-slate-500">
+        <p className="mt-3 max-w-4xl text-base leading-relaxed" style={{ color: '#6B6480' }}>
           So bleibt die Planung realistisch: klarer Umfang, passende Ausbaustufe und keine versteckten Paketlogiken.
         </p>
       </motion.div>
@@ -208,13 +235,13 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
         ))}
       </div>
 
-      <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+      <div className="mt-12 rounded-2xl p-6 sm:p-8" style={{ background: '#16131F', border: '1px solid rgba(168,142,247,0.12)' }}>
         <p className="section-label">Im Preis enthalten</p>
-        <h3 className="text-2xl text-slateBlue">In den meisten Projekten enthalten</h3>
-        <ul className="mt-6 grid gap-3 text-slate-700 sm:grid-cols-2">
+        <h3 className="text-2xl font-bold" style={{ color: '#ECEAF3' }}>In den meisten Projekten enthalten</h3>
+        <ul className="mt-6 grid gap-3 text-sm sm:grid-cols-2" style={{ color: '#9690A8' }}>
           {includedItems.map((item) => (
-            <li key={item} className="flex items-start gap-2 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3">
-              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+            <li key={item} className="flex items-start gap-2 rounded-xl px-4 py-3" style={{ border: '1px solid rgba(168,142,247,0.1)', background: 'rgba(124,58,237,0.05)' }}>
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: '#7C3AED' }} aria-hidden="true" />
               <span>{item}</span>
             </li>
           ))}
@@ -222,36 +249,38 @@ export default function Pricing({ headingTag = 'h2', sectionId = 'pricing' }) {
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
-        <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-          <h3 className="text-2xl font-bold text-slateBlue">Prüfung und Freigabe</h3>
-          <p className="mt-4 text-slate-600">
+        <article className="rounded-2xl p-6 sm:p-8" style={{ background: '#16131F', border: '1px solid rgba(168,142,247,0.12)' }}>
+          <h3 className="text-2xl font-bold" style={{ color: '#ECEAF3' }}>Prüfung und Freigabe</h3>
+          <p className="mt-4 text-sm leading-7" style={{ color: '#9690A8' }}>
             Nach Fertigstellung erhalten Sie die Website zur Prüfung. Rückmeldungen und Änderungswünsche innerhalb der
             vereinbarten Korrekturschleifen können in der Regel innerhalb von 7 Tagen eingebracht werden.
           </p>
-          <p className="mt-3 text-slate-600">Die finale Veröffentlichung erfolgt nach Freigabe der abgestimmten Version.</p>
+          <p className="mt-3 text-sm leading-7" style={{ color: '#9690A8' }}>Die finale Veröffentlichung erfolgt nach Freigabe der abgestimmten Version.</p>
         </article>
 
-        <article className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-soft sm:p-8">
-          <h3 className="text-2xl font-bold text-slateBlue">Zusätzliche Änderungen</h3>
-          <p className="mt-4 text-slate-600">
+        <article className="rounded-2xl p-6 sm:p-8" style={{ background: '#16131F', border: '1px solid rgba(168,142,247,0.12)' }}>
+          <h3 className="text-2xl font-bold" style={{ color: '#ECEAF3' }}>Zusätzliche Änderungen</h3>
+          <p className="mt-4 text-sm leading-7" style={{ color: '#9690A8' }}>
             Weitere Änderungswünsche nach Abschluss der vereinbarten Korrekturschleifen oder außerhalb des abgestimmten
             Projektumfangs werden gesondert berechnet.
           </p>
-          <p className="mt-4 text-lg font-semibold text-accent">Zusätzliche Anpassungen: ab 65 € / Stunde</p>
-          <p className="mt-3 text-sm text-slate-500">
+          <p className="mt-4 text-lg font-semibold" style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            Zusätzliche Anpassungen: ab 65 € / Stunde
+          </p>
+          <p className="mt-3 text-sm" style={{ color: '#6B6480' }}>
             Kleinere inhaltliche Anpassungen unterscheiden sich von strukturellen Erweiterungen oder neuen Funktionen.
           </p>
         </article>
       </div>
 
-      <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-        <h3 className="text-2xl font-bold text-slateBlue">Websitepflege &amp; Hosting</h3>
+      <div className="mt-12 rounded-2xl p-6 sm:p-8" style={{ background: '#16131F', border: '1px solid rgba(168,142,247,0.12)' }}>
+        <h3 className="text-2xl font-bold" style={{ color: '#ECEAF3' }}>Websitepflege &amp; Hosting</h3>
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           {carePlans.map((card, index) => (
             <ServiceCard key={card.title} card={card} index={index} />
           ))}
         </div>
-        <p className="mt-6 text-sm text-slate-500">
+        <p className="mt-6 text-sm" style={{ color: '#6B6480' }}>
           Kleinere Änderungen umfassen z. B. den Austausch von Texten, Bildern, Öffnungszeiten oder Kontaktdaten.
           Größere strukturelle Änderungen, neue Seiten oder zusätzliche Funktionen werden separat kalkuliert.
         </p>

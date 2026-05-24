@@ -16,17 +16,21 @@ export default function FaqPage() {
       <Header />
       <main>
         <section className="section-container section-spacing pb-6" aria-labelledby="faq-page-heading">
-          <h1 id="faq-page-heading" className="text-4xl tracking-tight text-slateBlue sm:text-5xl">
-            <span className="h1-accent-italic">Häufig</span> gestellte Fragen zur Website-Erstellung
+          <p className="section-label">FAQ</p>
+          <h1
+            id="faq-page-heading"
+            className="text-4xl font-black tracking-tight sm:text-5xl"
+            style={{ color: '#ECEAF3', letterSpacing: '-0.03em' }}
+          >
+            Häufig gestellte Fragen zur Website-Erstellung
           </h1>
-          <p className="mt-5 max-w-3xl text-lg text-slate-600">
+          <p className="mt-5 max-w-3xl text-lg" style={{ color: '#9690A8' }}>
             Hier finden Sie kompakte Antworten zu typischen Fragen rund um Planung, Umsetzung und Betrieb Ihrer neuen
             Unternehmenswebsite.
           </p>
         </section>
 
         <FAQ headingTag="h2" sectionId="faq-content" items={faqItems} />
-
       </main>
       <Footer />
     </>

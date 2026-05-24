@@ -51,16 +51,16 @@ function Testimonials() {
   return (
     <section
       className="section-spacing"
-      style={{ background: 'var(--color-bg-soft)' }}
+      style={{ background: '#16131F' }}
       aria-labelledby="testimonials-heading"
     >
       <div className="section-container">
         <div className="mb-12 text-center">
-          <p className="section-label justify-center">Kundenstimmen</p>
+          <p className="section-label" style={{ justifyContent: 'center' }}>Kundenstimmen</p>
           <h2
             id="testimonials-heading"
-            className="mx-auto max-w-2xl text-3xl font-black leading-tight text-slate-950 sm:text-5xl"
-            style={{ letterSpacing: '-0.02em' }}
+            className="mx-auto max-w-2xl text-3xl font-black leading-tight sm:text-5xl"
+            style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
           >
             Was Kunden über die Zusammenarbeit sagen
           </h2>
@@ -112,7 +112,11 @@ function ProcessPreview() {
   return (
     <section
       className="section-spacing"
-      style={{ background: 'var(--color-bg-dark)', position: 'relative', overflow: 'hidden' }}
+      style={{
+        background: 'linear-gradient(135deg, #0B0A12 0%, #16131F 60%, #1a152b 100%)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
       aria-labelledby="process-heading"
     >
       <div
@@ -120,8 +124,17 @@ function ProcessPreview() {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,0.035) 1px, transparent 1px)',
+            'linear-gradient(90deg, rgba(168,142,247,0.04) 1px, transparent 1px), linear-gradient(0deg, rgba(168,142,247,0.035) 1px, transparent 1px)',
           backgroundSize: '64px 64px',
+          pointerEvents: 'none'
+        }}
+        aria-hidden="true"
+      />
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse 50% 40% at 20% 60%, rgba(124,58,237,0.14) 0%, transparent 60%)',
           pointerEvents: 'none'
         }}
         aria-hidden="true"
@@ -129,18 +142,21 @@ function ProcessPreview() {
       <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="section-label" style={{ color: 'var(--color-lime-dark)' }}>Ablauf</p>
+            <p className="section-label">Ablauf</p>
             <h2
               id="process-heading"
-              className="text-3xl font-black leading-tight text-white sm:text-5xl"
-              style={{ letterSpacing: '-0.02em' }}
+              className="text-3xl font-black leading-tight sm:text-5xl"
+              style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
             >
               So läuft die Zusammenarbeit ab
             </h2>
           </div>
           <Link
             href="/ablauf"
-            className="shrink-0 rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold text-white/70 transition hover:border-white/40 hover:text-white"
+            className="shrink-0 rounded-full px-5 py-2.5 text-sm font-bold transition"
+            style={{ border: '1px solid rgba(168,142,247,0.2)', color: '#9690A8' }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#A855F7'; e.currentTarget.style.borderColor = 'rgba(168,85,247,0.4)'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#9690A8'; e.currentTarget.style.borderColor = 'rgba(168,142,247,0.2)'; }}
           >
             Ablauf im Detail →
           </Link>
@@ -154,23 +170,24 @@ function ProcessPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.38, delay: index * 0.07 }}
-              className="relative rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm"
+              className="relative rounded-2xl p-6 transition"
+              style={{ border: '1px solid rgba(168,142,247,0.12)', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)' }}
             >
               <span
-                className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl text-xs font-black"
-                style={{ background: 'var(--color-lime)', color: 'var(--color-ink)' }}
+                className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl text-xs font-black text-white"
+                style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)' }}
               >
                 {step.num}
               </span>
-              <h3 className="text-base font-black text-white">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <h3 className="text-base font-black" style={{ color: '#ECEAF3' }}>{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: '#9690A8' }}>
                 {step.text}
               </p>
             </motion.li>
           ))}
         </ol>
 
-        <p className="mt-8 text-sm" style={{ color: 'rgba(255,255,255,0.35)' }}>
+        <p className="mt-8 text-sm" style={{ color: '#6B6480' }}>
           Eine erste Demo-Website erhalten Sie in der Regel innerhalb weniger Tage. Kostenlos und unverbindlich.
         </p>
       </div>
@@ -217,15 +234,18 @@ function PricingPreview() {
           <p className="section-label">Preise</p>
           <h2
             id="pricing-preview-heading"
-            className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl"
-            style={{ letterSpacing: '-0.02em' }}
+            className="text-3xl font-black leading-tight sm:text-5xl"
+            style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
           >
             Klare Preise. Kein Kleingedrucktes.
           </h2>
         </div>
         <Link
           href="/preise"
-          className="shrink-0 rounded-full border border-slate-200 px-5 py-2.5 text-sm font-bold text-slate-600 transition hover:border-slate-300 hover:text-slate-950"
+          className="shrink-0 rounded-full px-5 py-2.5 text-sm font-bold transition"
+          style={{ border: '1px solid rgba(168,142,247,0.18)', color: '#9690A8', background: '#16131F' }}
+          onMouseEnter={e => { e.currentTarget.style.color = '#A855F7'; e.currentTarget.style.borderColor = 'rgba(168,85,247,0.4)'; }}
+          onMouseLeave={e => { e.currentTarget.style.color = '#9690A8'; e.currentTarget.style.borderColor = 'rgba(168,142,247,0.18)'; }}
         >
           Alle Pakete ansehen →
         </Link>
@@ -243,18 +263,28 @@ function PricingPreview() {
           >
             {item.featured && <p className="pricing-badge">Am beliebtesten</p>}
             <div className={item.featured ? 'mt-8' : ''}>
-              <p className="text-sm font-bold text-slate-950">{item.title}</p>
-              <p className="mt-1 text-xs font-semibold text-slate-500">{item.subtitle}</p>
+              <p className="text-sm font-bold" style={{ color: '#ECEAF3' }}>{item.title}</p>
+              <p className="mt-1 text-xs font-semibold" style={{ color: '#9690A8' }}>{item.subtitle}</p>
               <p
-                className="mt-5 font-black text-slate-950"
-                style={{ fontSize: 'clamp(1.6rem, 3vw, 2rem)', letterSpacing: '-0.02em' }}
+                className="mt-5 font-black"
+                style={{
+                  fontSize: 'clamp(1.6rem, 3vw, 2rem)',
+                  letterSpacing: '-0.02em',
+                  background: 'linear-gradient(135deg,#7C3AED,#A855F7)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
               >
                 {item.price}
               </p>
-              <ul className="mt-6 space-y-3 text-sm leading-6 text-slate-600">
+              <ul className="mt-6 space-y-3 text-sm leading-6" style={{ color: '#9690A8' }}>
                 {item.points.map((point) => (
                   <li key={point} className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-50 text-blue-700">
+                    <span
+                      className="mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full"
+                      style={{ background: 'rgba(124,58,237,0.15)', color: '#A855F7' }}
+                    >
                       <CheckIcon />
                     </span>
                     {point}
@@ -263,7 +293,8 @@ function PricingPreview() {
               </ul>
               <Link
                 href="/preise"
-                className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-blue-700 transition hover:gap-3"
+                className="mt-7 inline-flex items-center gap-2 text-sm font-bold transition hover:gap-3"
+                style={{ color: '#A855F7' }}
               >
                 Details ansehen
                 <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -275,7 +306,7 @@ function PricingPreview() {
         ))}
       </div>
 
-      <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7 text-slate-400">
+      <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7" style={{ color: '#6B6480' }}>
         Alle Preise sind Richtwerte. Jedes Projekt ist individuell. Nach einem kurzen Kennenlernen erhalten Sie ein passendes Angebot.
       </p>
     </section>
@@ -305,7 +336,7 @@ function FaqPreview() {
   return (
     <section
       className="section-spacing"
-      style={{ background: 'var(--color-bg-soft)' }}
+      style={{ background: '#16131F' }}
       aria-labelledby="faq-preview-heading"
     >
       <div className="section-container">
@@ -314,17 +345,18 @@ function FaqPreview() {
             <p className="section-label">FAQ</p>
             <h2
               id="faq-preview-heading"
-              className="text-3xl font-black leading-tight text-slate-950 sm:text-4xl"
-              style={{ letterSpacing: '-0.02em' }}
+              className="text-3xl font-black leading-tight sm:text-4xl"
+              style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
             >
               Fragen vor dem Start
             </h2>
-            <p className="mt-4 text-base leading-8 text-slate-500">
+            <p className="mt-4 text-base leading-8" style={{ color: '#9690A8' }}>
               Der Einstieg bleibt bewusst einfach: Ziel klären, Richtung zeigen, dann sauber entscheiden.
             </p>
             <Link
               href="/faq"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-700 transition hover:gap-3"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-bold transition hover:gap-3"
+              style={{ color: '#A855F7' }}
             >
               Alle Fragen ansehen
               <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -332,11 +364,11 @@ function FaqPreview() {
               </svg>
             </Link>
           </div>
-          <div className="divide-y divide-slate-200">
+          <div style={{ borderTop: '1px solid rgba(168,142,247,0.1)' }}>
             {homepageFaqPreview.map((item) => (
-              <article key={item.question} className="py-6 first:pt-0 last:pb-0">
-                <h3 className="text-base font-bold text-slate-950">{item.question}</h3>
-                <p className="mt-2 text-sm leading-7 text-slate-500">{item.answer}</p>
+              <article key={item.question} className="py-6" style={{ borderBottom: '1px solid rgba(168,142,247,0.1)' }}>
+                <h3 className="text-base font-bold" style={{ color: '#ECEAF3' }}>{item.question}</h3>
+                <p className="mt-2 text-sm leading-7" style={{ color: '#9690A8' }}>{item.answer}</p>
               </article>
             ))}
           </div>
@@ -355,19 +387,19 @@ function FinalCta() {
           <div>
             <span
               className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-widest"
-              style={{ background: 'rgba(184,255,47,0.12)', color: '#b8ff2f', border: '1px solid rgba(184,255,47,0.25)' }}
+              style={{ background: 'rgba(124,58,237,0.12)', color: '#A855F7', border: '1px solid rgba(168,142,247,0.25)' }}
             >
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#b8ff2f', display: 'inline-block' }} aria-hidden="true" />
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#A855F7', display: 'inline-block' }} aria-hidden="true" />
               Kostenloser Einstieg
             </span>
             <h2
               id="final-cta-heading"
-              className="max-w-xl font-black leading-tight text-white"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', letterSpacing: '-0.03em' }}
+              className="max-w-xl font-black leading-tight"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', letterSpacing: '-0.03em', color: '#ECEAF3' }}
             >
               Bereit für den nächsten Schritt?
             </h2>
-            <p className="mt-5 max-w-lg text-base leading-8" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <p className="mt-5 max-w-lg text-base leading-8" style={{ color: '#9690A8' }}>
               Erzählen Sie kurz von Ihrem Projekt. Ich melde mich persönlich zur kostenlosen Demo oder zum Digital-Audit – in der Regel innerhalb von 24 Stunden.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
@@ -376,8 +408,10 @@ function FinalCta() {
               </Link>
               <Link
                 href="/kontakt#audit"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-3 text-sm font-bold text-white/70 transition hover:border-white/40 hover:text-white"
-                style={{ minHeight: 48 }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition"
+                style={{ minHeight: 48, border: '1px solid rgba(168,142,247,0.2)', color: '#9690A8' }}
+                onMouseEnter={e => { e.currentTarget.style.color = '#A855F7'; e.currentTarget.style.borderColor = 'rgba(168,85,247,0.4)'; }}
+                onMouseLeave={e => { e.currentTarget.style.color = '#9690A8'; e.currentTarget.style.borderColor = 'rgba(168,142,247,0.2)'; }}
               >
                 Digital-Audit starten
               </Link>

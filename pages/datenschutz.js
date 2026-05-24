@@ -277,18 +277,18 @@ export default function DatenschutzPage() {
       <Header />
       <main className="section-container section-spacing" aria-labelledby="datenschutz-heading">
         <div className="mx-auto max-w-4xl">
-          <h1 id="datenschutz-heading" className="text-4xl font-bold tracking-tight text-slateBlue sm:text-5xl">
+          <h1 id="datenschutz-heading" className="text-4xl font-bold tracking-tight sm:text-5xl" style={{ color: '#ECEAF3', letterSpacing: '-0.02em' }}>
             Datenschutzerklärung
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-slate-600">
+          <p className="mt-6 text-lg leading-relaxed" style={{ color: '#9690A8' }}>
             Mit dieser Datenschutzerklärung informieren wir über Art, Umfang und Zweck der Verarbeitung
             personenbezogener Daten im Zusammenhang mit der Nutzung dieser Website.
           </p>
 
-          <div className="mt-12 space-y-10 text-base leading-8 text-slate-700">
+          <div className="mt-12 space-y-10 text-base leading-8" style={{ color: '#9690A8' }}>
             {sections.map((section) => (
               <section key={section.id} id={section.id} aria-labelledby={`${section.id}-heading`}>
-                <h2 id={`${section.id}-heading`} className="text-2xl font-semibold text-slateBlue">
+                <h2 id={`${section.id}-heading`} className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>
                   {section.title}
                 </h2>
                 <div className="mt-4">{section.content}</div>
@@ -296,14 +296,14 @@ export default function DatenschutzPage() {
             ))}
           </div>
 
-          <nav className="mt-14 flex flex-wrap gap-4 border-t border-slate-200 pt-8" aria-label="Weiterführende Links">
-            <Link href="/impressum" className="text-accent underline-offset-4 hover:underline">
+          <nav className="mt-14 flex flex-wrap gap-4 pt-8" style={{ borderTop: '1px solid rgba(168,142,247,0.12)' }} aria-label="Weiterführende Links">
+            <Link href="/impressum" style={{ color: '#A855F7' }} className="underline-offset-4 hover:underline">
               Zum Impressum
             </Link>
-            <Link href="/agb" className="text-accent underline-offset-4 hover:underline">
+            <Link href="/agb" style={{ color: '#A855F7' }} className="underline-offset-4 hover:underline">
               Zu den AGB
             </Link>
-            <Link href="/kontakt" className="text-accent underline-offset-4 hover:underline">
+            <Link href="/kontakt" style={{ color: '#A855F7' }} className="underline-offset-4 hover:underline">
               Zur Kontaktseite
             </Link>
           </nav>

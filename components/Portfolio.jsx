@@ -11,13 +11,15 @@ export default function Portfolio() {
   return (
     <section className="section-container section-spacing" id="portfolio" aria-labelledby="portfolio-heading">
       <div className="mx-auto max-w-3xl text-center">
+        <p className="section-label" style={{ justifyContent: 'center' }}>Referenzen</p>
         <h2
           id="portfolio-heading"
-          className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl"
+          className="text-3xl font-black leading-tight sm:text-5xl"
+          style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
         >
           Referenzen aus unterschiedlichen Branchen
         </h2>
-        <p className="mt-4 text-base leading-8 text-slate-600">
+        <p className="mt-4 text-base leading-8" style={{ color: '#9690A8' }}>
           Die Beispiele zeigen Stil, Struktur und technische Richtung für typische kleine Unternehmen. Sie sind bewusst
           als Demos formuliert: klar prüfbar, ohne erfundene Kundenergebnisse.
         </p>
@@ -34,7 +36,7 @@ export default function Portfolio() {
             className="reference-preview-card"
           >
             <Link href={`/referenzen/${project.slug}`} className="block" aria-label={`${project.title} ansehen`}>
-              <div className="relative aspect-[16/9] overflow-hidden">
+              <div className="relative aspect-[16/9] overflow-hidden rounded-t-[20px]">
                 <Image
                   src={project.assetSet?.hero || project.image}
                   alt={`${project.title} Vorschau`}
@@ -45,12 +47,16 @@ export default function Portfolio() {
               </div>
             </Link>
             <div className="p-6">
-              <p className="text-xs font-bold uppercase text-blue-700">{project.format}</p>
-              <h3 className="mt-3 text-xl font-bold leading-tight text-slate-950">{project.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{project.conceptFocus}</p>
-              <Link href={`/referenzen/${project.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-blue-700">
+              <p className="text-xs font-bold uppercase" style={{ color: '#A855F7' }}>{project.format}</p>
+              <h3 className="mt-3 text-xl font-bold leading-tight" style={{ color: '#ECEAF3' }}>{project.title}</h3>
+              <p className="mt-3 text-sm leading-7" style={{ color: '#9690A8' }}>{project.conceptFocus}</p>
+              <Link
+                href={`/referenzen/${project.slug}`}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-bold"
+                style={{ color: '#A855F7' }}
+              >
                 Projekt ansehen
-                <span aria-hidden="true">-&gt;</span>
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
           </motion.article>

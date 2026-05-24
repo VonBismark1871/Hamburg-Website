@@ -105,13 +105,13 @@ export default function Features() {
           <p className="section-label">Leistungen</p>
           <h2
             id="features-heading"
-            className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl"
-            style={{ letterSpacing: '-0.02em' }}
+            className="text-3xl font-black leading-tight sm:text-5xl"
+            style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
           >
             Vier klare Leistungen. Ein Anspruch.
           </h2>
         </div>
-        <p className="max-w-2xl text-base leading-8 text-slate-500">
+        <p className="max-w-2xl text-base leading-8" style={{ color: '#9690A8' }}>
           Sie können mit einer Website starten oder direkt eine konkrete SEO-, Automatisierungs- oder Tool-Aufgabe lösen. Die Leistungen funktionieren einzeln und lassen sich später sinnvoll verbinden.
         </p>
       </div>
@@ -133,11 +133,11 @@ export default function Features() {
                   <Icon />
                 </span>
                 <span
-                  className="rounded-full border px-2.5 py-1 text-xs font-bold"
+                  className="rounded-full px-2.5 py-1 text-xs font-bold"
                   style={{
-                    borderColor: 'rgba(184,255,47,0.4)',
-                    background: 'rgba(184,255,47,0.1)',
-                    color: '#3a5a00'
+                    border: '1px solid rgba(168,142,247,0.25)',
+                    background: 'rgba(124,58,237,0.1)',
+                    color: '#A855F7'
                   }}
                 >
                   {service.highlight}
@@ -146,7 +146,7 @@ export default function Features() {
 
               <span
                 className="mt-5 text-xs font-black tracking-widest"
-                style={{ color: 'rgba(8,22,43,0.18)' }}
+                style={{ color: 'rgba(150,144,168,0.25)' }}
                 aria-hidden="true"
               >
                 {service.number}
