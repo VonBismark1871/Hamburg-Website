@@ -18,8 +18,8 @@ export default function Portfolio() {
           Referenzen aus unterschiedlichen Branchen
         </h2>
         <p className="mt-4 text-base leading-8 text-slate-600">
-          Die Beispiele zeigen Stil, Struktur und technische Richtung fuer typische kleine Unternehmen. Sie sind
-          bewusst als Demos formuliert: klar pruefbar, ohne erfundene Kundenergebnisse.
+          Die Beispiele zeigen Stil, Struktur und technische Richtung für typische kleine Unternehmen. Sie sind bewusst
+          als Demos formuliert: klar prüfbar, ohne erfundene Kundenergebnisse.
         </p>
       </div>
 

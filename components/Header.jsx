@@ -7,7 +7,7 @@ const navItems = [
   { href: '/referenzen', label: 'Referenzen' },
   { href: '/ablauf', label: 'Ablauf' },
   { href: '/preise', label: 'Preise' },
-  { href: '/ueber-uns', label: 'Ueber uns' },
+  { href: '/ueber-uns', label: 'Über uns' },
   { href: '/kontakt', label: 'Kontakt' }
 ];
 

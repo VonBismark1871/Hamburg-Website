@@ -7,7 +7,7 @@ function IconBase({ children }) {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-8 w-8"
+      className="h-7 w-7"
       stroke="currentColor"
       strokeWidth="1.8"
       strokeLinecap="round"
@@ -22,10 +22,10 @@ function IconBase({ children }) {
 function WebsiteIcon() {
   return (
     <IconBase>
-      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
       <path d="M3 9h18" />
       <path d="M7 13h5" />
-      <path d="M7 16h9" />
+      <path d="M7 16h8" />
     </IconBase>
   );
 }
@@ -33,9 +33,10 @@ function WebsiteIcon() {
 function VisibilityIcon() {
   return (
     <IconBase>
-      <path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z" />
-      <circle cx="12" cy="9" r="2.4" />
-      <path d="M5 21h14" />
+      <circle cx="11" cy="11" r="6" />
+      <path d="m16 16 4 4" />
+      <path d="M8.5 11h5" />
+      <path d="M11 8.5v5" />
     </IconBase>
   );
 }
@@ -43,11 +44,10 @@ function VisibilityIcon() {
 function AutomationIcon() {
   return (
     <IconBase>
-      <rect x="9" y="3" width="6" height="5" rx="1.2" />
-      <rect x="4" y="16" width="6" height="5" rx="1.2" />
-      <rect x="14" y="16" width="6" height="5" rx="1.2" />
-      <path d="M12 8v4" />
-      <path d="M7 16v-4h10v4" />
+      <rect x="4" y="4" width="6" height="6" rx="1.5" />
+      <rect x="14" y="14" width="6" height="6" rx="1.5" />
+      <path d="M10 7h4.5A2.5 2.5 0 0 1 17 9.5V14" />
+      <path d="M14 17H9.5A2.5 2.5 0 0 1 7 14.5V10" />
     </IconBase>
   );
 }
@@ -55,9 +55,9 @@ function AutomationIcon() {
 function ToolsIcon() {
   return (
     <IconBase>
-      <path d="M9.8 4.2a3.2 3.2 0 0 1 4.4 4.4L8.6 14.2a2.2 2.2 0 0 0-.6 1.5V19h3.3a2.2 2.2 0 0 0 1.5-.6l5.6-5.6a3.2 3.2 0 0 1 1.4 4.4" />
-      <path d="M3 21h18" />
-      <path d="M6 18l-2-2" />
+      <path d="m14.5 5 4.5 4.5-9.5 9.5H5v-4.5L14.5 5Z" />
+      <path d="m13 6.5 4.5 4.5" />
+      <path d="M4 21h16" />
     </IconBase>
   );
 }
@@ -65,36 +65,43 @@ function ToolsIcon() {
 const services = [
   {
     icon: WebsiteIcon,
-    title: 'Website',
-    text: 'Ein professioneller Auftritt, der Vertrauen schafft und neue Kunden anspricht.'
+    title: 'Websites',
+    text: 'Klare Unternehmensseiten, Relaunches und Landingpages mit Struktur, Design, SEO-Basis und Anfrageführung.'
   },
   {
     icon: VisibilityIcon,
-    title: 'Sichtbarkeit',
-    text: 'Lokale SEO, Google-Business-Logik und Inhalte, die in Hamburg gefunden werden.'
+    title: 'SEO & Sichtbarkeit',
+    text: 'Lokale Seitenstruktur, Google-Business-Logik, Inhalte und technische Grundlage für bessere Auffindbarkeit.'
   },
   {
     icon: AutomationIcon,
     title: 'Automatisierung',
-    text: 'Ablaeufe vereinfachen, Anfragen strukturieren und Zeit im Alltag sparen.'
+    text: 'Formulare, Benachrichtigungen, einfache Workflows und interne Abläufe, die wiederkehrende Arbeit reduzieren.'
   },
   {
     icon: ToolsIcon,
-    title: 'Tools',
-    text: 'Eigene Plugins und kleine Systeme, die Prozesse weiter staerken und verbinden.'
+    title: 'Plugins & Tools',
+    text: 'Kleine Webtools, Admin-Hilfen und Integrationen, wenn Standardfunktionen nicht ausreichen.'
   }
 ];
 
 export default function Features() {
   return (
     <section className="section-container section-spacing" id="features" aria-labelledby="features-heading">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 id="features-heading" className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl">
-          Ein klarer Weg vom Webauftritt zum digitalen System
-        </h2>
+      <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <div>
+          <p className="section-label">Leistungen</p>
+          <h2 id="features-heading" className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl">
+            Vier klare Leistungen. Ein sauberer technischer Anspruch.
+          </h2>
+        </div>
+        <p className="max-w-2xl text-base leading-8 text-slate-600">
+          Sie können mit einer Website starten oder direkt eine konkrete SEO-, Automatisierungs- oder Tool-Aufgabe
+          lösen. Die Leistungen funktionieren einzeln und lassen sich später sinnvoll verbinden.
+        </p>
       </div>
 
-      <div className="offer-ladder mt-11">
+      <div className="service-showcase mt-10">
         {services.map((service, index) => {
           const Icon = service.icon;
 
@@ -104,17 +111,16 @@ export default function Features() {
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
-              className="offer-step"
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              className="service-tile"
             >
-              <div className="offer-step-top">
-                <span className="offer-step-number">{String(index + 1).padStart(2, '0')}</span>
+              <span className="service-tile-icon">
                 <Icon />
-              </div>
+              </span>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
-              <Link href="/kontakt" className="offer-step-link">
-                Mehr erfahren
+              <Link href="/kontakt" className="service-tile-link">
+                Anfrage besprechen
                 <span aria-hidden="true">-&gt;</span>
               </Link>
             </motion.article>

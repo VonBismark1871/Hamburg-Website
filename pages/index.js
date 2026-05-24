@@ -16,15 +16,15 @@ const serviceItems = [
 const trustItems = [
   {
     title: 'Transparenter Ablauf',
-    text: 'Klare Schritte, realistische Zeitplaene und offene Kommunikation vom ersten Gespraech bis nach dem Launch.'
+    text: 'Klare Schritte, realistische Zeitpläne und offene Kommunikation vom ersten Gespräch bis nach dem Launch.'
   },
   {
     title: 'Eigentum und Kontrolle',
-    text: 'Sie behalten alle Rechte, Zugaenge und Daten. Keine Abhaengigkeiten, keine versteckten Fallstricke.'
+    text: 'Sie behalten alle Rechte, Zugänge und Daten. Keine Abhängigkeiten, keine versteckten Fallstricke.'
   },
   {
-    title: 'SEO, Performance und Sicherheit',
-    text: 'Technische Sauberkeit, schnelle Seiten und ein Fundament fuer Sichtbarkeit, Datenschutz und Stabilitaet.'
+    title: 'Technische Qualität',
+    text: 'Saubere Struktur, schnelle Seiten und ein Fundament für Sichtbarkeit, Datenschutz und Stabilität.'
   },
   {
     title: 'Datenschutz und DSGVO',
@@ -36,21 +36,21 @@ const pricingPreview = [
   {
     title: 'Starter Website',
     subtitle: 'Onepager',
-    price: 'ab 900 EUR',
+    price: 'ab 900 €',
     points: ['Bis zu 5 Abschnitte', 'Kontaktformular', 'Responsive Design', 'SEO-Basis']
   },
   {
     title: 'Business Website',
     subtitle: 'Mehrseitig',
-    price: 'ab 1.900 EUR',
+    price: 'ab 1.900 €',
     featured: true,
     points: ['Bis zu 8 Seiten', 'Individuelles Design', 'SEO und Performance', 'Grundlegende Automationen']
   },
   {
     title: 'System Website',
     subtitle: 'Individuell',
-    price: 'ab 3.900 EUR',
-    points: ['Massgeschneiderte Funktionen', 'Automatisierungen und Integrationen', 'Erweiterbare Architektur', 'Betreuung optional']
+    price: 'ab 3.900 €',
+    points: ['Maßgeschneiderte Funktionen', 'Automatisierungen und Integrationen', 'Erweiterbare Architektur', 'Betreuung optional']
   }
 ];
 
@@ -58,27 +58,74 @@ const homepageFaqPreview = [
   {
     question: 'Was passiert nach meiner Anfrage?',
     answer:
-      'Sie erhalten eine kurze Rueckmeldung, wir klaeren Ziel, Umfang und vorhandene Inhalte und entscheiden dann, ob eine Demo oder ein Audit der beste naechste Schritt ist.'
+      'Sie erhalten eine kurze Rückmeldung, wir klären Ziel, Umfang und vorhandene Inhalte und entscheiden dann, ob eine Demo oder ein Audit der beste nächste Schritt ist.'
   },
   {
-    question: 'Geht es nur um Websites in Hamburg?',
+    question: 'Arbeiten Sie nur für Unternehmen in Hamburg?',
     answer:
-      'Hamburg bleibt der lokale Vertrauensanker. Die Struktur ist aber bewusst so aufgebaut, dass Projekte auch fuer Deutschland und DACH wachsen koennen.'
+      'Der Standort ist Hamburg. Projekte können aber genauso für Unternehmen in Deutschland und DACH umgesetzt werden.'
   },
   {
-    question: 'Kann spaeter Automatisierung dazukommen?',
+    question: 'Kann später Automatisierung dazukommen?',
     answer:
-      'Ja. Der erste Webauftritt wird so geplant, dass spaeter Formulare, kleine Tools, Plugins, Admin-Bereiche oder Prozesshilfen sauber anschliessen koennen.'
+      'Ja. Website, SEO, Automatisierung und Tools sind getrennte Leistungen. Wenn es sinnvoll ist, können sie später sauber anschließen.'
   }
 ];
 
 const nextSteps = [
-  { title: 'Service Hub', text: 'Uebersicht aller Leistungen fuer Website, SEO, Automatisierung und Tools.' },
-  { title: 'Local SEO und Growth', text: 'Mehr Sichtbarkeit in Hamburg und Deutschland mit lokalem Fokus.' },
-  { title: 'Automatisierung', text: 'Mehr Ablaeufe verbinden, weniger manuelle Arbeit, mehr Zeit fuers Kerngeschaeft.' },
-  { title: 'Plugins und Tools', text: 'Eigene Tools fuer wiederkehrende Aufgaben und nahtlose Integration.' },
+  { title: 'Service Hub', text: 'Übersicht aller Leistungen für Website, SEO, Automatisierung und Tools.' },
+  { title: 'SEO & Sichtbarkeit', text: 'Mehr Sichtbarkeit in Hamburg, Deutschland und DACH mit sauberer lokaler Struktur.' },
+  { title: 'Automatisierung', text: 'Wiederkehrende Abläufe reduzieren, ohne den Webauftritt unnötig kompliziert zu machen.' },
+  { title: 'Plugins und Tools', text: 'Eigene Tools für wiederkehrende Aufgaben, interne Abläufe und nahtlose Integration.' },
   { title: 'Case Studies', text: 'Mehr Einblicke in Projekte, Ergebnisse und echte Vorher-Nachher-Beispiele.' }
 ];
+
+function ExpansionIcon({ index }) {
+  const paths = [
+    <>
+      <rect x="4" y="5" width="16" height="14" rx="2.5" />
+      <path d="M8 10h8" />
+      <path d="M8 14h5" />
+    </>,
+    <>
+      <circle cx="11" cy="11" r="5.5" />
+      <path d="m16 16 4 4" />
+      <path d="M11 8v6" />
+      <path d="M8 11h6" />
+    </>,
+    <>
+      <rect x="4" y="4" width="6" height="6" rx="1.5" />
+      <rect x="14" y="14" width="6" height="6" rx="1.5" />
+      <path d="M10 7h4.5A2.5 2.5 0 0 1 17 9.5V14" />
+      <path d="M14 17H9.5A2.5 2.5 0 0 1 7 14.5V10" />
+    </>,
+    <>
+      <path d="m14.5 5 4.5 4.5-9.5 9.5H5v-4.5L14.5 5Z" />
+      <path d="m13 6.5 4.5 4.5" />
+    </>,
+    <>
+      <path d="M5 7h14" />
+      <path d="M5 12h14" />
+      <path d="M5 17h8" />
+      <circle cx="17" cy="17" r="2" />
+    </>
+  ];
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className="h-6 w-6"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {paths[index]}
+    </svg>
+  );
+}
 
 function CheckIcon() {
   return (
@@ -93,7 +140,7 @@ function TrustSection() {
     <section className="section-container section-spacing pt-6" aria-labelledby="trust-heading">
       <div className="mx-auto max-w-3xl text-center">
         <h2 id="trust-heading" className="text-3xl font-black leading-tight text-slate-950 sm:text-5xl">
-          Vertrauen entsteht durch Klarheit und Verlaesslichkeit
+          Vertrauen entsteht durch Klarheit und Verlässlichkeit
         </h2>
       </div>
 
@@ -163,7 +210,7 @@ function FaqPreview() {
             Fragen vor dem Start
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
-            Der Einstieg bleibt bewusst einfach: Ziel klaeren, Richtung zeigen, dann sauber entscheiden.
+            Der Einstieg bleibt bewusst einfach: Ziel klären, Richtung zeigen, dann sauber entscheiden.
           </p>
           <Link href="/faq" className="mt-6 inline-flex text-sm font-bold text-blue-700 underline-offset-4 hover:underline">
             Alle Fragen ansehen
@@ -187,13 +234,15 @@ function NextSteps() {
     <section className="next-steps-band section-spacing" aria-labelledby="next-steps-heading">
       <div className="section-container">
         <h2 id="next-steps-heading" className="text-center text-3xl font-black leading-tight text-white sm:text-4xl">
-          Was als Naechstes kommt
+          Weitere Leistungen, wenn mehr gebraucht wird
         </h2>
 
         <div className="next-steps-grid mt-10">
-          {nextSteps.map((item) => (
+          {nextSteps.map((item, index) => (
             <article key={item.title} className="next-step-item">
-              <span aria-hidden="true" />
+              <span className="next-step-icon">
+                <ExpansionIcon index={index} />
+              </span>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </article>
@@ -210,17 +259,17 @@ function FinalCta() {
       <div className="final-cta">
         <div>
           <h2 id="final-cta-heading" className="max-w-2xl text-3xl font-black leading-tight text-slate-950 sm:text-5xl">
-            Bereit fuer den naechsten Schritt?
+            Bereit für den nächsten Schritt?
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600">
-            Erzaehlen Sie kurz von Ihrem Projekt. Ich melde mich persoenlich zur kostenlosen Demo oder zum Digital-Audit.
+            Erzählen Sie kurz von Ihrem Projekt. Ich melde mich persönlich zur kostenlosen Demo oder zum Digital-Audit.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/kontakt" className="primary-btn">
               Kostenlose Demo anfragen
             </Link>
             <Link href="/kontakt#audit" className="secondary-btn">
-              Digital-Audit ansehen
+              Digital-Audit starten
             </Link>
           </div>
         </div>
@@ -230,12 +279,12 @@ function FinalCta() {
             <span>Sie sprechen direkt mit mir, ohne Umwege.</span>
           </article>
           <article>
-            <strong>Schnelle Rueckmeldung</strong>
+            <strong>Schnelle Rückmeldung</strong>
             <span>In der Regel innerhalb von 24 Stunden.</span>
           </article>
           <article>
             <strong>Hamburg und DACH</strong>
-            <span>Lokal verwurzelt, deutschlandweit aktiv.</span>
+            <span>Lokal erreichbar, deutschlandweit umsetzbar.</span>
           </article>
         </div>
       </div>
@@ -247,8 +296,8 @@ export default function HomePage() {
   return (
     <>
       <SEOHead
-        title="Websites und digitale Systeme aus Hamburg"
-        description="Hamburg Websites entwickelt klare Websites, lokale Sichtbarkeit und praktische digitale Systeme fuer kleine Unternehmen in Hamburg und Deutschland."
+        title="Websites und digitale Lösungen aus Hamburg"
+        description="Hamburg Websites entwickelt klare Websites, lokale Sichtbarkeit, Automatisierungen und praktische digitale Tools für kleine Unternehmen."
         path="/"
         schema={[organizationSchema(), localBusinessSchema(), serviceSchema(serviceItems)]}
       />
