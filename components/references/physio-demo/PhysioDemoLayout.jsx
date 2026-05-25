@@ -6,33 +6,54 @@ const navItems = [
   { href: '/referenzen/physio-demo', label: 'Startseite' },
   { href: '/referenzen/physio-demo/leistungen', label: 'Leistungen' },
   { href: '/referenzen/physio-demo/kontakt', label: 'Kontakt & Termin' },
-  { href: '/referenzen/physio-demo/rueckenschmerzen', label: 'Rückenschmerzen' }
+  { href: '/referenzen/physio-demo/rueckenschmerzen', label: 'Rückenschmerzen' },
 ];
 
 export default function PhysioDemoLayout({ title, description, path, children }) {
   return (
     <>
       <SEOHead title={title} description={description} path={path} noIndex />
-      <div className="min-h-screen bg-[#f3f7f5] text-[#1f3231]">
+      <div
+        style={{ fontFamily: "'Plus Jakarta Sans', 'DM Sans', sans-serif" }}
+        className="min-h-screen bg-[#F4FAF6] text-[#0A1B11]"
+      >
         <ReferenceStickyBackButton />
 
-        <header className="border-b border-[#d8e4df] bg-[#f7fbf9]/95 backdrop-blur">
-          <div className="section-container py-6">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-[#5f7774]">Physiotherapie in Hamburg</p>
-                <p className="mt-1 text-2xl font-semibold text-[#284a46]">Praxis Elbbalance Physiotherapie</p>
+        <header style={{ backgroundColor: '#0C2318', borderBottom: '1px solid rgba(50,184,119,0.15)' }}>
+          <div className="section-container py-5">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#32B877' }} />
+                <div>
+                  <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: 17, letterSpacing: '-0.015em' }}>Elbbalance</span>
+                  <span style={{ color: '#6DD4A4', fontWeight: 400, fontSize: 14, marginLeft: 6 }}>Physiotherapie</span>
+                </div>
               </div>
               <nav className="flex flex-wrap gap-2 text-sm">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-full border border-[#c4d8d3] bg-white/80 px-4 py-2 font-medium text-[#355955] transition hover:border-[#8fb0ab] hover:bg-white"
+                    style={{
+                      color: 'rgba(255,255,255,0.7)', fontSize: 13, fontWeight: 500,
+                      padding: '7px 14px', borderRadius: 8, textDecoration: 'none',
+                      border: '1px solid rgba(50,184,119,0.2)',
+                      backgroundColor: 'rgba(50,184,119,0.06)',
+                    }}
                   >
                     {item.label}
                   </Link>
                 ))}
+                <Link
+                  href="/referenzen/physio-demo/kontakt"
+                  style={{
+                    backgroundColor: '#E87A38', color: '#FFFFFF',
+                    fontSize: 13, fontWeight: 700, padding: '8px 18px',
+                    borderRadius: 22, textDecoration: 'none',
+                  }}
+                >
+                  Termin anfragen
+                </Link>
               </nav>
             </div>
           </div>
