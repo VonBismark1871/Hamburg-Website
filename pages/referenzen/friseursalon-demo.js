@@ -43,10 +43,10 @@ const services = [
 ];
 
 const lookbook = [
-  { src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=80', alt: 'Fertiges Farbergebnis – glänzendes, weiches Haar', tall: true  },
-  { src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80', alt: 'Helles Saloninterieur mit Spiegelplätzen',         tall: false },
-  { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1000&q=80', alt: 'Stylistin beim präzisen Damenhaarschnitt',         tall: false },
-  { src: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80', alt: 'Moderner Haarschnitt mit gestyltem Volumen',    tall: true  },
+  { src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=80', alt: 'Fertiges Balayage-Ergebnis – glänzendes, weiches Haar mit natürlichem Farbverlauf', tall: true  },
+  { src: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1000&q=80', alt: 'Moderner Kurzhaarschnitt mit präzisen Konturen',                                    tall: false },
+  { src: 'https://images.unsplash.com/photo-1522337094846-8a818e733e2f?auto=format&fit=crop&w=1000&q=80', alt: 'Farbbehandlung – satte, harmonische Nuancen als Salonergebnis',                      tall: false },
+  { src: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1200&q=80', alt: 'Luftiger Stufenschnitt mit Volumen und Bewegung',                                    tall: true  },
 ];
 
 const team = [
