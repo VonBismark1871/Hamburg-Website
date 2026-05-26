@@ -1,10 +1,8 @@
-import Link from 'next/link';
+import { useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
+import MagneticButton from './ui/MagneticButton';
+import AuroraBackground from './ui/AuroraBackground';
+import { useParallax } from '../hooks/useParallax';
 
 const heroStats = [
   { value: 'Kostenlos', label: 'Demo vorab' },
@@ -13,215 +11,183 @@ const heroStats = [
   { value: 'Hamburg', label: '& DACH' }
 ];
 
-const layoutSections = [
-  { name: 'Hero & Angebot', fill: '68%' },
-  { name: 'Leistungen', fill: '90%' },
-  { name: 'Referenzen', fill: '58%' },
-  { name: 'Kontakt & Anfrage', fill: '78%' }
+const mockSections = [
+  { label: 'Hero & Angebot', fill: '70%' },
+  { label: 'Leistungen', fill: '90%' },
+  { label: 'Referenzen', fill: '56%' },
+  { label: 'Kontakt & Anfrage', fill: '80%' }
 ];
 
-const serviceTags = ['Website', 'SEO', 'Automatisierung'];
+const trustPoints = ['Direkter Ansprechpartner', 'Transparente Preise', 'Kein Agentur-Aufschlag'];
 
-function ResultCard({ shouldReduceMotion }) {
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } }
+};
+const item = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
+
+function CheckCircle() {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7, delay: 0.3 }}
-    >
+    <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4 shrink-0" aria-hidden="true">
+      <circle cx="8" cy="8" r="7.5" stroke="var(--cyan)" strokeWidth="1.3" />
+      <path d="M5 8.2 7 10l4-4" stroke="var(--cyan-2)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function HeroMock({ reduce }) {
+  const ref = useRef(null);
+  const y = useParallax(ref, 60);
+
+  return (
+    <div ref={ref} className="relative flex items-center justify-center lg:justify-end">
       <motion.div
-        animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="hero-result-card"
-        style={{ width: '100%', maxWidth: 420 }}
+        style={{ maxWidth: 440, ...(reduce ? {} : { y }) }}
+        initial={{ opacity: 0, x: 28, rotateY: 6 }}
+        animate={{ opacity: 1, x: 0, rotateY: 0 }}
+        transition={{ duration: 0.85, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full"
       >
-        <div className="hero-result-header">
-          <div className="hero-result-header-dot" />
-          <span>Demo-Vorschau</span>
-        </div>
-
-        <div className="hero-result-project">
-          <div>
-            <p className="hero-result-project-name">Beispiel-Onepager</p>
-            <p className="hero-result-project-type">Struktur · Design · Anfrageführung</p>
+        <motion.div
+          className="hero-mock"
+          animate={reduce ? undefined : { y: [0, -10, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <div className="hero-mock-bar">
+            <span className="hero-mock-dot" style={{ background: '#ff5f57' }} />
+            <span className="hero-mock-dot" style={{ background: '#febc2e' }} />
+            <span className="hero-mock-dot" style={{ background: '#28c840' }} />
+            <span
+              className="ml-3 truncate rounded-md px-3 py-1 text-[11px] font-medium"
+              style={{ background: 'rgba(255,255,255,0.04)', color: 'var(--muted)', border: '1px solid var(--line)' }}
+            >
+              ihr-unternehmen.de
+            </span>
           </div>
-          <span
-            style={{
-              fontSize: 11,
-              fontWeight: 700,
-              padding: '4px 10px',
-              borderRadius: 999,
-              background: 'rgba(124,58,237,0.16)',
-              color: '#A855F7',
-              border: '1px solid rgba(168,142,247,0.3)'
-            }}
-          >
-            Vorschau
-          </span>
-        </div>
 
-        <div className="hero-metrics">
-          {layoutSections.map((s) => (
-            <div key={s.name} className="hero-metric-row">
-              <span className="hero-metric-label">{s.name}</span>
+          <div className="p-7">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-display text-[17px] font-bold" style={{ color: 'var(--text)' }}>
+                  Beispiel-Onepager
+                </p>
+                <p className="mt-1 text-[12px]" style={{ color: 'var(--muted)' }}>
+                  Struktur · Design · Anfrageführung
+                </p>
+              </div>
               <span
-                aria-hidden="true"
-                style={{
-                  position: 'relative',
-                  display: 'inline-block',
-                  height: 6,
-                  width: 56,
-                  borderRadius: 999,
-                  background: 'rgba(168,142,247,0.16)',
-                  overflow: 'hidden'
-                }}
+                className="rounded-full px-3 py-1 text-[11px] font-bold"
+                style={{ background: 'rgba(34,211,238,0.12)', color: 'var(--cyan-2)', border: '1px solid rgba(34,211,238,0.3)' }}
               >
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    width: s.fill,
-                    borderRadius: 999,
-                    background: 'linear-gradient(90deg,#7C3AED,#A855F7)'
-                  }}
-                />
+                Vorschau
               </span>
             </div>
-          ))}
-        </div>
 
-        <div className="hero-service-tags">
-          {serviceTags.map((tag) => (
-            <span key={tag} className="hero-service-tag">
-              {tag}
-            </span>
-          ))}
-          <span style={{ marginLeft: 'auto', color: 'rgba(150,144,168,0.5)', fontSize: 11, alignSelf: 'center' }}>
-            Beispiel-Layout
-          </span>
-        </div>
+            <div className="mt-6 space-y-2.5">
+              {mockSections.map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  className="flex items-center justify-between rounded-xl px-4 py-3"
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--line)' }}
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                >
+                  <span className="text-[13px] font-medium" style={{ color: 'var(--text-soft)' }}>{s.label}</span>
+                  <span style={{ position: 'relative', height: 6, width: 64, borderRadius: 999, background: 'rgba(168,142,247,0.16)', overflow: 'hidden' }}>
+                    <motion.span
+                      style={{ position: 'absolute', inset: 0, borderRadius: 999, background: 'linear-gradient(90deg,#7C3AED,#22D3EE)', transformOrigin: 'left' }}
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: parseFloat(s.fill) / 100 }}
+                      transition={{ duration: 0.7, delay: 0.6 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {['Website', 'SEO', 'Automatisierung'].map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full px-3 py-1.5 text-[12px] font-medium"
+                  style={{ border: '1px solid var(--line)', background: 'rgba(124,58,237,0.08)', color: 'var(--muted)' }}
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 
 export default function Hero() {
-  const shouldReduceMotion = useReducedMotion();
+  const reduce = useReducedMotion();
 
   return (
     <section className="hero" aria-label="Startseite Hero">
-      <div className="section-container grid items-center gap-14 py-20 sm:py-24 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:py-28">
-        {/* Left – copy */}
-        <div className="relative z-10 space-y-7 max-w-2xl">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.45, delay: 0.04 }}
-          >
-            <div className="hero-badge">
-              <span className="hero-badge-dot" aria-hidden="true" />
+      <AuroraBackground />
+
+      <div className="hero-inner section-container grid items-center gap-14 py-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-32">
+        <motion.div variants={container} initial="hidden" animate="visible" className="max-w-2xl">
+          <motion.div variants={item}>
+            <span className="eyebrow-pill">
+              <span
+                style={{ width: 7, height: 7, borderRadius: 999, background: 'var(--cyan)', boxShadow: '0 0 0 3px rgba(34,211,238,0.25)' }}
+                aria-hidden="true"
+              />
               Hamburg Websites · Lokal verankert, digital stark
-            </div>
+            </span>
           </motion.div>
 
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="font-black leading-[1.0]"
-            style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
-          >
-            Websites,{' '}
-            <span
-              style={{
-                display: 'inline-block',
-                background: 'linear-gradient(135deg, #7C3AED, #A855F7)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}
-            >
-              die Kunden
-            </span>
-            <br />
-            gewinnen.
+          <motion.h1 variants={item} className="mt-7 font-display" style={{ color: 'var(--text)' }}>
+            Websites, die <span className="gradient-text">Kunden</span> gewinnen.
           </motion.h1>
 
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.5, delay: 0.18 }}
-            className="max-w-lg text-lg leading-8"
-            style={{ color: '#9690A8' }}
-          >
-            Klares Design. Schnelle Seiten. Lokales SEO. Ich entwickle Websites für Hamburger Unternehmen – mit Struktur und Überzeugungskraft, die Anfragen bringt.
+          <motion.p variants={item} className="mt-7 max-w-xl" style={{ color: 'var(--text-soft)', fontSize: 'var(--text-lead)', lineHeight: 1.65 }}>
+            Klares Design. Schnelle Seiten. Lokales SEO. Ich entwickle Websites für Hamburger
+            Unternehmen – mit Struktur und Überzeugungskraft, die Anfragen bringt.
           </motion.p>
 
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.5, delay: 0.26 }}
-            className="flex flex-wrap gap-4"
-          >
-            <Link href="/kontakt" className="primary-btn">
+          <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">
+            <MagneticButton href="/kontakt" className="primary-btn">
               Kostenlose Demo anfragen
-            </Link>
-            <Link href="/referenzen" className="secondary-btn">
+              <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </MagneticButton>
+            <MagneticButton href="/referenzen" className="secondary-btn" strength={10}>
               Referenzen ansehen
-            </Link>
+            </MagneticButton>
           </motion.div>
 
-          <motion.ul
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.5, delay: 0.34 }}
-            className="flex flex-wrap gap-x-6 gap-y-3 pt-2 text-sm font-semibold"
-            style={{ color: '#9690A8' }}
-          >
-            {['Direkter Ansprechpartner', 'Transparente Preise', 'Kein Agentur-Aufschlag'].map((item) => (
-              <li key={item} className="flex items-center gap-2">
-                <svg
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  className="h-4 w-4 shrink-0"
-                  aria-hidden="true"
-                >
-                  <circle cx="8" cy="8" r="7.5" stroke="#7C3AED" strokeWidth="1.5" />
-                  <path d="M5 8.2 7 10l4-4" stroke="#A855F7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                {item}
+          <motion.ul variants={item} className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium" style={{ color: 'var(--text-soft)' }}>
+            {trustPoints.map((point) => (
+              <li key={point} className="flex items-center gap-2">
+                <CheckCircle />
+                {point}
               </li>
             ))}
           </motion.ul>
-        </div>
+        </motion.div>
 
-        {/* Right – result card */}
-        <div className="relative z-10 flex items-center justify-center lg:justify-end">
-          <ResultCard shouldReduceMotion={shouldReduceMotion} />
-        </div>
+        <HeroMock reduce={reduce} />
       </div>
 
-      {/* Stats strip */}
-      <motion.div
-        className="hero-stats-strip"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-      >
+      <div className="hero-stat-strip">
         {heroStats.map((stat) => (
-          <div key={stat.label} className="hero-stat-item">
+          <div key={stat.label} className="hero-stat">
             <span className="hero-stat-value">{stat.value}</span>
             <span className="hero-stat-label">{stat.label}</span>
           </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

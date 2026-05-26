@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 import Portfolio from '../components/Portfolio';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
+import AuroraBackground from '../components/ui/AuroraBackground';
+import Reveal, { RevealGroup, RevealItem } from '../components/ui/Reveal';
+import MagneticButton from '../components/ui/MagneticButton';
 import { localBusinessSchema, organizationSchema, serviceSchema } from '../lib/seo';
 
 const serviceItems = [
@@ -14,31 +16,40 @@ const serviceItems = [
   { name: 'Automatisierung und Tools', priceFromEur: 900 }
 ];
 
-/* ─── Trust strip (honest) ──────────────────────────── */
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4 shrink-0" aria-hidden="true">
+      <path d="M3 8.5 6.5 12 13 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+      <path d="M3 8h10M9 4l4 4-4 4" />
+    </svg>
+  );
+}
+
+/* ─── Trust strip ───────────────────────────────────── */
 function TrustStrip() {
   const points = ['Kostenlose Demo vorab', 'Direkter Kontakt', '100 % Ihr Eigentum'];
   return (
     <section
-      style={{
-        background: '#0B0A12',
-        borderTop: '1px solid rgba(168,142,247,0.08)',
-        borderBottom: '1px solid rgba(168,142,247,0.08)'
-      }}
+      style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}
       aria-label="Vertrauen"
     >
       <div className="section-container py-8">
         <div className="flex flex-col items-center gap-5 text-center md:flex-row md:justify-between md:text-left">
-          <p className="max-w-xl text-sm leading-7" style={{ color: '#9690A8' }}>
+          <p className="max-w-xl text-sm leading-7" style={{ color: 'var(--muted)' }}>
             Neu in Hamburg gestartet — statt erfundener Referenzen zeigen wir{' '}
-            <span style={{ color: '#ECEAF3', fontWeight: 600 }}>echte, prüfbare Demo-Websites</span>.
+            <span style={{ color: 'var(--text)', fontWeight: 600 }}>echte, prüfbare Demo-Websites</span>.
           </p>
           <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {points.map((p) => (
-              <li key={p} className="flex items-center gap-2 text-sm font-semibold" style={{ color: '#9690A8' }}>
-                <span
-                  style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg,#7C3AED,#A855F7)' }}
-                  aria-hidden="true"
-                />
+              <li key={p} className="flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--text-soft)' }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg,#7C3AED,#22D3EE)' }} aria-hidden="true" />
                 {p}
               </li>
             ))}
@@ -51,63 +62,36 @@ function TrustStrip() {
 
 /* ─── Warum Hamburg Websites ────────────────────────── */
 const whyPoints = [
-  {
-    title: 'Direkter Ansprechpartner',
-    text: 'Sie sprechen mit der Person, die Ihre Website baut – ohne Sachbearbeiter, ohne Ticketsystem.'
-  },
-  {
-    title: 'Demo vor der Entscheidung',
-    text: 'Sie sehen einen echten Entwurf Ihrer Website, bevor Sie sich entscheiden oder etwas bezahlen.'
-  },
-  {
-    title: '100 % Ihr Eigentum',
-    text: 'Code, Daten und alle Zugänge gehören Ihnen – keine Abhängigkeit, kein Lock-in.'
-  },
-  {
-    title: 'Kein Agentur-Aufschlag',
-    text: 'Faire Preise und eine ehrliche Einschätzung. Wenn ein einfacherer Weg reicht, sage ich das.'
-  }
+  { title: 'Direkter Ansprechpartner', text: 'Sie sprechen mit der Person, die Ihre Website baut – ohne Sachbearbeiter, ohne Ticketsystem.' },
+  { title: 'Demo vor der Entscheidung', text: 'Sie sehen einen echten Entwurf Ihrer Website, bevor Sie sich entscheiden oder etwas bezahlen.' },
+  { title: '100 % Ihr Eigentum', text: 'Code, Daten und alle Zugänge gehören Ihnen – keine Abhängigkeit, kein Lock-in.' },
+  { title: 'Kein Agentur-Aufschlag', text: 'Faire Preise und eine ehrliche Einschätzung. Wenn ein einfacherer Weg reicht, sage ich das.' }
 ];
 
 function WhyMe() {
   return (
-    <section className="section-spacing" style={{ background: '#16131F' }} aria-labelledby="why-heading">
+    <section className="section-spacing" style={{ background: 'var(--surface)' }} aria-labelledby="why-heading">
       <div className="section-container">
-        <div className="mb-12 max-w-2xl">
+        <Reveal className="mb-14 max-w-2xl">
           <p className="section-label">Warum Hamburg Websites</p>
-          <h2
-            id="why-heading"
-            className="text-3xl font-black leading-tight sm:text-5xl"
-            style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
-          >
+          <h2 id="why-heading" style={{ color: 'var(--text)' }}>
             Klare Bedingungen statt großer Versprechen
           </h2>
-          <p className="mt-4 text-base leading-8" style={{ color: '#9690A8' }}>
+          <p className="mt-5" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
             Direkt, transparent und ohne Risiko beim Einstieg – darauf können Sie sich verlassen.
           </p>
-        </div>
-        <div className="grid gap-5 sm:grid-cols-2">
-          {whyPoints.map((item, index) => (
-            <motion.article
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="rounded-2xl p-7"
-              style={{ border: '1px solid rgba(168,142,247,0.12)', background: 'rgba(255,255,255,0.02)' }}
-            >
-              <span
-                className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl"
-                style={{ background: 'rgba(124,58,237,0.15)', color: '#A855F7' }}
-              >
+        </Reveal>
+        <RevealGroup className="grid gap-5 sm:grid-cols-2">
+          {whyPoints.map((it) => (
+            <RevealItem as="article" key={it.title} className="glass-card p-7">
+              <span className="feature-icon" style={{ width: 44, height: 44, color: 'var(--cyan-2)' }}>
                 <CheckIcon />
               </span>
-              <h3 className="text-lg font-black" style={{ color: '#ECEAF3' }}>{item.title}</h3>
-              <p className="mt-2 text-sm leading-7" style={{ color: '#9690A8' }}>{item.text}</p>
-            </motion.article>
+              <h3 className="mt-5 font-display text-lg font-bold" style={{ color: 'var(--text)' }}>{it.title}</h3>
+              <p className="mt-2 text-sm leading-7" style={{ color: 'var(--muted)' }}>{it.text}</p>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );
@@ -124,84 +108,32 @@ const processSteps = [
 
 function ProcessPreview() {
   return (
-    <section
-      className="section-spacing"
-      style={{
-        background: 'linear-gradient(135deg, #0B0A12 0%, #16131F 60%, #1a152b 100%)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
-      aria-labelledby="process-heading"
-    >
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'linear-gradient(90deg, rgba(168,142,247,0.04) 1px, transparent 1px), linear-gradient(0deg, rgba(168,142,247,0.035) 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
-          pointerEvents: 'none'
-        }}
-        aria-hidden="true"
-      />
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(ellipse 50% 40% at 20% 60%, rgba(124,58,237,0.14) 0%, transparent 60%)',
-          pointerEvents: 'none'
-        }}
-        aria-hidden="true"
-      />
-      <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
-          <div>
+    <section className="process-band section-spacing" aria-labelledby="process-heading">
+      <AuroraBackground grid grain={false} />
+      <div className="section-container">
+        <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+          <Reveal>
             <p className="section-label">Ablauf</p>
-            <h2
-              id="process-heading"
-              className="text-3xl font-black leading-tight sm:text-5xl"
-              style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
-            >
-              So läuft die Zusammenarbeit ab
-            </h2>
-          </div>
-          <Link
-            href="/ablauf"
-            className="shrink-0 rounded-full px-5 py-2.5 text-sm font-bold transition"
-            style={{ border: '1px solid rgba(168,142,247,0.2)', color: '#9690A8' }}
-            onMouseEnter={e => { e.currentTarget.style.color = '#A855F7'; e.currentTarget.style.borderColor = 'rgba(168,85,247,0.4)'; }}
-            onMouseLeave={e => { e.currentTarget.style.color = '#9690A8'; e.currentTarget.style.borderColor = 'rgba(168,142,247,0.2)'; }}
-          >
-            Ablauf im Detail →
-          </Link>
+            <h2 id="process-heading" style={{ color: 'var(--text)' }}>So läuft die Zusammenarbeit ab</h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <Link href="/ablauf" className="secondary-btn shrink-0">
+              Ablauf im Detail <ArrowIcon />
+            </Link>
+          </Reveal>
         </div>
 
-        <ol className="grid gap-4 sm:grid-cols-5">
-          {processSteps.map((step, index) => (
-            <motion.li
-              key={step.num}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.38, delay: index * 0.07 }}
-              className="relative rounded-2xl p-6 transition"
-              style={{ border: '1px solid rgba(168,142,247,0.12)', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)' }}
-            >
-              <span
-                className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl text-xs font-black text-white"
-                style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)' }}
-              >
-                {step.num}
-              </span>
-              <h3 className="text-base font-black" style={{ color: '#ECEAF3' }}>{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: '#9690A8' }}>
-                {step.text}
-              </p>
-            </motion.li>
+        <RevealGroup as="ol" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {processSteps.map((step) => (
+            <RevealItem as="li" key={step.num} className="step-card">
+              <span className="step-num">{step.num}</span>
+              <h3 className="mt-4 font-display text-base font-bold" style={{ color: 'var(--text)' }}>{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>{step.text}</p>
+            </RevealItem>
           ))}
-        </ol>
+        </RevealGroup>
 
-        <p className="mt-8 text-sm" style={{ color: '#6B6480' }}>
+        <p className="mt-9 text-sm" style={{ color: 'var(--faint)' }}>
           Eine erste Demo-Website erhalten Sie in der Regel innerhalb weniger Tage. Kostenlos und unverbindlich.
         </p>
       </div>
@@ -209,183 +141,93 @@ function ProcessPreview() {
   );
 }
 
-/* ─── Pricing Preview ───────────────────────────────── */
+/* ─── Pricing preview ───────────────────────────────── */
 const pricingPreview = [
-  {
-    title: 'Website-Visitenkarte',
-    subtitle: 'Einstieg',
-    price: 'ab 400 €',
-    points: ['1 strukturierte Seite', 'Kontakt-CTA', 'Responsive Design', 'SEO-Basics']
-  },
-  {
-    title: 'Business Website',
-    subtitle: 'Mehrseitig',
-    price: 'ab 1.000 €',
-    featured: true,
-    points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen']
-  },
-  {
-    title: 'Mit Adminbereich',
-    subtitle: 'Individuell',
-    price: 'ab 1.500 €',
-    points: ['Eigene Inhaltspflege', 'CMS-Einrichtung', 'Strukturierte Übergabe', 'Betreuung optional']
-  }
+  { title: 'Website-Visitenkarte', subtitle: 'Einstieg', price: 'ab 400 €', points: ['1 strukturierte Seite', 'Kontakt-CTA', 'Responsive Design', 'SEO-Basics'] },
+  { title: 'Business Website', subtitle: 'Mehrseitig', price: 'ab 1.000 €', featured: true, points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen'] },
+  { title: 'Mit Adminbereich', subtitle: 'Individuell', price: 'ab 1.500 €', points: ['Eigene Inhaltspflege', 'CMS-Einrichtung', 'Strukturierte Übergabe', 'Betreuung optional'] }
 ];
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4 shrink-0" aria-hidden="true">
-      <path d="M3 8.5 6.5 12 13 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 function PricingPreview() {
   return (
     <section className="section-container section-spacing" aria-labelledby="pricing-preview-heading">
-      <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
-        <div>
+      <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+        <Reveal>
           <p className="section-label">Preise</p>
-          <h2
-            id="pricing-preview-heading"
-            className="text-3xl font-black leading-tight sm:text-5xl"
-            style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
-          >
-            Klare Preise. Kein Kleingedrucktes.
-          </h2>
-        </div>
-        <Link
-          href="/preise"
-          className="shrink-0 rounded-full px-5 py-2.5 text-sm font-bold transition"
-          style={{ border: '1px solid rgba(168,142,247,0.18)', color: '#9690A8', background: '#16131F' }}
-          onMouseEnter={e => { e.currentTarget.style.color = '#A855F7'; e.currentTarget.style.borderColor = 'rgba(168,85,247,0.4)'; }}
-          onMouseLeave={e => { e.currentTarget.style.color = '#9690A8'; e.currentTarget.style.borderColor = 'rgba(168,142,247,0.18)'; }}
-        >
-          Alle Pakete ansehen →
-        </Link>
+          <h2 id="pricing-preview-heading" style={{ color: 'var(--text)' }}>Klare Preise. Kein Kleingedrucktes.</h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <Link href="/preise" className="secondary-btn shrink-0">
+            Alle Pakete ansehen <ArrowIcon />
+          </Link>
+        </Reveal>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-3">
-        {pricingPreview.map((item, index) => (
-          <motion.article
-            key={item.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4, delay: index * 0.08 }}
-            className={`pricing-preview-card ${item.featured ? 'featured' : ''}`}
-          >
-            {item.featured && <p className="pricing-badge">Am beliebtesten</p>}
-            <div className={item.featured ? 'mt-8' : ''}>
-              <p className="text-sm font-bold" style={{ color: '#ECEAF3' }}>{item.title}</p>
-              <p className="mt-1 text-xs font-semibold" style={{ color: '#9690A8' }}>{item.subtitle}</p>
-              <p
-                className="mt-5 font-black"
-                style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)',
-                  letterSpacing: '-0.02em',
-                  background: 'linear-gradient(135deg,#7C3AED,#A855F7)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                {item.price}
+      <RevealGroup className="grid gap-5 md:grid-cols-3">
+        {pricingPreview.map((it) => (
+          <RevealItem as="article" key={it.title} className={`pricing-preview-card ${it.featured ? 'featured' : ''}`}>
+            {it.featured && <p className="pricing-badge">Am beliebtesten</p>}
+            <div className={it.featured ? 'mt-8' : ''}>
+              <p className="font-display text-sm font-bold" style={{ color: 'var(--text)' }}>{it.title}</p>
+              <p className="mt-1 text-xs font-medium" style={{ color: 'var(--muted)' }}>{it.subtitle}</p>
+              <p className="mt-5 font-display gradient-text" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.2rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                {it.price}
               </p>
-              <ul className="mt-6 space-y-3 text-sm leading-6" style={{ color: '#9690A8' }}>
-                {item.points.map((point) => (
+              <ul className="mt-6 space-y-3 text-sm leading-6" style={{ color: 'var(--text-soft)' }}>
+                {it.points.map((point) => (
                   <li key={point} className="flex gap-3">
-                    <span
-                      className="mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full"
-                      style={{ background: 'rgba(124,58,237,0.15)', color: '#A855F7' }}
-                    >
+                    <span className="mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full" style={{ background: 'rgba(34,211,238,0.14)', color: 'var(--cyan-2)' }}>
                       <CheckIcon />
                     </span>
                     {point}
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/preise"
-                className="mt-7 inline-flex items-center gap-2 text-sm font-bold transition hover:gap-3"
-                style={{ color: '#A855F7' }}
-              >
-                Details ansehen
-                <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" />
-                </svg>
+              <Link href="/preise" className="tile-link mt-7">
+                Details ansehen <ArrowIcon />
               </Link>
             </div>
-          </motion.article>
+          </RevealItem>
         ))}
-      </div>
+      </RevealGroup>
 
-      <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7" style={{ color: '#6B6480' }}>
+      <p className="mx-auto mt-9 max-w-3xl text-center text-sm leading-7" style={{ color: 'var(--faint)' }}>
         Alle Preise sind Richtwerte. Jedes Projekt ist individuell. Nach einem kurzen Kennenlernen erhalten Sie ein passendes Angebot.
       </p>
     </section>
   );
 }
 
-/* ─── FAQ Preview ───────────────────────────────────── */
+/* ─── FAQ preview ───────────────────────────────────── */
 const homepageFaqPreview = [
-  {
-    question: 'Was passiert nach meiner Anfrage?',
-    answer:
-      'Sie erhalten eine kurze Rückmeldung, wir klären Ziel, Umfang und vorhandene Inhalte und entscheiden dann, ob eine Demo oder ein Audit der beste nächste Schritt ist.'
-  },
-  {
-    question: 'Arbeiten Sie nur für Unternehmen in Hamburg?',
-    answer:
-      'Der Standort ist Hamburg. Projekte können aber genauso für Unternehmen in Deutschland und DACH umgesetzt werden.'
-  },
-  {
-    question: 'Kann später Automatisierung dazukommen?',
-    answer:
-      'Ja. Website, SEO, Automatisierung und Tools sind getrennte Leistungen. Wenn es sinnvoll ist, können sie später sauber anschließen.'
-  }
+  { question: 'Was passiert nach meiner Anfrage?', answer: 'Sie erhalten eine kurze Rückmeldung, wir klären Ziel, Umfang und vorhandene Inhalte und entscheiden dann, ob eine Demo oder ein Audit der beste nächste Schritt ist.' },
+  { question: 'Arbeiten Sie nur für Unternehmen in Hamburg?', answer: 'Der Standort ist Hamburg. Projekte können aber genauso für Unternehmen in Deutschland und DACH umgesetzt werden.' },
+  { question: 'Kann später Automatisierung dazukommen?', answer: 'Ja. Website, SEO, Automatisierung und Tools sind getrennte Leistungen. Wenn es sinnvoll ist, können sie später sauber anschließen.' }
 ];
 
 function FaqPreview() {
   return (
-    <section
-      className="section-spacing"
-      style={{ background: '#16131F' }}
-      aria-labelledby="faq-preview-heading"
-    >
+    <section className="section-spacing" style={{ background: 'var(--surface)' }} aria-labelledby="faq-preview-heading">
       <div className="section-container">
         <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
-          <div>
+          <Reveal>
             <p className="section-label">FAQ</p>
-            <h2
-              id="faq-preview-heading"
-              className="text-3xl font-black leading-tight sm:text-4xl"
-              style={{ letterSpacing: '-0.03em', color: '#ECEAF3' }}
-            >
-              Fragen vor dem Start
-            </h2>
-            <p className="mt-4 text-base leading-8" style={{ color: '#9690A8' }}>
+            <h2 id="faq-preview-heading" style={{ color: 'var(--text)' }}>Fragen vor dem Start</h2>
+            <p className="mt-5" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
               Der Einstieg bleibt bewusst einfach: Ziel klären, Richtung zeigen, dann sauber entscheiden.
             </p>
-            <Link
-              href="/faq"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-bold transition hover:gap-3"
-              style={{ color: '#A855F7' }}
-            >
-              Alle Fragen ansehen
-              <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
+            <Link href="/faq" className="tile-link mt-6">
+              Alle Fragen ansehen <ArrowIcon />
             </Link>
-          </div>
-          <div style={{ borderTop: '1px solid rgba(168,142,247,0.1)' }}>
-            {homepageFaqPreview.map((item) => (
-              <article key={item.question} className="py-6" style={{ borderBottom: '1px solid rgba(168,142,247,0.1)' }}>
-                <h3 className="text-base font-bold" style={{ color: '#ECEAF3' }}>{item.question}</h3>
-                <p className="mt-2 text-sm leading-7" style={{ color: '#9690A8' }}>{item.answer}</p>
-              </article>
+          </Reveal>
+          <RevealGroup style={{ borderTop: '1px solid var(--line)' }}>
+            {homepageFaqPreview.map((it) => (
+              <RevealItem as="article" key={it.question} className="py-6" style={{ borderBottom: '1px solid var(--line)' }}>
+                <h3 className="font-display text-base font-bold" style={{ color: 'var(--text)' }}>{it.question}</h3>
+                <p className="mt-2 text-sm leading-7" style={{ color: 'var(--muted)' }}>{it.answer}</p>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </div>
     </section>
@@ -398,58 +240,34 @@ function FinalCta() {
     <section className="final-cta-band" aria-labelledby="final-cta-heading">
       <div className="section-container">
         <div className="final-cta">
-          <div>
-            <span
-              className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-widest"
-              style={{ background: 'rgba(124,58,237,0.12)', color: '#A855F7', border: '1px solid rgba(168,142,247,0.25)' }}
-            >
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#A855F7', display: 'inline-block' }} aria-hidden="true" />
+          <Reveal>
+            <span className="eyebrow-pill mb-6">
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--cyan)' }} aria-hidden="true" />
               Kostenloser Einstieg
             </span>
-            <h2
-              id="final-cta-heading"
-              className="max-w-xl font-black leading-tight"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', letterSpacing: '-0.03em', color: '#ECEAF3' }}
-            >
+            <h2 id="final-cta-heading" className="max-w-xl" style={{ color: 'var(--text)', fontSize: 'clamp(2rem, 4vw, 3.4rem)' }}>
               Bereit für den nächsten Schritt?
             </h2>
-            <p className="mt-5 max-w-lg text-base leading-8" style={{ color: '#9690A8' }}>
-              Erzählen Sie kurz von Ihrem Projekt. Ich melde mich persönlich zur kostenlosen Demo oder zum Digital-Audit – in der Regel innerhalb von 24 Stunden.
+            <p className="mt-5 max-w-lg" style={{ color: 'var(--text-soft)', fontSize: 'var(--text-lead)', lineHeight: 1.65 }}>
+              Erzählen Sie kurz von Ihrem Projekt. Ich melde mich persönlich zur kostenlosen Demo oder zum
+              Digital-Audit – in der Regel innerhalb von 24 Stunden.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="primary-btn">
-                Kostenlose Demo anfragen
-              </Link>
-              <Link
-                href="/kontakt#audit"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition"
-                style={{ minHeight: 48, border: '1px solid rgba(168,142,247,0.2)', color: '#9690A8' }}
-                onMouseEnter={e => { e.currentTarget.style.color = '#A855F7'; e.currentTarget.style.borderColor = 'rgba(168,85,247,0.4)'; }}
-                onMouseLeave={e => { e.currentTarget.style.color = '#9690A8'; e.currentTarget.style.borderColor = 'rgba(168,142,247,0.2)'; }}
-              >
+            <div className="mt-9 flex flex-wrap gap-4">
+              <MagneticButton href="/kontakt" className="primary-btn">
+                Kostenlose Demo anfragen <ArrowIcon />
+              </MagneticButton>
+              <MagneticButton href="/kontakt#audit" className="secondary-btn" strength={10}>
                 Digital-Audit starten
-              </Link>
+              </MagneticButton>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="final-cta-proof">
-            <article>
-              <strong>Direkter Kontakt</strong>
-              <span>Sie sprechen direkt mit mir, ohne Umwege über Sachbearbeiter.</span>
-            </article>
-            <article>
-              <strong>Schnelle Rückmeldung</strong>
-              <span>Persönliche Antwort, keine automatische Warteschleife.</span>
-            </article>
-            <article>
-              <strong>Hamburg und DACH</strong>
-              <span>Lokal erreichbar, deutschlandweit umsetzbar.</span>
-            </article>
-            <article>
-              <strong>100 % Ihr Eigentum</strong>
-              <span>Alle Zugänge, Daten und Code gehören Ihnen.</span>
-            </article>
-          </div>
+          <Reveal delay={0.12} direction="left" className="final-cta-proof">
+            <article><strong>Direkter Kontakt</strong><span>Sie sprechen direkt mit mir, ohne Umwege über Sachbearbeiter.</span></article>
+            <article><strong>Schnelle Rückmeldung</strong><span>Persönliche Antwort, keine automatische Warteschleife.</span></article>
+            <article><strong>Hamburg und DACH</strong><span>Lokal erreichbar, deutschlandweit umsetzbar.</span></article>
+            <article><strong>100 % Ihr Eigentum</strong><span>Alle Zugänge, Daten und Code gehören Ihnen.</span></article>
+          </Reveal>
         </div>
       </div>
     </section>

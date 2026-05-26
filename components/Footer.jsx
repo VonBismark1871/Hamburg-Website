@@ -36,8 +36,8 @@ export default function Footer() {
     <footer
       className="border-t"
       style={{
-        borderColor: 'rgba(168,142,247,0.1)',
-        background: 'linear-gradient(180deg, #0e0c19 0%, #0B0A12 100%)'
+        borderColor: 'var(--line)',
+        background: 'linear-gradient(180deg, #0c0a16 0%, var(--bg) 100%)'
       }}
       aria-label="Seitenfuß"
     >
@@ -90,8 +90,8 @@ export default function Footer() {
                 width: 7,
                 height: 7,
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg,#7C3AED,#A855F7)',
-                boxShadow: '0 0 0 3px rgba(124,58,237,0.2)',
+                background: 'linear-gradient(135deg,#7C3AED,#22D3EE)',
+                boxShadow: '0 0 0 3px rgba(34,211,238,0.18)',
                 verticalAlign: 'middle',
                 marginLeft: 4
               }}
