@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Reveal, { RevealGroup, RevealItem } from './ui/Reveal';
+import AnimatedText from './ui/AnimatedText';
+import TiltCard from './ui/TiltCard';
 
 function IconBase({ children }) {
   return (
@@ -60,12 +62,10 @@ export default function Features() {
   return (
     <section className="section-container section-spacing" id="features" aria-labelledby="features-heading">
       <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
-        <Reveal>
+        <div>
           <p className="section-label">Leistungen</p>
-          <h2 id="features-heading" style={{ color: 'var(--text)' }}>
-            Vier klare Leistungen.<br />Ein Anspruch.
-          </h2>
-        </Reveal>
+          <AnimatedText as="h2" text="Vier klare Leistungen. Ein Anspruch." className="display-lg" id="features-heading" />
+        </div>
         <Reveal delay={0.1}>
           <p className="max-w-2xl" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
             Sie können mit einer Website starten oder direkt eine konkrete SEO-, Automatisierungs- oder
@@ -78,27 +78,29 @@ export default function Features() {
         {services.map((service) => {
           const Icon = service.icon;
           return (
-            <RevealItem as="article" key={service.title} className="feature-tile">
-              <div className="flex items-start justify-between">
-                <span className="feature-icon"><Icon /></span>
-                <span
-                  className="rounded-full px-3 py-1 text-xs font-semibold"
-                  style={{ border: '1px solid var(--line-2)', background: 'rgba(124,58,237,0.1)', color: 'var(--violet-2)' }}
-                >
-                  {service.highlight}
+            <RevealItem key={service.title}>
+              <TiltCard as="article" max={6} className="feature-tile h-full">
+                <div className="flex items-start justify-between">
+                  <span className="feature-icon"><Icon /></span>
+                  <span
+                    className="rounded-full px-3 py-1 text-xs font-semibold"
+                    style={{ border: '1px solid var(--line-2)', background: 'rgba(124,58,237,0.1)', color: 'var(--violet-2)' }}
+                  >
+                    {service.highlight}
+                  </span>
+                </div>
+                <span className="mt-6 font-display text-xs font-bold tracking-[0.2em]" style={{ color: 'rgba(150,144,168,0.3)' }} aria-hidden="true">
+                  {service.number}
                 </span>
-              </div>
-              <span className="mt-6 font-display text-xs font-bold tracking-[0.2em]" style={{ color: 'rgba(150,144,168,0.3)' }} aria-hidden="true">
-                {service.number}
-              </span>
-              <h3>{service.title}</h3>
-              <p className="flex-1">{service.text}</p>
-              <Link href="/kontakt" className="tile-link">
-                Anfrage besprechen
-                <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" />
-                </svg>
-              </Link>
+                <h3>{service.title}</h3>
+                <p className="flex-1">{service.text}</p>
+                <Link href="/kontakt" className="tile-link">
+                  Anfrage besprechen
+                  <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
+                </Link>
+              </TiltCard>
             </RevealItem>
           );
         })}

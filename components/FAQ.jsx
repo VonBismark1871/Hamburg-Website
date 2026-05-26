@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Reveal, { RevealGroup, RevealItem } from './ui/Reveal';
 
 export const faqItems = [
   {
@@ -14,7 +15,7 @@ export const faqItems = [
       <>
         Die meisten Projekte bewegen sich je nach Umfang zwischen etwa 400 € und 1.500 €. Eine genauere Übersicht über
         typische Projektbudgets finden Sie auf unserer{' '}
-        <Link href="/preise" style={{ color: '#A855F7' }} className="font-medium underline-offset-4 hover:underline">
+        <Link href="/preise" style={{ color: 'var(--cyan-2)' }} className="font-medium underline-offset-4 hover:underline">
           Preisübersicht
         </Link>
         .
@@ -39,7 +40,7 @@ export const faqItems = [
       <>
         Nach der Veröffentlichung können Sie Ihre Website selbst verwalten oder optional eine laufende Betreuung
         buchen. Mehr Informationen dazu finden Sie im Bereich{' '}
-        <Link href="/preise" style={{ color: '#A855F7' }} className="font-medium underline-offset-4 hover:underline">
+        <Link href="/preise" style={{ color: 'var(--cyan-2)' }} className="font-medium underline-offset-4 hover:underline">
           Websitepflege und Hosting
         </Link>
         .
@@ -80,55 +81,51 @@ export default function FAQ({
 
   return (
     <section className="section-container section-spacing" id={sectionId} aria-labelledby="faq-heading">
-      <p className="section-label">FAQ</p>
-      <Heading id="faq-heading" className="text-3xl font-black" style={{ color: '#ECEAF3', letterSpacing: '-0.02em' }}>
-        {title}
-      </Heading>
-      <p className="mt-4 max-w-3xl text-lg leading-relaxed" style={{ color: '#9690A8' }}>{intro}</p>
+      <Reveal className="max-w-3xl">
+        <p className="section-label">FAQ</p>
+        <Heading id="faq-heading" className="display-lg">{title}</Heading>
+        <p className="lead mt-6">{intro}</p>
+      </Reveal>
 
-      <div className="mt-8 space-y-3">
+      <RevealGroup className="mt-10 space-y-3">
         {items.map((item) => (
-          <details
+          <RevealItem
+            as="details"
             key={item.question}
-            className="faq-item group rounded-2xl px-6 py-5"
-            style={{ background: '#16131F', border: '1px solid rgba(168,142,247,0.12)' }}
+            className="faq-detail group overflow-hidden rounded-2xl px-6 py-5"
+            style={{ background: 'var(--surface)', border: '1px solid var(--line)' }}
           >
             <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
-              <h3 className="text-lg font-semibold" style={{ color: '#ECEAF3' }}>{item.question}</h3>
-              <svg
-                className="mt-1 h-5 w-5 shrink-0 transition-transform duration-200 group-open:rotate-180"
-                viewBox="0 0 20 20"
-                fill="none"
+              <h3 className="font-display text-lg font-semibold" style={{ color: 'var(--text)' }}>{item.question}</h3>
+              <span
+                className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-open:rotate-45"
+                style={{ border: '1px solid var(--line-2)', background: 'rgba(34,211,238,0.08)', color: 'var(--cyan-2)' }}
                 aria-hidden="true"
-                style={{ color: '#9690A8' }}
               >
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
+                <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M8 3v10M3 8h10" />
+                </svg>
+              </span>
             </summary>
-            <p className="mt-4 pr-8 leading-relaxed" style={{ color: '#9690A8' }}>{item.answer ?? item.answerText}</p>
-          </details>
+            <p className="mt-4 pr-8 leading-relaxed" style={{ color: 'var(--muted)' }}>{item.answer ?? item.answerText}</p>
+          </RevealItem>
         ))}
-      </div>
+      </RevealGroup>
 
       {showFinalCta ? (
-        <div
-          className="mt-10 rounded-2xl p-6 sm:p-8"
-          style={{ border: '1px solid rgba(168,142,247,0.15)', background: '#16131F' }}
-        >
-          <h3 className="text-2xl font-bold" style={{ color: '#ECEAF3' }}>Haben Sie noch Fragen?</h3>
-          <p className="mt-3 max-w-3xl" style={{ color: '#9690A8' }}>
-            Wenn Ihre Frage hier nicht beantwortet wurde, können Sie uns gerne direkt kontaktieren. Wir geben Ihnen
-            eine klare Einschätzung für Ihr Projekt.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link href="/kontakt" className="primary-btn">
-              Projekt anfragen
-            </Link>
-            <Link href="/preise" className="secondary-btn">
-              Preise ansehen
-            </Link>
+        <Reveal className="mt-10">
+          <div className="cta-card p-6 sm:p-8">
+            <h3 className="font-display text-2xl font-bold" style={{ color: 'var(--text)' }}>Haben Sie noch Fragen?</h3>
+            <p className="mt-3 max-w-3xl" style={{ color: 'var(--muted)' }}>
+              Wenn Ihre Frage hier nicht beantwortet wurde, kontaktieren Sie uns gerne direkt. Sie erhalten eine klare
+              Einschätzung für Ihr Projekt.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/kontakt" className="primary-btn"><span>Projekt anfragen</span></Link>
+              <Link href="/preise" className="secondary-btn">Preise ansehen</Link>
+            </div>
           </div>
-        </div>
+        </Reveal>
       ) : null}
     </section>
   );

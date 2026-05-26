@@ -1,35 +1,18 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
+import AuroraBackground from '../components/ui/AuroraBackground';
+import AnimatedText from '../components/ui/AnimatedText';
+import Marquee from '../components/ui/Marquee';
+import Reveal, { RevealGroup, RevealItem } from '../components/ui/Reveal';
 
 const principles = [
-  {
-    number: '1',
-    title: 'Struktur vor Dekoration',
-    text: 'Bevor das Design entsteht, steht die Logik der Seite. Welche Information braucht der Besucher wann — und was soll er danach tun?'
-  },
-  {
-    number: '2',
-    title: 'Direkter Kontakt, kein Ticketsystem',
-    text: 'Sie sprechen mit der Person, die Ihre Website baut – ohne Weiterleitungen, ohne Warteschleifen. Eine Person ist von Anfang bis Livegang verantwortlich.'
-  },
-  {
-    number: '3',
-    title: 'Erst sehen, dann entscheiden',
-    text: 'Daher die kostenlose Demo. Wir zeigen, wie Ihre Website aussehen könnte — bevor Sie irgendetwas beauftragen oder bezahlen.'
-  },
-  {
-    number: '4',
-    title: 'Ehrliche Einschätzung',
-    text: 'Wenn ein einfacherer Ansatz besser passt, sagen wir das. Kein Upselling, keine Funktionen, die Sie nicht brauchen.'
-  },
-  {
-    number: '5',
-    title: 'Fairer Preis ohne Agentur-Aufschlag',
-    text: 'Sie zahlen für die Leistung, nicht für ein großes Büro. Die Preisrange steht vor dem Projektstart fest.'
-  }
+  { number: '01', title: 'Struktur vor Dekoration', text: 'Bevor das Design entsteht, steht die Logik der Seite. Welche Information braucht der Besucher wann — und was soll er danach tun?' },
+  { number: '02', title: 'Direkter Kontakt, kein Ticketsystem', text: 'Sie sprechen mit der Person, die Ihre Website baut – ohne Weiterleitungen, ohne Warteschleifen. Eine Person ist von Anfang bis Livegang verantwortlich.' },
+  { number: '03', title: 'Erst sehen, dann entscheiden', text: 'Daher die kostenlose Demo. Wir zeigen, wie Ihre Website aussehen könnte — bevor Sie irgendetwas beauftragen oder bezahlen.' },
+  { number: '04', title: 'Ehrliche Einschätzung', text: 'Wenn ein einfacherer Ansatz besser passt, sagen wir das. Kein Upselling, keine Funktionen, die Sie nicht brauchen.' },
+  { number: '05', title: 'Fairer Preis ohne Agentur-Aufschlag', text: 'Sie zahlen für die Leistung, nicht für ein großes Büro. Die Preisrange steht vor dem Projektstart fest.' }
 ];
 
 const promises = [
@@ -38,6 +21,8 @@ const promises = [
   'Keine versteckten Kosten',
   'Antwort in der Regel innerhalb von 24 Stunden'
 ];
+
+const marqueeItems = ['Struktur', 'Klarheit', 'Direkt', 'Ehrlich', 'Fair', 'Hamburg'];
 
 export default function UeberUnsPage() {
   return (
@@ -49,156 +34,112 @@ export default function UeberUnsPage() {
       />
       <Header />
       <main>
-        <section
-          className="py-20 sm:py-24"
-          aria-labelledby="ueber-uns-hero-heading"
-          style={{
-            background: 'linear-gradient(135deg, #0B0A12 0%, #16131F 60%, #1a152b 100%)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'radial-gradient(ellipse 60% 50% at 80% 40%, rgba(124,58,237,0.15) 0%, transparent 65%)',
-              pointerEvents: 'none'
-            }}
-          />
-          <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
+        <section className="band-violet" aria-labelledby="ueber-uns-hero-heading">
+          <AuroraBackground grid grain={false} />
+          <div className="section-container relative z-[2] py-20 sm:py-28">
             <p className="section-label">Über uns</p>
-            <h1
-              id="ueber-uns-hero-heading"
-              className="max-w-4xl font-black"
-              style={{ color: '#ECEAF3', letterSpacing: '-0.03em', fontSize: 'clamp(2rem,5vw,3.5rem)' }}
-            >
-              Ein Ansprechpartner.{' '}
-              <span style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Viele mögliche Website-Richtungen.
-              </span>
-            </h1>
-            <p className="mt-6 max-w-3xl text-base sm:text-lg" style={{ color: '#9690A8' }}>
-              Hamburg Websites arbeitet für Unternehmen, die eine passende Website brauchen: mal kompakt und lokal,
-              mal stärker gestaltet, mal mit mehr Seiten oder Funktionen.
-            </p>
+            <AnimatedText
+              as="h1"
+              text="Ein Ansprechpartner. Viele Website-Richtungen."
+              className="display-xl max-w-4xl"
+            />
+            <Reveal delay={0.2}>
+              <p className="lead mt-6 max-w-3xl">
+                Hamburg Websites arbeitet für Unternehmen, die eine passende Website brauchen: mal kompakt und lokal,
+                mal stärker gestaltet, mal mit mehr Seiten oder Funktionen.
+              </p>
+            </Reveal>
           </div>
         </section>
 
-        <section className="py-14 sm:py-16" aria-labelledby="manifest-heading">
+        <section className="section-spacing" aria-labelledby="manifest-heading" style={{ background: 'var(--bg)' }}>
           <div className="section-container">
             <p className="section-label">Wofür wir stehen</p>
-            <motion.h2
-              id="manifest-heading"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mt-4 max-w-5xl text-3xl font-black sm:text-4xl lg:text-5xl"
-              style={{ color: '#ECEAF3', letterSpacing: '-0.03em' }}
-            >
-              Viele Websites sehen gut aus — aber führen niemanden zur Anfrage. Wir bauen Seiten, die{' '}
-              <span style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                beides
-              </span>{' '}
-              können.
-            </motion.h2>
+            <AnimatedText
+              as="h2"
+              text="Viele Websites sehen gut aus — aber führen niemanden zur Anfrage."
+              className="display-lg max-w-5xl"
+            />
+            <Reveal delay={0.15}>
+              <p className="mt-6 font-display text-2xl font-bold sm:text-3xl" style={{ color: 'var(--text-soft)' }}>
+                Wir bauen Seiten, die <span className="gradient-text">beides</span> können.
+              </p>
+            </Reveal>
           </div>
         </section>
 
+        <div className="border-y py-7" style={{ borderColor: 'var(--line)', background: 'var(--bg-2)' }}>
+          <Marquee items={marqueeItems} duration={32} />
+        </div>
+
         <section className="section-container section-spacing" aria-labelledby="arbeitsweise-heading">
-          <p className="section-label">Arbeitsweise</p>
-          <h2 id="arbeitsweise-heading" className="text-3xl font-black tracking-tight sm:text-4xl" style={{ color: '#ECEAF3' }}>
-            So arbeiten wir
-          </h2>
-          <ol className="mt-10 space-y-7">
-            {principles.map((item, index) => (
-              <motion.li
-                key={item.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.07 }}
-                className="rounded-2xl p-6 sm:p-7"
-                style={{ background: '#16131F', border: '1px solid rgba(168,142,247,0.12)' }}
-              >
-                <article className="grid gap-4 sm:grid-cols-[70px_minmax(0,1fr)] sm:gap-6">
-                  <span
-                    className="text-6xl font-black leading-none sm:text-7xl"
-                    style={{ color: 'rgba(124,58,237,0.2)' }}
-                    aria-hidden="true"
-                  >
-                    {item.number}
-                  </span>
+          <Reveal className="max-w-3xl">
+            <p className="section-label">Arbeitsweise</p>
+            <AnimatedText as="h2" text="So arbeiten wir" className="display-lg" />
+          </Reveal>
+          <RevealGroup as="ol" className="mt-10 grid gap-5 lg:grid-cols-2">
+            {principles.map((item) => (
+              <RevealItem as="li" key={item.number} className="glass-card p-7 sm:p-8">
+                <article className="grid gap-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start">
+                  <span className="stat-num" aria-hidden="true">{item.number}</span>
                   <div>
-                    <h3 className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7" style={{ color: '#9690A8' }}>{item.text}</p>
+                    <h3 className="font-display text-xl font-bold sm:text-2xl" style={{ color: 'var(--text)' }}>{item.title}</h3>
+                    <p className="mt-3 text-sm leading-7" style={{ color: 'var(--muted)' }}>{item.text}</p>
                   </div>
                 </article>
-              </motion.li>
+              </RevealItem>
             ))}
-          </ol>
+          </RevealGroup>
         </section>
 
-        <section
-          className="py-16 sm:py-20"
-          aria-labelledby="einordnung-heading"
-          style={{ background: 'linear-gradient(135deg, #16131F 0%, #1E1A2B 100%)' }}
-        >
-          <div className="section-container">
+        <section className="band-violet section-spacing" aria-labelledby="einordnung-heading">
+          <div className="section-container relative z-[2]">
             <p className="section-label">Eine kurze Einordnung</p>
-            <blockquote id="einordnung-heading" className="mt-5 max-w-4xl text-2xl italic sm:text-3xl" style={{ color: '#ECEAF3' }}>
-              Hamburg Websites ist neu gestartet und bewusst schlank aufgestellt: direkte Abstimmung, klare
-              Entscheidungen — und Qualität, die Sie an echten Demos sehen statt an erfundenen Referenzen.
-            </blockquote>
-            <p className="mt-6 text-sm" style={{ color: '#6B6480' }}>— Hamburg Websites, gegründet für klare Webprojekte in Hamburg und darüber hinaus</p>
+            <Reveal>
+              <blockquote id="einordnung-heading" className="max-w-4xl font-display text-2xl font-bold leading-snug sm:text-4xl" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
+                „Hamburg Websites ist neu gestartet und bewusst schlank aufgestellt: direkte Abstimmung, klare
+                Entscheidungen — und Qualität, die Sie an echten Demos sehen statt an{' '}
+                <span className="gradient-text">erfundenen Referenzen</span>.“
+              </blockquote>
+              <p className="mt-6 text-sm" style={{ color: 'var(--faint)' }}>— Hamburg Websites, gegründet für klare Webprojekte in Hamburg und darüber hinaus</p>
+            </Reveal>
           </div>
         </section>
 
         <section className="section-container section-spacing" aria-labelledby="zusagen-heading">
-          <p className="section-label">Zusagen</p>
-          <h2 id="zusagen-heading" className="text-3xl font-black tracking-tight sm:text-4xl" style={{ color: '#ECEAF3' }}>
-            Unsere Zusagen
-          </h2>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Zusagen von Hamburg Websites">
-            {promises.map((item, index) => (
-              <motion.li
-                key={item}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                className="rounded-xl p-5"
-                style={{ border: '1px solid rgba(168,142,247,0.12)', background: '#16131F' }}
-              >
-                <p className="flex items-start gap-3 font-medium" style={{ color: '#ECEAF3' }}>
-                  <span style={{ marginTop: 2, color: '#A855F7' }} aria-hidden="true">✓</span>
-                  <span>{item}</span>
-                </p>
-              </motion.li>
+          <Reveal className="max-w-3xl">
+            <p className="section-label">Zusagen</p>
+            <AnimatedText as="h2" text="Unsere Zusagen" className="display-lg" />
+          </Reveal>
+          <RevealGroup className="mt-8 grid gap-4 sm:grid-cols-2">
+            {promises.map((item) => (
+              <RevealItem as="article" key={item} className="glass-card flex items-start gap-3 p-6">
+                <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full" style={{ background: 'rgba(34,211,238,0.14)', color: 'var(--cyan-2)' }}>
+                  <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5" aria-hidden="true">
+                    <path d="M3 8.5 6.5 12 13 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                <span className="font-medium" style={{ color: 'var(--text-soft)' }}>{item}</span>
+              </RevealItem>
             ))}
-          </ul>
+          </RevealGroup>
         </section>
 
-        <section className="section-container pb-16 sm:pb-20" aria-labelledby="ueber-uns-cta-heading">
-          <div
-            className="rounded-2xl p-8 sm:p-10"
-            style={{
-              background: 'linear-gradient(135deg, rgba(124,58,237,0.18) 0%, rgba(168,85,247,0.08) 100%)',
-              border: '1px solid rgba(168,142,247,0.2)'
-            }}
-          >
-            <h2 id="ueber-uns-cta-heading" className="text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: '#ECEAF3', letterSpacing: '-0.02em' }}>
-              Klingt das nach der richtigen Zusammenarbeit?
-            </h2>
-            <p className="mt-4 max-w-3xl" style={{ color: '#9690A8' }}>
-              Schauen Sie sich unsere Referenzen an oder starten Sie direkt mit einer kostenlosen Demo.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-4">
-              <Link href="/kontakt" className="primary-btn">Kostenlose Demo starten</Link>
-              <Link href="/referenzen" className="secondary-btn">Referenzen ansehen</Link>
+        <section className="section-container pb-24" aria-labelledby="ueber-uns-cta-heading">
+          <Reveal>
+            <div className="cta-card p-8 sm:p-12">
+              <h2 id="ueber-uns-cta-heading" className="font-display text-3xl font-bold sm:text-4xl" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
+                Klingt das nach der richtigen Zusammenarbeit?
+              </h2>
+              <p className="lead mt-4 max-w-3xl">
+                Schauen Sie sich unsere Referenzen an oder starten Sie direkt mit einer kostenlosen Demo.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-4">
+                <Link href="/kontakt" className="primary-btn"><span>Kostenlose Demo starten</span></Link>
+                <Link href="/referenzen" className="secondary-btn">Referenzen ansehen</Link>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
       <Footer />

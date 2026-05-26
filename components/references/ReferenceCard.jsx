@@ -82,18 +82,11 @@ function PreviewWindow({ project }) {
 
 export default function ReferenceCard({ project }) {
   return (
-    <article
-      className="group flex h-full flex-col overflow-hidden rounded-[1.4rem] transition hover:-translate-y-1"
-      style={{
-        border: '1px solid rgba(168,142,247,0.14)',
-        background: '#16131F',
-        boxShadow: '0 22px 70px rgba(0,0,0,0.35)'
-      }}
-      onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(168,142,247,0.3)'; e.currentTarget.style.boxShadow = '0 32px 90px rgba(124,58,237,0.18)'; }}
-      onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(168,142,247,0.14)'; e.currentTarget.style.boxShadow = '0 22px 70px rgba(0,0,0,0.35)'; }}
-    >
-      <Link href={`/referenzen/${project.slug}`} className="block" aria-label={`${project.title} ansehen`}>
-        <PreviewWindow project={project} />
+    <article className="reference-preview-card group flex h-full flex-col overflow-hidden">
+      <Link href={`/referenzen/${project.slug}`} className="block overflow-hidden" aria-label={`${project.title} ansehen`}>
+        <div className="transition-transform duration-700 ease-out group-hover:scale-[1.04]">
+          <PreviewWindow project={project} />
+        </div>
       </Link>
 
       <div className="flex flex-1 flex-col p-6">
@@ -102,16 +95,16 @@ export default function ReferenceCard({ project }) {
           <span className="reference-direction">{project.visualDirection}</span>
         </div>
 
-        <h3 className="mt-4 text-2xl font-semibold leading-tight" style={{ color: '#ECEAF3' }}>{project.title}</h3>
-        <p className="mt-3 text-sm leading-7" style={{ color: '#9690A8' }}>{project.description}</p>
+        <h3 className="mt-4 font-display text-2xl font-bold leading-tight" style={{ color: 'var(--text)' }}>{project.title}</h3>
+        <p className="mt-3 text-sm leading-7" style={{ color: 'var(--muted)' }}>{project.description}</p>
 
-        <dl className="mt-5 grid gap-4 py-5" style={{ borderTop: '1px solid rgba(168,142,247,0.1)', borderBottom: '1px solid rgba(168,142,247,0.1)' }}>
+        <dl className="mt-5 grid gap-4 py-5" style={{ borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
           <div>
-            <dt className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: '#6B6480' }}>Ziel</dt>
-            <dd className="mt-2 text-sm leading-6" style={{ color: '#9690A8' }}>{project.industryGoal}</dd>
+            <dt className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: 'var(--faint)' }}>Ziel</dt>
+            <dd className="mt-2 text-sm leading-6" style={{ color: 'var(--muted)' }}>{project.industryGoal}</dd>
           </div>
           <div>
-            <dt className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: '#6B6480' }}>System</dt>
+            <dt className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: 'var(--faint)' }}>System</dt>
             <dd className="mt-2 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span key={tag} className="reference-chip">
@@ -123,13 +116,15 @@ export default function ReferenceCard({ project }) {
         </dl>
 
         <div className="mt-auto flex items-center justify-between gap-4 pt-5">
-          <p className="text-xs font-semibold leading-5" style={{ color: '#6B6480' }}>Demo-Konzept · ohne erfundene Ergebnisse</p>
+          <p className="text-xs font-semibold leading-5" style={{ color: 'var(--faint)' }}>Demo-Konzept · ohne erfundene Ergebnisse</p>
           <Link
             href={`/referenzen/${project.slug}`}
-            className="inline-flex shrink-0 rounded-full px-4 py-3 text-xs font-bold text-white transition"
-            style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7)' }}
+            className="tile-link shrink-0"
           >
             {project.primaryAction}
+            <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
           </Link>
         </div>
       </div>

@@ -3,6 +3,9 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Pricing from '../components/Pricing';
 import SEOHead from '../components/SEOHead';
+import AuroraBackground from '../components/ui/AuroraBackground';
+import AnimatedText from '../components/ui/AnimatedText';
+import Reveal from '../components/ui/Reveal';
 import { serviceSchema } from '../lib/seo';
 
 const serviceItems = [
@@ -22,27 +25,27 @@ export default function PreisePage() {
       />
       <Header />
       <main>
-        <section className="section-container section-spacing pb-6" aria-labelledby="preise-heading">
-          <p className="section-label">Preise</p>
-          <h1
-            id="preise-heading"
-            className="text-4xl font-black tracking-tight sm:text-5xl"
-            style={{ color: '#ECEAF3', letterSpacing: '-0.03em' }}
-          >
-            Preise für Website-Erstellung in Hamburg
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg" style={{ color: '#9690A8' }}>
-            Unsere Pakete sind klar strukturiert, damit Sie Umfang, Abgrenzung und Investition sofort einordnen können.
-          </p>
+        <section className="band-violet" aria-labelledby="preise-heading">
+          <AuroraBackground grid grain={false} />
+          <div className="section-container relative z-[2] py-20 sm:py-28">
+            <p className="section-label">Preise</p>
+            <AnimatedText as="h1" text="Transparente Preise für jedes Projekt" className="display-xl max-w-4xl" />
+            <Reveal delay={0.2}>
+              <p className="lead mt-6 max-w-3xl">
+                Klar strukturierte Pakete, damit Sie Umfang, Abgrenzung und Investition sofort einordnen können –
+                und jedes Projekt startet mit einer kostenlosen Demo.
+              </p>
+            </Reveal>
+          </div>
         </section>
 
         <Pricing headingTag="h2" sectionId="preise-pakete" />
 
-        <section className="section-container pb-16" aria-label="Preise Aktionen">
-          <div className="mt-6 flex flex-wrap gap-4">
-            <Link href="/kontakt" className="primary-btn">Unverbindlich anfragen</Link>
-            <Link href="/faq" className="secondary-btn">Fragen & Antworten lesen</Link>
-          </div>
+        <section className="section-container pb-20" aria-label="Preise Aktionen">
+          <Reveal className="flex flex-wrap gap-4">
+            <Link href="/kontakt" className="primary-btn"><span>Unverbindlich anfragen</span></Link>
+            <Link href="/faq" className="secondary-btn">Fragen &amp; Antworten lesen</Link>
+          </Reveal>
         </section>
       </main>
       <Footer />
