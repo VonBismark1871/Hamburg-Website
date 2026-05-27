@@ -57,9 +57,9 @@ export default function App({ Component, pageProps }) {
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={router.asPath}
-          initial={reduce ? false : { opacity: 0, y: 14 }}
-          animate={reduce ? {} : { opacity: 1, y: 0 }}
-          exit={reduce ? {} : { opacity: 0, y: -10 }}
+          initial={reduce ? false : { opacity: 0 }}
+          animate={reduce ? {} : { opacity: 1 }}
+          exit={reduce ? {} : { opacity: 0 }}
           transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
         >
           <Component {...pageProps} />
