@@ -2,6 +2,9 @@ import FAQ, { faqItems } from '../components/FAQ';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
+import AuroraBackground from '../components/ui/AuroraBackground';
+import AnimatedText from '../components/ui/AnimatedText';
+import Reveal from '../components/ui/Reveal';
 import { faqSchema } from '../lib/seo';
 
 export default function FaqPage() {
@@ -15,19 +18,18 @@ export default function FaqPage() {
       />
       <Header />
       <main>
-        <section className="section-container section-spacing pb-6" aria-labelledby="faq-page-heading">
-          <p className="section-label">FAQ</p>
-          <h1
-            id="faq-page-heading"
-            className="text-4xl font-black tracking-tight sm:text-5xl"
-            style={{ color: '#ECEAF3', letterSpacing: '-0.03em' }}
-          >
-            Häufig gestellte Fragen zur Website-Erstellung
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg" style={{ color: '#9690A8' }}>
-            Hier finden Sie kompakte Antworten zu typischen Fragen rund um Planung, Umsetzung und Betrieb Ihrer neuen
-            Unternehmenswebsite.
-          </p>
+        <section className="band-violet" aria-labelledby="faq-page-heading">
+          <AuroraBackground grid grain={false} />
+          <div className="section-container relative z-[2] py-20 sm:py-28">
+            <p className="section-label">FAQ</p>
+            <AnimatedText as="h1" text="Häufige Fragen zur Website-Erstellung" className="display-xl max-w-4xl" />
+            <Reveal delay={0.2}>
+              <p className="lead mt-6 max-w-3xl">
+                Kompakte Antworten zu typischen Fragen rund um Planung, Umsetzung und Betrieb Ihrer neuen
+                Unternehmenswebsite.
+              </p>
+            </Reveal>
+          </div>
         </section>
 
         <FAQ headingTag="h2" sectionId="faq-content" items={faqItems} />

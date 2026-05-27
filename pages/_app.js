@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import ScrollProgress from '../components/ui/ScrollProgress';
 import '../styles/globals.css';
 
 /* Legacy reveal for pages not yet migrated to the Reveal primitive. */
@@ -34,6 +36,7 @@ function useLegacyReveal(asPath) {
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const reduce = useReducedMotion();
   useLegacyReveal(router.asPath);
 
   return (
@@ -50,7 +53,18 @@ export default function App({ Component, pageProps }) {
         <link rel="shortcut icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
         <link rel="apple-touch-icon" href="/brand/hw-approved-icon-transparent-v1.png" />
       </Head>
-      <Component {...pageProps} />
+      <ScrollProgress />
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={router.asPath}
+          initial={reduce ? false : { opacity: 0 }}
+          animate={reduce ? {} : { opacity: 1 }}
+          exit={reduce ? {} : { opacity: 0 }}
+          transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 }

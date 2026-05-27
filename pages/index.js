@@ -8,6 +8,9 @@ import SEOHead from '../components/SEOHead';
 import AuroraBackground from '../components/ui/AuroraBackground';
 import Reveal, { RevealGroup, RevealItem } from '../components/ui/Reveal';
 import MagneticButton from '../components/ui/MagneticButton';
+import AnimatedText from '../components/ui/AnimatedText';
+import TiltCard from '../components/ui/TiltCard';
+import Marquee from '../components/ui/Marquee';
 import { localBusinessSchema, organizationSchema, serviceSchema } from '../lib/seo';
 
 const serviceItems = [
@@ -60,6 +63,28 @@ function TrustStrip() {
   );
 }
 
+/* ─── Manifest band ─────────────────────────────────── */
+function ManifestBand() {
+  return (
+    <section className="band-violet" aria-label="Anspruch">
+      <AuroraBackground grid grain={false} />
+      <div className="section-container relative z-[2] py-20 text-center sm:py-28">
+        <AnimatedText
+          as="h2"
+          text="Struktur. Klarheit. Anfragen."
+          className="display-xl mx-auto"
+          style={{ textAlign: 'center' }}
+        />
+        <Reveal delay={0.2}>
+          <p className="lead mx-auto mt-6 max-w-2xl">
+            Kein Template von der Stange. Jede Seite wird auf ein Ziel hin gebaut: aus Besuchern Anfragen machen.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Warum Hamburg Websites ────────────────────────── */
 const whyPoints = [
   { title: 'Direkter Ansprechpartner', text: 'Sie sprechen mit der Person, die Ihre Website baut – ohne Sachbearbeiter, ohne Ticketsystem.' },
@@ -72,23 +97,25 @@ function WhyMe() {
   return (
     <section className="section-spacing" style={{ background: 'var(--surface)' }} aria-labelledby="why-heading">
       <div className="section-container">
-        <Reveal className="mb-14 max-w-2xl">
+        <div className="mb-14 max-w-2xl">
           <p className="section-label">Warum Hamburg Websites</p>
-          <h2 id="why-heading" style={{ color: 'var(--text)' }}>
-            Klare Bedingungen statt großer Versprechen
-          </h2>
-          <p className="mt-5" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
-            Direkt, transparent und ohne Risiko beim Einstieg – darauf können Sie sich verlassen.
-          </p>
-        </Reveal>
+          <AnimatedText as="h2" text="Klare Bedingungen statt großer Versprechen" className="display-lg" id="why-heading" />
+          <Reveal delay={0.15}>
+            <p className="mt-5" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
+              Direkt, transparent und ohne Risiko beim Einstieg – darauf können Sie sich verlassen.
+            </p>
+          </Reveal>
+        </div>
         <RevealGroup className="grid gap-5 sm:grid-cols-2">
           {whyPoints.map((it) => (
-            <RevealItem as="article" key={it.title} className="glass-card p-7">
-              <span className="feature-icon" style={{ width: 44, height: 44, color: 'var(--cyan-2)' }}>
-                <CheckIcon />
-              </span>
-              <h3 className="mt-5 font-display text-lg font-bold" style={{ color: 'var(--text)' }}>{it.title}</h3>
-              <p className="mt-2 text-sm leading-7" style={{ color: 'var(--muted)' }}>{it.text}</p>
+            <RevealItem key={it.title}>
+              <TiltCard as="article" max={5} className="glass-card h-full p-7">
+                <span className="feature-icon" style={{ width: 44, height: 44, color: 'var(--cyan-2)' }}>
+                  <CheckIcon />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold" style={{ color: 'var(--text)' }}>{it.title}</h3>
+                <p className="mt-2 text-sm leading-7" style={{ color: 'var(--muted)' }}>{it.text}</p>
+              </TiltCard>
             </RevealItem>
           ))}
         </RevealGroup>
@@ -112,10 +139,10 @@ function ProcessPreview() {
       <AuroraBackground grid grain={false} />
       <div className="section-container">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
-          <Reveal>
+          <div>
             <p className="section-label">Ablauf</p>
-            <h2 id="process-heading" style={{ color: 'var(--text)' }}>So läuft die Zusammenarbeit ab</h2>
-          </Reveal>
+            <AnimatedText as="h2" text="So läuft die Zusammenarbeit ab" className="display-lg" id="process-heading" />
+          </div>
           <Reveal delay={0.1}>
             <Link href="/ablauf" className="secondary-btn shrink-0">
               Ablauf im Detail <ArrowIcon />
@@ -152,10 +179,10 @@ function PricingPreview() {
   return (
     <section className="section-container section-spacing" aria-labelledby="pricing-preview-heading">
       <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
-        <Reveal>
+        <div>
           <p className="section-label">Preise</p>
-          <h2 id="pricing-preview-heading" style={{ color: 'var(--text)' }}>Klare Preise. Kein Kleingedrucktes.</h2>
-        </Reveal>
+          <AnimatedText as="h2" text="Klare Preise. Kein Kleingedrucktes." className="display-lg" id="pricing-preview-heading" />
+        </div>
         <Reveal delay={0.1}>
           <Link href="/preise" className="secondary-btn shrink-0">
             Alle Pakete ansehen <ArrowIcon />
@@ -210,16 +237,18 @@ function FaqPreview() {
     <section className="section-spacing" style={{ background: 'var(--surface)' }} aria-labelledby="faq-preview-heading">
       <div className="section-container">
         <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
-          <Reveal>
+          <div>
             <p className="section-label">FAQ</p>
-            <h2 id="faq-preview-heading" style={{ color: 'var(--text)' }}>Fragen vor dem Start</h2>
-            <p className="mt-5" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
-              Der Einstieg bleibt bewusst einfach: Ziel klären, Richtung zeigen, dann sauber entscheiden.
-            </p>
-            <Link href="/faq" className="tile-link mt-6">
-              Alle Fragen ansehen <ArrowIcon />
-            </Link>
-          </Reveal>
+            <AnimatedText as="h2" text="Fragen vor dem Start" className="display-lg" id="faq-preview-heading" />
+            <Reveal delay={0.15}>
+              <p className="mt-5" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
+                Der Einstieg bleibt bewusst einfach: Ziel klären, Richtung zeigen, dann sauber entscheiden.
+              </p>
+              <Link href="/faq" className="tile-link mt-6">
+                Alle Fragen ansehen <ArrowIcon />
+              </Link>
+            </Reveal>
+          </div>
           <RevealGroup style={{ borderTop: '1px solid var(--line)' }}>
             {homepageFaqPreview.map((it) => (
               <RevealItem as="article" key={it.question} className="py-6" style={{ borderBottom: '1px solid var(--line)' }}>
@@ -290,6 +319,7 @@ export default function HomePage() {
         <TrustStrip />
         <Features />
         <Portfolio />
+        <ManifestBand />
         <WhyMe />
         <ProcessPreview />
         <PricingPreview />

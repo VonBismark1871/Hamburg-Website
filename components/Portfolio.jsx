@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal, { RevealGroup, RevealItem } from './ui/Reveal';
+import AnimatedText from './ui/AnimatedText';
 import { getReferenceBySlug } from '../data/references';
 
 const homepageProjects = ['restaurant-demo', 'physio-demo', 'autoservice-demo']
@@ -10,16 +11,16 @@ const homepageProjects = ['restaurant-demo', 'physio-demo', 'autoservice-demo']
 export default function Portfolio() {
   return (
     <section className="section-container section-spacing" id="portfolio" aria-labelledby="portfolio-heading">
-      <Reveal className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-3xl text-center">
         <p className="section-label" style={{ justifyContent: 'center' }}>Referenzen</p>
-        <h2 id="portfolio-heading" style={{ color: 'var(--text)' }}>
-          Referenzen aus<br />unterschiedlichen Branchen
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
-          Die Beispiele zeigen Stil, Struktur und technische Richtung für typische kleine Unternehmen.
-          Sie sind bewusst als Demos formuliert: klar prüfbar, ohne erfundene Kundenergebnisse.
-        </p>
-      </Reveal>
+        <AnimatedText as="h2" text="Referenzen aus unterschiedlichen Branchen" className="display-lg" id="portfolio-heading" style={{ textAlign: 'center' }} />
+        <Reveal delay={0.15}>
+          <p className="mx-auto mt-5 max-w-2xl" style={{ color: 'var(--muted)', fontSize: 'var(--text-lead)', lineHeight: 1.7 }}>
+            Die Beispiele zeigen Stil, Struktur und technische Richtung für typische kleine Unternehmen.
+            Sie sind bewusst als Demos formuliert: klar prüfbar, ohne erfundene Kundenergebnisse.
+          </p>
+        </Reveal>
+      </div>
 
       <RevealGroup className="mt-14 grid gap-6 md:grid-cols-3">
         {homepageProjects.map((project) => (
