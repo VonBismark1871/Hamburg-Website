@@ -68,32 +68,32 @@ const menuCategories = [
   {
     category: 'Vorspeisen',
     items: [
-      { name: 'Burrata mit Tomaten und Basilikum', description: 'Cremige Burrata, bunte Tomaten, kaltgepresstes Olivenöl, Basilikum.', price: '12 €' },
-      { name: 'Rindercarpaccio mit Parmesan', description: 'Hauchdünnes Rindfleisch, Rucola, Zitrone und gehobelter Parmesan.', price: '14 €' },
-      { name: 'Gebratene Garnelen mit Kräutern', description: 'In Knoblauch und Petersilie geschwenkt, mit leichter Zitronennote.', price: '15 €' }
+      { name: 'Burrata mit Tomaten und Basilikum', description: 'Cremige Burrata, bunte Tomaten, kaltgepresstes Olivenöl, Basilikum.', price: '12 €', image: 'https://images.unsplash.com/photo-1559561853-08451507cbe7?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Rindercarpaccio mit Parmesan', description: 'Hauchdünnes Rindfleisch, Rucola, Zitrone und gehobelter Parmesan.', price: '14 €', image: 'https://images.unsplash.com/photo-1544025162-d76538971491?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Gebratene Garnelen mit Kräutern', description: 'In Knoblauch und Petersilie geschwenkt, mit leichter Zitronennote.', price: '15 €', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80' }
     ]
   },
   {
     category: 'Hauptgerichte',
     items: [
-      { name: 'Gebratenes Lachsfilet mit Gemüse', description: 'Auf der Haut gebraten, saisonales Marktgemüse, Kräuterbutter.', price: '24 €' },
-      { name: 'Rinderfilet mit Rosmarinkartoffeln', description: 'Zartes Rinderfilet, geröstete Rosmarinkartoffeln, dunkler Jus.', price: '29 €' },
-      { name: 'Hausgemachte Pasta mit Trüffel', description: 'Frische Pasta, cremige Trüffelsauce, Parmesan, schwarzer Pfeffer.', price: '19 €' }
+      { name: 'Gebratenes Lachsfilet mit Gemüse', description: 'Auf der Haut gebraten, saisonales Marktgemüse, Kräuterbutter.', price: '24 €', image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Rinderfilet mit Rosmarinkartoffeln', description: 'Zartes Rinderfilet, geröstete Rosmarinkartoffeln, dunkler Jus.', price: '29 €', image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Hausgemachte Pasta mit Trüffel', description: 'Frische Pasta, cremige Trüffelsauce, Parmesan, schwarzer Pfeffer.', price: '19 €', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?auto=format&fit=crop&w=600&q=80' }
     ]
   },
   {
     category: 'Desserts',
     items: [
-      { name: 'Tiramisu', description: 'Klassisch geschichtet mit Espresso, Mascarpone und Kakao.', price: '9 €' },
-      { name: 'Zitronentarte', description: 'Mürber Boden, frische Zitronencreme, karamellisierte Meringue.', price: '8 €' },
-      { name: 'Schokoladenmousse', description: 'Luftige Mousse aus dunkler Schokolade mit marinierten Beeren.', price: '9 €' }
+      { name: 'Tiramisu', description: 'Klassisch geschichtet mit Espresso, Mascarpone und Kakao.', price: '9 €', image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Zitronentarte', description: 'Mürber Boden, frische Zitronencreme, karamellisierte Meringue.', price: '8 €', image: 'https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Schokoladenmousse', description: 'Luftige Mousse aus dunkler Schokolade mit marinierten Beeren.', price: '9 €', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80' }
     ]
   },
   {
     category: 'Weine & Getränke',
     items: [
-      { name: 'Grauburgunder, trocken (0,2 l)', description: 'Fruchtig-mineralisch, passend zu Fisch und Vorspeisen.', price: '8 €' },
-      { name: 'Hausgemachte Limonade', description: 'Zitrone, Minze und Soda, frisch serviert auf Eis.', price: '6 €' }
+      { name: 'Grauburgunder, trocken (0,2 l)', description: 'Fruchtig-mineralisch, passend zu Fisch und Vorspeisen.', price: '8 €', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Hausgemachte Limonade', description: 'Zitrone, Minze und Soda, frisch serviert auf Eis.', price: '6 €', image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=600&q=80' }
     ]
   }
 ];
@@ -371,6 +371,79 @@ function Signatures() {
   );
 }
 
+function MenuGrid() {
+  const [active, setActive] = useState(null);
+
+  return (
+    <div className="relative mt-16 grid gap-x-16 gap-y-14 md:grid-cols-2">
+      {menuCategories.map((section, i) => (
+        <Reveal key={section.category} delay={(i % 2) * 0.1}>
+          <div>
+            <h3 className="pb-4 text-sm font-semibold uppercase" style={{ color: palette.gold, letterSpacing: '0.28em', borderBottom: `1px solid ${palette.line}` }}>
+              {section.category}
+            </h3>
+            <ul className="mt-6 space-y-7">
+              {section.items.map((dish) => (
+                <li
+                  key={dish.name}
+                  className="group relative cursor-default"
+                  onMouseEnter={() => dish.image && setActive(dish.name)}
+                  onMouseLeave={() => setActive(null)}
+                >
+                  <div className="flex items-baseline gap-3">
+                    <span
+                      className="transition-colors duration-200"
+                      style={{
+                        fontFamily: accentFont,
+                        fontWeight: 600,
+                        fontSize: '1.4rem',
+                        color: active === dish.name ? palette.goldBright : palette.cream
+                      }}
+                    >
+                      {dish.name}
+                    </span>
+                    <span className="min-w-[18px] flex-1 translate-y-[-3px]" style={{ borderBottom: `1px dotted ${palette.lineStrong}` }} aria-hidden="true" />
+                    <span className="whitespace-nowrap text-base font-semibold" style={{ color: palette.goldBright }}>{dish.price}</span>
+                  </div>
+                  <p className="mt-1.5 text-sm leading-relaxed" style={{ color: palette.mutedDim }}>{dish.description}</p>
+
+                  {dish.image && (
+                    <motion.div
+                      initial={false}
+                      animate={active === dish.name ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.92, y: 8 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      className="pointer-events-none absolute right-0 top-0 z-50 hidden md:block"
+                      style={{ width: 220, marginTop: -12 }}
+                      aria-hidden="true"
+                    >
+                      <div className="overflow-hidden rounded-xl shadow-2xl" style={{ border: `1px solid ${palette.lineStrong}` }}>
+                        <div className="relative h-36 w-full">
+                          <Image
+                            src={dish.image}
+                            alt={dish.name}
+                            fill
+                            className="object-cover"
+                            sizes="220px"
+                          />
+                          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(14,11,7,0.55) 0%, transparent 60%)' }} />
+                        </div>
+                        <div className="px-3 py-2" style={{ background: palette.panel }}>
+                          <p className="truncate text-xs font-semibold" style={{ color: palette.cream }}>{dish.name}</p>
+                          <p className="text-xs" style={{ color: palette.gold }}>{dish.price}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  );
+}
+
 function Menu() {
   return (
     <section id="speisekarte" className="px-5 py-24 sm:px-8 sm:py-32" style={{ scrollMarginTop: 80 }}>
@@ -387,29 +460,7 @@ function Menu() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-x-16 gap-y-14 md:grid-cols-2">
-          {menuCategories.map((section, i) => (
-            <Reveal key={section.category} delay={(i % 2) * 0.1}>
-              <div>
-                <h3 className="pb-4 text-sm font-semibold uppercase" style={{ color: palette.gold, letterSpacing: '0.28em', borderBottom: `1px solid ${palette.line}` }}>
-                  {section.category}
-                </h3>
-                <ul className="mt-6 space-y-7">
-                  {section.items.map((dish) => (
-                    <li key={dish.name}>
-                      <div className="flex items-baseline gap-3">
-                        <span style={{ fontFamily: accentFont, fontWeight: 600, fontSize: '1.4rem', color: palette.cream }}>{dish.name}</span>
-                        <span className="min-w-[18px] flex-1 translate-y-[-3px]" style={{ borderBottom: `1px dotted ${palette.lineStrong}` }} aria-hidden="true" />
-                        <span className="whitespace-nowrap text-base font-semibold" style={{ color: palette.goldBright }}>{dish.price}</span>
-                      </div>
-                      <p className="mt-1.5 text-sm leading-relaxed" style={{ color: palette.mutedDim }}>{dish.description}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <MenuGrid />
       </div>
     </section>
   );
