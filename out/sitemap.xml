@@ -50,6 +50,8 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!-- Demo index pages -->
   <url>
     <loc>https://hamburgwebsites.de/referenzen/restaurant-demo</loc>
     <changefreq>monthly</changefreq>
@@ -84,5 +86,83 @@
     <loc>https://hamburgwebsites.de/referenzen/immobilien-demo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+
+  <!-- Physio demo subpages -->
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/physio-demo/leistungen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/physio-demo/rueckenschmerzen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/physio-demo/kontakt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Autoservice demo subpages -->
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/autoservice-demo/leistungen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/autoservice-demo/inspektion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/autoservice-demo/kontakt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Immobilien demo subpages -->
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/immobilien-demo/objekte</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/immobilien-demo/kontakt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Immobilien property expose pages -->
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/immobilien-demo/objekte/penthouse-hamburg</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/immobilien-demo/objekte/altbau-eppendorf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/immobilien-demo/objekte/neubau-hafencity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/immobilien-demo/objekte/familienhaus-volksdorf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/immobilien-demo/objekte/stadthaus-blankenese</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://hamburgwebsites.de/referenzen/immobilien-demo/objekte/anlage-altona</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

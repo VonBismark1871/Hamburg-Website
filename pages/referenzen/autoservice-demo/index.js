@@ -2,91 +2,88 @@ import { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import SEOHead from '../../../components/SEOHead';
 import ReferenceStickyBackButton from '../../../components/ReferenceStickyBackButton';
 
-// Palette: #0D1117 bg · #161D2A graphite · #1F2D3D panel · #E8321C red · #7A8EA8 slate
+const R = '#E8321C';
+const BG = '#080B10';
+const PANEL = '#0D1421';
+const CARD = '#111827';
+const TEXT = '#F0F4FA';
+const MUTED = '#6B7D99';
+const GOLD = '#C8A86B';
+const BARLOW = "'Barlow Condensed', sans-serif";
+const GROTESK = "'Space Grotesk', sans-serif";
 
-const services = [
-  { title: 'Inspektion', desc: 'Herstellergerechte Inspektionen mit digitaler Dokumentation und klarer Ergebnisrückmeldung an Sie als Fahrer.', price: 'ab 89 €' },
-  { title: 'Ölwechsel', desc: 'Passendes Markenöl, neuer Filter und fachgerechte Entsorgung — schnell und transparent abgewickelt.', price: 'ab 59 €' },
-  { title: 'Bremsenservice', desc: 'Prüfung und Austausch von Belägen, Scheiben und Bremsflüssigkeit für zuverlässige Bremsleistung.', price: 'ab 129 €' },
-  { title: 'Reifenwechsel', desc: 'Saisonaler Reifenservice inkl. Sichtprüfung, Auswuchten und optionaler Einlagerung im Reifenhotel.', price: 'ab 25 € / Rad' },
-  { title: 'Fahrzeugdiagnose', desc: 'Moderne Diagnosegeräte für präzise Fehleranalyse — Ursache ermitteln, bevor Kosten entstehen.', price: 'ab 49 €' },
-  { title: 'Klimaservice', desc: 'Wartung, Dichtigkeitsprüfung und Neubefüllung für zuverlässiges Innenraumklima das ganze Jahr.', price: 'ab 79 €' },
-  { title: 'HU / AU Vorbereitung', desc: 'Vorabprüfung und gezielte Mängelbehebung für eine reibungslose Hauptuntersuchung ohne Nachtermin.', price: 'ab 39 €' },
-  { title: 'Allgemeine Reparaturen', desc: 'Vom Fahrwerk bis zur Elektrik — fachgerechte Reparaturen mit Originalteilen oder hochwertigen Alternativen.', price: 'auf Anfrage' },
+const SVC = [
+  { n: '01', t: 'Inspektion', d: 'Herstellergerechte Inspektionen mit digitaler Dokumentation und transparenter Ergebnisrückmeldung.', p: 'ab 89 €' },
+  { n: '02', t: 'Ölwechsel', d: 'Markenöl, neuer Filter, fachgerechte Entsorgung — schnell und verständlich abgewickelt.', p: 'ab 59 €' },
+  { n: '03', t: 'Bremsenservice', d: 'Prüfung und Austausch von Belägen, Scheiben und Bremsflüssigkeit für maximale Sicherheit.', p: 'ab 129 €' },
+  { n: '04', t: 'Reifenwechsel', d: 'Saisonaler Service inkl. Sichtprüfung, Auswuchten und optionaler Einlagerung.', p: 'ab 25 €/Rad' },
+  { n: '05', t: 'Fahrzeugdiagnose', d: 'Präzise Fehleranalyse mit modernen OBD-Geräten — Ursache ermitteln, bevor Kosten entstehen.', p: 'ab 49 €' },
+  { n: '06', t: 'Klimaservice', d: 'Wartung, Dichtigkeitsprüfung und Neubefüllung für zuverlässiges Innenraumklima.', p: 'ab 79 €' },
+  { n: '07', t: 'HU / AU Vorbereitung', d: 'Vorabprüfung und gezielte Mängelbehebung für eine reibungslose Hauptuntersuchung.', p: 'ab 39 €' },
+  { n: '08', t: 'Allgemeine Reparaturen', d: 'Fahrwerk bis Elektrik — fachgerecht mit Originalteilen oder hochwertigen Alternativen.', p: 'auf Anfrage' },
 ];
 
-const processSteps = [
-  { num: '01', title: 'Annahme', desc: 'Fahrzeugübergabe mit Zustandscheck und Auftragserfassung' },
-  { num: '02', title: 'Diagnose', desc: 'Elektronische Fehleranalyse und Sichtprüfung relevanter Bauteile' },
-  { num: '03', title: 'Freigabe', desc: 'Kostenvoranschlag und klare Rückmeldung vor Beginn der Arbeiten' },
-  { num: '04', title: 'Reparatur', desc: 'Fachgerechte Ausführung durch erfahrene Kfz-Mechatroniker' },
-  { num: '05', title: 'Übergabe', desc: 'Fahrzeugübergabe mit Serviceprotokoll und allen erledigten Positionen' },
+const STEPS = [
+  { n: '01', t: 'Annahme', d: 'Zustandscheck & Auftragserfassung' },
+  { n: '02', t: 'Diagnose', d: 'Elektronische Fehleranalyse' },
+  { n: '03', t: 'Freigabe', d: 'Kostenvoranschlag & Rückmeldung' },
+  { n: '04', t: 'Reparatur', d: 'Fachgerechte Ausführung' },
+  { n: '05', t: 'Übergabe', d: 'Protokoll & Schlüsselübergabe' },
 ];
 
-const galleryItems = [
-  { src: '1486006920555-c77dcf18193c', alt: 'Kfz-Mechaniker prüft Fahrzeug in der Werkstatt', label: 'Diagnose' },
-  { src: '1619642751034-765dfdf7c58e', alt: 'Kfz-Mechatroniker bei Diagnosearbeiten am Motor', label: 'Reparatur' },
-  { src: '1549317661-bd32c8ce0db2', alt: 'Motorraum während professioneller Inspektion', label: 'Übergabe' },
-];
-
-const navLinks = [
+const NAV = [
   { href: '/referenzen/autoservice-demo', label: 'Start' },
   { href: '/referenzen/autoservice-demo/leistungen', label: 'Leistungen' },
   { href: '/referenzen/autoservice-demo/inspektion', label: 'Inspektion' },
   { href: '/referenzen/autoservice-demo/kontakt', label: 'Kontakt' },
 ];
 
-const priceHighlights = [
-  { service: 'Ölwechsel', price: 'ab 59 €' },
-  { service: 'Inspektion', price: 'ab 89 €' },
-  { service: 'Bremsen', price: 'ab 129 €' },
-  { service: 'Diagnose', price: 'ab 49 €' },
-  { service: 'Klima', price: 'ab 79 €' },
-  { service: 'HU/AU Vorb.', price: 'ab 39 €' },
-];
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.5, delay: i * 0.06, ease: [0.25, 0.1, 0.25, 1] },
-  }),
+const inputSt = {
+  width: '100%', padding: '13px 16px', fontSize: 14, borderRadius: 4,
+  backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(232,50,28,0.2)',
+  color: TEXT, outline: 'none', fontFamily: GROTESK, boxSizing: 'border-box',
 };
-const stagger = { visible: { transition: { staggerChildren: 0.06 } } };
 
-const inputStyle = {
-  backgroundColor: 'rgba(255,255,255,0.06)',
-  border: '1px solid rgba(232,50,28,0.25)',
-  borderRadius: 4,
-  padding: '13px 16px',
-  fontSize: 14,
-  color: '#EEF3FA',
-  outline: 'none',
-  width: '100%',
-  boxSizing: 'border-box',
-  fontFamily: 'inherit',
-};
+const TICKER = Array(8).fill(['Inspektion', 'Ölwechsel', 'Bremsen', 'Diagnose', 'Reifenwechsel', 'Klima', 'HU / AU']).flat();
+
+function Counter({ to, suffix = '' }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const dur = 1800, t0 = performance.now();
+    const run = (now) => {
+      const p = Math.min((now - t0) / dur, 1);
+      setN(Math.floor((1 - Math.pow(1 - p, 3)) * to));
+      if (p < 1) requestAnimationFrame(run); else setN(to);
+    };
+    requestAnimationFrame(run);
+  }, [inView, to]);
+  return <span ref={ref}>{n}{suffix}</span>;
+}
 
 export default function AutoserviceDemoPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hovSvc, setHovSvc] = useState(null);
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const fn = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = '';
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
@@ -94,553 +91,425 @@ export default function AutoserviceDemoPage() {
     <>
       <SEOHead
         title="Elbwerk Kfz-Service Hamburg — Werkstatt, Inspektion & Diagnose"
-        description="Ihre Autowerkstatt in Hamburg. Inspektionen, Bremsenservice, Reifenwechsel, Diagnose und Reparaturen mit fairen Preisen und klarer Kommunikation."
+        description="Ihre Autowerkstatt in Hamburg. Inspektionen, Bremsenservice, Reifenwechsel, Diagnose und Reparaturen mit fairen Preisen."
         path="/referenzen/autoservice-demo"
         noIndex
       />
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
       <ReferenceStickyBackButton />
 
-      <div style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: '#0D1117', color: '#EEF3FA' }}>
+      <div style={{ fontFamily: GROTESK, backgroundColor: BG, color: TEXT, overflowX: 'hidden' }}>
 
-        {/* ── TOP NAV ── */}
+        {/* NAV */}
         <nav style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-          backgroundColor: scrolled ? 'rgba(13,17,23,0.98)' : '#0D1117',
-          borderBottom: scrolled ? '1px solid rgba(232,50,28,0.2)' : '1px solid rgba(255,255,255,0.06)',
-          backdropFilter: 'blur(10px)',
-          transition: 'all 0.3s ease',
+          backdropFilter: 'blur(16px)', transition: 'all 0.4s ease',
+          background: scrolled ? 'rgba(8,11,16,0.97)' : 'transparent',
+          borderBottom: scrolled ? '1px solid rgba(232,50,28,0.18)' : '1px solid transparent',
         }}>
-          <div style={{
-            maxWidth: 1280, margin: '0 auto', padding: '0 24px',
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64,
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', height: 66, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Link href="/referenzen/autoservice-demo" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
               <div style={{
-                width: 28, height: 28, backgroundColor: '#E8321C',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 14, fontWeight: 700, color: '#FFFFFF',
-              }}>
-                E
-              </div>
+                width: 34, height: 34, background: R, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: BARLOW, fontWeight: 900, fontSize: 15, color: '#fff',
+                clipPath: 'polygon(0 0,100% 0,100% 72%,86% 100%,0 100%)',
+              }}>EW</div>
               <div>
-                <span style={{ color: '#EEF3FA', fontWeight: 700, fontSize: 16, letterSpacing: '-0.01em' }}>Elbwerk</span>
-                <span style={{ color: '#7A8EA8', fontWeight: 400, fontSize: 13, marginLeft: 6 }}>Kfz-Service</span>
+                <div style={{ fontFamily: BARLOW, fontWeight: 800, fontSize: 17, color: TEXT, letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.1 }}>Elbwerk</div>
+                <div style={{ fontSize: 10, color: MUTED, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Kfz-Service</div>
               </div>
-            </div>
-            <div className="hidden sm:flex" style={{ alignItems: 'center', gap: 2 }}>
-              {navLinks.map(({ href, label }) => (
-                <Link key={href} href={href} style={{
-                  color: '#B0BECF', fontSize: 13, fontWeight: 500,
-                  padding: '7px 14px', textDecoration: 'none',
-                }}>
-                  {label}
-                </Link>
+            </Link>
+            <div className="hidden sm:flex" style={{ alignItems: 'center', gap: 4 }}>
+              {NAV.map(({ href, label }) => (
+                <Link key={href} href={href} style={{ color: MUTED, fontSize: 13, fontWeight: 500, padding: '8px 14px', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.currentTarget.style.color = TEXT}
+                  onMouseLeave={e => e.currentTarget.style.color = MUTED}
+                >{label}</Link>
               ))}
               <Link href="/referenzen/autoservice-demo/kontakt" style={{
-                backgroundColor: '#E8321C', color: '#FFFFFF',
-                fontSize: 13, fontWeight: 700, padding: '9px 20px',
-                textDecoration: 'none', marginLeft: 8, letterSpacing: '0.01em',
-              }}>
-                Termin anfragen
-              </Link>
+                background: R, color: '#fff', fontSize: 12, fontWeight: 700, padding: '10px 22px',
+                textDecoration: 'none', marginLeft: 12, letterSpacing: '0.07em', textTransform: 'uppercase',
+                clipPath: 'polygon(0 0,100% 0,100% 68%,93% 100%,0 100%)',
+              }}>Termin anfragen</Link>
             </div>
-            <button
-              className="sm:hidden"
-              onClick={() => setMenuOpen(!menuOpen)}
-              style={{ backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: '#EEF3FA', fontSize: 22, lineHeight: 1, padding: 4 }}
-              aria-label="Menü öffnen"
-            >
-              {menuOpen ? '✕' : '☰'}
-            </button>
+            <button className="sm:hidden" onClick={() => setMenuOpen(v => !v)}
+              style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: TEXT, fontSize: 22, padding: 4 }}
+              aria-label="Menü">{menuOpen ? '✕' : '☰'}</button>
           </div>
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                className="sm:hidden"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                style={{ backgroundColor: '#161D2A', borderTop: '1px solid rgba(232,50,28,0.15)', overflow: 'hidden' }}
+                initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                className="sm:hidden" style={{ background: PANEL, borderTop: '1px solid rgba(232,50,28,0.15)', overflow: 'hidden' }}
               >
                 <div style={{ padding: '16px 24px 24px', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {navLinks.map(({ href, label }) => (
+                  {NAV.map(({ href, label }) => (
                     <Link key={href} href={href} onClick={() => setMenuOpen(false)} style={{
-                      color: '#B0BECF', fontSize: 16, fontWeight: 600,
-                      padding: '13px 0', textDecoration: 'none',
+                      color: MUTED, fontSize: 16, fontWeight: 600, padding: '13px 0', textDecoration: 'none',
                       borderBottom: '1px solid rgba(255,255,255,0.06)',
-                    }}>
-                      {label}
-                    </Link>
+                    }}>{label}</Link>
                   ))}
                   <Link href="/referenzen/autoservice-demo/kontakt" onClick={() => setMenuOpen(false)} style={{
-                    backgroundColor: '#E8321C', color: '#FFFFFF',
-                    fontSize: 15, fontWeight: 700, padding: '13px 20px',
-                    textDecoration: 'none', textAlign: 'center', marginTop: 14, letterSpacing: '0.02em',
-                  }}>
-                    Termin anfragen
-                  </Link>
+                    background: R, color: '#fff', fontSize: 14, fontWeight: 700, padding: '14px', textAlign: 'center',
+                    textDecoration: 'none', marginTop: 14, letterSpacing: '0.06em', textTransform: 'uppercase',
+                  }}>Termin anfragen</Link>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </nav>
 
-        {/* ── HERO ── */}
-        <section ref={heroRef} style={{ position: 'relative', height: '100svh', minHeight: 560, overflow: 'hidden' }}>
-          <motion.div style={{ scale: heroScale, position: 'absolute', inset: 0 }}>
-            <Image
-              src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2000&q=85"
-              alt="Moderne Kfz-Werkstatt von Elbwerk in Hamburg"
-              fill priority unoptimized
-              style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
-              sizes="100vw"
-            />
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'linear-gradient(105deg, rgba(13,17,23,0.92) 0%, rgba(13,17,23,0.65) 50%, rgba(13,17,23,0.25) 100%)',
-            }} />
+        {/* HERO */}
+        <section ref={heroRef} style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+          <motion.div style={{ scale: heroScale, y: heroY, position: 'absolute', inset: 0 }}>
+            <Image src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2000&q=85"
+              alt="Elbwerk Kfz-Service Hamburg" fill priority unoptimized style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg,rgba(8,11,16,0.97) 0%,rgba(8,11,16,0.78) 45%,rgba(8,11,16,0.25) 100%)' }} />
           </motion.div>
+          <div style={{ position: 'absolute', top: '-15%', left: '-8%', width: '45%', height: '55%', background: 'radial-gradient(ellipse,rgba(232,50,28,0.11) 0%,transparent 68%)', pointerEvents: 'none' }} />
 
-          <motion.div
-            initial="hidden" animate="visible" variants={stagger}
-            style={{
-              position: 'relative', zIndex: 10,
-              maxWidth: 1280, margin: '0 auto',
-              padding: '0 24px',
-              height: '100%',
-              display: 'flex', flexDirection: 'column', justifyContent: 'center',
-              paddingTop: 64,
-            }}
-          >
-            <motion.div variants={fadeIn} custom={0} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
-              <div style={{ width: 28, height: 2, backgroundColor: '#E8321C' }} />
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#E8321C' }}>
-                Kfz-Service · Hamburg-Hammerbrook
-              </span>
+          <div style={{ position: 'relative', zIndex: 2, maxWidth: 1280, margin: '0 auto', padding: '80px 24px 60px', width: '100%' }}>
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 22 }}>
+              <motion.div initial={{ width: 0 }} animate={{ width: 40 }} transition={{ duration: 0.9, delay: 0.5, ease: 'easeOut' }}
+                style={{ height: 2, backgroundColor: R }} />
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: R }}>Kfz-Service · Hamburg-Hammerbrook</span>
             </motion.div>
 
-            <motion.h1 variants={fadeIn} custom={1} style={{
-              fontSize: 'clamp(44px, 7vw, 100px)', fontWeight: 700, lineHeight: 0.95,
-              letterSpacing: '-0.03em', color: '#FFFFFF',
-              textTransform: 'uppercase', maxWidth: 700,
-            }}>
-              Ihre<br />
-              <span style={{ color: '#E8321C' }}>Werkstatt</span><br />
-              Hamburg.
-            </motion.h1>
+            {['Ihre', 'Werkstatt'].map((word, i) => (
+              <div key={word} style={{ overflow: 'hidden' }}>
+                <motion.div initial={{ y: '110%' }} animate={{ y: '0%' }} transition={{ duration: 0.95, delay: 0.3 + i * 0.15, ease: [0.16,1,0.3,1] }}
+                  style={{ fontFamily: BARLOW, fontSize: 'clamp(68px,11vw,154px)', fontWeight: 900, lineHeight: 0.9, letterSpacing: '-0.01em', textTransform: 'uppercase', color: i === 1 ? R : '#fff' }}>
+                  {word}
+                </motion.div>
+              </div>
+            ))}
 
-            <motion.p variants={fadeIn} custom={2} style={{
-              fontSize: 'clamp(14px, 1.4vw, 17px)', lineHeight: 1.65, color: '#B0BECF',
-              maxWidth: 420, marginTop: 28,
-            }}>
-              Faire Preise, klare Kommunikation und erfahrene Kfz-Mechatroniker. Vom Ölwechsel bis zur Vollinspektion — alles aus einer Hand.
+            <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}
+              style={{ fontSize: 'clamp(14px,1.4vw,17px)', color: MUTED, maxWidth: 400, lineHeight: 1.7, marginTop: 24, marginBottom: 34 }}>
+              Faire Preise, klare Kommunikation, erfahrene Kfz-Mechatroniker. Vom Ölwechsel bis zur Vollinspektion.
             </motion.p>
 
-            <motion.div variants={fadeIn} custom={3} style={{ display: 'flex', gap: 12, marginTop: 36, flexWrap: 'wrap' }}>
+            <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.0 }}
+              style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <Link href="/referenzen/autoservice-demo/kontakt" style={{
-                backgroundColor: '#E8321C', color: '#FFFFFF',
-                fontWeight: 700, fontSize: 14, padding: '14px 30px',
-                textDecoration: 'none', letterSpacing: '0.02em',
-              }}>
+                background: R, color: '#fff', fontWeight: 700, fontSize: 13, padding: '15px 32px',
+                textDecoration: 'none', letterSpacing: '0.07em', textTransform: 'uppercase',
+                clipPath: 'polygon(0 0,100% 0,100% 68%,94% 100%,0 100%)', transition: 'transform 0.2s',
+              }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
                 Werkstatttermin anfragen
               </Link>
               <Link href="/referenzen/autoservice-demo/leistungen" style={{
-                border: '1px solid rgba(255,255,255,0.25)', color: '#EEF3FA',
-                fontWeight: 500, fontSize: 14, padding: '13px 28px',
-                textDecoration: 'none', letterSpacing: '0.01em',
-              }}>
-                Alle Leistungen
+                border: '1px solid rgba(255,255,255,0.2)', color: TEXT, fontWeight: 500, fontSize: 13,
+                padding: '14px 28px', textDecoration: 'none', letterSpacing: '0.04em', transition: 'border-color 0.2s,transform 0.2s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = R; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                Alle Leistungen →
               </Link>
             </motion.div>
-          </motion.div>
-        </section>
 
-        {/* ── PRICE TRANSPARENCY STRIP (replaces marquee) ── */}
-        <section style={{ backgroundColor: '#161D2A', borderBottom: '1px solid rgba(232,50,28,0.15)' }}>
-          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
-            <div style={{ display: 'flex', alignItems: 'stretch', overflowX: 'auto' }}>
-              <div style={{
-                flexShrink: 0, padding: '22px 28px 22px 0',
-                borderRight: '1px solid rgba(255,255,255,0.08)',
-                display: 'flex', alignItems: 'center',
+            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 1.2 }}
+              className="hidden lg:block"
+              style={{
+                position: 'absolute', right: 24, top: '50%', transform: 'translateY(-50%)',
+                background: 'rgba(13,20,33,0.88)', backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(232,50,28,0.28)', padding: '28px 30px', width: 210,
               }}>
-                <span style={{ fontSize: 10, fontWeight: 700, color: '#E8321C', letterSpacing: '0.14em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-                  Richtwertpreise
-                </span>
-              </div>
-              {priceHighlights.map((p, i) => (
-                <div key={p.service} style={{
-                  flexShrink: 0, padding: '18px 28px',
-                  borderRight: i < priceHighlights.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                  display: 'flex', flexDirection: 'column', gap: 4,
-                }}>
-                  <span style={{ fontSize: 11, color: '#7A8EA8', fontWeight: 500, whiteSpace: 'nowrap' }}>{p.service}</span>
-                  <span style={{ fontSize: 18, fontWeight: 700, color: '#EEF3FA', letterSpacing: '-0.01em' }}>{p.price}</span>
+              <div style={{ fontSize: 10, fontWeight: 700, color: R, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 18 }}>Schnell-Info</div>
+              {[['Mo–Fr','07:30–18:00'],['Samstag','09:00–13:00'],['Telefon','040 712 45 890']].map(([l,v]) => (
+                <div key={l} style={{ marginBottom: 13 }}>
+                  <div style={{ fontSize: 10, color: MUTED, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 2 }}>{l}</div>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: TEXT }}>{v}</div>
                 </div>
               ))}
-            </div>
+              <div style={{ marginTop: 18, borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 16 }}>
+                <Link href="/referenzen/autoservice-demo/kontakt" style={{
+                  display: 'block', textAlign: 'center', background: R, color: '#fff',
+                  fontSize: 11, fontWeight: 700, padding: '10px', textDecoration: 'none', letterSpacing: '0.1em', textTransform: 'uppercase',
+                }}>Termin →</Link>
+              </div>
+            </motion.div>
           </div>
+          <div style={{ position: 'absolute', bottom: -1, left: 0, right: 0, height: 72, background: BG, clipPath: 'polygon(0 100%,100% 0,100% 100%)' }} />
         </section>
 
-        {/* ── TRUST BAR ── */}
-        <section style={{ backgroundColor: '#161D2A', padding: '48px 24px' }}>
+        {/* TICKER */}
+        <div style={{ borderTop: '1px solid rgba(232,50,28,0.14)', borderBottom: '1px solid rgba(232,50,28,0.14)', background: PANEL, overflow: 'hidden', padding: '13px 0' }}>
+          <motion.div animate={{ x: ['0%','-50%'] }} transition={{ duration: 24, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
+            style={{ display: 'flex', width: 'max-content' }}>
+            {TICKER.map((t, i) => (
+              <span key={i} style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', whiteSpace: 'nowrap', color: i % 2 === 0 ? MUTED : 'rgba(240,244,250,0.3)' }}>
+                {t}<span style={{ color: R, margin: '0 22px' }}>◆</span>
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* STATS */}
+        <section style={{ background: `linear-gradient(135deg,${PANEL} 0%,#101928 100%)`, padding: '80px 24px', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
           <div style={{ maxWidth: 1280, margin: '0 auto' }}>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4" style={{ gap: 2 }}>
-              {[
-                { val: 'Fair', label: 'Transparente Preise', sub: 'Kostenvoranschlag vor Beginn' },
-                { val: 'Klar', label: 'Kommunikation', sub: 'Rückmeldung bei jedem Schritt' },
-                { val: 'Mo–Sa', label: 'Geöffnet', sub: '07:30–18:00 · Sa 09:00–13:00' },
-                { val: 'HH', label: 'Hamburg-Hammerbrook', sub: 'Ausschläger Weg 62' },
-              ].map(({ val, label, sub }, i) => (
-                <motion.div
-                  key={label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  style={{ backgroundColor: '#1F2D3D', padding: '28px 24px' }}
-                >
-                  <div style={{ fontSize: 34, fontWeight: 700, color: '#E8321C', letterSpacing: '-0.02em', marginBottom: 6 }}>{val}</div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#EEF3FA', marginBottom: 4 }}>{label}</div>
-                  <div style={{ fontSize: 12, color: '#7A8EA8' }}>{sub}</div>
+              {[{ to:20,suf:'+',l:'Jahre\nErfahrung',s:'In Hamburg seit 2004'},{to:3,suf:'k+',l:'Fahrzeuge\nbetreut',s:'Pro Jahr'},{to:48,suf:'h',l:'Ø Bearbei-\ntungszeit',s:'Standard-Service'},{to:100,suf:'%',l:'Kosten-\nvoranschlag',s:'Vor jedem Auftrag'}]
+                .map(({ to, suf, l, s }, i) => (
+                <motion.div key={l} initial={{ opacity:0,y:28 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true,margin:'-60px' }}
+                  transition={{ duration:0.6,delay:i*0.1 }}
+                  style={{ padding:'38px 28px', background:'rgba(255,255,255,0.025)', border:'1px solid rgba(255,255,255,0.06)', borderTop:`3px solid ${R}`, position:'relative', overflow:'hidden' }}>
+                  <div style={{ position:'absolute',right:-8,top:-8, fontFamily:BARLOW, fontSize:110, fontWeight:900, color:'rgba(255,255,255,0.022)', lineHeight:1, pointerEvents:'none', userSelect:'none' }}>{to}</div>
+                  <div style={{ fontFamily:BARLOW, fontSize:60, fontWeight:900, color:R, letterSpacing:'-0.02em', lineHeight:1, marginBottom:8 }}>
+                    <Counter to={to} suffix={suf} />
+                  </div>
+                  <div style={{ fontSize:14,fontWeight:600,color:TEXT,lineHeight:1.3,marginBottom:5,whiteSpace:'pre-line' }}>{l}</div>
+                  <div style={{ fontSize:11,color:MUTED }}>{s}</div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── SERVICES — vertical editorial list ── */}
-        <section style={{ maxWidth: 1280, margin: '0 auto', padding: '96px 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={stagger}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 16, marginBottom: 56 }}>
+        {/* SERVICES */}
+        <section style={{ maxWidth:1280, margin:'0 auto', padding:'96px 24px' }}>
+          <motion.div initial={{ opacity:0,y:18 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true,margin:'-60px' }} transition={{ duration:0.6 }}>
+            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', flexWrap:'wrap', gap:16, marginBottom:52 }}>
               <div>
-                <motion.p variants={fadeIn} style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase',
-                  color: '#E8321C', marginBottom: 14,
-                }}>
-                  Leistungen
-                </motion.p>
-                <motion.h2 variants={fadeIn} style={{
-                  fontSize: 'clamp(28px, 3.5vw, 50px)', fontWeight: 700, letterSpacing: '-0.025em',
-                  color: '#EEF3FA', lineHeight: 1.05, textTransform: 'uppercase',
-                }}>
-                  Unser Service-<br />Spektrum
-                </motion.h2>
+                <div style={{ fontSize:11,fontWeight:700,letterSpacing:'0.2em',textTransform:'uppercase',color:R,marginBottom:10 }}>Leistungen</div>
+                <h2 style={{ fontFamily:BARLOW, fontSize:'clamp(42px,5vw,72px)', fontWeight:900, letterSpacing:'-0.01em', color:TEXT, lineHeight:0.92, textTransform:'uppercase' }}>
+                  Unser<br /><span style={{ color:R }}>Service-Spektrum</span>
+                </h2>
               </div>
-              <motion.div variants={fadeIn}>
-                <Link href="/referenzen/autoservice-demo/leistungen" style={{
-                  fontSize: 13, fontWeight: 600, color: '#E8321C', textDecoration: 'none', letterSpacing: '0.02em',
-                }}>
-                  Alle Leistungen ansehen →
-                </Link>
-              </motion.div>
+              <Link href="/referenzen/autoservice-demo/leistungen" style={{ color:R, fontSize:13, fontWeight:600, textDecoration:'none' }}>Alle Leistungen →</Link>
             </div>
-
-            {services.map((s, i) => (
-              <motion.div
-                key={s.title}
-                variants={fadeIn}
-                custom={i}
-                style={{
-                  display: 'grid', gridTemplateColumns: '1fr auto',
-                  gap: '0 32px', alignItems: 'start',
-                  padding: '26px 0',
-                  borderTop: `1px solid ${i === 0 ? 'rgba(232,50,28,0.3)' : 'rgba(255,255,255,0.06)'}`,
-                  borderBottom: i === services.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                }}
-              >
-                <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
-                  <span style={{
-                    fontSize: 12, fontWeight: 700, color: '#E8321C',
-                    letterSpacing: '0.06em', flexShrink: 0, paddingTop: 3,
-                    minWidth: 28,
-                  }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 style={{
-                      fontSize: 18, fontWeight: 700, color: '#EEF3FA',
-                      textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 8,
-                    }}>
-                      {s.title}
-                    </h3>
-                    <p style={{ fontSize: 13.5, color: '#7A8EA8', lineHeight: 1.6, maxWidth: 540 }}>{s.desc}</p>
-                  </div>
-                </div>
-                <div style={{
-                  fontSize: 15, fontWeight: 700, color: '#EEF3FA',
-                  whiteSpace: 'nowrap', paddingTop: 3,
-                }}>
-                  {s.price}
-                </div>
-              </motion.div>
-            ))}
-
-            <motion.div variants={fadeIn} style={{ marginTop: 12, fontSize: 11, color: '#4D5E72' }}>
-              * Richtwertpreise. Endpreise nach Diagnose und Fahrzeugart. Kostenvoranschlag vor Beginn.
-            </motion.div>
           </motion.div>
+
+          {SVC.map((s, i) => (
+            <motion.div key={s.n}
+              initial={{ opacity:0,x:-16 }} whileInView={{ opacity:1,x:0 }} viewport={{ once:true,margin:'-30px' }} transition={{ duration:0.45,delay:i*0.04 }}
+              onMouseEnter={() => setHovSvc(i)} onMouseLeave={() => setHovSvc(null)}
+              style={{
+                display:'grid', gridTemplateColumns:'40px 1fr auto', gap:'0 20px', alignItems:'center',
+                padding:'20px 16px', position:'relative', transition:'background 0.3s',
+                background: hovSvc===i ? 'rgba(232,50,28,0.04)' : 'transparent',
+                borderTop:`1px solid ${i===0 ? 'rgba(232,50,28,0.28)' : 'rgba(255,255,255,0.05)'}`,
+                borderBottom: i===SVC.length-1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+              }}>
+              <motion.div animate={{ width: hovSvc===i ? 3 : 0 }} transition={{ duration:0.22 }}
+                style={{ position:'absolute', left:0, top:0, bottom:0, background:R }} />
+              <span style={{ fontFamily:BARLOW, fontSize:17, fontWeight:900, color: hovSvc===i ? R : 'rgba(232,50,28,0.38)', letterSpacing:'0.04em', transition:'color 0.2s' }}>{s.n}</span>
+              <div>
+                <h3 style={{ fontSize:15, fontWeight:700, color:TEXT, marginBottom:3, textTransform:'uppercase', letterSpacing:'0.03em' }}>{s.t}</h3>
+                <p style={{ fontSize:12.5, color:MUTED, lineHeight:1.5, maxWidth:520 }}>{s.d}</p>
+              </div>
+              <div style={{ fontFamily:BARLOW, fontSize:19, fontWeight:800, color: hovSvc===i ? GOLD : 'rgba(200,168,107,0.55)', whiteSpace:'nowrap', transition:'color 0.22s' }}>{s.p}</div>
+            </motion.div>
+          ))}
+          <div style={{ marginTop:10, fontSize:11, color:'rgba(107,125,153,0.5)' }}>* Richtwertpreise · Kostenvoranschlag vor jedem Auftrag</div>
         </section>
 
-        {/* ── INSPECTION PROCESS ── */}
-        <section style={{ backgroundColor: '#161D2A', padding: '96px 24px' }}>
-          <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={stagger}>
-              <motion.p variants={fadeIn} style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase',
-                color: '#E8321C', marginBottom: 14,
-              }}>
-                Ablauf
-              </motion.p>
-              <motion.h2 variants={fadeIn} style={{
-                fontSize: 'clamp(28px, 3.5vw, 50px)', fontWeight: 700, letterSpacing: '-0.025em',
-                color: '#EEF3FA', lineHeight: 1.05, textTransform: 'uppercase', marginBottom: 56,
-              }}>
-                Von der Annahme<br />zur Übergabe
-              </motion.h2>
-
-              <div className="grid sm:grid-cols-3 lg:grid-cols-5" style={{ gap: 2 }}>
-                {processSteps.map((step, i) => (
-                  <motion.div key={step.num} variants={fadeIn} custom={i} style={{
-                    backgroundColor: '#0D1117', padding: '28px 20px',
-                  }}>
-                    <div style={{ fontSize: 36, fontWeight: 700, color: '#E8321C', letterSpacing: '-0.02em', marginBottom: 14 }}>
-                      {step.num}
-                    </div>
-                    <h3 style={{ fontSize: 13, fontWeight: 700, color: '#EEF3FA', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>
-                      {step.title}
-                    </h3>
-                    <p style={{ fontSize: 12.5, color: '#7A8EA8', lineHeight: 1.6 }}>{step.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.div variants={fadeIn} style={{ marginTop: 40 }}>
-                <Link href="/referenzen/autoservice-demo/inspektion" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  backgroundColor: '#E8321C', color: '#FFFFFF',
-                  fontWeight: 700, fontSize: 14, padding: '13px 26px',
-                  textDecoration: 'none', letterSpacing: '0.02em',
-                }}>
-                  Inspektion anfragen →
-                </Link>
-              </motion.div>
+        {/* CINEMATIC BREAK */}
+        <section style={{ position:'relative', height:'clamp(300px,44vw,520px)', overflow:'hidden' }}>
+          <Image src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=2000&q=80"
+            alt="Elbwerk Werkstatt" fill unoptimized style={{ objectFit:'cover', objectPosition:'center 50%' }} />
+          <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg,rgba(8,11,16,0.94) 0%,rgba(8,11,16,0.55) 50%,rgba(8,11,16,0.2) 100%)' }} />
+          <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', padding:'0 clamp(24px,7vw,120px)' }}>
+            <motion.div initial={{ opacity:0,x:-28 }} whileInView={{ opacity:1,x:0 }} viewport={{ once:true }} transition={{ duration:0.8 }}>
+              <div style={{ width:40, height:2, background:R, marginBottom:20 }} />
+              <blockquote style={{ fontFamily:BARLOW, fontSize:'clamp(28px,4.5vw,58px)', fontWeight:900, color:'#fff', textTransform:'uppercase', lineHeight:1.0, maxWidth:620, letterSpacing:'-0.01em' }}>
+                „Qualität entsteht<br /><span style={{ color:R }}>nicht durch Zufall."</span>
+              </blockquote>
+              <p style={{ fontSize:12, color:MUTED, marginTop:16, letterSpacing:'0.06em' }}>ELBWERK KFZ-SERVICE · HAMBURG SEIT 2004</p>
             </motion.div>
           </div>
+          <div style={{ position:'absolute', top:-1, left:0, right:0, height:60, background:BG, clipPath:'polygon(0 0,100% 0,100% 0,0 100%)' }} />
+          <div style={{ position:'absolute', bottom:-1, left:0, right:0, height:60, background:BG, clipPath:'polygon(0 100%,100% 0,100% 100%)' }} />
         </section>
 
-        {/* ── GALLERY with process labels ── */}
-        <section style={{ maxWidth: 1280, margin: '0 auto', padding: '96px 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={stagger}>
-            <motion.p variants={fadeIn} style={{
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase',
-              color: '#E8321C', marginBottom: 14,
-            }}>
-              Einblicke
-            </motion.p>
-            <motion.h2 variants={fadeIn} style={{
-              fontSize: 'clamp(24px, 3vw, 42px)', fontWeight: 700, letterSpacing: '-0.025em',
-              color: '#EEF3FA', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: 32,
-            }}>
-              Die Werkstatt
-            </motion.h2>
-            <div className="grid sm:grid-cols-3" style={{ gap: 2 }}>
-              {galleryItems.map((img, i) => (
-                <motion.div key={img.src} variants={fadeIn} custom={i} style={{ position: 'relative', height: 300 }}>
-                  <Image
-                    src={`https://images.unsplash.com/photo-${img.src}?auto=format&fit=crop&w=900&q=80`}
-                    alt={img.alt} fill unoptimized
-                    style={{ objectFit: 'cover' }}
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                  />
-                  <div style={{
-                    position: 'absolute', inset: 0,
-                    background: 'linear-gradient(to top, rgba(13,17,23,0.8) 0%, transparent 50%)',
-                  }} />
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '16px 20px' }}>
-                    <span style={{
-                      fontSize: 10, fontWeight: 700, color: '#E8321C',
-                      letterSpacing: '0.14em', textTransform: 'uppercase',
-                    }}>
-                      {img.label}
-                    </span>
+        {/* PROCESS */}
+        <section style={{ padding:'96px 24px' }}>
+          <div style={{ maxWidth:1280, margin:'0 auto' }}>
+            <motion.div initial={{ opacity:0,y:18 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ duration:0.6 }}>
+              <div style={{ fontSize:11,fontWeight:700,letterSpacing:'0.2em',textTransform:'uppercase',color:R,marginBottom:10 }}>Ablauf</div>
+              <h2 style={{ fontFamily:BARLOW, fontSize:'clamp(38px,5vw,66px)', fontWeight:900, textTransform:'uppercase', color:TEXT, letterSpacing:'-0.01em', lineHeight:0.92, marginBottom:60 }}>
+                Von der Annahme<br /><span style={{ color:R }}>zur Übergabe</span>
+              </h2>
+            </motion.div>
+
+            {/* Desktop */}
+            <div className="hidden lg:flex" style={{ alignItems:'flex-start' }}>
+              {STEPS.map((step, i) => (
+                <div key={step.n} style={{ flex:1, position:'relative' }}>
+                  {i < STEPS.length - 1 && (
+                    <motion.div initial={{ scaleX:0 }} whileInView={{ scaleX:1 }} viewport={{ once:true }}
+                      transition={{ duration:0.7,delay:i*0.14+0.3,ease:'easeOut' }}
+                      style={{ position:'absolute', top:19, left:'50%', right:'-50%', height:1, background:`linear-gradient(90deg,${R},rgba(232,50,28,0.15))`, transformOrigin:'left', zIndex:0 }} />
+                  )}
+                  <motion.div initial={{ opacity:0,y:18 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}
+                    transition={{ duration:0.5,delay:i*0.1 }} style={{ position:'relative', zIndex:1, paddingRight:16 }}>
+                    <div style={{
+                      width:40, height:40, border:`2px solid ${i===0?R:'rgba(232,50,28,0.3)'}`,
+                      background:i===0?R:PANEL, display:'flex', alignItems:'center', justifyContent:'center', marginBottom:18,
+                      fontFamily:BARLOW, fontSize:15, fontWeight:900, color:i===0?'#fff':R,
+                    }}>{step.n}</div>
+                    <div style={{ fontSize:13,fontWeight:700,color:TEXT,textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:6 }}>{step.t}</div>
+                    <div style={{ fontSize:12,color:MUTED,lineHeight:1.55 }}>{step.d}</div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile */}
+            <div className="lg:hidden" style={{ display:'flex', flexDirection:'column' }}>
+              {STEPS.map((step, i) => (
+                <motion.div key={step.n} initial={{ opacity:0,x:-16 }} whileInView={{ opacity:1,x:0 }} viewport={{ once:true }}
+                  transition={{ duration:0.45,delay:i*0.08 }}
+                  style={{ display:'flex', gap:18, paddingBottom:i<STEPS.length-1?28:0, position:'relative' }}>
+                  {i < STEPS.length - 1 && <div style={{ position:'absolute', left:19, top:42, bottom:0, width:1, background:'rgba(232,50,28,0.2)' }} />}
+                  <div style={{ width:40,height:40,flexShrink:0, background:i===0?R:PANEL, border:`2px solid ${i===0?R:'rgba(232,50,28,0.28)'}`, display:'flex', alignItems:'center', justifyContent:'center', fontFamily:BARLOW, fontSize:15, fontWeight:900, color:i===0?'#fff':R }}>{step.n}</div>
+                  <div style={{ paddingTop:8 }}>
+                    <div style={{ fontSize:13,fontWeight:700,color:TEXT,textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:5 }}>{step.t}</div>
+                    <div style={{ fontSize:12.5,color:MUTED,lineHeight:1.55 }}>{step.d}</div>
                   </div>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+
+            <motion.div initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }} transition={{ duration:0.5,delay:0.5 }} style={{ marginTop:44 }}>
+              <Link href="/referenzen/autoservice-demo/inspektion" style={{
+                display:'inline-block', background:R, color:'#fff', fontWeight:700, fontSize:13,
+                padding:'14px 28px', textDecoration:'none', letterSpacing:'0.07em', textTransform:'uppercase',
+                clipPath:'polygon(0 0,100% 0,100% 68%,94% 100%,0 100%)',
+              }}>Inspektion anfragen →</Link>
+            </motion.div>
+          </div>
         </section>
 
-        {/* ── BOOKING — 2-column split ── */}
-        <section style={{ backgroundColor: '#161D2A', padding: '96px 24px' }}>
-          <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={stagger}
-              className="grid lg:grid-cols-[1fr_1.15fr]"
-              style={{ gap: 2, alignItems: 'stretch' }}
-            >
-              {/* Left: workshop info panel */}
-              <motion.div variants={fadeIn} style={{
-                backgroundColor: '#0D1117', padding: '48px 40px',
-                display: 'flex', flexDirection: 'column',
-              }}>
-                <p style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase',
-                  color: '#E8321C', marginBottom: 20,
-                }}>
-                  Kontakt & Anfahrt
-                </p>
-                <h2 style={{
-                  fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 700, letterSpacing: '-0.025em',
-                  color: '#EEF3FA', lineHeight: 1.05, textTransform: 'uppercase', marginBottom: 40,
-                }}>
-                  Werkstatttermin<br />anfragen
+        {/* GALLERY */}
+        <section style={{ background:PANEL, padding:'96px 24px' }}>
+          <div style={{ maxWidth:1280, margin:'0 auto' }}>
+            <motion.div initial={{ opacity:0,y:18 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ duration:0.6 }} style={{ marginBottom:36 }}>
+              <div style={{ fontSize:11,fontWeight:700,letterSpacing:'0.2em',textTransform:'uppercase',color:R,marginBottom:10 }}>Einblicke</div>
+              <h2 style={{ fontFamily:BARLOW, fontSize:'clamp(36px,4.5vw,62px)', fontWeight:900, textTransform:'uppercase', color:TEXT, letterSpacing:'-0.01em', lineHeight:0.92 }}>Die Werkstatt</h2>
+            </motion.div>
+            <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr', gridTemplateRows:'240px 240px', gap:3 }}>
+              {[
+                { src:'1486006920555-c77dcf18193c', alt:'Diagnosearbeiten', label:'Diagnose', span:2 },
+                { src:'1619642751034-765dfdf7c58e', alt:'Reparaturarbeiten', label:'Reparatur', span:1 },
+                { src:'1549317661-bd32c8ce0db2', alt:'Fahrzeugübergabe', label:'Übergabe', span:1 },
+              ].map((img, i) => (
+                <motion.div key={img.src} initial={{ opacity:0,scale:0.97 }} whileInView={{ opacity:1,scale:1 }} viewport={{ once:true }}
+                  transition={{ duration:0.55,delay:i*0.1 }}
+                  whileHover={{ scale:1.02 }}
+                  style={{ position:'relative', overflow:'hidden', gridRow:`span ${img.span}`, cursor:'pointer' }}>
+                  <Image src={`https://images.unsplash.com/photo-${img.src}?auto=format&fit=crop&w=900&q=80`}
+                    alt={img.alt} fill unoptimized style={{ objectFit:'cover', transition:'transform 0.7s ease' }} />
+                  <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(8,11,16,0.78) 0%,transparent 55%)' }} />
+                  <div style={{ position:'absolute', bottom:0, left:0, right:0, padding:'18px 20px', display:'flex', justifyContent:'space-between', alignItems:'flex-end' }}>
+                    <span style={{ fontSize:10,fontWeight:700,color:R,letterSpacing:'0.18em',textTransform:'uppercase' }}>{img.label}</span>
+                    <div style={{ width:26,height:26,background:'rgba(232,50,28,0.85)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:12,color:'#fff',fontWeight:700 }}>↗</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* BOOKING */}
+        <section style={{ padding:'96px 24px' }}>
+          <div style={{ maxWidth:1280, margin:'0 auto' }}>
+            <div className="grid lg:grid-cols-[1fr_1.1fr]" style={{ gap:3 }}>
+              <motion.div initial={{ opacity:0,x:-20 }} whileInView={{ opacity:1,x:0 }} viewport={{ once:true }} transition={{ duration:0.7 }}
+                style={{ background:PANEL, padding:'48px 40px', borderTop:`3px solid ${R}` }}>
+                <div style={{ fontSize:11,fontWeight:700,letterSpacing:'0.2em',textTransform:'uppercase',color:R,marginBottom:14 }}>Kontakt & Anfahrt</div>
+                <h2 style={{ fontFamily:BARLOW, fontSize:'clamp(34px,4vw,56px)', fontWeight:900, color:TEXT, textTransform:'uppercase', letterSpacing:'-0.01em', lineHeight:0.92, marginBottom:40 }}>
+                  Werkstatt-<br /><span style={{ color:R }}>termin</span><br />anfragen
                 </h2>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 0, flex: 1 }}>
-                  {[
-                    { label: 'Montag – Freitag', val: '07:30 – 18:00 Uhr' },
-                    { label: 'Samstag', val: '09:00 – 13:00 Uhr' },
-                  ].map(({ label, val }) => (
-                    <div key={label} style={{
-                      display: 'flex', justifyContent: 'space-between',
-                      padding: '14px 0', borderBottom: '1px solid rgba(255,255,255,0.06)',
-                    }}>
-                      <span style={{ fontSize: 13, color: '#7A8EA8' }}>{label}</span>
-                      <span style={{ fontSize: 13, color: '#EEF3FA', fontWeight: 600 }}>{val}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div style={{ marginTop: 36 }}>
-                  <p style={{ color: '#4D5E72', fontSize: 13, lineHeight: 1.8 }}>
-                    Ausschläger Weg 62<br />
-                    20537 Hamburg-Hammerbrook<br />
-                    040 712 45 890<br />
-                    service@elbwerk-kfz.de
-                  </p>
-                </div>
-
-                <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  {[
-                    'Kostenvoranschlag vor Beginn',
-                    'Rückmeldung bei jedem Schritt',
-                    'Kurze Wartezeiten durch Terminplanung',
-                  ].map((point) => (
-                    <div key={point} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                      <div style={{ width: 18, height: 18, backgroundColor: '#E8321C', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
-                        <span style={{ color: '#FFFFFF', fontSize: 10, fontWeight: 700 }}>✓</span>
-                      </div>
-                      <p style={{ fontSize: 13, color: '#7A8EA8', lineHeight: 1.55 }}>{point}</p>
-                    </div>
-                  ))}
-                </div>
+                {[['Mo – Fr','07:30 – 18:00 Uhr'],['Samstag','09:00 – 13:00 Uhr']].map(([l,v]) => (
+                  <div key={l} style={{ display:'flex', justifyContent:'space-between', padding:'11px 0', borderBottom:'1px solid rgba(255,255,255,0.05)' }}>
+                    <span style={{ fontSize:13,color:MUTED }}>{l}</span>
+                    <span style={{ fontSize:13,color:TEXT,fontWeight:600 }}>{v}</span>
+                  </div>
+                ))}
+                <p style={{ color:MUTED, fontSize:13, lineHeight:1.9, marginTop:24, marginBottom:28 }}>
+                  Ausschläger Weg 62<br />20537 Hamburg-Hammerbrook<br />040 712 45 890<br />service@elbwerk-kfz.de
+                </p>
+                {['Kostenvoranschlag vor Beginn','Rückmeldung bei jedem Schritt','Kurze Wartezeiten durch Terminplanung'].map(pt => (
+                  <div key={pt} style={{ display:'flex', gap:11, alignItems:'flex-start', marginBottom:9 }}>
+                    <div style={{ width:18,height:18,background:R,flexShrink:0,marginTop:1,display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,fontWeight:700,color:'#fff',clipPath:'polygon(0 0,100% 0,100% 68%,86% 100%,0 100%)' }}>✓</div>
+                    <span style={{ fontSize:13,color:MUTED,lineHeight:1.5 }}>{pt}</span>
+                  </div>
+                ))}
               </motion.div>
 
-              {/* Right: form */}
-              <motion.div variants={fadeIn} style={{ backgroundColor: '#1F2D3D', padding: '48px 40px' }}>
-                <p style={{ fontSize: 13, color: '#7A8EA8', lineHeight: 1.7, marginBottom: 32 }}>
-                  Anfrage stellen — wir melden uns innerhalb von 24h und bestätigen Ihren Termin.
-                </p>
-                <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div className="grid sm:grid-cols-2" style={{ gap: 16 }}>
-                    {[
-                      { id: 'name', label: 'Name', placeholder: 'Ihr Name', type: 'text' },
-                      { id: 'phone', label: 'Telefon', placeholder: '040 / ...', type: 'tel' },
-                    ].map(({ id, label, placeholder, type }) => (
-                      <div key={id} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                        <label htmlFor={id} style={{
-                          fontSize: 11, fontWeight: 700, color: '#7A8EA8',
-                          letterSpacing: '0.1em', textTransform: 'uppercase',
-                        }}>
-                          {label}
-                        </label>
-                        <input id={id} type={type} placeholder={placeholder} style={inputStyle} />
+              <motion.div initial={{ opacity:0,x:20 }} whileInView={{ opacity:1,x:0 }} viewport={{ once:true }} transition={{ duration:0.7,delay:0.14 }}
+                style={{ background:CARD, padding:'48px 40px', border:'1px solid rgba(255,255,255,0.06)' }}>
+                <p style={{ color:MUTED, fontSize:13, lineHeight:1.7, marginBottom:28 }}>Anfrage stellen — wir melden uns innerhalb von 24 Stunden und bestätigen Ihren Wunschtermin.</p>
+                <form onSubmit={e => e.preventDefault()} style={{ display:'flex', flexDirection:'column', gap:14 }}>
+                  <div className="grid sm:grid-cols-2" style={{ gap:14 }}>
+                    {[['name','Name','text','Ihr Name'],['phone','Telefon','tel','040 / ...']].map(([id,lbl,type,ph]) => (
+                      <div key={id}>
+                        <label htmlFor={id} style={{ fontSize:10,fontWeight:700,color:MUTED,letterSpacing:'0.14em',textTransform:'uppercase',display:'block',marginBottom:7 }}>{lbl}</label>
+                        <input id={id} type={type} placeholder={ph} style={inputSt} />
                       </div>
                     ))}
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    <label htmlFor="service" style={{
-                      fontSize: 11, fontWeight: 700, color: '#7A8EA8',
-                      letterSpacing: '0.1em', textTransform: 'uppercase',
-                    }}>
-                      Gewünschte Leistung
-                    </label>
-                    <select id="service" style={{ ...inputStyle, color: '#7A8EA8' }}>
+                  <div>
+                    <label htmlFor="service" style={{ fontSize:10,fontWeight:700,color:MUTED,letterSpacing:'0.14em',textTransform:'uppercase',display:'block',marginBottom:7 }}>Leistung</label>
+                    <select id="service" style={{ ...inputSt, color:MUTED }}>
                       <option value="">Bitte auswählen…</option>
-                      {services.map((s) => <option key={s.title} value={s.title}>{s.title}</option>)}
+                      {SVC.map(s => <option key={s.n} value={s.t}>{s.t}</option>)}
                     </select>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    <label htmlFor="message" style={{
-                      fontSize: 11, fontWeight: 700, color: '#7A8EA8',
-                      letterSpacing: '0.1em', textTransform: 'uppercase',
-                    }}>
-                      Fahrzeug & Anliegen
-                    </label>
-                    <textarea id="message" rows={4} placeholder="Fahrzeugtyp, Kennzeichen und kurze Beschreibung…"
-                      style={{ ...inputStyle, resize: 'vertical' }} />
+                  <div>
+                    <label htmlFor="msg" style={{ fontSize:10,fontWeight:700,color:MUTED,letterSpacing:'0.14em',textTransform:'uppercase',display:'block',marginBottom:7 }}>Fahrzeug & Anliegen</label>
+                    <textarea id="msg" rows={4} placeholder="Fahrzeugtyp, Kennzeichen, Problembeschreibung…" style={{ ...inputSt, resize:'vertical' }} />
                   </div>
                   <button type="submit" style={{
-                    backgroundColor: '#E8321C', color: '#FFFFFF',
-                    fontWeight: 700, fontSize: 14, padding: '16px 36px',
-                    border: 'none', cursor: 'pointer',
-                    letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: 'inherit',
-                  }}>
+                    background:R, color:'#fff', fontWeight:700, fontSize:13, padding:'16px', border:'none',
+                    cursor:'pointer', fontFamily:GROTESK, letterSpacing:'0.08em', textTransform:'uppercase',
+                    clipPath:'polygon(0 0,100% 0,100% 68%,97% 100%,0 100%)', transition:'transform 0.2s',
+                  }}
+                    onMouseEnter={e => e.currentTarget.style.transform='translateY(-2px)'}
+                    onMouseLeave={e => e.currentTarget.style.transform='translateY(0)'}>
                     Terminanfrage senden →
                   </button>
                 </form>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* ── FOOTER ── */}
-        <footer style={{ backgroundColor: '#060A0F', padding: '52px 24px 38px', borderTop: '1px solid rgba(232,50,28,0.12)' }}>
-          <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-            <div className="grid sm:grid-cols-[1.5fr_1fr]" style={{ gap: 48, marginBottom: 44 }}>
+        {/* FOOTER */}
+        <footer style={{ background:'#040609', borderTop:'1px solid rgba(232,50,28,0.1)', padding:'48px 24px 32px' }}>
+          <div style={{ maxWidth:1280, margin:'0 auto' }}>
+            <div className="grid sm:grid-cols-[1.5fr_1fr]" style={{ gap:40, marginBottom:36 }}>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-                  <div style={{ width: 26, height: 26, backgroundColor: '#E8321C', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700 }}>
-                    E
-                  </div>
-                  <span style={{ color: '#EEF3FA', fontWeight: 700, fontSize: 16 }}>Elbwerk Kfz-Service</span>
+                <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
+                  <div style={{ width:30,height:30,background:R,display:'flex',alignItems:'center',justifyContent:'center', fontFamily:BARLOW,fontWeight:900,fontSize:13,color:'#fff',clipPath:'polygon(0 0,100% 0,100% 68%,86% 100%,0 100%)' }}>EW</div>
+                  <span style={{ fontFamily:BARLOW,fontWeight:800,fontSize:17,color:TEXT,letterSpacing:'0.05em',textTransform:'uppercase' }}>Elbwerk Kfz-Service</span>
                 </div>
-                <p style={{ color: '#2A3345', fontSize: 13, lineHeight: 1.8 }}>
-                  Ausschläger Weg 62 · 20537 Hamburg<br />
-                  040 712 45 890 · service@elbwerk-kfz.de<br />
-                  Mo–Fr 07:30–18:00 · Sa 09:00–13:00
+                <p style={{ color:'rgba(107,125,153,0.55)',fontSize:13,lineHeight:1.9 }}>
+                  Ausschläger Weg 62 · 20537 Hamburg<br />040 712 45 890 · service@elbwerk-kfz.de
                 </p>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <p style={{ color: '#E8321C', fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 6 }}>
-                  Schnellnavigation
-                </p>
-                {[
-                  { href: '/referenzen/autoservice-demo/leistungen', label: 'Alle Leistungen' },
-                  { href: '/referenzen/autoservice-demo/inspektion', label: 'Inspektion' },
-                  { href: '/referenzen/autoservice-demo/kontakt', label: 'Werkstatttermin anfragen' },
-                ].map(({ href, label }) => (
-                  <Link key={label} href={href} style={{ color: '#2A3345', fontSize: 13, textDecoration: 'none' }}>
-                    {label}
-                  </Link>
+              <div>
+                <p style={{ color:R,fontSize:10,fontWeight:700,letterSpacing:'0.16em',textTransform:'uppercase',marginBottom:12 }}>Navigation</p>
+                {[{href:'/referenzen/autoservice-demo/leistungen',label:'Alle Leistungen'},{href:'/referenzen/autoservice-demo/inspektion',label:'Inspektion'},{href:'/referenzen/autoservice-demo/kontakt',label:'Termin anfragen'}].map(({ href, label }) => (
+                  <Link key={label} href={href} style={{ display:'block',color:'rgba(107,125,153,0.45)',fontSize:13,textDecoration:'none',marginBottom:7 }}>{label}</Link>
                 ))}
               </div>
             </div>
-            <div style={{
-              borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 24,
-              display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10,
-            }}>
-              <p style={{ color: '#1A2030', fontSize: 12 }}>© 2025 Elbwerk Kfz-Service · Hamburg</p>
-              <p style={{ color: '#141B24', fontSize: 12 }}>Demo-Website · Hamburg Websites</p>
+            <div style={{ borderTop:'1px solid rgba(255,255,255,0.04)',paddingTop:18,display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:8 }}>
+              <p style={{ color:'rgba(42,53,72,0.7)',fontSize:12 }}>© 2025 Elbwerk Kfz-Service · Hamburg</p>
+              <p style={{ color:'rgba(42,53,72,0.5)',fontSize:12 }}>Demo-Website · Hamburg Websites</p>
             </div>
           </div>
         </footer>
+
       </div>
     </>
   );
