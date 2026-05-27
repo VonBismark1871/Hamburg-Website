@@ -1,320 +1,364 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Head from 'next/head';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import SEOHead from '../../components/SEOHead';
 import ReferenceStickyBackButton from '../../components/ReferenceStickyBackButton';
 
-/* ─── Palette ─────────────────────────────────────────────── */
-const p = {
-  bg:       '#F6FAFB',
-  white:    '#FFFFFF',
-  surface:  '#EDF3F6',
-  ink:      '#0C1D26',
-  body:     '#385060',
-  muted:    '#648090',
-  faint:    '#95AFBA',
-  teal:     '#1A7896',
-  tealDeep: '#145E76',
-  tealDark: '#0D3D50',
-  tealSoft: 'rgba(26,120,150,0.09)',
-  tealLine: 'rgba(26,120,150,0.20)',
-  line:     'rgba(12,29,38,0.08)',
-  lineS:    'rgba(12,29,38,0.13)',
-};
+/* ── Palette ─────────────────────────────────────────── */
+const BG    = '#FAF7F2';   // warm ivory
+const SURF  = '#F2EDE5';   // cream surface
+const CARD  = '#FFFFFF';   // white cards
+const DARK  = '#0E1826';   // dark panel (stats, testimonials)
+const INK   = '#0D1520';   // headings
+const BODY  = '#445568';   // body text
+const MUTED = '#8A9BAC';   // muted text
+const GOLD  = '#B8893A';   // warm gold (readable on light)
+const GOLDF = 'rgba(184,137,58,0.1)';
+const GOLDL = 'rgba(184,137,58,0.45)';
+const TEAL  = '#1A7896';   // teal accent
+const LINE  = 'rgba(184,137,58,0.22)';
+const LINEW = 'rgba(0,0,0,0.07)';
+const SERIF = "'Playfair Display', Georgia, serif";
+const SANS  = "'Inter', system-ui, sans-serif";
+const ease  = [0.16, 1, 0.3, 1];
 
-const font = "'DM Sans', system-ui, sans-serif";
-const ease = [0.22, 1, 0.36, 1];
-
-/* ─── Data ─────────────────────────────────────────────────── */
-const navLinks = [
-  { href: '#leistungen', label: 'Leistungen'  },
-  { href: '#team',       label: 'Team'        },
-  { href: '#praxis',     label: 'Praxis'      },
-  { href: '#termin',     label: 'Termin'      },
+/* ── Data ────────────────────────────────────────────── */
+const NAV = [
+  { label: 'Leistungen', href: '#leistungen' },
+  { label: 'Team',       href: '#team'       },
+  { label: 'Praxis',     href: '#praxis'     },
+  { label: 'Termin',     href: '#termin'     },
 ];
 
-const pillars = [
-  { icon: '◎', head: 'Digitale Diagnostik',    text: 'Moderne Bildgebung für präzise Befunde — schonend und schnell.' },
-  { icon: '◉', head: 'Neue Patienten willkommen', text: 'Unkomplizierte Aufnahme, klare Abläufe und kurze Wartezeiten.' },
-  { icon: '◌', head: 'Verständliche Aufklärung', text: 'Wir erklären jeden Schritt — bevor wir ihn durchführen.' },
-  { icon: '◍', head: 'Ruhige Atmosphäre',       text: 'Bewusst gestaltet für ein sicheres, entspanntes Praxiserlebnis.' },
+const SERVICES = [
+  { n: '01', name: 'Prophylaxe',                 desc: 'Regelmäßige Vorsorge und individuelle Mundhygieneberatung für dauerhaft gesunde Zähne und frühzeitige Problemerkennung.' },
+  { n: '02', name: 'Professionelle Reinigung',   desc: 'Schonende Entfernung von Belägen, Zahnstein und Verfärbungen — für ein frisches Gefühl und gesundes Zahnfleisch.' },
+  { n: '03', name: 'Ästhetische Zahnheilkunde',  desc: 'Bleaching, Veneers und natürliche Korrekturen für ein strahlendes, harmonisches Lächeln, das zu Ihnen passt.' },
+  { n: '04', name: 'Implantologie',              desc: 'Sorgfältig geplante Implantatversorgung mit modernster Technologie und einfühlsamer persönlicher Begleitung von Anfang an.' },
+  { n: '05', name: 'Zahnersatz',                 desc: 'Individuell gefertigte Lösungen mit Fokus auf Funktion, Ästhetik und langfristigen Komfort im Alltag.' },
+  { n: '06', name: 'Kinderzahnheilkunde',        desc: 'Geduldige, altersgerechte Behandlung für ein positives erstes Zahnarzt-Erlebnis und gesunde kleine Zähne.' },
+  { n: '07', name: 'Parodontologie',             desc: 'Gezielte Diagnose und Therapie bei Zahnfleischerkrankungen für stabile Mundgesundheit auf lange Sicht.' },
+  { n: '08', name: 'Notfallbehandlung',          desc: 'Schnelle Hilfe bei akuten Zahnschmerzen — wann immer möglich noch am selben Tag, ohne lange Wartezeit.' },
 ];
 
-const services = [
-  { n: '01', name: 'Prophylaxe',                desc: 'Regelmäßige Vorsorge für gesunde Zähne und frühes Erkennen von Problemen.' },
-  { n: '02', name: 'Professionelle Reinigung',  desc: 'Schonende Entfernung von Belägen, Verfärbungen und Zahnstein.' },
-  { n: '03', name: 'Ästhetische Zahnheilkunde', desc: 'Bleaching und natürliche Korrekturen für ein harmonisches Lächeln.' },
-  { n: '04', name: 'Zahnersatz',                desc: 'Individuelle Lösungen mit Fokus auf Funktion, Komfort und Qualität.' },
-  { n: '05', name: 'Implantologie',             desc: 'Sorgfältig geplante Implantatversorgung mit persönlicher Begleitung.' },
-  { n: '06', name: 'Kinderzahnheilkunde',       desc: 'Einfühlsame Behandlung mit altersgerechter, geduldiger Betreuung.' },
-  { n: '07', name: 'Parodontologie',            desc: 'Gezielte Therapie bei Zahnfleischerkrankungen für stabile Mundgesundheit.' },
-  { n: '08', name: 'Vorsorgeuntersuchung',      desc: 'Gründliche Kontrolltermine mit klaren Empfehlungen und Zeit für Fragen.' },
+const TEAM = [
+  { name: 'Dr. Laura Richter',  role: 'Allgemeine Zahnheilkunde & Ästhetik', quote: 'Schönheit entsteht, wenn Funktion und Form zusammenfinden.',        img: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=800&q=80' },
+  { name: 'Dr. Marcus Stein',   role: 'Implantologie & Oralchirurgie',        quote: 'Präzision beginnt mit Vertrauen — und Vertrauen mit Zeit.',         img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80' },
+  { name: 'Jana Wolff',         role: 'Prophylaxe & Patientenbetreuung',      quote: 'Ein gesundes Lächeln braucht gute Gewohnheiten und echte Fürsorge.', img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80' },
 ];
 
-const team = [
-  { name: 'Dr. David Becker',   role: 'Allgemeine Zahnheilkunde',       image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Dr. Michael Hansen', role: 'Implantologie & Chirurgie',       image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Lisa Krause',        role: 'Prophylaxe & Patientenbetreuung', image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80' },
+const STATS = [
+  { val: 1800, suf: '+',      label: 'zufriedene Patienten', isFloat: false },
+  { val: 15,   suf: ' Jahre', label: 'Praxiserfahrung',      isFloat: false },
+  { val: 4.9,  suf: '★',     label: 'Ø Google-Bewertung',   isFloat: true  },
 ];
 
-const gallery = [
-  { src: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80', alt: 'Helles Behandlungszimmer mit modernem Dentalstuhl', wide: true  },
-  { src: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=900&q=80',  alt: 'Beratungsgespräch vor der Behandlung',            wide: false },
-  { src: 'https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=900&q=80',  alt: 'Modernes Behandlungssetting',                    wide: false },
-  { src: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1200&q=80', alt: 'Einladender Empfangsbereich der Praxis',          wide: true  },
+const TESTIMONIALS = [
+  { name: 'Sandra M.',  stars: 5, text: 'Endlich eine Praxis, in der ich mich nicht nervös fühle. Das Team erklärt alles verständlich und nimmt sich wirklich Zeit.' },
+  { name: 'Thomas K.', stars: 5, text: 'Nach jahrelanger Zahnarzt-Angst bin ich hier gut aufgehoben. Professionell, freundlich und modern ausgestattet.' },
+  { name: 'Miriam H.', stars: 5, text: 'Die Behandlung war absolut schmerzlos. Ich hätte nicht gedacht, dass ein Zahnarztbesuch so angenehm sein kann.' },
 ];
 
-const hours = [
-  { day: 'Montag',     time: '08:00 – 18:00' },
-  { day: 'Dienstag',   time: '08:00 – 19:00' },
-  { day: 'Mittwoch',   time: '08:00 – 16:00' },
-  { day: 'Donnerstag', time: '08:00 – 18:00' },
-  { day: 'Freitag',    time: '08:00 – 14:00' },
+const GALLERY = [
+  { src: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80', alt: 'Modernes Behandlungszimmer' },
+  { src: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80',  alt: 'Beratungsgespräch' },
+  { src: 'https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=800&q=80',  alt: 'Behandlungssetting' },
+  { src: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=800&q=80',  alt: 'Empfangsbereich' },
 ];
 
-/* ─── Helpers ───────────────────────────────────────────────── */
-function Reveal({ children, delay = 0, y = 22, className }) {
+const TICKER_ITEMS = [
+  'Prophylaxe', 'Implantologie', 'Zahnreinigung', 'Ästhetische Zahnheilkunde',
+  'Parodontologie', 'Zahnersatz', 'Kinderzahnheilkunde', 'Digitale Diagnostik',
+];
+
+const FEATURES = [
+  { icon: '◎', head: 'Digitale Diagnostik',  text: 'Modernste Bildgebung für präzise Befunde — strahlungsarm, schnell und patientenfreundlich.' },
+  { icon: '◉', head: 'Angstpatienten',       text: 'Einfühlsame Behandlung und Zeit für Sie — auf Wunsch mit sanfter Betäubung und Ruhe.' },
+  { icon: '◌', head: 'Neue Patienten',       text: 'Unkomplizierte Aufnahme, kurze Wartezeiten und persönliche Aufmerksamkeit ab Tag eins.' },
+  { icon: '◍', head: 'Ehrliche Beratung',    text: 'Wir erklären jeden Schritt und alle Kosten — bevor wir ihn durchführen.' },
+];
+
+/* ── Helpers ─────────────────────────────────────────── */
+function Counter({ to, suf = '', isFloat = false }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const dur = 1800, t0 = performance.now();
+    const run = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      const v = (1 - Math.pow(1 - p, 3)) * to;
+      setN(isFloat ? Math.round(v * 10) / 10 : Math.floor(v));
+      if (p < 1) requestAnimationFrame(run); else setN(to);
+    };
+    requestAnimationFrame(run);
+  }, [inView, to, isFloat]);
+  return <span ref={ref}>{isFloat ? n.toFixed(1) : n.toLocaleString('de-DE')}{suf}</span>;
+}
+
+function SectionLabel({ children, onDark = false }) {
+  const c = onDark ? '#C8A86B' : GOLD;
+  return (
+    <motion.span
+      initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }} transition={{ duration: 0.6, ease }}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
+               fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.24em',
+               textTransform: 'uppercase', color: c, fontFamily: SANS }}
+    >
+      <span style={{ display: 'inline-block', width: 20, height: 1, background: c }} />
+      {children}
+    </motion.span>
+  );
+}
+
+function GoldDivider() {
   return (
     <motion.div
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7, delay, ease }}
-      className={className}
-    >
-      {children}
-    </motion.div>
+      initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }}
+      transition={{ duration: 0.9, ease }}
+      style={{ height: 1, background: `linear-gradient(90deg, ${GOLD}, transparent)`,
+               transformOrigin: 'left' }}
+    />
   );
 }
 
-function Chip({ children }) {
-  return (
-    <span
-      className="inline-flex items-center rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em]"
-      style={{ background: p.tealSoft, color: p.teal }}
-    >
-      {children}
-    </span>
-  );
-}
-
-/* ─── Nav ───────────────────────────────────────────────────── */
+/* ── Nav ──────────────────────────────────────────────── */
 function TopNav() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen]         = useState(false);
-
+  const [open, setOpen] = useState(false);
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 52);
-    fn();
-    window.addEventListener('scroll', fn, { passive: true });
+    const fn = () => setScrolled(window.scrollY > 60);
+    fn(); window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
   }, []);
-
   return (
     <motion.header
-      initial={{ y: -72, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease }}
+      initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease }}
       className="fixed inset-x-0 top-0 z-50 transition-all duration-500"
       style={{
-        background:    scrolled ? 'rgba(246,250,251,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(14px)'             : 'none',
-        borderBottom:  `1px solid ${scrolled ? p.line : 'transparent'}`,
+        background:     scrolled ? 'rgba(250,247,242,0.94)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(18px)' : 'none',
+        borderBottom:   `1px solid ${scrolled ? LINE : 'transparent'}`,
       }}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link href="#start" className="flex flex-col leading-none">
-          <span className="text-lg font-bold tracking-tight" style={{ color: p.ink }}>ElbDent</span>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.28em]" style={{ color: p.teal }}>
-            Zahnarztpraxis · Hamburg
-          </span>
+          <span style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '-0.02em',
+                         color: INK, fontFamily: SERIF }}>ElbDent</span>
+          <span style={{ fontSize: '0.58rem', fontWeight: 600, letterSpacing: '0.3em',
+                         textTransform: 'uppercase', color: GOLD, fontFamily: SANS }}>Zahnarztpraxis · Hamburg</span>
         </Link>
-
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map(l => (
+        <div className="hidden items-center gap-7 md:flex">
+          {NAV.map(l => (
             <Link key={l.href} href={l.href}
               className="text-sm font-medium transition-colors"
-              style={{ color: p.muted }}
-              onMouseEnter={e => (e.currentTarget.style.color = p.ink)}
-              onMouseLeave={e => (e.currentTarget.style.color = p.muted)}
+              style={{ color: BODY, fontFamily: SANS }}
+              onMouseEnter={e => (e.currentTarget.style.color = INK)}
+              onMouseLeave={e => (e.currentTarget.style.color = BODY)}
             >{l.label}</Link>
           ))}
           <Link href="#termin"
-            className="rounded-full px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5"
-            style={{ background: p.teal }}>
-            Termin anfragen
+            className="rounded-full px-6 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+            style={{ background: TEAL, fontFamily: SANS, letterSpacing: '0.03em' }}>
+            Termin
           </Link>
         </div>
-
         <button type="button" onClick={() => setOpen(v => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-full md:hidden"
-          style={{ border: `1px solid ${p.lineS}`, color: p.ink }}
-          aria-label="Menü" aria-expanded={open}
-        >
-          <span>{open ? '✕' : '☰'}</span>
+          className="flex h-10 w-10 items-center justify-center md:hidden"
+          style={{ border: `1px solid ${LINEW}`, color: INK, borderRadius: '50%', background: 'none' }}
+          aria-label="Menü" aria-expanded={open}>
+          {open ? '✕' : '☰'}
         </button>
       </nav>
-
-      {open && (
-        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
-          className="md:hidden" style={{ background: 'rgba(246,250,251,0.97)', borderTop: `1px solid ${p.line}` }}>
-          <div className="flex flex-col gap-1 px-5 py-4">
-            {navLinks.map(l => (
-              <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-medium" style={{ color: p.ink }}>{l.label}</Link>
-            ))}
-            <Link href="#termin" onClick={() => setOpen(false)}
-              className="mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
-              style={{ background: p.teal }}>Termin anfragen</Link>
-          </div>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden md:hidden"
+            style={{ background: 'rgba(250,247,242,0.97)', borderTop: `1px solid ${LINEW}` }}>
+            <div className="flex flex-col gap-1 px-5 py-4">
+              {NAV.map(l => (
+                <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-3 text-sm font-medium"
+                  style={{ color: INK, fontFamily: SANS }}>{l.label}</Link>
+              ))}
+              <Link href="#termin" onClick={() => setOpen(false)}
+                className="mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
+                style={{ background: TEAL, fontFamily: SANS }}>Termin anfragen</Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
 
-/* ─── Hero ──────────────────────────────────────────────────── */
+/* ── Hero ─────────────────────────────────────────────── */
 function Hero() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+  const imgS = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   return (
-    <section id="start" className="overflow-hidden" style={{ background: p.bg }}>
-      <div className="mx-auto max-w-6xl px-5 pb-0 pt-28 sm:px-8 sm:pt-32">
-        {/* Top: headline + image side by side */}
-        <div className="grid items-end gap-10 lg:grid-cols-[1fr_0.9fr]">
-          <div>
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15, ease }}>
-              <Chip>Zahnarztpraxis · Hamburg-Eppendorf</Chip>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.28, ease }}
-              className="mt-6 font-extrabold leading-[1.02] tracking-tight"
-              style={{ color: p.ink, fontSize: 'clamp(2.8rem, 7vw, 5.5rem)' }}
-            >
-              Ihre Zähne.<br />
-              <span style={{ color: p.teal }}>Unser Fokus.</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.42, ease }}
-              className="mt-6 max-w-lg text-lg leading-relaxed"
-              style={{ color: p.body }}
-            >
-              Moderne Zahnmedizin, verständliche Beratung und ruhige Praxisatmosphäre —
-              in Hamburg für neue und langjährige Patientinnen und Patienten.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.56, ease }}
-              className="mt-8 flex flex-wrap gap-3"
-            >
-              <Link href="#termin"
-                className="rounded-full px-8 py-4 text-sm font-bold text-white uppercase tracking-wide transition hover:-translate-y-0.5"
-                style={{ background: p.teal, letterSpacing: '0.08em' }}>
-                Termin anfragen
-              </Link>
-              <Link href="#leistungen"
-                className="rounded-full px-8 py-4 text-sm font-bold uppercase tracking-wide transition hover:-translate-y-0.5"
-                style={{ border: `1.5px solid ${p.lineS}`, color: p.ink, letterSpacing: '0.08em' }}>
-                Leistungen
-              </Link>
+    <section id="start" ref={ref} className="relative overflow-hidden"
+      style={{ background: BG, minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+      {/* Subtle gold orb far right */}
+      <div className="pointer-events-none absolute -right-32 top-1/3 h-[700px] w-[700px] rounded-full"
+        style={{ background: `radial-gradient(circle, ${GOLDF} 0%, transparent 70%)` }} />
+      {/* Faint circle watermark */}
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-[420px] w-[420px] rounded-full"
+        style={{ border: `1px solid ${GOLDF}`, opacity: 0.6 }} />
+
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-32 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:pb-28 lg:pt-24">
+        {/* Text */}
+        <div>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease }}>
+            <SectionLabel>Zahnarztpraxis · Hamburg-Eppendorf</SectionLabel>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.25, ease }}
+            style={{ fontFamily: SERIF, color: INK, lineHeight: 1.05,
+                     letterSpacing: '-0.02em', fontSize: 'clamp(3rem, 6.5vw, 5.6rem)',
+                     fontWeight: 800, marginTop: '1.4rem' }}
+          >
+            Ihr schönstes<br />
+            <em style={{ color: GOLD, fontStyle: 'italic' }}>Lächeln</em><br />
+            beginnt hier.
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.42, ease }}
+            className="mt-6 max-w-md text-base leading-relaxed"
+            style={{ color: BODY, fontFamily: SANS }}
+          >
+            Moderne Zahnmedizin, ruhige Atmosphäre und ehrliche Beratung — in Hamburg für
+            Menschen, denen ihr Lächeln wichtig ist.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.56, ease }}
+            className="mt-8 flex flex-wrap gap-3"
+          >
+            <Link href="#termin"
+              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5"
+              style={{ background: TEAL, fontFamily: SANS, letterSpacing: '0.04em',
+                       boxShadow: `0 8px 28px rgba(26,120,150,0.35)` }}>
+              Termin anfragen →
+            </Link>
+            <Link href="#leistungen"
+              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold transition hover:-translate-y-0.5"
+              style={{ border: `1.5px solid ${LINEW}`, color: INK, fontFamily: SANS }}>
+              Leistungen
+            </Link>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            transition={{ delay: 0.85, duration: 0.6 }}
+            className="mt-9 flex flex-wrap gap-3">
+            {['Neue Patienten willkommen', 'Angstpatienten willkommen', 'Digitale Röntgendiagnostik'].map(b => (
+              <span key={b} style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                fontSize: '0.7rem', fontWeight: 600, color: BODY, fontFamily: SANS,
+                background: CARD, border: `1px solid ${LINE}`,
+                borderRadius: 100, padding: '0.35rem 0.8rem',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              }}>
+                <span style={{ color: GOLD }}>◆</span> {b}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Image */}
+        <motion.div
+          initial={{ opacity: 0, x: 44, scale: 0.96 }} animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 1.1, delay: 0.35, ease }}
+          className="relative mx-auto w-full max-w-[460px]"
+        >
+          {/* Gold corner brackets */}
+          <div className="pointer-events-none absolute -left-4 -top-4 h-14 w-14"
+            style={{ borderTop: `2px solid ${GOLD}`, borderLeft: `2px solid ${GOLD}`, opacity: 0.7 }} />
+          <div className="pointer-events-none absolute -bottom-4 -right-4 h-14 w-14"
+            style={{ borderBottom: `2px solid ${GOLD}`, borderRight: `2px solid ${GOLD}`, opacity: 0.7 }} />
+          <div className="relative overflow-hidden rounded-2xl"
+            style={{ boxShadow: `0 32px 80px -16px rgba(14,24,38,0.22), 0 0 0 1px ${LINE}` }}>
+            <motion.div style={{ y: imgY, scale: imgS }}>
+              <Image
+                src="https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1200&q=80"
+                alt="Modernes Behandlungszimmer der Praxis ElbDent"
+                width={1200} height={1600} priority
+                className="w-full object-cover"
+                style={{ height: '520px' }}
+              />
             </motion.div>
           </div>
-
-          {/* Hero image */}
-          <motion.figure
-            initial={{ opacity: 0, x: 40, scale: 0.97 }} animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 1, delay: 0.35, ease }}
-            className="overflow-hidden rounded-[2rem]"
-            style={{ boxShadow: `0 32px 80px -30px rgba(26,120,150,0.28), 0 0 0 1px ${p.tealLine}` }}
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1400&q=80"
-              alt="Freundlicher Behandlungsraum der Praxis ElbDent mit moderner Ausstattung"
-              width={1400} height={1050} priority
-              className="h-[360px] w-full object-cover sm:h-[440px]"
-            />
-          </motion.figure>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Stat strip */}
+      {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.7, ease }}
-        className="mx-auto mt-10 max-w-6xl px-5 pb-16 sm:px-8"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
       >
-        <div className="grid grid-cols-2 gap-3 rounded-2xl p-5 sm:grid-cols-4 sm:gap-4 sm:p-6"
-          style={{ background: p.white, border: `1px solid ${p.line}`, boxShadow: '0 4px 24px rgba(12,29,38,0.05)' }}>
-          {[
-            { v: 'Neue Patienten', s: 'jederzeit willkommen' },
-            { v: 'Digitale',       s: 'Röntgendiagnostik'    },
-            { v: 'Mo–Fr',          s: 'geöffnet'             },
-            { v: '040 / 123 45 67', s: 'direkt anrufen'      },
-          ].map(({ v, s }) => (
-            <div key={v} className="px-2 py-1">
-              <p className="text-base font-extrabold tracking-tight" style={{ color: p.ink }}>{v}</p>
-              <p className="mt-0.5 text-xs" style={{ color: p.muted }}>{s}</p>
-            </div>
-          ))}
-        </div>
+        <span style={{ fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.22em',
+                       textTransform: 'uppercase', color: MUTED, fontFamily: SANS }}>Entdecken</span>
+        <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.6, repeat: Infinity }}
+          style={{ width: 1, height: 28, background: `linear-gradient(${GOLD}, transparent)` }} />
       </motion.div>
     </section>
   );
 }
 
-/* ─── Pillars ───────────────────────────────────────────────── */
-function Pillars() {
+/* ── Ticker ───────────────────────────────────────────── */
+function Ticker() {
+  const items = Array(6).fill(TICKER_ITEMS).flat();
   return (
-    <section style={{ background: p.tealDark }}>
-      <div className="mx-auto grid max-w-6xl gap-px px-0 sm:grid-cols-2 lg:grid-cols-4"
-        style={{ background: 'rgba(255,255,255,0.06)' }}>
-        {pillars.map((item, i) => (
-          <Reveal key={item.head} delay={i * 0.09}>
-            <div className="px-7 py-9 sm:px-8" style={{ background: p.tealDark }}>
-              <span className="text-2xl" style={{ color: p.teal }} aria-hidden="true">{item.icon}</span>
-              <h3 className="mt-4 text-base font-bold leading-snug" style={{ color: '#E8F4F8' }}>{item.head}</h3>
-              <p className="mt-3 text-sm leading-relaxed" style={{ color: 'rgba(200,225,234,0.7)' }}>{item.text}</p>
-            </div>
-          </Reveal>
+    <div style={{ background: GOLD, overflow: 'hidden', padding: '0.85rem 0' }}>
+      <motion.div
+        className="flex whitespace-nowrap"
+        animate={{ x: ['0%', '-50%'] }}
+        transition={{ duration: 32, ease: 'linear', repeat: Infinity }}
+      >
+        {items.map((item, i) => (
+          <span key={i} className="inline-flex items-center gap-4 px-6"
+            style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.22em',
+                     textTransform: 'uppercase', color: '#0E1826', fontFamily: SANS }}>
+            {item} <span style={{ opacity: 0.4 }}>◆</span>
+          </span>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </div>
   );
 }
 
-/* ─── Services ──────────────────────────────────────────────── */
-function Services() {
+/* ── Feature pillars ──────────────────────────────────── */
+function Features() {
   return (
-    <section id="leistungen" className="px-5 py-24 sm:px-8 sm:py-28" style={{ background: p.white, scrollMarginTop: 80 }}>
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <Chip>Unser Angebot</Chip>
-            <h2 className="mt-5 font-extrabold leading-tight tracking-tight"
-              style={{ color: p.ink, fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-              Leistungen
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed sm:text-right" style={{ color: p.muted }}>
-            Klar strukturiert, patientenverständlich erklärt — von der Vorsorge bis zur Implantologie.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.05}>
-              <motion.article
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.35, ease }}
-                className="rounded-2xl p-6"
-                style={{ background: p.bg, border: `1px solid ${p.line}` }}
-              >
-                <span className="text-xs font-bold tabular-nums" style={{ color: p.teal }}>{s.n}</span>
-                <h3 className="mt-3 text-base font-bold leading-snug" style={{ color: p.ink }}>{s.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed" style={{ color: p.muted }}>{s.desc}</p>
-              </motion.article>
-            </Reveal>
+    <section style={{ background: SURF, padding: '5rem 0' }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {FEATURES.map((f, i) => (
+            <motion.div key={f.head}
+              initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.7, delay: i * 0.1, ease }}
+              whileHover={{ y: -5, boxShadow: `0 12px 32px rgba(0,0,0,0.09)` }}
+              className="rounded-2xl p-7 transition-shadow"
+              style={{ background: CARD, border: `1px solid ${LINEW}`, cursor: 'default',
+                       boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
+            >
+              <span style={{ fontSize: '1.4rem', color: GOLD }}>{f.icon}</span>
+              <h3 style={{ marginTop: '1rem', fontSize: '0.95rem', fontWeight: 700,
+                           color: INK, fontFamily: SANS, lineHeight: 1.35 }}>{f.head}</h3>
+              <p style={{ marginTop: '0.6rem', fontSize: '0.83rem', lineHeight: 1.75,
+                          color: BODY, fontFamily: SANS }}>{f.text}</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -322,42 +366,135 @@ function Services() {
   );
 }
 
-/* ─── Team ──────────────────────────────────────────────────── */
+/* ── Services (accordion) ─────────────────────────────── */
+function Services() {
+  const [open, setOpen] = useState(null);
+  return (
+    <section id="leistungen" style={{ background: BG, scrollMarginTop: 80, padding: '6rem 0' }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionLabel>Unser Angebot</SectionLabel>
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease }}
+          style={{ fontFamily: SERIF, color: INK, fontSize: 'clamp(2.2rem,4.5vw,3.8rem)',
+                   fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1,
+                   marginTop: '1rem', marginBottom: '3rem' }}
+        >
+          Leistungen
+        </motion.h2>
+        <GoldDivider />
+        {SERVICES.map((s, i) => (
+          <motion.div key={s.n}
+            initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.55, delay: i * 0.05, ease }}
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(open === i ? null : i)}
+              className="w-full text-left"
+              style={{ display: 'block', width: '100%', background: 'none', border: 'none',
+                       borderBottom: `1px solid ${LINEW}`, padding: '1.3rem 0', cursor: 'pointer' }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center',
+                            justifyContent: 'space-between', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                  <span style={{ fontSize: '0.68rem', fontWeight: 700, fontFamily: SANS,
+                                 color: GOLD, minWidth: 28, letterSpacing: '0.1em' }}>{s.n}</span>
+                  <span style={{ fontSize: '1rem', fontWeight: 600, fontFamily: SANS,
+                                 color: open === i ? TEAL : INK, transition: 'color 0.3s' }}>{s.name}</span>
+                </div>
+                <motion.span animate={{ rotate: open === i ? 45 : 0 }} transition={{ duration: 0.28 }}
+                  style={{ color: GOLD, fontSize: '1.25rem', lineHeight: 1, display: 'inline-block' }}>+</motion.span>
+              </div>
+            </button>
+            <AnimatePresence initial={false}>
+              {open === i && (
+                <motion.div
+                  key="desc"
+                  initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35, ease }}
+                  style={{ overflow: 'hidden' }}
+                >
+                  <p style={{ padding: '0.7rem 0 1.4rem 3.25rem', fontSize: '0.88rem',
+                              lineHeight: 1.75, color: BODY, fontFamily: SANS }}>{s.desc}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
+        <GoldDivider />
+      </div>
+    </section>
+  );
+}
+
+/* ── Stats (dark panel) ───────────────────────────────── */
+function Stats() {
+  return (
+    <section style={{ background: DARK, padding: '5.5rem 0' }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-3">
+          {STATS.map((s, i) => (
+            <motion.div key={s.label}
+              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.7, delay: i * 0.14, ease }}
+            >
+              <div style={{ fontFamily: SERIF, fontSize: 'clamp(3rem,6vw,4.5rem)',
+                            fontWeight: 800, color: '#C8A86B', lineHeight: 1, letterSpacing: '-0.03em' }}>
+                <Counter to={s.val} suf={s.suf} isFloat={s.isFloat} />
+              </div>
+              <div style={{ marginTop: '0.75rem', fontSize: '0.88rem', fontWeight: 500,
+                            color: 'rgba(200,220,240,0.7)', fontFamily: SANS,
+                            letterSpacing: '0.04em' }}>{s.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Team ─────────────────────────────────────────────── */
 function Team() {
   return (
-    <section id="team" className="px-5 py-24 sm:px-8 sm:py-28" style={{ background: p.surface, scrollMarginTop: 80 }}>
-      <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <Chip>Ihr Team</Chip>
-          <h2 className="mt-5 font-extrabold tracking-tight"
-            style={{ color: p.ink, fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-            Persönliche Betreuung von Anfang an
-          </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed" style={{ color: p.body }}>
-            Drei Ansprechpartner, klare Zuständigkeiten und echte Kontinuität in der Behandlung.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
-          {team.map((m, i) => (
-            <Reveal key={m.name} delay={i * 0.11}>
-              <motion.article
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease }}
-                className="group overflow-hidden rounded-[1.8rem]"
-                style={{ background: p.white, border: `1px solid ${p.line}`, boxShadow: '0 16px 40px rgba(12,29,38,0.07)' }}
-              >
-                <div className="relative h-72 overflow-hidden">
-                  <Image src={m.image} alt={`${m.name} – ${m.role}`} fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+    <section id="team" style={{ background: SURF, scrollMarginTop: 80, padding: '6rem 0' }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionLabel>Ihr Team</SectionLabel>
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease }}
+          style={{ fontFamily: SERIF, color: INK, fontSize: 'clamp(2.2rem,4.5vw,3.8rem)',
+                   fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1,
+                   marginTop: '1rem', marginBottom: '3rem' }}
+        >
+          Persönliche Betreuung<br />
+          <em style={{ color: GOLD, fontStyle: 'italic' }}>von Anfang an.</em>
+        </motion.h2>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {TEAM.map((m, i) => (
+            <motion.article key={m.name}
+              initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.8, delay: i * 0.13, ease }}
+              className="group relative overflow-hidden rounded-2xl"
+              style={{ background: CARD, border: `1px solid ${LINEW}`,
+                       boxShadow: '0 4px 16px rgba(0,0,0,0.07)' }}
+              whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(0,0,0,0.13)' }}
+            >
+              <div className="relative h-80 overflow-hidden">
+                <Image src={m.img} alt={`${m.name} — ${m.role}`} fill
+                  className="object-cover object-top transition-all duration-700 group-hover:scale-110 group-hover:brightness-60" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: 'linear-gradient(to top, rgba(14,24,38,0.92) 0%, rgba(14,24,38,0.3) 60%, transparent 100%)' }}>
+                  <p style={{ fontSize: '0.82rem', fontStyle: 'italic', color: 'rgba(220,235,250,0.9)',
+                              fontFamily: SERIF, lineHeight: 1.65 }}>«{m.quote}»</p>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold" style={{ color: p.ink }}>{m.name}</h3>
-                  <p className="mt-1 text-sm font-medium" style={{ color: p.teal }}>{m.role}</p>
-                </div>
-              </motion.article>
-            </Reveal>
+              </div>
+              <div className="p-5" style={{ borderTop: `1px solid ${LINEW}` }}>
+                <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: INK, fontFamily: SANS }}>{m.name}</h3>
+                <p style={{ marginTop: '0.3rem', fontSize: '0.78rem', fontWeight: 500,
+                            color: TEAL, fontFamily: SANS }}>{m.role}</p>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
@@ -365,35 +502,37 @@ function Team() {
   );
 }
 
-/* ─── Gallery ───────────────────────────────────────────────── */
+/* ── Gallery ──────────────────────────────────────────── */
 function Gallery() {
   return (
-    <section id="praxis" className="px-5 py-24 sm:px-8 sm:py-28" style={{ background: p.white, scrollMarginTop: 80 }}>
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <Chip>Einblick</Chip>
-            <h2 className="mt-5 font-extrabold tracking-tight"
-              style={{ color: p.ink, fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-              Ein Blick in unsere Praxis
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed sm:text-right" style={{ color: p.muted }}>
-            Helle Räume, moderne Ausstattung und eine bewusst ruhige Atmosphäre.
-          </p>
-        </Reveal>
-
-        <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {gallery.map((img, i) => (
-            <Reveal key={img.src} delay={i * 0.08} className={img.wide ? 'col-span-2' : ''}>
-              <figure className="group h-full overflow-hidden rounded-[1.4rem]"
-                style={{ border: `1px solid ${p.line}` }}>
-                <div className={`relative ${img.wide ? 'h-[240px]' : 'h-[220px]'}`}>
-                  <Image src={img.src} alt={img.alt} fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-              </figure>
-            </Reveal>
+    <section id="praxis" style={{ background: BG, scrollMarginTop: 80, padding: '6rem 0' }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionLabel>Einblick</SectionLabel>
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease }}
+          style={{ fontFamily: SERIF, color: INK, fontSize: 'clamp(2.2rem,4.5vw,3.8rem)',
+                   fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1,
+                   marginTop: '1rem', marginBottom: '3rem' }}
+        >
+          Unsere Praxis
+        </motion.h2>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {GALLERY.map((img, i) => (
+            <motion.figure key={img.src}
+              initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }} transition={{ duration: 0.7, delay: i * 0.09, ease }}
+              className="group relative overflow-hidden rounded-2xl"
+              style={{ height: 220, border: `1px solid ${LINEW}`,
+                       boxShadow: '0 2px 12px rgba(0,0,0,0.07)' }}
+            >
+              <Image src={img.src} alt={img.alt} fill
+                className="object-cover transition-transform duration-700 group-hover:scale-106" />
+              <div className="absolute inset-0 flex items-end p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{ background: 'linear-gradient(to top, rgba(14,24,38,0.6), transparent)' }}>
+                <p style={{ fontSize: '0.78rem', fontWeight: 500, color: '#fff', fontFamily: SANS }}>{img.alt}</p>
+              </div>
+            </motion.figure>
           ))}
         </div>
       </div>
@@ -401,140 +540,210 @@ function Gallery() {
   );
 }
 
-/* ─── Booking ───────────────────────────────────────────────── */
-function Booking() {
-  const iStyle = {
-    width: '100%', borderRadius: '0.75rem',
-    background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
-    color: '#E8F4F8', padding: '0.75rem 1rem', fontSize: '0.9rem', fontFamily: font,
-  };
-
+/* ── Testimonials (dark panel) ────────────────────────── */
+function Testimonials() {
   return (
-    <section id="termin" className="px-5 py-24 sm:px-8 sm:py-28" style={{ background: p.tealDark, scrollMarginTop: 80 }}>
-      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-        <div>
-          <Reveal>
-            <span className="inline-flex items-center rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em]"
-              style={{ background: 'rgba(26,120,150,0.35)', color: '#A8D8E8' }}>
-              Jetzt anfragen
-            </span>
-            <h2 className="mt-6 font-extrabold leading-tight tracking-tight"
-              style={{ color: '#F0F8FA', fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-              Termin anfragen
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed" style={{ color: 'rgba(200,225,234,0.8)' }}>
-              Ob Vorsorge, Reinigung oder individuelle Behandlung — wir melden uns zeitnah
-              mit einem Terminvorschlag.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <dl className="mt-10 space-y-5">
-              {[
-                { dt: 'Öffnungszeiten', dd: hours.map(h => `${h.day}: ${h.time}`).join(' · ') },
-                { dt: 'Adresse',        dd: 'Musterstraße 27 · 20095 Hamburg' },
-                { dt: 'Telefon',        dd: '040 / 123 45 67' },
-                { dt: 'E-Mail',         dd: 'kontakt@elb-dent.de' },
-              ].map(({ dt, dd }) => (
-                <div key={dt}>
-                  <dt className="text-xs font-bold uppercase tracking-[0.22em]" style={{ color: '#6BBFD4' }}>{dt}</dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed" style={{ color: 'rgba(200,225,234,0.75)' }}>{dd}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
+    <section style={{ background: DARK, padding: '6rem 0' }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionLabel onDark>Patientenstimmen</SectionLabel>
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease }}
+          style={{ fontFamily: SERIF, color: '#F0EAE2', fontSize: 'clamp(2.2rem,4.5vw,3.8rem)',
+                   fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1,
+                   marginTop: '1rem', marginBottom: '3rem' }}
+        >
+          Was unsere Patienten<br />
+          <em style={{ color: '#C8A86B', fontStyle: 'italic' }}>sagen.</em>
+        </motion.h2>
+        <div className="grid gap-5 sm:grid-cols-3">
+          {TESTIMONIALS.map((t, i) => (
+            <motion.article key={t.name}
+              initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.7, delay: i * 0.12, ease }}
+              className="rounded-2xl p-7"
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
+            >
+              <div style={{ display: 'flex', gap: 3, marginBottom: '1.1rem' }}>
+                {Array(t.stars).fill(0).map((_, j) => (
+                  <span key={j} style={{ color: '#C8A86B', fontSize: '0.85rem' }}>★</span>
+                ))}
+              </div>
+              <p style={{ fontSize: '0.88rem', lineHeight: 1.75, color: 'rgba(200,220,240,0.8)',
+                          fontFamily: SANS, fontStyle: 'italic' }}>«{t.text}»</p>
+              <p style={{ marginTop: '1.25rem', fontSize: '0.78rem', fontWeight: 700,
+                          color: '#F0EAE2', fontFamily: SANS }}>{t.name}</p>
+            </motion.article>
+          ))}
         </div>
-
-        <Reveal delay={0.15}>
-          <form className="rounded-[1.8rem] p-7 sm:p-9" onSubmit={e => e.preventDefault()}
-            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.10)' }}>
-            <p className="text-xl font-bold" style={{ color: '#E8F4F8' }}>Terminanfrage</p>
-            <p className="mt-1 text-xs" style={{ color: 'rgba(200,225,234,0.5)' }}>Demo-Formular · ohne Datenübertragung</p>
-
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <TField label="Name"><input type="text" placeholder="Ihr Name" style={iStyle} className="dental-input" /></TField>
-              <TField label="Telefon"><input type="tel" placeholder="040 …" style={iStyle} className="dental-input" /></TField>
-              <TField label="Wunschtermin"><input type="date" style={iStyle} className="dental-input" /></TField>
-              <TField label="Anliegen">
-                <select style={{ ...iStyle, cursor: 'pointer' }} className="dental-input">
-                  <option value="">Bitte wählen …</option>
-                  {services.map(s => <option key={s.n} value={s.name}>{s.name}</option>)}
-                </select>
-              </TField>
-            </div>
-            <div className="mt-4">
-              <TField label="Nachricht"><textarea rows={2} placeholder="Fragen, Hinweise oder Vorgeschichte …" style={iStyle} className="dental-input" /></TField>
-            </div>
-
-            <button type="submit"
-              className="mt-6 w-full rounded-full py-4 text-sm font-bold uppercase tracking-wider text-white transition hover:-translate-y-0.5"
-              style={{ background: p.teal, letterSpacing: '0.1em' }}>
-              Anfrage absenden
-            </button>
-            <p className="mt-4 text-center text-xs" style={{ color: 'rgba(200,225,234,0.45)' }}>
-              Oder anrufen:{' '}
-              <Link href="tel:+494012345678" className="underline underline-offset-4" style={{ color: '#6BBFD4' }}>040 / 123 45 67</Link>
-            </p>
-          </form>
-        </Reveal>
       </div>
     </section>
   );
 }
 
-function TField({ label, children }) {
+/* ── Booking ──────────────────────────────────────────── */
+function Field({ label, children }) {
   return (
-    <label className="block">
-      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.14em]"
-        style={{ color: 'rgba(200,225,234,0.55)' }}>{label}</span>
+    <label style={{ display: 'block' }}>
+      <span style={{ display: 'block', marginBottom: '0.4rem', fontSize: '0.63rem',
+                     fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+                     color: MUTED, fontFamily: SANS }}>{label}</span>
       {children}
     </label>
   );
 }
 
-/* ─── Footer ────────────────────────────────────────────────── */
-function Foot() {
+function Booking() {
+  const iStyle = {
+    width: '100%', borderRadius: '0.6rem', fontFamily: SANS,
+    background: CARD, border: `1px solid ${LINEW}`,
+    color: INK, padding: '0.72rem 1rem', fontSize: '0.87rem',
+  };
+  const HOURS = ['Mo 08:00 – 18:00', 'Di 08:00 – 19:00', 'Mi 08:00 – 16:00', 'Do 08:00 – 18:00', 'Fr 08:00 – 14:00'];
   return (
-    <footer className="px-5 py-12 sm:px-8" style={{ background: p.bg, borderTop: `1px solid ${p.line}` }}>
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-        <div>
-          <p className="text-base font-bold" style={{ color: p.ink }}>Praxis ElbDent</p>
-          <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.22em]" style={{ color: p.teal }}>Hamburg · Eppendorf</p>
+    <section id="termin" style={{ background: SURF, scrollMarginTop: 80, padding: '6rem 0' }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="grid items-start gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+          <div>
+            <SectionLabel>Jetzt anfragen</SectionLabel>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease }}
+              style={{ fontFamily: SERIF, color: INK, fontSize: 'clamp(2.2rem,4.5vw,3.5rem)',
+                       fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1, marginTop: '1rem' }}
+            >
+              Wir freuen uns<br />
+              <em style={{ color: GOLD, fontStyle: 'italic' }}>auf Sie.</em>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease }}
+              style={{ marginTop: '1.25rem', fontSize: '0.9rem', lineHeight: 1.75,
+                       color: BODY, fontFamily: SANS, maxWidth: '22rem' }}
+            >
+              Ob Vorsorge, ästhetische Behandlung oder Notfall — wir melden uns zeitnah
+              mit einem Terminvorschlag.
+            </motion.p>
+            <motion.dl
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.28, ease }}
+              style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.4rem' }}
+            >
+              {[
+                { dt: 'Öffnungszeiten', dd: HOURS.join(' · ') },
+                { dt: 'Adresse',        dd: 'Musterstraße 27 · 20095 Hamburg' },
+                { dt: 'Telefon',        dd: '040 / 123 45 67' },
+                { dt: 'E-Mail',         dd: 'hallo@elb-dent.de' },
+              ].map(({ dt, dd }) => (
+                <div key={dt}>
+                  <dt style={{ fontSize: '0.63rem', fontWeight: 700, letterSpacing: '0.22em',
+                               textTransform: 'uppercase', color: GOLD, fontFamily: SANS }}>{dt}</dt>
+                  <dd style={{ marginTop: '0.3rem', fontSize: '0.87rem', color: BODY,
+                               fontFamily: SANS, lineHeight: 1.6 }}>{dd}</dd>
+                </div>
+              ))}
+            </motion.dl>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.15, ease }}>
+            <form className="rounded-2xl p-7 sm:p-9" onSubmit={e => e.preventDefault()}
+              style={{ background: CARD, border: `1px solid ${LINEW}`,
+                       boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}>
+              <p style={{ fontSize: '1.2rem', fontWeight: 700, color: INK, fontFamily: SERIF }}>Terminanfrage</p>
+              <p style={{ marginTop: '0.2rem', fontSize: '0.7rem', color: MUTED, fontFamily: SANS }}>Demo-Formular · keine Datenübertragung</p>
+              <div className="grid gap-4 sm:grid-cols-2" style={{ marginTop: '1.5rem' }}>
+                <Field label="Name"><input type="text" placeholder="Ihr Name" style={iStyle} className="elb-input" /></Field>
+                <Field label="Telefon"><input type="tel" placeholder="040 …" style={iStyle} className="elb-input" /></Field>
+                <Field label="Wunschdatum"><input type="date" style={iStyle} className="elb-input" /></Field>
+                <Field label="Anliegen">
+                  <select style={{ ...iStyle, cursor: 'pointer' }} className="elb-input">
+                    <option value="">Bitte wählen …</option>
+                    {SERVICES.map(s => <option key={s.n} value={s.name}>{s.name}</option>)}
+                  </select>
+                </Field>
+              </div>
+              <div style={{ marginTop: '1rem' }}>
+                <Field label="Nachricht">
+                  <textarea rows={2} placeholder="Fragen, Hinweise oder Vorgeschichte …"
+                    style={iStyle} className="elb-input" />
+                </Field>
+              </div>
+              <button type="submit"
+                className="mt-6 w-full rounded-full py-4 font-bold uppercase tracking-wider text-white transition-all hover:-translate-y-0.5"
+                style={{ background: TEAL, fontSize: '0.78rem', letterSpacing: '0.14em',
+                         fontFamily: SANS, boxShadow: `0 8px 28px rgba(26,120,150,0.35)` }}>
+                Anfrage absenden
+              </button>
+              <p style={{ marginTop: '1rem', textAlign: 'center', fontSize: '0.74rem',
+                          color: MUTED, fontFamily: SANS }}>
+                oder anrufen:{' '}
+                <Link href="tel:+494012345678"
+                  style={{ color: TEAL, textDecorationLine: 'underline', textUnderlineOffset: 3 }}>040 / 123 45 67</Link>
+              </p>
+            </form>
+          </motion.div>
         </div>
-        <p className="text-xs" style={{ color: p.faint }}>Demo-Konzept von Hamburg Websites · ohne erfundene Kundenergebnisse</p>
+      </div>
+    </section>
+  );
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+function Footer() {
+  return (
+    <footer style={{ background: BG, borderTop: `1px solid ${LINEW}`, padding: '3rem 0' }}>
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-center sm:flex-row sm:px-8 sm:text-left">
+        <div>
+          <p style={{ fontSize: '1.1rem', fontWeight: 800, color: INK, fontFamily: SERIF }}>ElbDent</p>
+          <p style={{ marginTop: '0.2rem', fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.3em',
+                      textTransform: 'uppercase', color: GOLD, fontFamily: SANS }}>Hamburg · Eppendorf</p>
+        </div>
+        <p style={{ fontSize: '0.72rem', color: MUTED, fontFamily: SANS }}>
+          Demo-Konzept von Hamburg Websites · ohne erfundene Patientenergebnisse
+        </p>
       </div>
     </footer>
   );
 }
 
-/* ─── Page ──────────────────────────────────────────────────── */
+/* ── Page ─────────────────────────────────────────────── */
 export default function ZahnarztDemoPage() {
   return (
     <>
       <SEOHead
-        title="Praxis ElbDent Hamburg"
-        description="Moderne Zahnarztpraxis ElbDent in Hamburg-Eppendorf: Prophylaxe, Implantologie, Zahnersatz, ästhetische Zahnheilkunde und Terminanfrage."
+        title="Praxis ElbDent Hamburg — Zahnarzt mit Herz"
+        description="Moderne Zahnarztpraxis ElbDent in Hamburg-Eppendorf: Prophylaxe, Implantologie, Zahnersatz, Ästhetik — jetzt Termin anfragen."
         path="/referenzen/zahnarzt-demo"
       />
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      </Head>
 
-      <div style={{ background: p.bg, color: p.body, fontFamily: font, scrollBehavior: 'smooth' }}>
+      <div style={{ background: BG, color: BODY, fontFamily: SANS, scrollBehavior: 'smooth' }}>
         <ReferenceStickyBackButton />
         <TopNav />
         <main>
           <Hero />
-          <Pillars />
+          <Ticker />
+          <Features />
           <Services />
+          <Stats />
           <Team />
           <Gallery />
+          <Testimonials />
           <Booking />
         </main>
-        <Foot />
+        <Footer />
       </div>
 
       <style jsx>{`
-        .dental-input::placeholder { color: rgba(200,225,234,0.35); }
-        .dental-input:focus        { outline: none; border-color: rgba(26,120,150,0.6); }
-        .dental-input option       { background: ${p.tealDark}; color: #E8F4F8; }
+        .elb-input::placeholder { color: ${MUTED}; }
+        .elb-input:focus        { outline: none; border-color: ${TEAL}; box-shadow: 0 0 0 3px rgba(26,120,150,0.1); }
+        .elb-input option       { background: ${CARD}; color: ${INK}; }
       `}</style>
     </>
   );
