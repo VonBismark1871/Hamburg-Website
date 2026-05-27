@@ -46,21 +46,21 @@ const signatures = [
     description: 'Zart gebratenes Filet, geröstete Rosmarinkartoffeln und ein dunkler Trüffeljus.',
     price: '29 €',
     tag: 'Empfehlung des Hauses',
-    image: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80'
+    image: '/restaurant-images/rinderfilet.jpg'
   },
   {
     name: 'Tagliatelle mit Burrata',
     description: 'Frische hausgemachte Tagliatelle, cremige Burrata, sonnengereifte Tomaten und Basilikumöl.',
     price: '18 €',
     tag: 'Vegetarisch',
-    image: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1200&q=80'
+    image: '/restaurant-images/burrata.jpg'
   },
   {
     name: 'Grauburgunder & Vorspeisen',
     description: 'Eine Auswahl der Saison, begleitet von einem trockenen, mineralischen Weißwein.',
     price: '24 €',
     tag: 'Zum Teilen',
-    image: 'https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80'
+    image: '/restaurant-images/grauburgunder.jpg'
   }
 ];
 
@@ -68,41 +68,41 @@ const menuCategories = [
   {
     category: 'Vorspeisen',
     items: [
-      { name: 'Burrata mit Tomaten und Basilikum', description: 'Cremige Burrata, bunte Tomaten, kaltgepresstes Olivenöl, Basilikum.', price: '12 €', image: 'https://images.unsplash.com/photo-1559561853-08451507cbe7?auto=format&fit=crop&w=600&q=80' },
-      { name: 'Rindercarpaccio mit Parmesan', description: 'Hauchdünnes Rindfleisch, Rucola, Zitrone und gehobelter Parmesan.', price: '14 €', image: 'https://images.unsplash.com/photo-1544025162-d76538971491?auto=format&fit=crop&w=600&q=80' },
-      { name: 'Gebratene Garnelen mit Kräutern', description: 'In Knoblauch und Petersilie geschwenkt, mit leichter Zitronennote.', price: '15 €', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80' }
+      { name: 'Burrata mit Tomaten und Basilikum', description: 'Cremige Burrata, bunte Tomaten, kaltgepresstes Olivenöl, Basilikum.', price: '12 €', image: '/restaurant-images/burrata.jpg' },
+      { name: 'Rindercarpaccio mit Parmesan', description: 'Hauchdünnes Rindfleisch, Rucola, Zitrone und gehobelter Parmesan.', price: '14 €', image: '/restaurant-images/carpaccio.jpg' },
+      { name: 'Gebratene Garnelen mit Kräutern', description: 'In Knoblauch und Petersilie geschwenkt, mit leichter Zitronennote.', price: '15 €', image: '/restaurant-images/garnelen.jpg' }
     ]
   },
   {
     category: 'Hauptgerichte',
     items: [
-      { name: 'Gebratenes Lachsfilet mit Gemüse', description: 'Auf der Haut gebraten, saisonales Marktgemüse, Kräuterbutter.', price: '24 €', image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80' },
-      { name: 'Rinderfilet mit Rosmarinkartoffeln', description: 'Zartes Rinderfilet, geröstete Rosmarinkartoffeln, dunkler Jus.', price: '29 €', image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80' },
-      { name: 'Hausgemachte Pasta mit Trüffel', description: 'Frische Pasta, cremige Trüffelsauce, Parmesan, schwarzer Pfeffer.', price: '19 €', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?auto=format&fit=crop&w=600&q=80' }
+      { name: 'Gebratenes Lachsfilet mit Gemüse', description: 'Auf der Haut gebraten, saisonales Marktgemüse, Kräuterbutter.', price: '24 €', image: '/restaurant-images/lachs.jpg' },
+      { name: 'Rinderfilet mit Rosmarinkartoffeln', description: 'Zartes Rinderfilet, geröstete Rosmarinkartoffeln, dunkler Jus.', price: '29 €', image: '/restaurant-images/rinderfilet.jpg' },
+      { name: 'Hausgemachte Pasta mit Trüffel', description: 'Frische Pasta, cremige Trüffelsauce, Parmesan, schwarzer Pfeffer.', price: '19 €', image: '/restaurant-images/pasta-trueffel.jpg' }
     ]
   },
   {
     category: 'Desserts',
     items: [
-      { name: 'Tiramisu', description: 'Klassisch geschichtet mit Espresso, Mascarpone und Kakao.', price: '9 €', image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80' },
-      { name: 'Zitronentarte', description: 'Mürber Boden, frische Zitronencreme, karamellisierte Meringue.', price: '8 €', image: 'https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=600&q=80' },
-      { name: 'Schokoladenmousse', description: 'Luftige Mousse aus dunkler Schokolade mit marinierten Beeren.', price: '9 €', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80' }
+      { name: 'Tiramisu', description: 'Klassisch geschichtet mit Espresso, Mascarpone und Kakao.', price: '9 €', image: '/restaurant-images/tiramisu.jpg' },
+      { name: 'Zitronentarte', description: 'Mürber Boden, frische Zitronencreme, karamellisierte Meringue.', price: '8 €', image: '/restaurant-images/zitronentarte.jpg' },
+      { name: 'Schokoladenmousse', description: 'Luftige Mousse aus dunkler Schokolade mit marinierten Beeren.', price: '9 €', image: '/restaurant-images/schokoladenmousse.jpg' }
     ]
   },
   {
     category: 'Weine & Getränke',
     items: [
-      { name: 'Grauburgunder, trocken (0,2 l)', description: 'Fruchtig-mineralisch, passend zu Fisch und Vorspeisen.', price: '8 €', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80' },
-      { name: 'Hausgemachte Limonade', description: 'Zitrone, Minze und Soda, frisch serviert auf Eis.', price: '6 €', image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=600&q=80' }
+      { name: 'Grauburgunder, trocken (0,2 l)', description: 'Fruchtig-mineralisch, passend zu Fisch und Vorspeisen.', price: '8 €', image: '/restaurant-images/grauburgunder.jpg' },
+      { name: 'Hausgemachte Limonade', description: 'Zitrone, Minze und Soda, frisch serviert auf Eis.', price: '6 €', image: '/restaurant-images/limonade.jpg' }
     ]
   }
 ];
 
 const gallery = [
-  { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80', alt: 'Warm beleuchteter Esstisch mit Weingläsern im Abendlicht', span: 'lg:col-span-2 lg:row-span-2', h: 'h-[280px] lg:h-full' },
-  { src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80', alt: 'Gedeckter Tisch mit mehreren Tellern', span: '', h: 'h-[200px] lg:h-[244px]' },
-  { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80', alt: 'Modern angerichtetes Gericht auf hellem Teller', span: '', h: 'h-[200px] lg:h-[244px]' },
-  { src: 'https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=1000&q=80', alt: 'Stimmungsvolles Restaurant-Interieur', span: 'lg:col-span-2', h: 'h-[200px] lg:h-[244px]' }
+  { src: '/restaurant-images/innenraum.jpg', alt: 'Innenraum mit Blick auf den Hamburger Hafen', span: 'lg:col-span-2 lg:row-span-2', h: 'h-[280px] lg:h-full' },
+  { src: '/restaurant-images/tisch.jpg', alt: 'Gedeckter Tisch im Abendlicht', span: '', h: 'h-[200px] lg:h-[244px]' },
+  { src: '/restaurant-images/kerzenlicht.jpg', alt: 'Kerzenlicht und warme Atmosphäre', span: '', h: 'h-[200px] lg:h-[244px]' },
+  { src: '/restaurant-images/gastraum.jpg', alt: 'Gastraum mit stilvollem Ambiente', span: 'lg:col-span-2', h: 'h-[200px] lg:h-[244px]' }
 ];
 
 function Reveal({ children, delay = 0, y = 28, className }) {
@@ -215,7 +215,7 @@ function Hero() {
     <section id="start" className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '640px', height: '100svh' }}>
       <motion.div initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 1.8, ease }} className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=2000&q=80"
+          src="/restaurant-images/hero-bar.jpg"
           alt="Stimmungsvoll beleuchteter Gastraum des Hafenblick Bistro am Abend"
           fill
           priority
@@ -284,7 +284,7 @@ function Philosophy() {
         <Reveal>
           <figure className="relative overflow-hidden rounded-[2rem]">
             <Image
-              src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80"
+              src="/restaurant-images/chef.jpg"
               alt="Küchenchef finalisiert ein detailreich angerichtetes Gericht"
               width={1200}
               height={1400}
@@ -470,7 +470,7 @@ function Ambiance() {
   return (
     <section className="relative overflow-hidden px-5 py-28 sm:px-8 sm:py-36">
       <div className="absolute inset-0">
-        <Image src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80" alt="Warmes Restaurant-Interieur im Abendlicht" fill className="object-cover" />
+        <Image src="/restaurant-images/weinbar.jpg" alt="Warmes Restaurant-Interieur im Abendlicht" fill className="object-cover" />
         <div className="absolute inset-0" style={{ background: 'rgba(14,11,7,0.8)' }} />
       </div>
       <Reveal className="relative z-10 mx-auto max-w-3xl text-center">
