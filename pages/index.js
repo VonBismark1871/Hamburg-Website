@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 import Portfolio from '../components/Portfolio';
+import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
@@ -321,6 +322,7 @@ export default function HomePage() {
         <Portfolio />
         <ManifestBand />
         <WhyMe />
+        <Testimonials />
         <ProcessPreview />
         <PricingPreview />
         <FaqPreview />
