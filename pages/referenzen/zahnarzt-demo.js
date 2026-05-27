@@ -44,9 +44,9 @@ const SERVICES = [
 ];
 
 const TEAM = [
-  { name: 'Dr. Laura Richter',  role: 'Allgemeine Zahnheilkunde & Ästhetik', quote: 'Schönheit entsteht, wenn Funktion und Form zusammenfinden.',        img: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Dr. Marcus Stein',   role: 'Implantologie & Oralchirurgie',        quote: 'Präzision beginnt mit Vertrauen — und Vertrauen mit Zeit.',         img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Jana Wolff',         role: 'Prophylaxe & Patientenbetreuung',      quote: 'Ein gesundes Lächeln braucht gute Gewohnheiten und echte Fürsorge.', img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80' },
+  { name: 'Dr. Laura Richter',  role: 'Allgemeine Zahnheilkunde & Ästhetik', quote: 'Schönheit entsteht, wenn Funktion und Form zusammenfinden.',        img: '/images/zahnarzt/dr-laura.jpg' },
+  { name: 'Dr. Marcus Stein',   role: 'Implantologie & Oralchirurgie',        quote: 'Präzision beginnt mit Vertrauen — und Vertrauen mit Zeit.',         img: '/images/zahnarzt/dr-marcus.jpg' },
+  { name: 'Jana Wolff',         role: 'Prophylaxe & Patientenbetreuung',      quote: 'Ein gesundes Lächeln braucht gute Gewohnheiten und echte Fürsorge.', img: '/images/zahnarzt/jana.jpg' },
 ];
 
 const STATS = [
@@ -62,10 +62,10 @@ const TESTIMONIALS = [
 ];
 
 const GALLERY = [
-  { src: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80', alt: 'Modernes Behandlungszimmer' },
-  { src: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80',  alt: 'Beratungsgespräch' },
-  { src: 'https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=800&q=80',  alt: 'Behandlungssetting' },
-  { src: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=800&q=80',  alt: 'Empfangsbereich' },
+  { src: '/images/zahnarzt/room2.jpg',           alt: 'Modernes Behandlungszimmer' },
+  { src: '/images/zahnarzt/consultation.jpg',    alt: 'Beratungsgespräch' },
+  { src: '/images/zahnarzt/treatment.jpg',       alt: 'Behandlungssetting' },
+  { src: '/images/zahnarzt/reception-elbdent.jpg', alt: 'Empfangsbereich' },
 ];
 
 const TICKER_ITEMS = [
@@ -291,9 +291,9 @@ function Hero() {
             style={{ boxShadow: `0 32px 80px -16px rgba(14,24,38,0.22), 0 0 0 1px ${LINE}` }}>
             <motion.div style={{ y: imgY, scale: imgS }}>
               <Image
-                src="https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1200&q=80"
+                src="/images/zahnarzt/room1.jpg"
                 alt="Modernes Behandlungszimmer der Praxis ElbDent"
-                width={1200} height={1600} priority
+                width={1200} height={800} priority
                 className="w-full object-cover"
                 style={{ height: '520px' }}
               />

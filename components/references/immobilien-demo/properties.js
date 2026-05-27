@@ -2,33 +2,33 @@ export const propertyFilters = ['Kauf', 'Hamburg', 'Exklusiv', 'Familiengeeignet
 
 export const propertyImageSets = {
   'penthouse-hamburg': {
-    base: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d',
+    base: '/images/immobilien/penthouse-hamburg.jpg',
     alt: 'Lichtdurchflutetes Penthouse-Wohnzimmer mit warmem Naturstein und grossen Fensterfronten'
   },
   'altbau-eppendorf': {
-    base: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85',
+    base: '/images/immobilien/altbau-eppendorf.jpg',
     alt: 'Eleganter Altbau-Wohnraum mit hohen Decken, Parkett und ruhiger Farbwelt'
   },
   'stadthaus-blankenese': {
-    base: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+    base: '/images/immobilien/stadthaus-blankenese.jpg',
     alt: 'Familienfreundliches Stadthaus mit heller Fassade, Terrasse und gepflegtem Garten'
   },
   'neubau-hafencity': {
-    base: 'https://images.unsplash.com/photo-1600607688969-a5bfcd646154',
+    base: '/images/immobilien/neubau-hafencity.jpg',
     alt: 'Moderne Neubauwohnung mit bodentiefen Fenstern und klarer Architektur'
   },
   'familienhaus-volksdorf': {
-    base: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6',
+    base: '/images/immobilien/familienhaus-volksdorf.jpg',
     alt: 'Freistehendes Familienhaus mit Garten und ruhiger Wohnstrasse'
   },
   'anlage-altona': {
-    base: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e',
+    base: '/images/immobilien/anlage-altona.jpg',
     alt: 'Helle Etagenwohnung mit kompaktem Grundriss und neutraler Einrichtung'
   }
 };
 
-export function propertyImage(id, width = 1600, quality = 82) {
-  return `${propertyImageSets[id].base}?auto=format&fit=crop&w=${width}&q=${quality}`;
+export function propertyImage(id) {
+  return propertyImageSets[id].base;
 }
 
 export const properties = [

@@ -211,7 +211,7 @@ export default function ImmobilienDemoPage() {
             <Image
               src={propertyImage('penthouse-hamburg', 1800)}
               alt="Exklusives Penthouse in Hamburg-Winterhude — Elbquartier Immobilien"
-              fill priority unoptimized
+              fill priority
               style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
               sizes="100vw"
             />
@@ -322,7 +322,7 @@ export default function ImmobilienDemoPage() {
                     <Image
                       src={property.image}
                       alt={property.imageAlt}
-                      fill unoptimized
+                      fill
                       style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
@@ -480,7 +480,7 @@ export default function ImmobilienDemoPage() {
                     <Image
                       src={propertyImage(d.imgKey, 700)}
                       alt={d.name}
-                      fill unoptimized
+                      fill
                       style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
@@ -523,7 +523,7 @@ export default function ImmobilienDemoPage() {
           <Image
             src={propertyImage('familienhaus-volksdorf', 1600)}
             alt="Hamburger Immobilien — Elbquartier"
-            fill unoptimized
+            fill
             style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
             sizes="100vw"
           />

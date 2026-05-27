@@ -166,8 +166,8 @@ export default function AutoserviceDemoPage() {
         {/* HERO */}
         <section ref={heroRef} style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
           <motion.div style={{ scale: heroScale, y: heroY, position: 'absolute', inset: 0 }}>
-            <Image src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2000&q=85"
-              alt="Elbwerk Kfz-Service Hamburg" fill priority unoptimized style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
+            <Image src="/images/autoservice/hero.jpg"
+              alt="Elbwerk Kfz-Service Hamburg" fill priority style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg,rgba(8,11,16,0.97) 0%,rgba(8,11,16,0.78) 45%,rgba(8,11,16,0.25) 100%)' }} />
           </motion.div>
           <div style={{ position: 'absolute', top: '-15%', left: '-8%', width: '45%', height: '55%', background: 'radial-gradient(ellipse,rgba(232,50,28,0.11) 0%,transparent 68%)', pointerEvents: 'none' }} />
@@ -313,8 +313,8 @@ export default function AutoserviceDemoPage() {
 
         {/* CINEMATIC BREAK */}
         <section style={{ position:'relative', height:'clamp(300px,44vw,520px)', overflow:'hidden' }}>
-          <Image src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=2000&q=80"
-            alt="Elbwerk Werkstatt" fill unoptimized style={{ objectFit:'cover', objectPosition:'center 50%' }} />
+          <Image src="/images/autoservice/elbwerk-cinematic.jpg"
+            alt="Elbwerk Werkstatt" fill style={{ objectFit:'cover', objectPosition:'center 50%' }} />
           <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg,rgba(8,11,16,0.94) 0%,rgba(8,11,16,0.55) 50%,rgba(8,11,16,0.2) 100%)' }} />
           <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', padding:'0 clamp(24px,7vw,120px)' }}>
             <motion.div initial={{ opacity:0,x:-28 }} whileInView={{ opacity:1,x:0 }} viewport={{ once:true }} transition={{ duration:0.8 }}>
@@ -397,16 +397,16 @@ export default function AutoserviceDemoPage() {
             </motion.div>
             <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr', gridTemplateRows:'240px 240px', gap:3 }}>
               {[
-                { src:'1486006920555-c77dcf18193c', alt:'Diagnosearbeiten', label:'Diagnose', span:2 },
-                { src:'1619642751034-765dfdf7c58e', alt:'Reparaturarbeiten', label:'Reparatur', span:1 },
-                { src:'1549317661-bd32c8ce0db2', alt:'Fahrzeugübergabe', label:'Übergabe', span:1 },
+                { src:'/images/autoservice/diagnose.jpg', alt:'Diagnosearbeiten', label:'Diagnose', span:2 },
+                { src:'/images/autoservice/reparatur.jpg', alt:'Reparaturarbeiten', label:'Reparatur', span:1 },
+                { src:'/images/autoservice/uebergabe.jpg', alt:'Fahrzeugübergabe', label:'Übergabe', span:1 },
               ].map((img, i) => (
                 <motion.div key={img.src} initial={{ opacity:0,scale:0.97 }} whileInView={{ opacity:1,scale:1 }} viewport={{ once:true }}
                   transition={{ duration:0.55,delay:i*0.1 }}
                   whileHover={{ scale:1.02 }}
                   style={{ position:'relative', overflow:'hidden', gridRow:`span ${img.span}`, cursor:'pointer' }}>
-                  <Image src={`https://images.unsplash.com/photo-${img.src}?auto=format&fit=crop&w=900&q=80`}
-                    alt={img.alt} fill unoptimized style={{ objectFit:'cover', transition:'transform 0.7s ease' }} />
+                  <Image src={img.src}
+                    alt={img.alt} fill style={{ objectFit:'cover', transition:'transform 0.7s ease' }} />
                   <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(8,11,16,0.78) 0%,transparent 55%)' }} />
                   <div style={{ position:'absolute', bottom:0, left:0, right:0, padding:'18px 20px', display:'flex', justifyContent:'space-between', alignItems:'flex-end' }}>
                     <span style={{ fontSize:10,fontWeight:700,color:R,letterSpacing:'0.18em',textTransform:'uppercase' }}>{img.label}</span>
