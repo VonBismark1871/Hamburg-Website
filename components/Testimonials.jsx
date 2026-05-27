@@ -149,7 +149,7 @@ export default function Testimonials() {
             </div>
             <div className="flex shrink-0 flex-wrap gap-3">
               <a
-                href="https://g.page/r/hamburgwebsites/review"
+                href="https://www.google.com/maps?cid=7825297498295354421"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="secondary-btn text-sm"
