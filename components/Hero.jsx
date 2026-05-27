@@ -281,8 +281,9 @@ export default function Hero() {
 
           <motion.div variants={container} initial="hidden" animate="visible">
             <motion.p variants={item} className="lead mt-7 max-w-xl">
-              Klares Design. Schnelle Seiten. Lokales SEO. Ich entwickle Websites für Hamburger
-              Unternehmen – mit Struktur und Überzeugungskraft, die Anfragen bringt.
+              Ich entwickle Websites für Hamburger Unternehmen – damit qualifizierte Anfragen
+              eingehen, der erste Eindruck überzeugt und Ihr Unternehmen dort gefunden wird,
+              wo Ihre Kunden suchen.
             </motion.p>
 
             <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">
