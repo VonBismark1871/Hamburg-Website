@@ -16,7 +16,7 @@ const conditionData = [
     sub: 'Von akuten Verspannungen bis zum Bandscheibenvorfall — mit manualtherapeutischen Techniken und einem individuellen Übungsprogramm.',
     treatments: ['Manuelle Therapie', 'Krankengymnastik', 'Haltungstraining', 'Elektrotherapie'],
     duration: '6–12 Einheiten',
-    img: '1576671081837-49000212a370',
+    img: '/images/physio/treatment2.jpg',
     href: '/referenzen/physio-demo/rueckenschmerzen',
   },
   {
@@ -26,7 +26,7 @@ const conditionData = [
     sub: 'Muskuläre Spannungen, Schulterprobleme und Kopfschmerzen durch HWS systematisch angehen — mit Tiefenentspannung und gezielter Kräftigung.',
     treatments: ['Manuelle Therapie', 'Klassische Massage', 'Bewegungstherapie', 'Heimübungen'],
     duration: '4–8 Einheiten',
-    img: '1518611012118-696072aa579a',
+    img: '/images/physio/treatment1.jpg',
     href: '/referenzen/physio-demo/leistungen',
   },
   {
@@ -36,7 +36,7 @@ const conditionData = [
     sub: 'Zerrungen, Überlastungen und Gelenkbeschwerden — sportgerechte Rehabilitation für Hobby- und Leistungssportler mit klarem Stufenplan.',
     treatments: ['Sportphysiotherapie', 'Lymphdrainage', 'Funktionstraining', 'Tape & Bandagen'],
     duration: '4–10 Einheiten',
-    img: '1594381898411-846e7d193883',
+    img: '/images/physio/treatment3.jpg',
     href: '/referenzen/physio-demo/leistungen',
   },
   {
@@ -46,7 +46,7 @@ const conditionData = [
     sub: 'Nach Operationen an Knie, Hüfte oder Wirbelsäule: strukturierte Mobilisation mit messbaren Meilensteinen — auf Rezept und als Selbstzahler.',
     treatments: ['Physio auf Rezept', 'Mobilisation', 'Kräftigung', 'Gangschulung'],
     duration: '12–24 Einheiten',
-    img: '1571019613914-85f342c6a11e',
+    img: '/images/physio/treatment4.jpg',
     href: '/referenzen/physio-demo/leistungen',
   },
 ];
@@ -63,9 +63,9 @@ const services = [
 ];
 
 const team = [
-  { name: 'Maria Hoffmann', role: 'Leitende Physiotherapeutin', spec: 'Manuelle Therapie · Sportreha', img: '1527613426441-4da17471b66d' },
-  { name: 'Stefan Bauer', role: 'Physiotherapeut', spec: 'Rücken & Wirbelsäule · Prävention', img: '1582750433449-648ed127bb54' },
-  { name: 'Jana Richter', role: 'Physiotherapeutin', spec: 'Post-OP Reha · Lymphdrainage', img: '1438761681033-6461ffad8d80' },
+  { name: 'Maria Hoffmann', role: 'Leitende Physiotherapeutin', spec: 'Manuelle Therapie · Sportreha', img: '/images/physio/portrait-maria.jpg' },
+  { name: 'Stefan Bauer', role: 'Physiotherapeut', spec: 'Rücken & Wirbelsäule · Prävention', img: '/images/physio/portrait-stefan.jpg' },
+  { name: 'Jana Richter', role: 'Physiotherapeutin', spec: 'Post-OP Reha · Lymphdrainage', img: '/images/physio/portrait-jana.jpg' },
 ];
 
 const navLinks = [
@@ -272,9 +272,9 @@ export default function PhysioDemoPage() {
           <div className="relative min-h-[380px]" style={{ overflow: 'hidden' }}>
             <motion.div style={{ scale: heroScale, height: '100%', width: '100%', position: 'absolute', inset: 0 }}>
               <Image
-                src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?auto=format&fit=crop&w=1600&q=85"
+                src="/images/physio/treatment1.jpg"
                 alt="Physiotherapeutin bei der Behandlung einer Patientin in ruhiger Praxisatmosphäre"
-                fill priority unoptimized
+                fill priority
                 style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
@@ -379,9 +379,9 @@ export default function PhysioDemoPage() {
                     position: 'relative', height: 320, borderRadius: 20, overflow: 'hidden',
                   }}>
                     <Image
-                      src={`https://images.unsplash.com/photo-${condition.img}?auto=format&fit=crop&w=900&q=80`}
+                      src={condition.img}
                       alt={condition.headline}
-                      fill unoptimized
+                      fill
                       style={{ objectFit: 'cover' }}
                       sizes="400px"
                     />
@@ -423,8 +423,8 @@ export default function PhysioDemoPage() {
                 }}>
                   <div style={{ position: 'relative', height: 260 }}>
                     <Image
-                      src={`https://images.unsplash.com/photo-${t.img}?auto=format&fit=crop&w=700&q=80`}
-                      alt={t.name} fill unoptimized
+                      src={t.img}
+                      alt={t.name} fill
                       style={{ objectFit: 'cover', objectPosition: 'center top' }}
                       sizes="(max-width: 640px) 100vw, 33vw"
                     />
@@ -543,9 +543,9 @@ export default function PhysioDemoPage() {
                 position: 'relative', borderRadius: 24, overflow: 'hidden', minHeight: 480,
               }}>
                 <Image
-                  src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=1200&q=80"
+                  src="/images/physio/treatment3.jpg"
                   alt="Therapeutin begleitet Patientin bei gezielten Übungen"
-                  fill unoptimized style={{ objectFit: 'cover' }}
+                  fill style={{ objectFit: 'cover' }}
                   sizes="(max-width: 1024px) 100vw, 67vw"
                 />
               </motion.div>
@@ -554,9 +554,9 @@ export default function PhysioDemoPage() {
                   position: 'relative', borderRadius: 20, overflow: 'hidden', minHeight: 224,
                 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1576671081837-49000212a370?auto=format&fit=crop&w=700&q=80"
+                    src="/images/physio/treatment4.jpg"
                     alt="Behandlungsraum mit Therapieliege"
-                    fill unoptimized style={{ objectFit: 'cover' }}
+                    fill style={{ objectFit: 'cover' }}
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                 </motion.div>
@@ -564,9 +564,9 @@ export default function PhysioDemoPage() {
                   position: 'relative', borderRadius: 20, overflow: 'hidden', minHeight: 224,
                 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=80"
+                    src="/images/physio/gym.jpg"
                     alt="Trainings- und Rehabilitationsbereich"
-                    fill unoptimized style={{ objectFit: 'cover' }}
+                    fill style={{ objectFit: 'cover' }}
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                 </motion.div>

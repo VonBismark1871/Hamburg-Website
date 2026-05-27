@@ -95,11 +95,10 @@ export default function BackPainDetailPage() {
         }}
       >
         <Image
-          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=85"
+          src="/images/physio/treatment2.jpg"
           alt="Physiotherapie bei Rückenschmerzen"
           fill
           priority
-          unoptimized
           style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
           sizes="100vw"
         />

@@ -43,16 +43,16 @@ const services = [
 ];
 
 const lookbook = [
-  { src: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=80', alt: 'Fertiges Balayage-Ergebnis – glänzendes, weiches Haar mit natürlichem Farbverlauf', tall: true  },
-  { src: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1000&q=80', alt: 'Moderner Kurzhaarschnitt mit präzisen Konturen',                                    tall: false },
-  { src: 'https://images.unsplash.com/photo-1522337094846-8a818e733e2f?auto=format&fit=crop&w=1000&q=80', alt: 'Farbbehandlung – satte, harmonische Nuancen als Salonergebnis',                      tall: false },
-  { src: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1200&q=80', alt: 'Luftiger Stufenschnitt mit Volumen und Bewegung',                                    tall: true  },
+  { src: '/images/friseursalon/hero.jpg',     alt: 'Fertiges Balayage-Ergebnis – glänzendes, weiches Haar mit natürlichem Farbverlauf', tall: true  },
+  { src: '/images/friseursalon/pixie.jpg',    alt: 'Moderner Kurzhaarschnitt mit präzisen Konturen',                                    tall: false },
+  { src: '/images/friseursalon/coloring.jpg', alt: 'Farbbehandlung – satte, harmonische Nuancen als Salonergebnis',                      tall: false },
+  { src: '/images/friseursalon/balayage.jpg', alt: 'Luftiger Stufenschnitt mit Volumen und Bewegung',                                    tall: true  },
 ];
 
 const team = [
-  { name: 'Anna',  role: 'Schnitt & Styling',    note: 'Lieblingslook: luftige Stufenschnitte mit natürlicher Bewegung.', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Marco', role: 'Coloration & Balayage', note: 'Spezialist für softe Übergänge und blonde Nuancen ohne harte Kanten.', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Lisa',  role: 'Beratung & Pflege',     note: 'Findet alltagstaugliche Routinen, die wirklich zum Leben passen.', image: 'https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=900&q=80' },
+  { name: 'Anna',  role: 'Schnitt & Styling',    note: 'Lieblingslook: luftige Stufenschnitte mit natürlicher Bewegung.', image: '/images/friseursalon/team-anna.jpg' },
+  { name: 'Marco', role: 'Coloration & Balayage', note: 'Spezialist für softe Übergänge und blonde Nuancen ohne harte Kanten.', image: '/images/friseursalon/team-marco.jpg' },
+  { name: 'Lisa',  role: 'Beratung & Pflege',     note: 'Findet alltagstaugliche Routinen, die wirklich zum Leben passen.', image: '/images/friseursalon/team-lisa.jpg' },
 ];
 
 /* ─── Helpers ───────────────────────────────────────────────────────────── */
@@ -233,7 +233,7 @@ function Hero() {
         style={{ minHeight: 320 }}
       >
         <Image
-          src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1400&q=80"
+          src="/images/friseursalon/salon.jpg"
           alt="Stylistin beim professionellen Damenhaarschnitt im Elbhaar Studio"
           fill
           priority
