@@ -363,7 +363,7 @@ export default function AutoserviceDemoPage() {
             </div>
 
             {/* Mobile */}
-            <div className="lg:hidden" style={{ display:'flex', flexDirection:'column' }}>
+            <div className="flex flex-col lg:hidden">
               {STEPS.map((step, i) => (
                 <motion.div key={step.n} initial={{ opacity:0,x:-16 }} whileInView={{ opacity:1,x:0 }} viewport={{ once:true }}
                   transition={{ duration:0.45,delay:i*0.08 }}
