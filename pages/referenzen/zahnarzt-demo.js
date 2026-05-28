@@ -719,9 +719,8 @@ export default function ZahnarztDemoPage() {
         noIndex
       />
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link href="https://fonts.bunny.net/css2?family=playfair-display:ital,wght@0,700;0,800;1,700;1,800&family=inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <div style={{ background: BG, color: BODY, fontFamily: SANS, scrollBehavior: 'smooth' }}>

@@ -90,20 +90,19 @@ function ManifestBand() {
 }
 
 /* ─── Marktdaten ────────────────────────────────────── */
-function ArcMeter({ percent, size = 72 }) {
+function ArcMeter({ percent, size = 72, gradId = 'arc-grad' }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduce = useReducedMotion();
   const sw = 5;
   const r = (size - sw) / 2;
   const circ = 2 * Math.PI * r;
-  const offset = reduce || !inView ? circ * (1 - percent / 100) : circ * (1 - percent / 100);
   const animatedOffset = inView || reduce ? circ * (1 - percent / 100) : circ;
 
   return (
     <svg ref={ref} width={size} height={size} aria-hidden="true">
       <defs>
-        <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#7C3AED" />
           <stop offset="100%" stopColor="#22D3EE" />
         </linearGradient>
@@ -112,7 +111,7 @@ function ArcMeter({ percent, size = 72 }) {
       <circle
         cx={size / 2} cy={size / 2} r={r}
         fill="none"
-        stroke="url(#arc-grad)"
+        stroke={`url(#${gradId})`}
         strokeWidth={sw}
         strokeLinecap="round"
         strokeDasharray={circ}
@@ -225,7 +224,7 @@ function DataBand() {
                   </p>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--cyan-2)' }}>Suchen online</p>
                 </div>
-                <ArcMeter percent={81} />
+                <ArcMeter percent={81} gradId="arc-grad-81" />
               </div>
               <FillBar percent={81} delay={0.1} />
               <p className="mt-4 text-xs leading-5" style={{ color: 'var(--muted)' }}>
@@ -245,7 +244,7 @@ function DataBand() {
                   </p>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--cyan-2)' }}>Noch ohne Website</p>
                 </div>
-                <ArcMeter percent={36} />
+                <ArcMeter percent={36} gradId="arc-grad-36" />
               </div>
               <FillBar percent={36} delay={0.05} />
               <p className="mt-4 text-xs leading-5" style={{ color: 'var(--muted)' }}>
@@ -492,7 +491,7 @@ function FinalCta() {
               <MagneticButton href="/kontakt" className="primary-btn">
                 Kostenlose Demo anfragen <ArrowIcon />
               </MagneticButton>
-              <MagneticButton href="/kontakt#audit" className="secondary-btn" strength={10}>
+              <MagneticButton href="/kontakt" className="secondary-btn" strength={10}>
                 Digital-Audit starten
               </MagneticButton>
             </div>

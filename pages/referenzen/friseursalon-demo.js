@@ -559,8 +559,9 @@ export default function FriseursalonDemoPage() {
         noIndex
       />
       <Head>
+        <link rel="preconnect" href="https://fonts.bunny.net" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+          href="https://fonts.bunny.net/css2?family=cormorant-garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
           rel="stylesheet"
         />
       </Head>
