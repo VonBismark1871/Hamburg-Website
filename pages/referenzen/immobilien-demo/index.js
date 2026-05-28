@@ -209,7 +209,7 @@ export default function ImmobilienDemoPage() {
         <section ref={heroRef} style={{ position: 'relative', height: '100svh', minHeight: 580, overflow: 'hidden' }}>
           <motion.div style={{ scale: heroScale, position: 'absolute', inset: 0 }}>
             <Image
-              src={propertyImage('penthouse-hamburg', 1800)}
+              src="/images/immobilien/hero.jpg"
               alt="Exklusives Penthouse in Hamburg-Winterhude — Elbquartier Immobilien"
               fill priority
               style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
@@ -521,7 +521,7 @@ export default function ImmobilienDemoPage() {
         {/* ── FULL-BLEED PHOTO STRIP (editorial divider) ── */}
         <div style={{ position: 'relative', height: 380, overflow: 'hidden' }}>
           <Image
-            src={propertyImage('familienhaus-volksdorf', 1600)}
+            src="/images/immobilien/familienhaus-volksdorf.jpg"
             alt="Hamburger Immobilien — Elbquartier"
             fill
             style={{ objectFit: 'cover', objectPosition: 'center 40%' }}

@@ -7,28 +7,28 @@ export const propertyImageSets = {
   },
   'altbau-eppendorf': {
     base: '/images/immobilien/altbau-eppendorf.jpg',
-    alt: 'Eleganter Altbau-Wohnraum mit hohen Decken, Parkett und ruhiger Farbwelt'
+    alt: 'Heller Altbau-Wohnraum mit hohen Decken, warmem Naturlicht und elegantem Parkett'
   },
   'stadthaus-blankenese': {
     base: '/images/immobilien/stadthaus-blankenese.jpg',
-    alt: 'Familienfreundliches Stadthaus mit heller Fassade, Terrasse und gepflegtem Garten'
+    alt: 'Stadthaus mit üppigem Garten, grüner Außenanlage und privatem Rückzugsort'
   },
   'neubau-hafencity': {
     base: '/images/immobilien/neubau-hafencity.jpg',
-    alt: 'Moderne Neubauwohnung mit bodentiefen Fenstern und klarer Architektur'
+    alt: 'Moderne Neubauwohnung mit klarer Architektur und hochwertiger Ausstattung'
   },
   'familienhaus-volksdorf': {
     base: '/images/immobilien/familienhaus-volksdorf.jpg',
-    alt: 'Freistehendes Familienhaus mit Garten und ruhiger Wohnstrasse'
+    alt: 'Freistehendes Familienhaus in naturnaher Lage mit weitläufigem Grünbereich'
   },
   'anlage-altona': {
     base: '/images/immobilien/anlage-altona.jpg',
-    alt: 'Helle Etagenwohnung mit kompaktem Grundriss und neutraler Einrichtung'
+    alt: 'Exklusives Objekt in Hamburger Bestlage — solides Investment mit Renditepotenzial'
   }
 };
 
 export function propertyImage(id) {
-  return propertyImageSets[id].base;
+  return propertyImageSets[id]?.base ?? propertyImageSets['penthouse-hamburg'].base;
 }
 
 export const properties = [
