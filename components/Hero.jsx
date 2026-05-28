@@ -96,8 +96,6 @@ function HeroVisual({ reduce }) {
 
   const rotX = useTransform(smy, [-0.5, 0.5], [8, -8]);
   const rotY = useTransform(smx, [-0.5, 0.5], [-10, 10]);
-  const layerFarX = useTransform(smx, [-0.5, 0.5], [22, -22]);
-  const layerFarY = useTransform(smy, [-0.5, 0.5], [16, -16]);
   const layerNearX = useTransform(smx, [-0.5, 0.5], [-30, 30]);
   const layerNearY = useTransform(smy, [-0.5, 0.5], [-22, 22]);
 
@@ -128,23 +126,6 @@ function HeroVisual({ reduce }) {
         transition={{ duration: 0.9, delay: 0.25, ease }}
         className="relative w-full"
       >
-        {/* Floating accent — far depth */}
-        <motion.div
-          className="absolute -left-6 top-10 z-0 hidden sm:block"
-          style={reduce ? {} : { x: layerFarX, y: layerFarY }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-        >
-          <div
-            className="rounded-2xl px-4 py-3 backdrop-blur"
-            style={{ background: 'rgba(17,14,26,0.8)', border: '1px solid var(--line-2)', boxShadow: 'var(--shadow-card)' }}
-          >
-            <p className="text-[11px] font-semibold" style={{ color: 'var(--cyan-2)' }}>Live in 7 Tagen</p>
-            <p className="mt-1 text-[10px]" style={{ color: 'var(--muted)' }}>Demo → Freigabe → Online</p>
-          </div>
-        </motion.div>
-
         {/* Browser mock — mid depth, tilts to cursor */}
         <motion.div
           className="hero-mock relative z-10"
