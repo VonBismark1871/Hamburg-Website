@@ -1,14 +1,51 @@
 import { propertyImage, propertyImageSets } from './properties';
 
-function galleryFor(id, title) {
-  const alt = propertyImageSets[id].alt;
+const galleries = {
+  'penthouse-hamburg': [
+    '/images/immobilien/penthouse-hamburg.jpg',
+    '/images/immobilien/penthouse-gallery-2.jpg',
+    '/images/immobilien/penthouse-gallery-3.jpg',
+    '/images/immobilien/penthouse-gallery-4.jpg',
+  ],
+  'altbau-eppendorf': [
+    '/images/immobilien/altbau-eppendorf.jpg',
+    '/images/immobilien/altbau-gallery-2.jpg',
+    '/images/immobilien/altbau-gallery-3.jpg',
+    '/images/immobilien/altbau-gallery-4.jpg',
+  ],
+  'stadthaus-blankenese': [
+    '/images/immobilien/stadthaus-blankenese.jpg',
+    '/images/immobilien/stadthaus-gallery-2.jpg',
+    '/images/immobilien/stadthaus-gallery-3.jpg',
+    '/images/immobilien/stadthaus-gallery-4.jpg',
+  ],
+  'neubau-hafencity': [
+    '/images/immobilien/neubau-hafencity.jpg',
+    '/images/immobilien/neubau-gallery-2.jpg',
+    '/images/immobilien/neubau-gallery-3.jpg',
+    '/images/immobilien/neubau-gallery-4.jpg',
+  ],
+  'familienhaus-volksdorf': [
+    '/images/immobilien/familienhaus-volksdorf.jpg',
+    '/images/immobilien/familienhaus-gallery-2.jpg',
+    '/images/immobilien/familienhaus-gallery-3.jpg',
+    '/images/immobilien/familienhaus-gallery-4.jpg',
+  ],
+  'anlage-altona': [
+    '/images/immobilien/anlage-altona.jpg',
+    '/images/immobilien/anlage-gallery-2.jpg',
+    '/images/immobilien/anlage-gallery-3.jpg',
+    '/images/immobilien/anlage-gallery-4.jpg',
+  ],
+};
 
-  return [
-    { src: propertyImage(id, 1800, 82), alt: `${title}: Hauptansicht der Objektserie - ${alt}` },
-    { src: propertyImage(id, 1500, 78), alt: `${title}: weiter gefasster Blick aus derselben Fotoserie` },
-    { src: propertyImage(id, 1200, 82), alt: `${title}: Detailperspektive mit identischer Licht- und Farbkorrektur` },
-    { src: propertyImage(id, 1000, 84), alt: `${title}: kompakter Ausschnitt der gleichen Immobilie` }
-  ];
+const galleryLabels = ['Hauptansicht', 'Wohnbereich', 'Weiterer Eindruck', 'Detail'];
+
+function galleryFor(id, title) {
+  return galleries[id].map((src, i) => ({
+    src,
+    alt: `${title}: ${galleryLabels[i]}`,
+  }));
 }
 
 export const exposeData = {
