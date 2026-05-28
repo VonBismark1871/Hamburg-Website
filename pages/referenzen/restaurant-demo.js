@@ -280,15 +280,14 @@ function Hero() {
 function Philosophy() {
   return (
     <section id="kueche" className="px-5 py-24 sm:px-8 sm:py-32" style={{ scrollMarginTop: 80 }}>
-      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <Reveal>
-          <figure className="relative overflow-hidden rounded-[2rem]">
+      <div className="mx-auto grid max-w-6xl items-stretch gap-12 lg:grid-cols-2 lg:gap-16">
+        <Reveal className="h-full">
+          <figure className="relative h-full min-h-[420px] overflow-hidden rounded-[2rem] sm:min-h-[540px]">
             <Image
               src="/restaurant-images/chef.jpg"
               alt="Küchenchef finalisiert ein detailreich angerichtetes Gericht"
-              width={1200}
-              height={1400}
-              className="h-[420px] w-full object-cover sm:h-[540px]"
+              fill
+              className="object-cover object-[center_30%]"
             />
             <figcaption className="absolute bottom-5 left-5 rounded-full px-4 py-2 text-xs uppercase" style={{ background: 'rgba(14,11,7,0.7)', color: palette.gold, letterSpacing: '0.2em', backdropFilter: 'blur(8px)' }}>
               Unsere Küche · täglich frisch
@@ -296,7 +295,7 @@ function Philosophy() {
           </figure>
         </Reveal>
 
-        <div>
+        <div className="flex flex-col justify-center">
           <Reveal>
             <Kicker>Die Philosophie</Kicker>
             <h2 className="mt-5 text-4xl leading-tight sm:text-5xl" style={{ fontFamily: displayFont, color: palette.cream, fontWeight: 600 }}>
