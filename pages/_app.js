@@ -65,7 +65,7 @@ export default function App({ Component, pageProps }) {
         <link rel="shortcut icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
         <link rel="apple-touch-icon" href="/brand/hw-approved-icon-transparent-v1.png" />
       </Head>
-      <ScrollProgress />
+      {!router.asPath.startsWith('/referenzen/') && <ScrollProgress />}
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={router.asPath}
