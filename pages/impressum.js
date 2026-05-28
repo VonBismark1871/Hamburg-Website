@@ -51,6 +51,28 @@ export default function ImpressumPage() {
             </h2>
             <p>DE449549426</p>
           </section>
+
+          <section className="space-y-4 text-base leading-8" style={{ color: '#9690A8' }}>
+            <h2 className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>
+              Online-Streitbeilegung gemäß Art. 14 Abs. 1 ODR-VO
+            </h2>
+            <p>
+              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
+              <a
+                href="https://ec.europa.eu/consumers/odr"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={linkStyle}
+                className="underline-offset-4 hover:underline"
+              >
+                https://ec.europa.eu/consumers/odr
+              </a>
+            </p>
+            <p>
+              Hamburg Websites ist weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer
+              Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
+          </section>
         </article>
 
         <nav className="mt-10 flex flex-wrap gap-4" aria-label="Weiterführende Links">

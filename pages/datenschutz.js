@@ -189,15 +189,19 @@ const sections = [
     content: (
       <>
         <p>
-          Diese Website ist für die Schriftart „Inter“ in lokal gehosteter Form konfiguriert. Die Einbindung erfolgt
-          ohne externe Schriftanbieter-Dienste (z. B. Google Fonts). Falls lokale Font-Dateien vorübergehend nicht
-          verfügbar sind, wird automatisch auf lokale Systemschriften des Endgeräts zurückgegriffen.
+          Die Hauptwebsite (hamburg-websites.de) verwendet ausschließlich lokal gehostete Schriftarten
+          (Space Grotesk, Inter). Es findet keine Übermittlung personenbezogener Daten an externe
+          Schriftanbieter statt.
         </p>
-        <p className="mt-4">
-          Eine Übermittlung personenbezogener Daten (insbesondere der IP-Adresse) an externe Font-Provider findet
-          in diesem Zusammenhang nicht statt.
+        <p className=”mt-4”>
+          <strong>Referenz- und Demo-Seiten:</strong> Die unter /referenzen/ verlinkten Beispielwebsites
+          dienen ausschließlich der gestalterischen Demonstration möglicher Kundenprojekte. Diese Demo-Seiten
+          laden Schriftarten über Google Fonts (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA).
+          Dabei wird Ihre IP-Adresse an Server von Google übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
+          (berechtigtes Interesse an der authentischen Darstellung des typografischen Designs der jeweiligen Demo).
+          Weitere Informationen: <a href=”https://policies.google.com/privacy” target=”_blank” rel=”noopener noreferrer” style={{ color: '#A78BFA' }}>Google Datenschutzerklärung</a>.
         </p>
-        <p className="mt-4">
+        <p className=”mt-4”>
           Darüber hinaus werden derzeit keine eingebetteten Karten, Videos, Terminbuchungs-Tools oder
           Marketing-Integrationen von Drittanbietern aktiv eingesetzt.
         </p>
