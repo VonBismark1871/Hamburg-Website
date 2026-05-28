@@ -1,5 +1,8 @@
+import { useRef } from 'react';
+import { useInView, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import Hero from '../components/Hero';
+import CountUp from '../components/ui/CountUp';
 import Features from '../components/Features';
 import Portfolio from '../components/Portfolio';
 import Testimonials from '../components/Testimonials';
@@ -81,6 +84,204 @@ function ManifestBand() {
             Kein Template von der Stange. Jede Seite wird auf ein Ziel hin gebaut: aus Besuchern Anfragen machen.
           </p>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Marktdaten ────────────────────────────────────── */
+function ArcMeter({ percent, size = 72 }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const reduce = useReducedMotion();
+  const sw = 5;
+  const r = (size - sw) / 2;
+  const circ = 2 * Math.PI * r;
+  const offset = reduce || !inView ? circ * (1 - percent / 100) : circ * (1 - percent / 100);
+  const animatedOffset = inView || reduce ? circ * (1 - percent / 100) : circ;
+
+  return (
+    <svg ref={ref} width={size} height={size} aria-hidden="true">
+      <defs>
+        <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#7C3AED" />
+          <stop offset="100%" stopColor="#22D3EE" />
+        </linearGradient>
+      </defs>
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth={sw} />
+      <circle
+        cx={size / 2} cy={size / 2} r={r}
+        fill="none"
+        stroke="url(#arc-grad)"
+        strokeWidth={sw}
+        strokeLinecap="round"
+        strokeDasharray={circ}
+        strokeDashoffset={animatedOffset}
+        transform={`rotate(-90 ${size / 2} ${size / 2})`}
+        style={{ transition: reduce ? 'none' : 'stroke-dashoffset 1.5s cubic-bezier(0.16,1,0.3,1) 0.2s' }}
+      />
+    </svg>
+  );
+}
+
+function FillBar({ percent, delay = 0 }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const reduce = useReducedMotion();
+  return (
+    <div ref={ref} style={{ height: 5, borderRadius: 3, background: 'rgba(255,255,255,0.06)', overflow: 'hidden', marginTop: 14 }} aria-hidden="true">
+      <div style={{
+        height: '100%',
+        borderRadius: 3,
+        background: 'linear-gradient(90deg, #7C3AED, #22D3EE)',
+        width: (inView || reduce) ? `${percent}%` : '0%',
+        transition: reduce ? 'none' : `width 1.4s cubic-bezier(0.16,1,0.3,1) ${delay}s`
+      }} />
+    </div>
+  );
+}
+
+function CompareBar() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const reduce = useReducedMotion();
+  const bars = [
+    { label: 'Mit Website', pct: 100, color: 'linear-gradient(90deg,#7C3AED,#22D3EE)' },
+    { label: 'Ohne Website', pct: 36, color: 'rgba(255,255,255,0.12)' }
+  ];
+  return (
+    <div ref={ref} className="mt-4 space-y-2" aria-hidden="true">
+      {bars.map((b) => (
+        <div key={b.label}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
+            <span style={{ fontSize: 9, color: 'var(--faint)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{b.label}</span>
+          </div>
+          <div style={{ height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.05)', overflow: 'hidden' }}>
+            <div style={{
+              height: '100%', borderRadius: 4,
+              background: b.color,
+              width: (inView || reduce) ? `${b.pct}%` : '0%',
+              transition: reduce ? 'none' : 'width 1.2s cubic-bezier(0.16,1,0.3,1) 0.1s'
+            }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function DataBand() {
+  return (
+    <section
+      className="section-spacing"
+      style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}
+      aria-labelledby="data-heading"
+    >
+      <div className="section-container">
+        <Reveal className="mb-12 max-w-xl">
+          <p className="section-label">Warum eine Website zählt</p>
+          <h2 id="data-heading" className="display-lg">Zahlen, die für sich sprechen</h2>
+          <p className="mt-4 text-sm leading-7" style={{ color: 'var(--muted)' }}>
+            Unternehmen mit professioneller Online-Präsenz gewinnen messbar mehr Anfragen –
+            das zeigen unabhängige Studien aus Deutschland und dem deutschsprachigen Raum.
+          </p>
+        </Reveal>
+
+        <RevealGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Card 1 — 2.8× multiplier */}
+          <RevealItem as="article">
+            <TiltCard max={4} className="glass-card h-full p-6">
+              <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 }}>
+                <div>
+                  <p className="font-display gradient-text" style={{ fontSize: 'clamp(2.4rem,5vw,3.2rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1 }}>
+                    <CountUp value={2.8} decimals={1} suffix="×" duration={1.8} />
+                  </p>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--cyan-2)' }}>Umsatzwachstum</p>
+                </div>
+                <span
+                  style={{ flexShrink: 0, width: 40, height: 40, borderRadius: 12, background: 'rgba(34,211,238,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--cyan-2)' }}
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 10l3-3 3 3 6-6" /><path d="M14 4h-3M14 4v3" />
+                  </svg>
+                </span>
+              </div>
+              <CompareBar />
+              <p className="mt-4 text-xs leading-5" style={{ color: 'var(--muted)' }}>
+                Unternehmen mit Website wachsen 2,8× wahrscheinlicher als solche ohne Online-Präsenz.
+              </p>
+              <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: 'var(--faint)' }}>Google / Deloitte</p>
+            </TiltCard>
+          </RevealItem>
+
+          {/* Card 2 — 81% search online */}
+          <RevealItem as="article">
+            <TiltCard max={4} className="glass-card h-full p-6">
+              <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 }}>
+                <div>
+                  <p className="font-display gradient-text" style={{ fontSize: 'clamp(2.4rem,5vw,3.2rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1 }}>
+                    <CountUp value={81} suffix=" %" duration={1.6} />
+                  </p>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--cyan-2)' }}>Suchen online</p>
+                </div>
+                <ArcMeter percent={81} />
+              </div>
+              <FillBar percent={81} delay={0.1} />
+              <p className="mt-4 text-xs leading-5" style={{ color: 'var(--muted)' }}>
+                4 von 5 Kunden recherchieren online, bevor sie einen lokalen Anbieter kontaktieren.
+              </p>
+              <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: 'var(--faint)' }}>Google Consumer Insights</p>
+            </TiltCard>
+          </RevealItem>
+
+          {/* Card 3 — 36% ohne Website */}
+          <RevealItem as="article">
+            <TiltCard max={4} className="glass-card h-full p-6">
+              <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 }}>
+                <div>
+                  <p className="font-display gradient-text" style={{ fontSize: 'clamp(2.4rem,5vw,3.2rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1 }}>
+                    <CountUp value={36} suffix=" %" duration={1.4} />
+                  </p>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--cyan-2)' }}>Noch ohne Website</p>
+                </div>
+                <ArcMeter percent={36} />
+              </div>
+              <FillBar percent={36} delay={0.05} />
+              <p className="mt-4 text-xs leading-5" style={{ color: 'var(--muted)' }}>
+                Jeder dritte Kleinstbetrieb in Deutschland hat keine eigene Webpräsenz – das ist Ihr Wettbewerbsvorteil.
+              </p>
+              <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: 'var(--faint)' }}>Bitkom / Statista</p>
+            </TiltCard>
+          </RevealItem>
+
+          {/* Card 4 — 40% faster growth */}
+          <RevealItem as="article">
+            <TiltCard max={4} className="glass-card h-full p-6">
+              <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 }}>
+                <div>
+                  <p className="font-display gradient-text" style={{ fontSize: 'clamp(2.4rem,5vw,3.2rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1 }}>
+                    <CountUp value={40} prefix="+" suffix=" %" duration={1.5} />
+                  </p>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--cyan-2)' }}>Schnelleres Wachstum</p>
+                </div>
+                <span
+                  style={{ flexShrink: 0, width: 40, height: 40, borderRadius: 12, background: 'rgba(124,58,237,0.16)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--violet-2)' }}
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <path d="M8 13V3M4 7l4-4 4 4" />
+                  </svg>
+                </span>
+              </div>
+              <FillBar percent={40} delay={0.15} />
+              <p className="mt-4 text-xs leading-5" style={{ color: 'var(--muted)' }}>
+                KMU mit professioneller Online-Präsenz verzeichnen im Schnitt 40 % schnelleres Umsatzwachstum.
+              </p>
+              <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: 'var(--faint)' }}>Deloitte Connected SMB</p>
+            </TiltCard>
+          </RevealItem>
+        </RevealGroup>
       </div>
     </section>
   );
@@ -326,6 +527,7 @@ export default function HomePage() {
         <Features />
         <Portfolio />
         <ManifestBand />
+        <DataBand />
         <WhyMe />
         <Testimonials />
         <ProcessPreview />
