@@ -4,6 +4,7 @@ import { motion, useScroll, useSpring, useReducedMotion } from 'framer-motion';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
+import { breadcrumbSchema } from '../lib/seo';
 import AuroraBackground from '../components/ui/AuroraBackground';
 import AnimatedText from '../components/ui/AnimatedText';
 import Reveal, { RevealGroup, RevealItem } from '../components/ui/Reveal';
@@ -124,9 +125,10 @@ export default function AblaufPage() {
   return (
     <>
       <SEOHead
-        title="Ablauf | Hamburg Websites"
-        description="So läuft Ihr Website-Projekt ab: transparent von der Anfrage bis zum Livegang – inklusive kostenloser Demo-Website."
+        title="Ablauf"
+        description="So läuft Ihr Website-Projekt ab: transparent von der Anfrage über die kostenlose Demo bis zum Livegang – klare Schritte, direkte Abstimmung, kein Agentur-Overhead."
         path="/ablauf"
+        schema={breadcrumbSchema([{ name: 'Startseite', path: '/' }, { name: 'Ablauf', path: '/ablauf' }])}
       />
       <Header />
       <main>

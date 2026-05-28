@@ -274,7 +274,7 @@ export default function DatenschutzPage() {
   return (
     <>
       <SEOHead
-        title="Datenschutzerklärung – Hamburg Websites"
+        title="Datenschutzerklärung"
         path="/datenschutz"
         description="Datenschutzerklärung von Hamburg Websites mit Informationen zur Verarbeitung personenbezogener Daten auf dieser Website."
       />

@@ -716,6 +716,7 @@ export default function ZahnarztDemoPage() {
         title="Praxis ElbDent Hamburg — Zahnarzt mit Herz"
         description="Moderne Zahnarztpraxis ElbDent in Hamburg-Eppendorf: Prophylaxe, Implantologie, Zahnersatz, Ästhetik — jetzt Termin anfragen."
         path="/referenzen/zahnarzt-demo"
+        noIndex
       />
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

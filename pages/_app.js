@@ -43,6 +43,8 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <style>{`
           @font-face {
             font-family: 'Space Grotesk';
@@ -65,7 +67,7 @@ export default function App({ Component, pageProps }) {
         <link rel="shortcut icon" href="/brand/hw-approved-icon-transparent-v1.png" type="image/png" />
         <link rel="apple-touch-icon" href="/brand/hw-approved-icon-transparent-v1.png" />
       </Head>
-      <ScrollProgress />
+      {!router.asPath.startsWith('/referenzen/') && <ScrollProgress />}
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={router.asPath}

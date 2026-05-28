@@ -833,7 +833,6 @@ summary:focus-visible {
   animation: marquee-scroll var(--marquee-dur, 38s) linear infinite;
 }
 .marquee.reverse .marquee-track { animation-direction: reverse; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes marquee-scroll {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-100%, 0, 0); }

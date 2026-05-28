@@ -556,6 +556,7 @@ export default function FriseursalonDemoPage() {
         title="Elbhaar Studio Hamburg"
         description="Moderner Friseursalon in Hamburg-Eimsbüttel: Haarschnitte, Coloration, Balayage, Team und Terminbuchung in einem editorial gestalteten Studio."
         path="/referenzen/friseursalon-demo"
+        noIndex
       />
       <Head>
         <link
