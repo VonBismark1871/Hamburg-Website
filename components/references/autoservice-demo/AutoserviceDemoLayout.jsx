@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import SEOHead from '../../SEOHead';
 import ReferenceStickyBackButton from '../../ReferenceStickyBackButton';
+
+const R = '#E8321C';
+const BG = '#080B10';
+const PANEL = '#0D1421';
+const TEXT = '#F0F4FA';
+const MUTED = '#6B7D99';
+const BARLOW = "'Barlow Condensed', sans-serif";
+const GROTESK = "'Space Grotesk', sans-serif";
 
 const navItems = [
   { href: '/referenzen/autoservice-demo', label: 'Start' },
@@ -18,17 +27,13 @@ export default function AutoserviceDemoLayout({ title, description, path, childr
   const router = useRouter();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const fn = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
@@ -37,165 +42,122 @@ export default function AutoserviceDemoLayout({ title, description, path, childr
   return (
     <>
       <SEOHead title={title} description={description} path={path} noIndex />
-      <div style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: '#0D1117', color: '#EEF3FA' }}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      </Head>
+
+      <div style={{ fontFamily: GROTESK, backgroundColor: BG, color: TEXT, overflowX: 'hidden' }}>
         <ReferenceStickyBackButton />
 
-        {/* Fixed nav */}
+        {/* NAV — matches index.js exactly */}
         <nav style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          backgroundColor: scrolled ? 'rgba(13,17,23,0.97)' : '#161D2A',
-          borderBottom: scrolled
-            ? '1px solid rgba(232,50,28,0.2)'
-            : '1px solid rgba(255,255,255,0.07)',
-          backdropFilter: scrolled ? 'blur(16px)' : 'none',
-          transition: 'background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease',
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+          backdropFilter: 'blur(16px)', transition: 'all 0.4s ease',
+          background: scrolled ? 'rgba(8,11,16,0.97)' : 'transparent',
+          borderBottom: scrolled ? '1px solid rgba(232,50,28,0.18)' : '1px solid transparent',
         }}>
-          <div style={{
-            maxWidth: 1280,
-            margin: '0 auto',
-            padding: '0 24px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            height: 64,
-          }}>
-            {/* Logo */}
-            <Link href="/referenzen/autoservice-demo" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', height: 66, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Link href="/referenzen/autoservice-demo" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
               <div style={{
-                width: 28,
-                height: 28,
-                backgroundColor: '#E8321C',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 14,
-                fontWeight: 700,
-                color: '#FFFFFF',
-                flexShrink: 0,
-              }}>
-                E
-              </div>
+                width: 34, height: 34, background: R, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: BARLOW, fontWeight: 900, fontSize: 15, color: '#fff',
+                clipPath: 'polygon(0 0,100% 0,100% 72%,86% 100%,0 100%)',
+              }}>EW</div>
               <div>
-                <span style={{ color: '#EEF3FA', fontWeight: 700, fontSize: 16, letterSpacing: '-0.01em' }}>Elbwerk</span>
-                <span style={{ color: '#7A8EA8', fontWeight: 400, fontSize: 13, marginLeft: 6 }}>Kfz-Service</span>
+                <div style={{ fontFamily: BARLOW, fontWeight: 800, fontSize: 17, color: TEXT, letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.1 }}>Elbwerk</div>
+                <div style={{ fontSize: 10, color: MUTED, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Kfz-Service</div>
               </div>
             </Link>
 
-            {/* Desktop nav */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="hidden sm:flex">
+            <div className="hidden sm:flex" style={{ alignItems: 'center', gap: 4 }}>
               {navItems.map(({ href, label }) => (
                 <Link key={href} href={href} style={{
-                  color: isActive(href) ? '#EEF3FA' : '#B0BECF',
+                  color: isActive(href) ? TEXT : MUTED,
                   fontSize: 13,
                   fontWeight: isActive(href) ? 600 : 500,
-                  padding: '7px 14px',
+                  padding: '8px 14px',
                   textDecoration: 'none',
-                  backgroundColor: isActive(href) ? 'rgba(232,50,28,0.12)' : 'transparent',
-                  border: isActive(href) ? '1px solid rgba(232,50,28,0.35)' : '1px solid transparent',
-                  transition: 'all 0.18s ease',
-                }}>
-                  {label}
-                </Link>
+                  backgroundColor: isActive(href) ? 'rgba(232,50,28,0.1)' : 'transparent',
+                  border: isActive(href) ? '1px solid rgba(232,50,28,0.3)' : '1px solid transparent',
+                  transition: 'color 0.2s, background-color 0.2s',
+                }}
+                  onMouseEnter={e => { if (!isActive(href)) e.currentTarget.style.color = TEXT; }}
+                  onMouseLeave={e => { if (!isActive(href)) e.currentTarget.style.color = MUTED; }}
+                >{label}</Link>
               ))}
               <Link href="/referenzen/autoservice-demo/kontakt" style={{
-                backgroundColor: '#E8321C',
-                color: '#FFFFFF',
-                fontSize: 13,
-                fontWeight: 700,
-                padding: '9px 20px',
-                textDecoration: 'none',
-                marginLeft: 8,
-                letterSpacing: '0.01em',
-                flexShrink: 0,
-              }}>
-                Termin anfragen
-              </Link>
+                background: R, color: '#fff', fontSize: 12, fontWeight: 700, padding: '10px 22px',
+                textDecoration: 'none', marginLeft: 12, letterSpacing: '0.07em', textTransform: 'uppercase',
+                clipPath: 'polygon(0 0,100% 0,100% 68%,93% 100%,0 100%)',
+              }}>Termin anfragen</Link>
             </div>
 
-            {/* Mobile hamburger */}
-            <button
-              className="sm:hidden"
-              onClick={() => setMenuOpen(!menuOpen)}
-              style={{
-                backgroundColor: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                color: '#EEF3FA',
-                fontSize: 22,
-                lineHeight: 1,
-                padding: 4,
-              }}
-              aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
-            >
-              {menuOpen ? '✕' : '☰'}
-            </button>
+            <button className="sm:hidden" onClick={() => setMenuOpen(v => !v)}
+              style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: TEXT, fontSize: 22, padding: 4 }}
+              aria-label="Menü">{menuOpen ? '✕' : '☰'}</button>
           </div>
 
-          {/* Mobile menu overlay */}
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                className="sm:hidden"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                style={{
-                  backgroundColor: '#161D2A',
-                  borderTop: '1px solid rgba(232,50,28,0.15)',
-                  overflow: 'hidden',
-                }}
+                initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                className="sm:hidden" style={{ background: PANEL, borderTop: '1px solid rgba(232,50,28,0.15)', overflow: 'hidden' }}
               >
                 <div style={{ padding: '16px 24px 24px', display: 'flex', flexDirection: 'column', gap: 2 }}>
                   {navItems.map(({ href, label }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      onClick={() => setMenuOpen(false)}
-                      style={{
-                        color: isActive(href) ? '#EEF3FA' : '#B0BECF',
-                        fontSize: 16,
-                        fontWeight: isActive(href) ? 700 : 600,
-                        padding: '13px 0',
-                        textDecoration: 'none',
-                        borderBottom: '1px solid rgba(255,255,255,0.06)',
-                        backgroundColor: isActive(href) ? 'rgba(232,50,28,0.08)' : 'transparent',
-                        paddingLeft: isActive(href) ? 10 : 0,
-                      }}
-                    >
-                      {label}
-                    </Link>
+                    <Link key={href} href={href} onClick={() => setMenuOpen(false)} style={{
+                      color: isActive(href) ? TEXT : MUTED, fontSize: 16, fontWeight: isActive(href) ? 700 : 600,
+                      padding: '13px 0', textDecoration: 'none',
+                      borderBottom: '1px solid rgba(255,255,255,0.06)',
+                    }}>{label}</Link>
                   ))}
-                  <Link
-                    href="/referenzen/autoservice-demo/kontakt"
-                    onClick={() => setMenuOpen(false)}
-                    style={{
-                      backgroundColor: '#E8321C',
-                      color: '#FFFFFF',
-                      fontSize: 15,
-                      fontWeight: 700,
-                      padding: '13px 20px',
-                      textDecoration: 'none',
-                      textAlign: 'center',
-                      marginTop: 14,
-                      letterSpacing: '0.02em',
-                    }}
-                  >
-                    Termin anfragen
-                  </Link>
+                  <Link href="/referenzen/autoservice-demo/kontakt" onClick={() => setMenuOpen(false)} style={{
+                    background: R, color: '#fff', fontSize: 14, fontWeight: 700, padding: '14px', textAlign: 'center',
+                    textDecoration: 'none', marginTop: 14, letterSpacing: '0.06em', textTransform: 'uppercase',
+                  }}>Termin anfragen</Link>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </nav>
 
-        {/* Spacer so content isn't hidden under fixed nav */}
-        <div style={{ height: 64 }} />
+        {/* Spacer for fixed nav */}
+        <div style={{ height: 66 }} />
 
         <main>{children}</main>
+
+        {/* FOOTER — matches index.js */}
+        <footer style={{ background: '#040609', borderTop: '1px solid rgba(232,50,28,0.1)', padding: '48px 24px 32px' }}>
+          <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+            <div className="grid sm:grid-cols-[1.5fr_1fr]" style={{ gap: 40, marginBottom: 36 }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                  <div style={{ width: 30, height: 30, background: R, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: BARLOW, fontWeight: 900, fontSize: 13, color: '#fff', clipPath: 'polygon(0 0,100% 0,100% 68%,86% 100%,0 100%)' }}>EW</div>
+                  <span style={{ fontFamily: BARLOW, fontWeight: 800, fontSize: 17, color: TEXT, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Elbwerk Kfz-Service</span>
+                </div>
+                <p style={{ color: 'rgba(107,125,153,0.55)', fontSize: 13, lineHeight: 1.9 }}>
+                  Ausschläger Weg 62 · 20537 Hamburg<br />040 712 45 890 · service@elbwerk-kfz.de
+                </p>
+              </div>
+              <div>
+                <p style={{ color: R, fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 12 }}>Navigation</p>
+                {[
+                  { href: '/referenzen/autoservice-demo/leistungen', label: 'Alle Leistungen' },
+                  { href: '/referenzen/autoservice-demo/inspektion', label: 'Inspektion' },
+                  { href: '/referenzen/autoservice-demo/kontakt', label: 'Termin anfragen' },
+                ].map(({ href, label }) => (
+                  <Link key={label} href={href} style={{ display: 'block', color: 'rgba(107,125,153,0.45)', fontSize: 13, textDecoration: 'none', marginBottom: 7 }}>{label}</Link>
+                ))}
+              </div>
+            </div>
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: 18, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+              <p style={{ color: 'rgba(42,53,72,0.7)', fontSize: 12 }}>© 2025 Elbwerk Kfz-Service · Hamburg</p>
+              <p style={{ color: 'rgba(42,53,72,0.5)', fontSize: 12 }}>Demo-Website · Hamburg Websites</p>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );
