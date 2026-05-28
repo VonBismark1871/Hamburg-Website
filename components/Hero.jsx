@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import {
   motion,
+  AnimatePresence,
   useReducedMotion,
   useMotionValue,
   useSpring,
@@ -19,11 +20,10 @@ const heroStats = [
   { value: 7, suffix: ' Tage', label: 'Erste Demo' }
 ];
 
-const mockSections = [
-  { label: 'Hero & Angebot', fill: 72 },
-  { label: 'Leistungen', fill: 90 },
-  { label: 'Referenzen', fill: 58 },
-  { label: 'Kontakt & Anfrage', fill: 84 }
+const demoPreviews = [
+  { img: '/images/preview-restaurant.jpg', label: 'Hafenblick Bistro Hamburg',    url: 'hafenblick-bistro.de'  },
+  { img: '/images/preview-physio.jpg',     label: 'Physiotherapie Hamburg-Nord',  url: 'physio-hamburg-nord.de' },
+  { img: '/images/preview-immobilien.jpg', label: 'ImmobilienHH Premium',         url: 'immobilienhh.de'       },
 ];
 
 const marqueeItems = [
@@ -82,6 +82,12 @@ function KineticHeadline({ reduce }) {
 function HeroVisual({ reduce }) {
   const ref = useRef(null);
   const scrollY = useParallax(ref, 70);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setActive((i) => (i + 1) % demoPreviews.length), 3500);
+    return () => clearInterval(t);
+  }, []);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -150,64 +156,56 @@ function HeroVisual({ reduce }) {
             <span className="hero-mock-dot" style={{ background: '#ff5f57' }} />
             <span className="hero-mock-dot" style={{ background: '#febc2e' }} />
             <span className="hero-mock-dot" style={{ background: '#28c840' }} />
-            <span
-              className="ml-3 truncate rounded-md px-3 py-1 text-[11px] font-medium"
-              style={{ background: 'rgba(255,255,255,0.04)', color: 'var(--muted)', border: '1px solid var(--line)' }}
-            >
-              ihr-unternehmen.de
-            </span>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={active}
+                className="ml-3 truncate rounded-md px-3 py-1 text-[11px] font-medium"
+                style={{ background: 'rgba(255,255,255,0.04)', color: 'var(--muted)', border: '1px solid var(--line)' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {demoPreviews[active].url}
+              </motion.span>
+            </AnimatePresence>
           </div>
 
-          <div className="p-7">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-display text-[17px] font-bold" style={{ color: 'var(--text)' }}>
-                  Beispiel-Onepager
-                </p>
-                <p className="mt-1 text-[12px]" style={{ color: 'var(--muted)' }}>
-                  Struktur · Design · Anfrageführung
-                </p>
-              </div>
-              <span
-                className="rounded-full px-3 py-1 text-[11px] font-bold"
-                style={{ background: 'rgba(34,211,238,0.12)', color: 'var(--cyan-2)', border: '1px solid rgba(34,211,238,0.3)' }}
-              >
-                Vorschau
-              </span>
-            </div>
+          <div style={{ position: 'relative', lineHeight: 0, overflow: 'hidden' }}>
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={active}
+                src={demoPreviews[active].img}
+                alt={demoPreviews[active].label}
+                style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45 }}
+              />
+            </AnimatePresence>
 
-            <div className="mt-6 space-y-2.5">
-              {mockSections.map((s, i) => (
-                <motion.div
-                  key={s.label}
-                  className="flex items-center justify-between rounded-xl px-4 py-3"
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--line)' }}
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 + i * 0.12 }}
-                >
-                  <span className="text-[13px] font-medium" style={{ color: 'var(--text-soft)' }}>{s.label}</span>
-                  <span style={{ position: 'relative', height: 6, width: 64, borderRadius: 999, background: 'rgba(168,142,247,0.16)', overflow: 'hidden' }}>
-                    <motion.span
-                      style={{ position: 'absolute', inset: 0, borderRadius: 999, background: 'linear-gradient(90deg,#7C3AED,#22D3EE)', transformOrigin: 'left' }}
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: s.fill / 100 }}
-                      transition={{ duration: 0.8, delay: 0.7 + i * 0.12, ease }}
-                    />
-                  </span>
-                </motion.div>
-              ))}
-            </div>
+            {/* Gradient fade at the bottom so the screenshot blends into the card */}
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 48, background: 'linear-gradient(to bottom, transparent, #15111f)' }} aria-hidden="true" />
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {['Website', 'SEO', 'Automatisierung'].map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full px-3 py-1.5 text-[12px] font-medium"
-                  style={{ border: '1px solid var(--line)', background: 'rgba(124,58,237,0.08)', color: 'var(--muted)' }}
-                >
-                  {t}
-                </span>
+            {/* Dot switcher */}
+            <div style={{ position: 'absolute', bottom: 10, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 6, zIndex: 2 }}>
+              {demoPreviews.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  aria-label={demoPreviews[i].label}
+                  style={{
+                    width: i === active ? 20 : 8,
+                    height: 8,
+                    borderRadius: 4,
+                    background: i === active ? 'var(--cyan-2)' : 'rgba(255,255,255,0.28)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0,
+                    transition: 'width 0.3s ease, background 0.3s ease'
+                  }}
+                />
               ))}
             </div>
           </div>
