@@ -208,16 +208,18 @@ export default function ImmobilienDemoPage() {
         {/* ── HERO ── */}
         <section ref={heroRef} style={{ position: 'relative', height: '100svh', minHeight: 580, overflow: 'hidden' }}>
           <motion.div style={{ scale: heroScale, position: 'absolute', inset: 0 }}>
-            <Image
-              src="/images/immobilien/hero.jpg"
-              alt="Exklusives Penthouse in Hamburg-Winterhude — Elbquartier Immobilien"
-              fill priority
-              style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
-              sizes="100vw"
-            />
+            <div style={{ position: 'absolute', inset: '-12px', filter: 'blur(10px)', transform: 'scale(1.02)' }}>
+              <Image
+                src="/images/immobilien/hero.jpg"
+                alt="Exklusive Immobilien in Hamburg — Elbquartier"
+                fill priority
+                style={{ objectFit: 'cover', objectPosition: 'center 22%' }}
+                sizes="100vw"
+              />
+            </div>
             <div style={{
               position: 'absolute', inset: 0,
-              background: 'linear-gradient(180deg, rgba(15,13,10,0.35) 0%, rgba(15,13,10,0.15) 40%, rgba(15,13,10,0.75) 100%)',
+              background: 'linear-gradient(180deg, rgba(15,13,10,0.72) 0%, rgba(15,13,10,0.55) 40%, rgba(15,13,10,0.88) 100%)',
             }} />
           </motion.div>
 
