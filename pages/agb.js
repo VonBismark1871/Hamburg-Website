@@ -24,6 +24,7 @@ const sections = [
     title: '3. Vertragsschluss',
     paragraphs: [
       'Ein Vertrag kommt durch Annahme eines Angebots, durch Auftragsbestätigung oder durch Projektbeginn auf Grundlage einer kundenseitigen Freigabe zustande.',
+      'Mit der Beauftragung bestätigt der Auftraggeber ausdrücklich, im Sinne des § 14 BGB als Unternehmer zu handeln.',
       'Mündliche Nebenabreden bestehen nicht. Änderungen und Ergänzungen eines geschlossenen Vertrags bedürfen mindestens der Textform.',
     ],
   },
