@@ -64,7 +64,7 @@ const projectPricingCards = [
     price: 'Nach Absprache',
     description:
       'Zusätzliche Funktionen wie Buchungssysteme, Schnittstellen oder individuelle Prozesse werden projektbezogen kalkuliert.',
-    bullets: ['Buchungssysteme', 'Erweiterte Formulare', 'Individuelle Integrationen', 'Projektbezogene Kalkulation']
+    bullets: ['Buchungssysteme', 'Erweiterte Formulare', 'Individuelle Integrationen', 'Automatisierungen & Tools', 'Projektbezogene Kalkulation']
   }
 ];
 
