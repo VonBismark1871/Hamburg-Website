@@ -3,6 +3,7 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
+import { breadcrumbSchema } from '../lib/seo';
 import AuroraBackground from '../components/ui/AuroraBackground';
 import AnimatedText from '../components/ui/AnimatedText';
 import Reveal from '../components/ui/Reveal';
@@ -14,6 +15,10 @@ export default function KontaktPage() {
         title="Kontakt – Projekt anfragen"
         description="Kontaktieren Sie Hamburg Websites für eine kostenlose Demo-Richtung und ein unverbindliches Erstgespräch zu Umfang, Stil und Budget."
         path="/kontakt"
+        schema={[
+          { '@context': 'https://schema.org', '@type': 'ContactPage', url: 'https://hamburgwebsites.de/kontakt', name: 'Kontakt', inLanguage: 'de-DE' },
+          breadcrumbSchema([{ name: 'Startseite', path: '/' }, { name: 'Kontakt', path: '/kontakt' }])
+        ]}
       />
       <Header />
       <main>

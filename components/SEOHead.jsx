@@ -32,7 +32,11 @@ export default function SEOHead({ title, description, path = '/', schema, noInde
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
       <meta name="twitter:image" content={OG_IMAGE} />
-      {schema ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} /> : null}
+      {schema
+        ? Array.isArray(schema)
+          ? schema.map((s, i) => <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />)
+          : <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+        : null}
     </Head>
   );
 }

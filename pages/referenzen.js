@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
+import { breadcrumbSchema } from '../lib/seo';
 import ReferenceCard from '../components/references/ReferenceCard';
 import AuroraBackground from '../components/ui/AuroraBackground';
 import AnimatedText from '../components/ui/AnimatedText';
@@ -43,6 +44,7 @@ export default function ReferenzenPage() {
         title="Konzept-Referenzen"
         description="Sechs eigenständige Website-Konzepte für Restaurant, Salon, Zahnarztpraxis, Physiotherapie, Kfz-Service und Immobilien – jede Branche mit eigener Bildwelt und UX."
         path="/referenzen"
+        schema={breadcrumbSchema([{ name: 'Startseite', path: '/' }, { name: 'Referenzen', path: '/referenzen' }])}
       />
       <Header />
       <main>

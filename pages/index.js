@@ -12,7 +12,7 @@ import MagneticButton from '../components/ui/MagneticButton';
 import AnimatedText from '../components/ui/AnimatedText';
 import TiltCard from '../components/ui/TiltCard';
 import Marquee from '../components/ui/Marquee';
-import { localBusinessSchema, organizationSchema, serviceSchema } from '../lib/seo';
+import { localBusinessSchema, organizationSchema, serviceSchema, websiteSchema } from '../lib/seo';
 
 const serviceItems = [
   { name: 'Website und Relaunch', priceFromEur: 650 },
@@ -120,6 +120,11 @@ function WhyMe() {
             </RevealItem>
           ))}
         </RevealGroup>
+        <Reveal delay={0.2} className="mt-10">
+          <Link href="/ueber-uns" className="tile-link">
+            Mehr über unsere Arbeitsweise <ArrowIcon />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );
@@ -312,7 +317,7 @@ export default function HomePage() {
         title="Websites und digitale Lösungen aus Hamburg"
         description="Hamburg Websites entwickelt klare Websites, lokale Sichtbarkeit, Automatisierungen und praktische digitale Tools für kleine Unternehmen."
         path="/"
-        schema={[organizationSchema(), localBusinessSchema(), serviceSchema(serviceItems)]}
+        schema={[websiteSchema(), organizationSchema(), localBusinessSchema(), serviceSchema(serviceItems)]}
       />
       <Header />
       <main>

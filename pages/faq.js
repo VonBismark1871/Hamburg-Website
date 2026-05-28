@@ -5,7 +5,7 @@ import SEOHead from '../components/SEOHead';
 import AuroraBackground from '../components/ui/AuroraBackground';
 import AnimatedText from '../components/ui/AnimatedText';
 import Reveal from '../components/ui/Reveal';
-import { faqSchema } from '../lib/seo';
+import { faqSchema, breadcrumbSchema } from '../lib/seo';
 
 export default function FaqPage() {
   return (
@@ -14,7 +14,7 @@ export default function FaqPage() {
         title="FAQ – Website-Projekte in Hamburg"
         description="Antworten auf häufige Fragen zur Website-Erstellung in Hamburg: Dauer, Kosten, Hosting, Ablauf und was nach dem Livegang passiert."
         path="/faq"
-        schema={faqSchema(faqItems)}
+        schema={[faqSchema(faqItems), breadcrumbSchema([{ name: 'Startseite', path: '/' }, { name: 'FAQ', path: '/faq' }])]}
       />
       <Header />
       <main>

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
+import { breadcrumbSchema } from '../lib/seo';
 import AuroraBackground from '../components/ui/AuroraBackground';
 import AnimatedText from '../components/ui/AnimatedText';
 import Marquee from '../components/ui/Marquee';
@@ -31,6 +32,7 @@ export default function UeberUnsPage() {
         title="Über uns"
         description="Hamburg Websites entwickelt Websites für unterschiedliche Ziele, Budgets und Stilrichtungen — mit Fokus auf Struktur, Klarheit und realistische Umsetzung."
         path="/ueber-uns"
+        schema={breadcrumbSchema([{ name: 'Startseite', path: '/' }, { name: 'Über uns', path: '/ueber-uns' }])}
       />
       <Header />
       <main>
