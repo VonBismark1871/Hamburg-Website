@@ -4,13 +4,13 @@ import Link from 'next/link';
 export default function PropertyCard({ property }) {
   return (
     <article className="overflow-hidden rounded-[1.75rem] border border-stone-200 bg-white shadow-[0_30px_80px_-48px_rgba(0,0,0,0.4)] transition hover:-translate-y-1 hover:shadow-[0_38px_90px_-45px_rgba(0,0,0,0.45)]">
-      <figure className="relative overflow-hidden">
+      <figure className="relative h-56 overflow-hidden">
         <Image
           src={property.image}
           alt={property.imageAlt || `${property.type} in ${property.district} in Hamburg`}
-          width={1500}
-          height={1000}
-          className="h-64 w-full object-cover"
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 640px"
         />
         {property.label && (
           <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-stone-800">
