@@ -1,11 +1,10 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import {
   motion,
-  AnimatePresence,
   useReducedMotion,
   useMotionValue,
   useSpring,
-  useTransform
+  useTransform,
 } from 'framer-motion';
 import MagneticButton from './ui/MagneticButton';
 import AuroraBackground from './ui/AuroraBackground';
@@ -13,17 +12,31 @@ import Marquee from './ui/Marquee';
 import CountUp from './ui/CountUp';
 import { useParallax } from '../hooks/useParallax';
 
-const heroStats = [
-  { value: 24, suffix: 'h', label: 'Antwort i. d. R.' },
-  { value: 100, suffix: ' %', label: 'Ihr Eigentum' },
-  { static: 'Kostenlos', label: 'Demo vorab' },
-  { value: 7, suffix: ' Tage', label: 'Erste Demo' }
+/* ── Chart path data ─────────────────────────────────────────────────── */
+const C = {
+  mit:  'M 0,145 C 11,143 45,136 67,131 C 89,126 111,120 133,113 C 155,106 178,98 200,90 C 222,82 245,74 267,65 C 289,57 311,48 333,39 C 355,31 378,23 400,14',
+  ohne: 'M 0,145 C 22,144 45,143 67,142 C 89,141 111,140 133,139 C 155,138 178,137 200,136 C 222,135 245,134 267,133 C 289,132 311,130 333,129 C 355,127 378,125 400,122',
+};
+C.mitArea  = C.mit  + ' L 400,152 L 0,152 Z';
+C.ohneArea = C.ohne + ' L 400,152 L 0,152 Z';
+C.gapArea  = C.mit  +
+  ' L 400,122 C 378,125 355,127 333,129 C 311,130 289,132 267,133' +
+  ' C 245,134 222,135 200,136 C 178,137 155,138 133,139' +
+  ' C 111,140 89,141 67,142 C 45,143 22,144 0,145 Z';
+
+const X_LABELS = [
+  { x: 0,   t: 'Start'   },
+  { x: 133, t: '3 Mon.'  },
+  { x: 267, t: '6 Mon.'  },
+  { x: 400, t: '12 Mon.' },
 ];
 
-const demoPreviews = [
-  { img: '/images/preview-restaurant.jpg', label: 'Hafenblick Bistro Hamburg',    url: 'hafenblick-bistro.de'  },
-  { img: '/images/preview-physio.jpg',     label: 'Physiotherapie Hamburg-Nord',  url: 'physio-hamburg-nord.de' },
-  { img: '/images/preview-immobilien.jpg', label: 'ImmobilienHH Premium',         url: 'immobilienhh.de'       },
+/* ── Hero stats strip ────────────────────────────────────────────────── */
+const heroStats = [
+  { value: 24, suffix: 'h',    label: 'Antwort i. d. R.' },
+  { value: 100, suffix: ' %',  label: 'Ihr Eigentum' },
+  { static: 'Kostenlos',       label: 'Demo vorab' },
+  { value: 7,  suffix: ' Tage', label: 'Erste Demo' },
 ];
 
 const marqueeItems = [
@@ -33,16 +46,17 @@ const marqueeItems = [
   'Performance',
   'Automatisierung',
   'Conversion',
-  'Relaunch'
+  'Relaunch',
 ];
 
 const headlineLines = [
   [{ t: 'Websites,' }, { t: 'die' }],
-  [{ t: 'Kunden', grad: true }, { t: 'gewinnen.' }]
+  [{ t: 'Kunden', grad: true }, { t: 'gewinnen.' }],
 ];
 
 const ease = [0.16, 1, 0.3, 1];
 
+/* ── Kinetic headline ────────────────────────────────────────────────── */
 function KineticHeadline({ reduce }) {
   if (reduce) {
     return (
@@ -79,15 +93,237 @@ function KineticHeadline({ reduce }) {
   );
 }
 
+/* ── Hero chart card ─────────────────────────────────────────────────── */
+const KPI_CHIPS = [
+  { value: 2.8, decimals: 1, suffix: '×',   label: 'Wachstum'     },
+  { value: 40,  prefix: '+', suffix: ' %',  label: 'Umsatz'       },
+  { value: 81,  suffix: ' %',               label: 'Online-Suche'  },
+];
+
+function HeroChart({ reduce }) {
+  const d = (duration, delay = 0) =>
+    reduce
+      ? { duration: 0, delay: 0 }
+      : { duration, ease, delay };
+
+  return (
+    <div
+      style={{
+        background: 'rgba(15,12,24,0.9)',
+        border: '1px solid rgba(255,255,255,0.09)',
+        borderRadius: 20,
+        padding: '20px 22px 16px',
+        backdropFilter: 'blur(28px)',
+        boxShadow:
+          '0 32px 80px -18px rgba(124,58,237,0.35), 0 0 0 1px rgba(255,255,255,0.05) inset',
+      }}
+    >
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
+        <div>
+          <p style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'rgba(34,211,238,0.85)', marginBottom: 4 }}>
+            Umsatz-Entwicklung
+          </p>
+          <p style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.85)', lineHeight: 1.3 }}>
+            Lokale KMU · 12 Monate
+          </p>
+        </div>
+        {/* Legend */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 5, alignItems: 'flex-end' }}>
+          {[
+            { label: 'Mit Website',  grad: true  },
+            { label: 'Ohne Website', grad: false },
+          ].map(({ label, grad }) => (
+            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+              <span style={{ fontSize: 9, color: grad ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.22)' }}>{label}</span>
+              <div style={{
+                width: 18, height: 2, borderRadius: 1,
+                background: grad
+                  ? 'linear-gradient(90deg,#7C3AED,#22D3EE)'
+                  : 'rgba(255,255,255,0.22)',
+              }} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* SVG area chart */}
+      <svg viewBox="0 0 400 185" style={{ width: '100%', overflow: 'visible' }} aria-hidden="true">
+        <defs>
+          <linearGradient id="hc-line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#7C3AED" />
+            <stop offset="100%" stopColor="#22D3EE" />
+          </linearGradient>
+          <linearGradient id="hc-area" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.38" />
+            <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.03" />
+          </linearGradient>
+          <linearGradient id="hc-gap" x1="0.3" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.06" />
+          </linearGradient>
+          <filter id="hc-glow" x="-25%" y="-25%" width="150%" height="150%">
+            <feGaussianBlur stdDeviation="3.5" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <filter id="hc-dot-glow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="4" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+
+        {/* Horizontal grid lines */}
+        {[50, 87, 124].map((y) => (
+          <line key={y} x1="0" y1={y} x2="400" y2={y}
+            stroke="rgba(255,255,255,0.04)" strokeWidth="1" strokeDasharray="4 4" />
+        ))}
+
+        {/* X-axis baseline */}
+        <line x1="0" y1="152" x2="400" y2="152" stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
+
+        {/* Opportunity gap zone */}
+        <motion.path d={C.gapArea} fill="url(#hc-gap)"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={d(1, 1.0)} />
+
+        {/* Ohne Website area */}
+        <motion.path d={C.ohneArea} fill="rgba(255,255,255,0.025)"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={d(0.8, 0.4)} />
+
+        {/* Mit Website area */}
+        <motion.path d={C.mitArea} fill="url(#hc-area)"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={d(0.8, 0.7)} />
+
+        {/* Ohne Website line */}
+        <motion.path d={C.ohne}
+          stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"
+          fill="none" strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={d(1.4, 0.2)} />
+
+        {/* Mit Website line – glowing gradient */}
+        <motion.path d={C.mit}
+          stroke="url(#hc-line)" strokeWidth="2.5"
+          fill="none" strokeLinecap="round"
+          filter="url(#hc-glow)"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={d(1.9, 0.45)} />
+
+        {/* "Ohne" endpoint dot */}
+        <motion.circle cx="400" cy="122" r="3.5" fill="rgba(255,255,255,0.28)"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={reduce ? {} : { delay: 1.65, type: 'spring', stiffness: 400, damping: 14 }} />
+
+        {/* "Mit Website" endpoint — cyan glow dot */}
+        <motion.circle cx="400" cy="14" r="5" fill="#22D3EE"
+          filter="url(#hc-dot-glow)"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={reduce ? {} : { delay: 2.2, type: 'spring', stiffness: 400, damping: 14 }} />
+
+        {/* Pulse rings */}
+        {!reduce && (
+          <>
+            <motion.circle cx="400" cy="14" r="5" fill="none"
+              stroke="#22D3EE" strokeWidth="1.5"
+              animate={{ r: [5, 16, 26], opacity: [0.7, 0.3, 0] }}
+              transition={{ delay: 2.6, duration: 1.5, repeat: Infinity, repeatDelay: 2 }} />
+            <motion.circle cx="400" cy="14" r="5" fill="none"
+              stroke="#7C3AED" strokeWidth="1"
+              animate={{ r: [5, 22, 34], opacity: [0.4, 0.15, 0] }}
+              transition={{ delay: 2.9, duration: 1.8, repeat: Infinity, repeatDelay: 2 }} />
+          </>
+        )}
+
+        {/* Annotation: gap bracket + badge */}
+        <motion.g
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={d(0.5, 2.3)}>
+          <line x1="386" y1="17" x2="386" y2="119"
+            stroke="rgba(34,211,238,0.32)" strokeWidth="1" strokeDasharray="3 3" />
+          <line x1="382" y1="17"  x2="390" y2="17"  stroke="rgba(34,211,238,0.5)"  strokeWidth="1.5" />
+          <line x1="382" y1="119" x2="390" y2="119" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" />
+          <rect x="325" y="55" width="54" height="22" rx="7"
+            fill="rgba(34,211,238,0.13)" stroke="rgba(34,211,238,0.3)" strokeWidth="1" />
+          <text x="352" y="69.5" textAnchor="middle" fill="#22D3EE"
+            fontSize="11" fontWeight="700" fontFamily="system-ui,sans-serif">
+            2,8×
+          </text>
+        </motion.g>
+
+        {/* End labels */}
+        <motion.text x="392" y="115" fill="rgba(255,255,255,0.22)" fontSize="8.5"
+          fontFamily="system-ui" textAnchor="end"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={d(0.5, 1.8)}>
+          Ohne
+        </motion.text>
+        <motion.text x="392" y="7" fill="#22D3EE" fontSize="8.5"
+          fontFamily="system-ui" textAnchor="end" fontWeight="600"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={d(0.5, 2.3)}>
+          Mit Website
+        </motion.text>
+
+        {/* X-axis labels */}
+        {X_LABELS.map(({ x, t }) => (
+          <text key={t} x={x} y="172" fill="rgba(255,255,255,0.17)" fontSize="8.5"
+            fontFamily="system-ui"
+            textAnchor={x === 0 ? 'start' : x === 400 ? 'end' : 'middle'}>
+            {t}
+          </text>
+        ))}
+      </svg>
+
+      {/* KPI chips */}
+      <div style={{ display: 'flex', gap: 7, marginTop: 12 }}>
+        {KPI_CHIPS.map((s) => (
+          <div key={s.label} style={{
+            flex: 1, borderRadius: 10, padding: '7px 8px',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.07)',
+            textAlign: 'center',
+          }}>
+            <p className="font-display gradient-text" style={{ fontSize: '1rem', fontWeight: 800, lineHeight: 1 }}>
+              <CountUp
+                value={s.value}
+                decimals={s.decimals || 0}
+                prefix={s.prefix || ''}
+                suffix={s.suffix}
+                duration={1.5}
+              />
+            </p>
+            <p style={{ fontSize: 8.5, color: 'rgba(255,255,255,0.3)', marginTop: 3, lineHeight: 1.2 }}>{s.label}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Google / Deloitte attribution */}
+      <div style={{
+        marginTop: 10, padding: '7px 10px', borderRadius: 8,
+        background: 'rgba(34,211,238,0.05)',
+        borderLeft: '2px solid rgba(34,211,238,0.35)',
+      }}>
+        <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.38)', lineHeight: 1.5 }}>
+          Laut Google &amp; Deloitte wachsen KMU mit Website 2,8× wahrscheinlicher –
+          {' '}<span style={{ color: 'rgba(34,211,238,0.65)' }}>Connected Small Businesses Study</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ── Hero visual (right column) ──────────────────────────────────────── */
 function HeroVisual({ reduce }) {
   const ref = useRef(null);
   const scrollY = useParallax(ref, 70);
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(() => setActive((i) => (i + 1) % demoPreviews.length), 3500);
-    return () => clearInterval(t);
-  }, []);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -106,10 +342,7 @@ function HeroVisual({ reduce }) {
     mx.set((e.clientX - r.left) / r.width - 0.5);
     my.set((e.clientY - r.top) / r.height - 0.5);
   };
-  const onLeave = () => {
-    mx.set(0);
-    my.set(0);
-  };
+  const onLeave = () => { mx.set(0); my.set(0); };
 
   return (
     <div
@@ -126,75 +359,18 @@ function HeroVisual({ reduce }) {
         transition={{ duration: 0.9, delay: 0.25, ease }}
         className="relative w-full"
       >
-        {/* Browser mock — mid depth, tilts to cursor */}
+        {/* Chart card — tilts with mouse, floats on mount */}
         <motion.div
-          className="hero-mock relative z-10"
           style={reduce ? {} : { rotateX: rotX, rotateY: rotY, transformStyle: 'preserve-3d' }}
           animate={reduce ? undefined : { y: [0, -12, 0] }}
           transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <div className="hero-mock-bar">
-            <span className="hero-mock-dot" style={{ background: '#ff5f57' }} />
-            <span className="hero-mock-dot" style={{ background: '#febc2e' }} />
-            <span className="hero-mock-dot" style={{ background: '#28c840' }} />
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={active}
-                className="ml-3 truncate rounded-md px-3 py-1 text-[11px] font-medium"
-                style={{ background: 'rgba(255,255,255,0.04)', color: 'var(--muted)', border: '1px solid var(--line)' }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {demoPreviews[active].url}
-              </motion.span>
-            </AnimatePresence>
-          </div>
-
-          <div style={{ position: 'relative', lineHeight: 0, overflow: 'hidden' }}>
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={active}
-                src={demoPreviews[active].img}
-                alt={demoPreviews[active].label}
-                style={{ width: '100%', display: 'block', objectFit: 'cover' }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.45 }}
-              />
-            </AnimatePresence>
-
-            {/* Gradient fade at the bottom so the screenshot blends into the card */}
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 48, background: 'linear-gradient(to bottom, transparent, #15111f)' }} aria-hidden="true" />
-
-            {/* Dot switcher */}
-            <div style={{ position: 'absolute', bottom: 10, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 6, zIndex: 2 }}>
-              {demoPreviews.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  aria-label={demoPreviews[i].label}
-                  style={{
-                    width: i === active ? 20 : 8,
-                    height: 8,
-                    borderRadius: 4,
-                    background: i === active ? 'var(--cyan-2)' : 'rgba(255,255,255,0.28)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: 0,
-                    transition: 'width 0.3s ease, background 0.3s ease'
-                  }}
-                />
-              ))}
-            </div>
-          </div>
+          <HeroChart reduce={reduce} />
         </motion.div>
 
-        {/* Floating metric — near depth */}
+        {/* Floating metric card — near depth */}
         <motion.div
-          className="absolute -right-4 bottom-8 z-20 hidden sm:block"
+          className="absolute -right-4 bottom-4 z-20 hidden sm:block"
           style={reduce ? {} : { x: layerNearX, y: layerNearY }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -202,13 +378,16 @@ function HeroVisual({ reduce }) {
         >
           <div
             className="flex items-center gap-3 rounded-2xl px-4 py-3 backdrop-blur"
-            style={{ background: 'rgba(17,14,26,0.85)', border: '1px solid rgba(34,211,238,0.3)', boxShadow: '0 18px 50px -18px rgba(34,211,238,0.35)' }}
+            style={{
+              background: 'rgba(17,14,26,0.85)',
+              border: '1px solid rgba(34,211,238,0.3)',
+              boxShadow: '0 18px 50px -18px rgba(34,211,238,0.35)',
+            }}
           >
-            <span
-              className="flex h-9 w-9 items-center justify-center rounded-xl"
-              style={{ background: 'rgba(34,211,238,0.14)', color: 'var(--cyan-2)' }}
-            >
-              <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl"
+              style={{ background: 'rgba(34,211,238,0.14)', color: 'var(--cyan-2)' }}>
+              <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M2 9l3-3 3 3 6-6" />
                 <path d="M14 3h-3M14 3v3" />
               </svg>
@@ -224,16 +403,17 @@ function HeroVisual({ reduce }) {
   );
 }
 
+/* ── Hero section ────────────────────────────────────────────────────── */
 export default function Hero() {
   const reduce = useReducedMotion();
 
   const container = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.09, delayChildren: 0.45 } }
+    visible: { transition: { staggerChildren: 0.09, delayChildren: 0.45 } },
   };
   const item = {
-    hidden: { opacity: 0, y: 22 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } }
+    hidden:  { opacity: 0, y: 22 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
   };
 
   return (
