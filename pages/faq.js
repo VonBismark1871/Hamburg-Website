@@ -12,7 +12,7 @@ export default function FaqPage() {
     <>
       <SEOHead
         title="FAQ – Website-Projekte in Hamburg"
-        description="Antworten auf häufige Fragen zur Website-Erstellung in Hamburg: Dauer, Kosten, Hosting und Ablauf der Zusammenarbeit."
+        description="Antworten auf häufige Fragen zur Website-Erstellung in Hamburg: Dauer, Kosten, Hosting, Ablauf und was nach dem Livegang passiert."
         path="/faq"
         schema={faqSchema(faqItems)}
       />

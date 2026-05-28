@@ -19,7 +19,7 @@ export default function PreisePage() {
     <>
       <SEOHead
         title="Preise für Website-Erstellung in Hamburg"
-        description="Unsere transparenten Pakete für die Website-Erstellung in Hamburg – von der kostenlosen Demo bis zur Business-Webseite."
+        description="Transparente Pakete für die Website-Erstellung in Hamburg: Onepager ab 400 €, Business-Websites ab 800 €. Kostenlose Demo vor Bezahlung, faire Festpreise."
         path="/preise"
         schema={serviceSchema(serviceItems)}
       />

@@ -48,6 +48,7 @@ export default function AutoServiceSalesCasePage() {
         title="Auto Service Website (Demo) – Sales Case Study"
         description="Demo einer Kfz-Werkstatt-Website für Hamburg: klare Struktur, lokale SEO-Basis und starke CTAs – ehrlich ohne Ranking- oder Erfolgsversprechen."
         path="/referenzen/autoservice-sales-case"
+        noIndex
       />
       <Header />
       <div className="min-h-screen bg-slate-50 text-slate-800">

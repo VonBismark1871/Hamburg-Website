@@ -11,7 +11,7 @@ export default function KontaktPage() {
   return (
     <>
       <SEOHead
-        title="Kontakt – Website-Projekt in Hamburg besprechen"
+        title="Kontakt – Projekt anfragen"
         description="Kontaktieren Sie Hamburg Websites für eine kostenlose Demo-Richtung und ein unverbindliches Erstgespräch zu Umfang, Stil und Budget."
         path="/kontakt"
       />

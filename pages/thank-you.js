@@ -8,7 +8,7 @@ import AuroraBackground from '../components/ui/AuroraBackground';
 export default function ThankYouPage() {
   return (
     <>
-      <SEOHead title="Danke für deine Anfrage" path="/thank-you" description="Bestätigung der gesendeten Kontaktanfrage." />
+      <SEOHead title="Danke für deine Anfrage" path="/thank-you" description="Bestätigung der gesendeten Kontaktanfrage." noIndex />
       <Header />
       <main className="band-violet">
         <AuroraBackground grid grain={false} />

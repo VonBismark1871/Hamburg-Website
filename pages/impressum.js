@@ -9,7 +9,7 @@ export default function ImpressumPage() {
   return (
     <>
       <SEOHead
-        title="Impressum – Hamburg Websites"
+        title="Impressum"
         path="/impressum"
         description="Impressum von Hamburg Websites mit den gesetzlichen Pflichtangaben."
       />

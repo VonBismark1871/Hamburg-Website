@@ -152,7 +152,7 @@ export default function AGBPage() {
   return (
     <>
       <SEOHead
-        title="AGB – Hamburg Websites"
+        title="AGB"
         path="/agb"
         description="Allgemeine Geschäftsbedingungen von Hamburg Websites für Webdesign, Webentwicklung und digitale Dienstleistungen."
       />

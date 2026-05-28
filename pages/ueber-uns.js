@@ -28,7 +28,7 @@ export default function UeberUnsPage() {
   return (
     <>
       <SEOHead
-        title="Über uns – Hamburg Websites"
+        title="Über uns"
         description="Hamburg Websites entwickelt Websites für unterschiedliche Ziele, Budgets und Stilrichtungen — mit Fokus auf Struktur, Klarheit und realistische Umsetzung."
         path="/ueber-uns"
       />

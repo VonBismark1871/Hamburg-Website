@@ -124,8 +124,8 @@ export default function AblaufPage() {
   return (
     <>
       <SEOHead
-        title="Ablauf | Hamburg Websites"
-        description="So läuft Ihr Website-Projekt ab: transparent von der Anfrage bis zum Livegang – inklusive kostenloser Demo-Website."
+        title="Ablauf"
+        description="So läuft Ihr Website-Projekt ab: transparent von der Anfrage über die kostenlose Demo bis zum Livegang – klare Schritte, direkte Abstimmung, kein Agentur-Overhead."
         path="/ablauf"
       />
       <Header />

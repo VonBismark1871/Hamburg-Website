@@ -40,8 +40,8 @@ export default function ReferenzenPage() {
   return (
     <>
       <SEOHead
-        title="Konzept-Referenzen - Hamburg Websites"
-        description="Sechs eigenständige Website-Konzepte für Restaurant, Salon, Zahnarztpraxis, Physiotherapie, Kfz-Service und Immobilien."
+        title="Konzept-Referenzen"
+        description="Sechs eigenständige Website-Konzepte für Restaurant, Salon, Zahnarztpraxis, Physiotherapie, Kfz-Service und Immobilien – jede Branche mit eigener Bildwelt und UX."
         path="/referenzen"
       />
       <Header />

@@ -615,6 +615,7 @@ export default function RestaurantDemoPage() {
         title="Hafenblick Bistro Hamburg"
         description="Cinematic Bistro-Onepager in Hamburg: saisonale Küche, Signature-Gerichte, Speisekarte, Galerie und Reservierung in warmer Abendstimmung."
         path="/referenzen/restaurant-demo"
+        noIndex
       />
       <Head>
         <link
