@@ -322,7 +322,7 @@ function WhyMe() {
         </RevealGroup>
         <Reveal delay={0.2} className="mt-10">
           <Link href="/ueber-uns" className="tile-link">
-            Mehr über unsere Arbeitsweise <ArrowIcon />
+            Mehr über meine Arbeitsweise <ArrowIcon />
           </Link>
         </Reveal>
       </div>
@@ -377,7 +377,7 @@ function ProcessPreview() {
 /* ─── Pricing preview ───────────────────────────────── */
 const pricingPreview = [
   { title: 'Website-Visitenkarte', subtitle: 'Einstieg', price: 'ab 400 €', points: ['1 strukturierte Seite', 'Kontakt-CTA', 'Responsive Design', 'SEO-Basics'] },
-  { title: 'Business Website', subtitle: 'Mehrseitig', price: 'ab 1.000 €', featured: true, points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen'] },
+  { title: 'Mehrseitige Website', subtitle: 'Mehrseitig', price: 'ab 1.000 €', featured: true, points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen'] },
   { title: 'Mit Adminbereich', subtitle: 'Individuell', price: 'ab 1.500 €', points: ['Eigene Inhaltspflege', 'CMS-Einrichtung', 'Strukturierte Übergabe', 'Betreuung optional'] }
 ];
 

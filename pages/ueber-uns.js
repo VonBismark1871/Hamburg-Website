@@ -11,8 +11,8 @@ import Reveal, { RevealGroup, RevealItem } from '../components/ui/Reveal';
 const principles = [
   { number: '01', title: 'Struktur vor Dekoration', text: 'Bevor das Design entsteht, steht die Logik der Seite. Welche Information braucht der Besucher wann — und was soll er danach tun?' },
   { number: '02', title: 'Direkter Kontakt, kein Ticketsystem', text: 'Sie sprechen mit der Person, die Ihre Website baut – ohne Weiterleitungen, ohne Warteschleifen. Eine Person ist von Anfang bis Livegang verantwortlich.' },
-  { number: '03', title: 'Erst sehen, dann entscheiden', text: 'Daher die kostenlose Demo. Wir zeigen, wie Ihre Website aussehen könnte — bevor Sie irgendetwas beauftragen oder bezahlen.' },
-  { number: '04', title: 'Ehrliche Einschätzung', text: 'Wenn ein einfacherer Ansatz besser passt, sagen wir das. Kein Upselling, keine Funktionen, die Sie nicht brauchen.' },
+  { number: '03', title: 'Erst sehen, dann entscheiden', text: 'Daher die kostenlose Demo. Ich zeige, wie Ihre Website aussehen könnte — bevor Sie irgendetwas beauftragen oder bezahlen.' },
+  { number: '04', title: 'Ehrliche Einschätzung', text: 'Wenn ein einfacherer Ansatz besser passt, sage ich das. Kein Upselling, keine Funktionen, die Sie nicht brauchen.' },
   { number: '05', title: 'Fairer Preis ohne Agentur-Aufschlag', text: 'Sie zahlen für die Leistung, nicht für ein großes Büro. Die Preisrange steht vor dem Projektstart fest.' }
 ];
 
@@ -29,8 +29,8 @@ export default function UeberUnsPage() {
   return (
     <>
       <SEOHead
-        title="Über uns"
-        description="Hamburg Websites entwickelt Websites für unterschiedliche Ziele, Budgets und Stilrichtungen — mit Fokus auf Struktur, Klarheit und realistische Umsetzung."
+        title="Über Hamburg Websites – Freelancer für Webdesign in Hamburg"
+        description="Andrii Oleksiienko entwickelt Websites für kleine Unternehmen in Hamburg: Struktur, Klarheit, direkte Abstimmung und faire Preise — ohne Agentur-Overhead."
         path="/ueber-uns"
         schema={breadcrumbSchema([{ name: 'Startseite', path: '/' }, { name: 'Über uns', path: '/ueber-uns' }])}
       />
@@ -56,7 +56,7 @@ export default function UeberUnsPage() {
 
         <section className="section-spacing" aria-labelledby="manifest-heading" style={{ background: 'var(--bg)' }}>
           <div className="section-container">
-            <p className="section-label">Wofür wir stehen</p>
+            <p className="section-label">Wofür ich stehe</p>
             <AnimatedText
               as="h2"
               text="Viele Websites sehen gut aus — aber führen niemanden zur Anfrage."
@@ -64,7 +64,7 @@ export default function UeberUnsPage() {
             />
             <Reveal delay={0.15}>
               <p className="mt-6 font-display text-2xl font-bold sm:text-3xl" style={{ color: 'var(--text-soft)' }}>
-                Wir bauen Seiten, die <span className="gradient-text">beides</span> können.
+                Ich baue Seiten, die <span className="gradient-text">beides</span> können.
               </p>
             </Reveal>
           </div>
@@ -77,7 +77,7 @@ export default function UeberUnsPage() {
         <section className="section-container section-spacing" aria-labelledby="arbeitsweise-heading">
           <Reveal className="max-w-3xl">
             <p className="section-label">Arbeitsweise</p>
-            <AnimatedText as="h2" text="So arbeiten wir" className="display-lg" />
+            <AnimatedText as="h2" text="So arbeite ich" className="display-lg" />
           </Reveal>
           <RevealGroup as="ol" className="mt-10 grid gap-5 lg:grid-cols-2">
             {principles.map((item) => (
@@ -111,7 +111,7 @@ export default function UeberUnsPage() {
         <section className="section-container section-spacing" aria-labelledby="zusagen-heading">
           <Reveal className="max-w-3xl">
             <p className="section-label">Zusagen</p>
-            <AnimatedText as="h2" text="Unsere Zusagen" className="display-lg" />
+            <AnimatedText as="h2" text="Meine Zusagen" className="display-lg" />
           </Reveal>
           <RevealGroup className="mt-8 grid gap-4 sm:grid-cols-2">
             {promises.map((item) => (
@@ -134,7 +134,7 @@ export default function UeberUnsPage() {
                 Klingt das nach der richtigen Zusammenarbeit?
               </h2>
               <p className="lead mt-4 max-w-3xl">
-                Schauen Sie sich unsere Referenzen an oder starten Sie direkt mit einer kostenlosen Demo.
+                Schauen Sie sich meine Referenzen an oder starten Sie direkt mit einer kostenlosen Demo.
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
                 <Link href="/kontakt" className="primary-btn"><span>Kostenlose Demo starten</span></Link>
