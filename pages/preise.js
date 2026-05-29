@@ -19,7 +19,7 @@ export default function PreisePage() {
     <>
       <SEOHead
         title="Preise für Website-Erstellung in Hamburg"
-        description="Transparente Pakete für die Website-Erstellung in Hamburg: Onepager ab 400 €, Business-Websites ab 800 €. Kostenlose Demo vor Bezahlung, faire Festpreise."
+        description="Transparente Website-Pakete für Hamburg: Visitenkarte ab 400 €, Onepager ab 650 €, Mehrseitige Website ab 1.000 €. Kostenlose Demo vor Bezahlung, faire Festpreise."
         path="/preise"
         schema={[serviceSchema(serviceItems), breadcrumbSchema([{ name: 'Startseite', path: '/' }, { name: 'Preise', path: '/preise' }])]}
       />

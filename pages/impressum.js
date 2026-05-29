@@ -21,7 +21,7 @@ export default function ImpressumPage() {
           </h1>
 
           <section className="space-y-4 text-base leading-8" style={{ color: '#9690A8' }}>
-            <h2 className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>Angaben gemäß § 5 TMG</h2>
+            <h2 className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>Angaben gemäß § 5 DDG</h2>
             <p>
               Andrii Oleksiienko<br />
               Stadtbahnstraße 36<br />
@@ -50,6 +50,17 @@ export default function ImpressumPage() {
               Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG
             </h2>
             <p>DE449549426</p>
+          </section>
+
+          <section className="space-y-4 text-base leading-8" style={{ color: '#9690A8' }}>
+            <h2 className="text-2xl font-semibold" style={{ color: '#ECEAF3' }}>
+              Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV
+            </h2>
+            <p>
+              Andrii Oleksiienko<br />
+              Stadtbahnstraße 36<br />
+              22393 Hamburg
+            </p>
           </section>
 
           <section className="space-y-4 text-base leading-8" style={{ color: '#9690A8' }}>

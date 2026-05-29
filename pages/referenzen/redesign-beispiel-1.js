@@ -39,6 +39,7 @@ export default function RedesignBeispiel1Page() {
         title="Beispiel-Redesign für lokale Dienstleister"
         description="Ehrliches Vorher/Nachher-Beispiel einer Website-Überarbeitung: klare Struktur, bessere Nutzerführung, Conversion-Fokus und solide SEO-Basis."
         path="/referenzen/redesign-beispiel-1"
+        noIndex
       />
       <Header />
       <div className="min-h-screen bg-slate-50 text-slate-800">

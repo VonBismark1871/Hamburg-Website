@@ -43,9 +43,8 @@ export default function AutoserviceDemoLayout({ title, description, path, childr
     <>
       <SEOHead title={title} description={description} path={path} noIndex />
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link href="https://fonts.bunny.net/css2?family=barlow-condensed:wght@700;800;900&family=space-grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <div style={{ fontFamily: GROTESK, backgroundColor: BG, color: TEXT, overflowX: 'hidden' }}>

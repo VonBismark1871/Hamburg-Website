@@ -125,8 +125,8 @@ export default function AblaufPage() {
   return (
     <>
       <SEOHead
-        title="Ablauf"
-        description="So läuft Ihr Website-Projekt ab: transparent von der Anfrage über die kostenlose Demo bis zum Livegang – klare Schritte, direkte Abstimmung, kein Agentur-Overhead."
+        title="Ablauf – Website-Projekt in Hamburg: von der Anfrage bis zum Livegang"
+        description="So läuft Ihr Website-Projekt ab: kostenlose Demo in 1–3 Tagen, klare Abstimmung, Umsetzung in ca. 2 Wochen – transparent von Anfang bis Livegang."
         path="/ablauf"
         schema={breadcrumbSchema([{ name: 'Startseite', path: '/' }, { name: 'Ablauf', path: '/ablauf' }])}
       />

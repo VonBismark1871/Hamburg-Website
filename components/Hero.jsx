@@ -109,6 +109,8 @@ function HeroChart({ reduce }) {
   return (
     <div
       style={{
+        position: 'relative',
+        isolation: 'isolate',
         background: 'rgba(15,12,24,0.9)',
         border: '1px solid rgba(255,255,255,0.09)',
         borderRadius: 20,
@@ -118,6 +120,21 @@ function HeroChart({ reduce }) {
           '0 32px 80px -18px rgba(124,58,237,0.35), 0 0 0 1px rgba(255,255,255,0.05) inset',
       }}
     >
+      {/* Subtle grain / noise texture */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          borderRadius: 20,
+          zIndex: -1,
+          opacity: 0.045,
+          mixBlendMode: 'overlay',
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='cn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cn)'/%3E%3C/svg%3E\")",
+        }}
+      />
+
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
         <div>
@@ -160,7 +177,7 @@ function HeroChart({ reduce }) {
           </linearGradient>
           <linearGradient id="hc-gap" x1="0.3" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.12" />
           </linearGradient>
           <filter id="hc-glow" x="-25%" y="-25%" width="150%" height="150%">
             <feGaussianBlur stdDeviation="3.5" result="b" />
@@ -305,7 +322,7 @@ function HeroChart({ reduce }) {
         ))}
       </div>
 
-      {/* Google / Deloitte attribution */}
+      {/* Google / Deloitte attribution + disclaimer */}
       <div style={{
         marginTop: 10, padding: '7px 10px', borderRadius: 8,
         background: 'rgba(34,211,238,0.05)',
@@ -314,6 +331,7 @@ function HeroChart({ reduce }) {
         <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.38)', lineHeight: 1.5 }}>
           Laut Google &amp; Deloitte wachsen KMU mit Website 2,8× wahrscheinlicher –
           {' '}<span style={{ color: 'rgba(34,211,238,0.65)' }}>Connected Small Businesses Study</span>
+          {' '}· <span style={{ color: 'rgba(255,255,255,0.2)', fontStyle: 'italic' }}>Studien-Daten, kein Ergebnisversprechen</span>
         </p>
       </div>
     </div>
@@ -332,8 +350,6 @@ function HeroVisual({ reduce }) {
 
   const rotX = useTransform(smy, [-0.5, 0.5], [8, -8]);
   const rotY = useTransform(smx, [-0.5, 0.5], [-10, 10]);
-  const layerNearX = useTransform(smx, [-0.5, 0.5], [-30, 30]);
-  const layerNearY = useTransform(smy, [-0.5, 0.5], [-22, 22]);
 
   const onMove = (e) => {
     if (reduce) return;
@@ -368,36 +384,6 @@ function HeroVisual({ reduce }) {
           <HeroChart reduce={reduce} />
         </motion.div>
 
-        {/* Floating metric card — near depth */}
-        <motion.div
-          className="absolute -right-4 bottom-4 z-20 hidden sm:block"
-          style={reduce ? {} : { x: layerNearX, y: layerNearY }}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.85 }}
-        >
-          <div
-            className="flex items-center gap-3 rounded-2xl px-4 py-3 backdrop-blur"
-            style={{
-              background: 'rgba(17,14,26,0.85)',
-              border: '1px solid rgba(34,211,238,0.3)',
-              boxShadow: '0 18px 50px -18px rgba(34,211,238,0.35)',
-            }}
-          >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl"
-              style={{ background: 'rgba(34,211,238,0.14)', color: 'var(--cyan-2)' }}>
-              <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4"
-                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M2 9l3-3 3 3 6-6" />
-                <path d="M14 3h-3M14 3v3" />
-              </svg>
-            </span>
-            <div>
-              <p className="text-[12px] font-bold" style={{ color: 'var(--text)' }}>Auf Anfragen gebaut</p>
-              <p className="text-[10px]" style={{ color: 'var(--muted)' }}>Klare Nutzerführung</p>
-            </div>
-          </div>
-        </motion.div>
       </motion.div>
     </div>
   );

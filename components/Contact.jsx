@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Reveal from './ui/Reveal';
 
 function Field({ id, label, optional, children }) {
@@ -45,9 +46,9 @@ export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine k
               className="mt-8 grid gap-4"
             >
               <input type="hidden" name="form-name" value="contact" />
-              <p className="hidden">
+              <p className="hidden" aria-hidden="true">
                 <label htmlFor="contact-bot-field">
-                  Dieses Feld bitte nicht ausfüllen, wenn Sie ein Mensch sind: <input id="contact-bot-field" name="bot-field" />
+                  <input id="contact-bot-field" name="bot-field" tabIndex={-1} autoComplete="off" />
                 </label>
               </p>
 
@@ -106,7 +107,7 @@ export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine k
               </div>
 
               <Field id="contact-message" label="Nachricht" optional>
-                <textarea id="contact-message" name="message" rows="5" className="field-textarea" />
+                <textarea id="contact-message" name="message" rows="5" maxLength={2000} className="field-textarea" />
               </Field>
               <button type="submit" className="primary-btn mt-2 w-fit">
                 <span>
@@ -116,6 +117,13 @@ export default function Contact({ headingTag = 'h2', title = 'Fordern Sie eine k
                   </svg>
                 </span>
               </button>
+              <p className="mt-2 text-xs leading-5" style={{ color: 'var(--faint)' }}>
+                Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß unserer{' '}
+                <Link href="/datenschutz" style={{ color: 'var(--cyan-2)' }} className="underline-offset-4 hover:underline">
+                  Datenschutzerklärung
+                </Link>{' '}
+                zu. (Art. 6 Abs. 1 lit. b DSGVO)
+              </p>
             </form>
           </div>
 

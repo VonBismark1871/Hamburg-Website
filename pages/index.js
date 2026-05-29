@@ -90,20 +90,19 @@ function ManifestBand() {
 }
 
 /* ─── Marktdaten ────────────────────────────────────── */
-function ArcMeter({ percent, size = 72 }) {
+function ArcMeter({ percent, size = 72, gradId = 'arc-grad' }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduce = useReducedMotion();
   const sw = 5;
   const r = (size - sw) / 2;
   const circ = 2 * Math.PI * r;
-  const offset = reduce || !inView ? circ * (1 - percent / 100) : circ * (1 - percent / 100);
   const animatedOffset = inView || reduce ? circ * (1 - percent / 100) : circ;
 
   return (
     <svg ref={ref} width={size} height={size} aria-hidden="true">
       <defs>
-        <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#7C3AED" />
           <stop offset="100%" stopColor="#22D3EE" />
         </linearGradient>
@@ -112,7 +111,7 @@ function ArcMeter({ percent, size = 72 }) {
       <circle
         cx={size / 2} cy={size / 2} r={r}
         fill="none"
-        stroke="url(#arc-grad)"
+        stroke={`url(#${gradId})`}
         strokeWidth={sw}
         strokeLinecap="round"
         strokeDasharray={circ}
@@ -225,7 +224,7 @@ function DataBand() {
                   </p>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--cyan-2)' }}>Suchen online</p>
                 </div>
-                <ArcMeter percent={81} />
+                <ArcMeter percent={81} gradId="arc-grad-81" />
               </div>
               <FillBar percent={81} delay={0.1} />
               <p className="mt-4 text-xs leading-5" style={{ color: 'var(--muted)' }}>
@@ -245,7 +244,7 @@ function DataBand() {
                   </p>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--cyan-2)' }}>Noch ohne Website</p>
                 </div>
-                <ArcMeter percent={36} />
+                <ArcMeter percent={36} gradId="arc-grad-36" />
               </div>
               <FillBar percent={36} delay={0.05} />
               <p className="mt-4 text-xs leading-5" style={{ color: 'var(--muted)' }}>
@@ -323,7 +322,7 @@ function WhyMe() {
         </RevealGroup>
         <Reveal delay={0.2} className="mt-10">
           <Link href="/ueber-uns" className="tile-link">
-            Mehr über unsere Arbeitsweise <ArrowIcon />
+            Mehr über meine Arbeitsweise <ArrowIcon />
           </Link>
         </Reveal>
       </div>
@@ -378,7 +377,8 @@ function ProcessPreview() {
 /* ─── Pricing preview ───────────────────────────────── */
 const pricingPreview = [
   { title: 'Website-Visitenkarte', subtitle: 'Einstieg', price: 'ab 400 €', points: ['1 strukturierte Seite', 'Kontakt-CTA', 'Responsive Design', 'SEO-Basics'] },
-  { title: 'Business Website', subtitle: 'Mehrseitig', price: 'ab 1.000 €', featured: true, points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen'] },
+  { title: 'Onepager', subtitle: 'Beliebt', price: 'ab 650 €', featured: true, points: ['1 ausgebaute Seite', 'Leistungen & Story', 'Conversion-fokussiert', 'SEO-optimiert'] },
+  { title: 'Mehrseitige Website', subtitle: 'Mehrseitig', price: 'ab 1.000 €', points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen'] },
   { title: 'Mit Adminbereich', subtitle: 'Individuell', price: 'ab 1.500 €', points: ['Eigene Inhaltspflege', 'CMS-Einrichtung', 'Strukturierte Übergabe', 'Betreuung optional'] }
 ];
 
@@ -397,7 +397,7 @@ function PricingPreview() {
         </Reveal>
       </div>
 
-      <RevealGroup className="grid gap-5 md:grid-cols-3">
+      <RevealGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {pricingPreview.map((it) => (
           <RevealItem as="article" key={it.title} className={`pricing-preview-card ${it.featured ? 'featured' : ''}`}>
             {it.featured && <p className="pricing-badge">Am beliebtesten</p>}
@@ -492,7 +492,7 @@ function FinalCta() {
               <MagneticButton href="/kontakt" className="primary-btn">
                 Kostenlose Demo anfragen <ArrowIcon />
               </MagneticButton>
-              <MagneticButton href="/kontakt#audit" className="secondary-btn" strength={10}>
+              <MagneticButton href="/kontakt" className="secondary-btn" strength={10}>
                 Digital-Audit starten
               </MagneticButton>
             </div>

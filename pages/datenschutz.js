@@ -63,8 +63,18 @@ const sections = [
     content: (
       <>
         <p>
-          Diese Website wird über <strong>Netlify</strong> bereitgestellt. Beim Aufruf der Website verarbeitet Netlify
-          technisch erforderliche Verbindungsdaten, um die Inhalte sicher und performant auszuliefern.
+          Diese Website wird über <strong>Netlify</strong> (Netlify, Inc., 44 Montgomery St Suite 300, San Francisco,
+          CA 94104, USA) bereitgestellt. Beim Aufruf der Website verarbeitet Netlify technisch erforderliche
+          Verbindungsdaten, um die Inhalte sicher und performant auszuliefern.
+        </p>
+        <p className="mt-4">
+          Da Netlify ein US-amerikanischer Anbieter ist, können Daten in die USA übertragen werden. Die
+          Übermittlung erfolgt auf Grundlage von Standarddatenschutzklauseln gemäß Art. 46 Abs. 2 lit. c DSGVO.
+          Ein Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO liegt vor.
+          Weitere Informationen:{' '}
+          <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" rel="noopener noreferrer" style={{ color: '#A78BFA' }}>
+            netlify.com/gdpr-ccpa
+          </a>.
         </p>
         <p className="mt-4">
           Hierzu können insbesondere Server-Logdaten verarbeitet werden. Die Verarbeitung erfolgt zur Gewährleistung
@@ -189,17 +199,18 @@ const sections = [
     content: (
       <>
         <p>
-          Die Hauptwebsite (hamburg-websites.de) verwendet ausschließlich lokal gehostete Schriftarten
+          Die Hauptwebsite (hamburgwebsites.de) verwendet ausschließlich lokal gehostete Schriftarten
           (Space Grotesk, Inter). Es findet keine Übermittlung personenbezogener Daten an externe
           Schriftanbieter statt.
         </p>
         <p className="mt-4">
           <strong>Referenz- und Demo-Seiten:</strong> Die unter /referenzen/ verlinkten Beispielwebsites
           dienen ausschließlich der gestalterischen Demonstration möglicher Kundenprojekte. Diese Demo-Seiten
-          laden Schriftarten über Google Fonts (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA).
-          Dabei wird Ihre IP-Adresse an Server von Google übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
-          (berechtigtes Interesse an der authentischen Darstellung des typografischen Designs der jeweiligen Demo).
-          Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#A78BFA' }}>Google Datenschutzerklärung</a>.
+          laden Schriftarten über <strong>Bunny Fonts</strong> (BunnyWay d.o.o., Cesta komandanta Staneta 4A,
+          1215 Medvode, Slowenien). Die Auslieferung erfolgt ausschließlich über EU-Server; eine Übertragung
+          personenbezogener Daten in Drittländer außerhalb der EU findet nicht statt. Rechtsgrundlage ist
+          Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen:{' '}
+          <a href="https://bunny.net/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#A78BFA' }}>bunny.net/privacy</a>.
         </p>
         <p className="mt-4">
           Darüber hinaus werden derzeit keine eingebetteten Karten, Videos, Terminbuchungs-Tools oder
