@@ -377,7 +377,8 @@ function ProcessPreview() {
 /* ─── Pricing preview ───────────────────────────────── */
 const pricingPreview = [
   { title: 'Website-Visitenkarte', subtitle: 'Einstieg', price: 'ab 400 €', points: ['1 strukturierte Seite', 'Kontakt-CTA', 'Responsive Design', 'SEO-Basics'] },
-  { title: 'Mehrseitige Website', subtitle: 'Mehrseitig', price: 'ab 1.000 €', featured: true, points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen'] },
+  { title: 'Onepager', subtitle: 'Beliebt', price: 'ab 650 €', featured: true, points: ['1 ausgebaute Seite', 'Leistungen & Story', 'Conversion-fokussiert', 'SEO-optimiert'] },
+  { title: 'Mehrseitige Website', subtitle: 'Mehrseitig', price: 'ab 1.000 €', points: ['5–8 Seiten', 'Individuelles Design', 'SEO und Performance', '2 Korrekturschleifen'] },
   { title: 'Mit Adminbereich', subtitle: 'Individuell', price: 'ab 1.500 €', points: ['Eigene Inhaltspflege', 'CMS-Einrichtung', 'Strukturierte Übergabe', 'Betreuung optional'] }
 ];
 
@@ -396,7 +397,7 @@ function PricingPreview() {
         </Reveal>
       </div>
 
-      <RevealGroup className="grid gap-5 md:grid-cols-3">
+      <RevealGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {pricingPreview.map((it) => (
           <RevealItem as="article" key={it.title} className={`pricing-preview-card ${it.featured ? 'featured' : ''}`}>
             {it.featured && <p className="pricing-badge">Am beliebtesten</p>}
