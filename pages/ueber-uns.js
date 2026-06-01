@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SEOHead from '../components/SEOHead';
@@ -51,6 +52,69 @@ export default function UeberUnsPage() {
                 mal stärker gestaltet, mal mit mehr Seiten oder Funktionen.
               </p>
             </Reveal>
+          </div>
+        </section>
+
+        <section className="section-container section-spacing" aria-labelledby="founder-heading">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+            <Reveal className="order-1">
+              <figure className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:mx-0">
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-3 -z-10 rounded-[2rem] opacity-55 blur-2xl"
+                  style={{ background: 'var(--grad-brand)' }}
+                />
+                <div className="relative overflow-hidden rounded-[1.5rem] border" style={{ borderColor: 'var(--line-2)' }}>
+                  <Image
+                    src="/brand/founder-portrait.jpg"
+                    alt="Andrii Oleksiienko, Gründer und Webentwickler bei Hamburg Websites"
+                    width={720}
+                    height={900}
+                    sizes="(max-width: 1024px) 80vw, 340px"
+                    className="block h-full w-full object-cover"
+                    priority
+                  />
+                  <figcaption
+                    className="absolute inset-x-0 bottom-0 p-5"
+                    style={{ background: 'linear-gradient(to top, rgba(8,7,13,0.92), rgba(8,7,13,0.35) 55%, transparent)' }}
+                  >
+                    <p className="font-display text-lg font-bold leading-tight" style={{ color: 'var(--text)' }}>
+                      Andrii Oleksiienko
+                    </p>
+                    <p className="text-sm font-medium" style={{ color: 'var(--cyan-2)' }}>
+                      Gründer &amp; Webentwickler · Hamburg
+                    </p>
+                  </figcaption>
+                </div>
+              </figure>
+            </Reveal>
+
+            <div className="order-2">
+              <p className="section-label">Ihr Ansprechpartner</p>
+              <AnimatedText
+                as="h2"
+                text="Eine Person — von der ersten Idee bis zum Livegang."
+                className="display-lg"
+              />
+              <RevealGroup className="mt-6 max-w-2xl space-y-5">
+                <RevealItem as="p" className="lead">
+                  Mein Name ist Andrii Oleksiienko. Ich entwickle Websites für kleine Unternehmen in Hamburg –
+                  vom ersten Gespräch über die kostenlose Demo bis zum fertigen Livegang.
+                </RevealItem>
+                <RevealItem as="p" className="text-base leading-7" style={{ color: 'var(--muted)' }}>
+                  Keine Weiterleitungen, kein Ticketsystem: Sie sprechen direkt mit der Person, die Ihre Website baut.
+                  Das hält Entscheidungen kurz, Rückfragen unkompliziert und das Ergebnis nah an dem, was Sie wirklich brauchen.
+                </RevealItem>
+              </RevealGroup>
+              <Reveal delay={0.15}>
+                <Link href="/kontakt" className="mt-8 inline-flex items-center gap-2 font-medium" style={{ color: 'var(--cyan-2)' }}>
+                  Direkt Kontakt aufnehmen
+                  <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" aria-hidden="true">
+                    <path d="M3 8h9m0 0-3.5-3.5M12 8l-3.5 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </Reveal>
+            </div>
           </div>
         </section>
 
